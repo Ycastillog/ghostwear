@@ -1,0 +1,618 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GhostWear</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .smoke-bg{
+      background:
+        radial-gradient(1200px 700px at 15% 15%, rgba(255,255,255,.10), transparent 60%),
+        radial-gradient(900px 600px at 85% 25%, rgba(255,255,255,.07), transparent 55%),
+        radial-gradient(700px 500px at 55% 80%, rgba(255,255,255,.06), transparent 60%),
+        linear-gradient(180deg, #050505 0%, #000 60%, #000 100%);
+    }
+    .glass{
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.10);
+      backdrop-filter: blur(10px);
+    }
+    .soft-border{ border: 1px solid rgba(255,255,255,.10); }
+  </style>
+</head>
+
+<body class="bg-black text-white overflow-x-hidden">
+
+  <!-- NAV -->
+  <header class="fixed top-0 w-full z-50 bg-black/70 backdrop-blur border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-4">
+      <a href="#top" class="flex items-center gap-3">
+        <img src="./images/logo-ghost.png" alt="GhostWear" class="h-10 md:h-12 object-contain"
+             onerror="this.style.display='none'; document.getElementById('logoFallback').classList.remove('hidden');" />
+        <div id="logoFallback" class="hidden font-extrabold tracking-widest text-xl">GHOST</div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-7 text-sm text-white/75 tracking-wide">
+        <a href="#drop" class="hover:text-white">DROP</a>
+        <a href="#hoodies" class="hover:text-white">HOODIES</a>
+        <a href="#tees" class="hover:text-white">TEES</a>
+        <a href="#accesorios" class="hover:text-white">ACCESORIOS</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <button id="cartBtn" class="rounded-xl px-4 py-2 border border-white/15 bg-white/5 hover:bg-white/10 text-sm">
+          Carrito
+          <span id="cartCount" class="ml-2 inline-flex items-center justify-center min-w-6 h-6 px-2 rounded-full bg-white text-black text-xs font-bold">0</span>
+        </button>
+        <a href="#drop" class="hidden sm:inline-flex rounded-xl px-4 py-2 bg-white text-black font-semibold hover:bg-white/90 text-sm">
+          Comprar ahora
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="top" class="smoke-bg pt-28 md:pt-32 pb-16 md:pb-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <div class="inline-flex items-center gap-2 glass rounded-full px-4 py-2 text-xs text-white/80">
+          <span class="inline-block w-2 h-2 rounded-full bg-white"></span>
+          LIMITED DROP • HECHO PARA RD
+        </div>
+
+        <h1 class="mt-5 text-4xl md:text-6xl font-extrabold leading-tight">
+          Viste como un fantasma.
+          <span class="block text-white/55">Se siente como lujo.</span>
+        </h1>
+
+        <p class="mt-5 text-white/70 leading-relaxed max-w-xl">
+          Street + gym con identidad Ghost. Agrega al carrito y finaliza por WhatsApp en 1 click.
+        </p>
+
+        <div class="mt-7 flex flex-wrap gap-3">
+          <a href="#drop" class="px-6 py-3 rounded-2xl bg-white text-black font-semibold hover:bg-white/90">
+            Ver drop
+          </a>
+          <button id="heroCartBtn" class="px-6 py-3 rounded-2xl border border-white/15 bg-white/5 hover:bg-white/10 font-semibold">
+            Ver carrito
+          </button>
+        </div>
+
+        <div class="mt-10 grid grid-cols-3 gap-3 text-xs text-white/70 max-w-md">
+          <div class="glass rounded-2xl px-4 py-3 text-center">LIMITED DROP</div>
+          <div class="glass rounded-2xl px-4 py-3 text-center">ENVÍO RD</div>
+          <div class="glass rounded-2xl px-4 py-3 text-center">FIT PREMIUM</div>
+        </div>
+      </div>
+
+      <div class="relative">
+        <div class="absolute -inset-10 bg-white/10 blur-3xl rounded-full"></div>
+        <div class="relative glass rounded-3xl p-4">
+          <img src="./images/short-black.jpg" alt="Ghost Drop" class="w-full h-[360px] md:h-[440px] object-cover rounded-2xl soft-border" />
+          <div class="mt-4 flex items-center justify-between">
+            <div>
+              <div class="text-white/70 text-xs">DROP ACTUAL</div>
+              <div class="font-bold text-lg">Ghost Shorts</div>
+            </div>
+            <div class="text-white font-semibold">RD$ 1600</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN: DROP -->
+  <section id="drop" class="max-w-7xl mx-auto px-4 sm:px-6 py-14">
+    <div class="flex items-end justify-between gap-6">
+      <div>
+        <h2 class="text-3xl font-bold">DROP</h2>
+        <p class="text-white/60 mt-2">Piezas limitadas. Cuando se van, se van.</p>
+      </div>
+    </div>
+
+    <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <!-- PRODUCT CARD TEMPLATE -->
+      <div class="glass rounded-3xl p-4">
+        <div class="flex items-center justify-between">
+          <span class="text-xs px-3 py-1 rounded-full bg-white/10 border border-white/10">LIMITED</span>
+          <span class="text-xs text-white/60">DROP</span>
+        </div>
+        <img src="./images/short-black.jpg" class="mt-3 h-48 w-full object-cover rounded-2xl soft-border" alt="Short Ghost Black" />
+        <div class="mt-4">
+          <div class="font-bold">Short Ghost Black</div>
+          <div class="text-white/70 text-sm">RD$ 1600</div>
+        </div>
+
+        <div class="mt-4 grid grid-cols-2 gap-2">
+          <select class="size bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-sm">
+            <option>S</option><option selected>M</option><option>L</option><option>XL</option>
+          </select>
+          <select class="qty bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-sm">
+            <option selected>1</option><option>2</option><option>3</option>
+          </select>
+        </div>
+
+        <div class="mt-3 grid grid-cols-2 gap-2">
+          <button class="add px-4 py-2 rounded-2xl bg-white text-black font-semibold hover:bg-white/90"
+                  data-name="Short Ghost Black" data-price="1600">
+            Agregar
+          </button>
+          <button class="wa px-4 py-2 rounded-2xl border border-white/15 bg-white/5 hover:bg-white/10 font-semibold"
+                  data-name="Short Ghost Black" data-price="1600">
+            WhatsApp
+          </button>
+        </div>
+      </div>
+
+      <div class="glass rounded-3xl p-4">
+        <div class="flex items-center justify-between">
+          <span class="text-xs px-3 py-1 rounded-full bg-white/10 border border-white/10">LIMITED</span>
+          <span class="text-xs text-white/60">DROP</span>
+        </div>
+        <img src="./images/short-white.jpg" class="mt-3 h-48 w-full object-cover rounded-2xl soft-border" alt="Short Ghost White" />
+        <div class="mt-4">
+          <div class="font-bold">Short Ghost White</div>
+          <div class="text-white/70 text-sm">RD$ 1600</div>
+        </div>
+
+        <div class="mt-4 grid grid-cols-2 gap-2">
+          <select class="size bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-sm">
+            <option>S</option><option selected>M</option><option>L</option><option>XL</option>
+          </select>
+          <select class="qty bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-sm">
+            <option selected>1</option><option>2</option><option>3</option>
+          </select>
+        </div>
+
+        <div class="mt-3 grid grid-cols-2 gap-2">
+          <button class="add px-4 py-2 rounded-2xl bg-white text-black font-semibold hover:bg-white/90"
+                  data-name="Short Ghost White" data-price="1600">
+            Agregar
+          </button>
+          <button class="wa px-4 py-2 rounded-2xl border border-white/15 bg-white/5 hover:bg-white/10 font-semibold"
+                  data-name="Short Ghost White" data-price="1600">
+            WhatsApp
+          </button>
+        </div>
+      </div>
+
+      <!-- placeholders -->
+      <div class="glass rounded-3xl p-4 opacity-80">
+        <div class="flex items-center justify-between">
+          <span class="text-xs px-3 py-1 rounded-full bg-white/10 border border-white/10">SOON</span>
+          <span class="text-xs text-white/60">DROP</span>
+        </div>
+        <div class="mt-3 h-48 rounded-2xl soft-border grid place-items-center text-white/40">
+          Próximo producto
+        </div>
+        <div class="mt-4">
+          <div class="font-bold">Hoodie Midnight Ghost</div>
+          <div class="text-white/70 text-sm">RD$ 2450</div>
+        </div>
+        <button class="mt-4 w-full px-4 py-2 rounded-2xl border border-white/15 bg-white/5 hover:bg-white/10 font-semibold">
+          Próximamente
+        </button>
+      </div>
+
+      <div class="glass rounded-3xl p-4 opacity-80">
+        <div class="flex items-center justify-between">
+          <span class="text-xs px-3 py-1 rounded-full bg-white/10 border border-white/10">SOON</span>
+          <span class="text-xs text-white/60">DROP</span>
+        </div>
+        <div class="mt-3 h-48 rounded-2xl soft-border grid place-items-center text-white/40">
+          Próximo producto
+        </div>
+        <div class="mt-4">
+          <div class="font-bold">Tee Phantom Minimal</div>
+          <div class="text-white/70 text-sm">RD$ 1350</div>
+        </div>
+        <button class="mt-4 w-full px-4 py-2 rounded-2xl border border-white/15 bg-white/5 hover:bg-white/10 font-semibold">
+          Próximamente
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN: HOODIES -->
+  <section id="hoodies" class="max-w-7xl mx-auto px-4 sm:px-6 py-14 border-t border-white/10">
+    <div>
+      <h2 class="text-3xl font-bold">HOODIES</h2>
+      <p class="text-white/60 mt-2">Oversize, pesado, premium. Street + frío.</p>
+    </div>
+
+    <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <!-- hoodie 1 -->
+      <div class="glass rounded-3xl p-4">
+        <img src="./images/hoodie-black.jpg" class="h-48 w-full object-cover rounded-2xl soft-border" alt="Hoodie Black" />
+        <div class="mt-4">
+          <div class="font-bold">Hoodie Midnight Ghost</div>
+          <div class="text-white/70 text-sm">RD$ 2450</div>
+        </div>
+
+        <div class="mt-4 grid grid-cols-2 gap-2">
+          <select class="size bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-sm">
+            <option>S</option><option selected>M</option><option>L</option><option>XL</option>
+          </select>
+          <select class="qty bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-sm">
+            <option selected>1</option><option>2</option>
+          </select>
+        </div>
+
+        <div class="mt-3 grid grid-cols-2 gap-2">
+          <button class="add px-4 py-2 rounded-2xl bg-white text-black font-semibold hover:bg-white/90"
+                  data-name="Hoodie Midnight Ghost" data-price="2450">Agregar</button>
+          <button class="wa px-4 py-2 rounded-2xl border border-white/15 bg-white/5 hover:bg-white/10 font-semibold"
+                  data-name="Hoodie Midnight Ghost" data-price="2450">WhatsApp</button>
+        </div>
+      </div>
+
+      <!-- hoodie 2 -->
+      <div class="glass rounded-3xl p-4">
+        <img src="./images/hoodie-gray.jpg" class="h-48 w-full object-cover rounded-2xl soft-border" alt="Hoodie Gray" />
+        <div class="mt-4">
+          <div class="font-bold">Hoodie Specter Gray</div>
+          <div class="text-white/70 text-sm">RD$ 2350</div>
+        </div>
+
+        <div class="mt-4 grid grid-cols-2 gap-2">
+          <select class="size bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-sm">
+            <option>S</option><option selected>M</option><option>L</option><option>XL</option>
+          </select>
+          <select class="qty bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-sm">
+            <option selected>1</option><option>2</option>
+          </select>
+        </div>
+
+        <div class="mt-3 grid grid-cols-2 gap-2">
+          <button class="add px-4 py-2 rounded-2xl bg-white text-black font-semibold hover:bg-white/90"
+                  data-name="Hoodie Specter Gray" data-price="2350">Agregar</button>
+          <button class="wa px-4 py-2 rounded-2xl border border-white/15 bg-white/5 hover:bg-white/10 font-semibold"
+                  data-name="Hoodie Specter Gray" data-price="2350">WhatsApp</button>
+        </div>
+      </div>
+
+      <!-- placeholders -->
+      <div class="glass rounded-3xl p-4 opacity-80">
+        <div class="h-48 rounded-2xl soft-border grid place-items-center text-white/40">Próximo hoodie</div>
+        <div class="mt-4 font-bold">Hoodie Phantom</div>
+        <div class="text-white/70 text-sm">RD$ 0</div>
+        <button class="mt-4 w-full px-4 py-2 rounded-2xl border border-white/15 bg-white/5">Próximamente</button>
+      </div>
+
+      <div class="glass rounded-3xl p-4 opacity-80">
+        <div class="h-48 rounded-2xl soft-border grid place-items-center text-white/40">Próximo hoodie</div>
+        <div class="mt-4 font-bold">Hoodie Ghost Zip</div>
+        <div class="text-white/70 text-sm">RD$ 0</div>
+        <button class="mt-4 w-full px-4 py-2 rounded-2xl border border-white/15 bg-white/5">Próximamente</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN: TEES -->
+  <section id="tees" class="max-w-7xl mx-auto px-4 sm:px-6 py-14 border-t border-white/10">
+    <div>
+      <h2 class="text-3xl font-bold">TEES</h2>
+      <p class="text-white/60 mt-2">Corte limpio, logo discreto. Fácil de combinar.</p>
+    </div>
+
+    <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div class="glass rounded-3xl p-4">
+        <img src="./images/tee-black.jpg" class="h-48 w-full object-cover rounded-2xl soft-border" alt="Tee Black" />
+        <div class="mt-4">
+          <div class="font-bold">Tee Phantom Black</div>
+          <div class="text-white/70 text-sm">RD$ 1350</div>
+        </div>
+
+        <div class="mt-4 grid grid-cols-2 gap-2">
+          <select class="size bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-sm">
+            <option>S</option><option selected>M</option><option>L</option><option>XL</option>
+          </select>
+          <select class="qty bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-sm">
+            <option selected>1</option><option>2</option><option>3</option>
+          </select>
+        </div>
+
+        <div class="mt-3 grid grid-cols-2 gap-2">
+          <button class="add px-4 py-2 rounded-2xl bg-white text-black font-semibold hover:bg-white/90"
+                  data-name="Tee Phantom Black" data-price="1350">Agregar</button>
+          <button class="wa px-4 py-2 rounded-2xl border border-white/15 bg-white/5 hover:bg-white/10 font-semibold"
+                  data-name="Tee Phantom Black" data-price="1350">WhatsApp</button>
+        </div>
+      </div>
+
+      <div class="glass rounded-3xl p-4">
+        <img src="./images/tee-white.jpg" class="h-48 w-full object-cover rounded-2xl soft-border" alt="Tee White" />
+        <div class="mt-4">
+          <div class="font-bold">Tee Phantom White</div>
+          <div class="text-white/70 text-sm">RD$ 1350</div>
+        </div>
+
+        <div class="mt-4 grid grid-cols-2 gap-2">
+          <select class="size bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-sm">
+            <option>S</option><option selected>M</option><option>L</option><option>XL</option>
+          </select>
+          <select class="qty bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-sm">
+            <option selected>1</option><option>2</option><option>3</option>
+          </select>
+        </div>
+
+        <div class="mt-3 grid grid-cols-2 gap-2">
+          <button class="add px-4 py-2 rounded-2xl bg-white text-black font-semibold hover:bg-white/90"
+                  data-name="Tee Phantom White" data-price="1350">Agregar</button>
+          <button class="wa px-4 py-2 rounded-2xl border border-white/15 bg-white/5 hover:bg-white/10 font-semibold"
+                  data-name="Tee Phantom White" data-price="1350">WhatsApp</button>
+        </div>
+      </div>
+
+      <div class="glass rounded-3xl p-4 opacity-80">
+        <div class="h-48 rounded-2xl soft-border grid place-items-center text-white/40">Próxima tee</div>
+        <div class="mt-4 font-bold">Tee Ghost Minimal</div>
+        <div class="text-white/70 text-sm">RD$ 0</div>
+        <button class="mt-4 w-full px-4 py-2 rounded-2xl border border-white/15 bg-white/5">Próximamente</button>
+      </div>
+
+      <div class="glass rounded-3xl p-4 opacity-80">
+        <div class="h-48 rounded-2xl soft-border grid place-items-center text-white/40">Próxima tee</div>
+        <div class="mt-4 font-bold">Tee Specter</div>
+        <div class="text-white/70 text-sm">RD$ 0</div>
+        <button class="mt-4 w-full px-4 py-2 rounded-2xl border border-white/15 bg-white/5">Próximamente</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN: ACCESORIOS -->
+  <section id="accesorios" class="max-w-7xl mx-auto px-4 sm:px-6 py-14 border-t border-white/10">
+    <div>
+      <h2 class="text-3xl font-bold">ACCESORIOS</h2>
+      <p class="text-white/60 mt-2">Detalles que completan el fit.</p>
+    </div>
+
+    <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div class="glass rounded-3xl p-4">
+        <img src="./images/cap-black.jpg" class="h-48 w-full object-cover rounded-2xl soft-border" alt="Cap" />
+        <div class="mt-4">
+          <div class="font-bold">Cap Ghost Classic</div>
+          <div class="text-white/70 text-sm">RD$ 950</div>
+        </div>
+        <div class="mt-4 grid grid-cols-2 gap-2">
+          <select class="size bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-sm">
+            <option selected>Única</option>
+          </select>
+          <select class="qty bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-sm">
+            <option selected>1</option><option>2</option><option>3</option>
+          </select>
+        </div>
+        <div class="mt-3 grid grid-cols-2 gap-2">
+          <button class="add px-4 py-2 rounded-2xl bg-white text-black font-semibold hover:bg-white/90"
+                  data-name="Cap Ghost Classic" data-price="950">Agregar</button>
+          <button class="wa px-4 py-2 rounded-2xl border border-white/15 bg-white/5 hover:bg-white/10 font-semibold"
+                  data-name="Cap Ghost Classic" data-price="950">WhatsApp</button>
+        </div>
+      </div>
+
+      <div class="glass rounded-3xl p-4">
+        <img src="./images/bag-black.jpg" class="h-48 w-full object-cover rounded-2xl soft-border" alt="Bag" />
+        <div class="mt-4">
+          <div class="font-bold">Bag Ghost Utility</div>
+          <div class="text-white/70 text-sm">RD$ 1200</div>
+        </div>
+        <div class="mt-4 grid grid-cols-2 gap-2">
+          <select class="size bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-sm">
+            <option selected>Única</option>
+          </select>
+          <select class="qty bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-sm">
+            <option selected>1</option><option>2</option>
+          </select>
+        </div>
+        <div class="mt-3 grid grid-cols-2 gap-2">
+          <button class="add px-4 py-2 rounded-2xl bg-white text-black font-semibold hover:bg-white/90"
+                  data-name="Bag Ghost Utility" data-price="1200">Agregar</button>
+          <button class="wa px-4 py-2 rounded-2xl border border-white/15 bg-white/5 hover:bg-white/10 font-semibold"
+                  data-name="Bag Ghost Utility" data-price="1200">WhatsApp</button>
+        </div>
+      </div>
+
+      <div class="glass rounded-3xl p-4 opacity-80">
+        <div class="h-48 rounded-2xl soft-border grid place-items-center text-white/40">Próximo accesorio</div>
+        <div class="mt-4 font-bold">Socks Ghost</div>
+        <div class="text-white/70 text-sm">RD$ 0</div>
+        <button class="mt-4 w-full px-4 py-2 rounded-2xl border border-white/15 bg-white/5">Próximamente</button>
+      </div>
+
+      <div class="glass rounded-3xl p-4 opacity-80">
+        <div class="h-48 rounded-2xl soft-border grid place-items-center text-white/40">Próximo accesorio</div>
+        <div class="mt-4 font-bold">Bottle Ghost</div>
+        <div class="text-white/70 text-sm">RD$ 0</div>
+        <button class="mt-4 w-full px-4 py-2 rounded-2xl border border-white/15 bg-white/5">Próximamente</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/10 py-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <img src="./images/logo-ghost.png" alt="GhostWear" class="h-8 object-contain" />
+        <p class="text-white/50 text-sm">© <span id="year"></span> GhostWear</p>
+      </div>
+      <p class="text-white/50 text-sm">Santo Domingo • RD</p>
+    </div>
+  </footer>
+
+  <!-- CART DRAWER -->
+  <div id="drawerOverlay" class="fixed inset-0 bg-black/60 hidden z-40"></div>
+
+  <aside id="drawer" class="fixed top-0 right-0 h-full w-[360px] max-w-[92vw] bg-black border-l border-white/10 translate-x-full transition-transform duration-200 z-50">
+    <div class="p-5 border-b border-white/10 flex items-center justify-between">
+      <div class="font-bold text-lg">Tu Carrito</div>
+      <button id="closeCart" class="px-3 py-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10">✕</button>
+    </div>
+
+    <div id="cartItems" class="p-5 space-y-3 overflow-auto" style="height: calc(100% - 160px);">
+      <div class="text-white/50 text-sm">Tu carrito está vacío.</div>
+    </div>
+
+    <div class="p-5 border-t border-white/10">
+      <div class="flex items-center justify-between text-white/80">
+        <span>Total:</span>
+        <span class="font-bold">RD$ <span id="cartTotal">0</span></span>
+      </div>
+
+      <button id="checkoutBtn" class="mt-4 w-full px-4 py-3 rounded-2xl bg-white text-black font-semibold hover:bg-white/90">
+        Finalizar compra (WhatsApp)
+      </button>
+
+      <button id="clearBtn" class="mt-2 w-full px-4 py-3 rounded-2xl border border-white/15 bg-white/5 hover:bg-white/10 font-semibold">
+        Vaciar carrito
+      </button>
+
+      <p class="text-xs text-white/40 mt-3">*Carrito simulado: el pedido se envía por WhatsApp.</p>
+    </div>
+  </aside>
+
+  <script>
+    // CAMBIA TU NÚMERO AQUÍ: código país + número, sin + ni espacios
+    const phone = "1809XXXXXXX";
+
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    function waLink(text){
+      return `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+    }
+
+    // Drawer open/close
+    const drawer = document.getElementById("drawer");
+    const overlay = document.getElementById("drawerOverlay");
+    const cartBtn = document.getElementById("cartBtn");
+    const closeCart = document.getElementById("closeCart");
+    const heroCartBtn = document.getElementById("heroCartBtn");
+
+    function openDrawer(){
+      drawer.classList.remove("translate-x-full");
+      overlay.classList.remove("hidden");
+    }
+    function closeDrawer(){
+      drawer.classList.add("translate-x-full");
+      overlay.classList.add("hidden");
+    }
+    cartBtn.addEventListener("click", openDrawer);
+    closeCart.addEventListener("click", closeDrawer);
+    overlay.addEventListener("click", closeDrawer);
+    heroCartBtn.addEventListener("click", openDrawer);
+
+    // Cart state
+    let cart = [];
+    const cartItemsEl = document.getElementById("cartItems");
+    const cartTotalEl = document.getElementById("cartTotal");
+    const cartCountEl = document.getElementById("cartCount");
+
+    function renderCart(){
+      cartCountEl.textContent = cart.reduce((a, i) => a + i.qty, 0);
+
+      if(cart.length === 0){
+        cartItemsEl.innerHTML = `<div class="text-white/50 text-sm">Tu carrito está vacío.</div>`;
+        cartTotalEl.textContent = "0";
+        return;
+      }
+
+      let total = 0;
+      cartItemsEl.innerHTML = cart.map((item, idx) => {
+        const sub = item.price * item.qty;
+        total += sub;
+        return `
+          <div class="glass rounded-2xl p-4">
+            <div class="flex items-start justify-between gap-3">
+              <div>
+                <div class="font-semibold">${item.name}</div>
+                <div class="text-white/60 text-sm">Talla: ${item.size} • Cantidad: ${item.qty}</div>
+                <div class="text-white/70 text-sm mt-1">RD$ ${item.price} c/u</div>
+              </div>
+              <button class="remove px-3 py-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10" data-idx="${idx}">🗑</button>
+            </div>
+          </div>
+        `;
+      }).join("");
+
+      cartTotalEl.textContent = total.toString();
+
+      cartItemsEl.querySelectorAll(".remove").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const idx = Number(btn.getAttribute("data-idx"));
+          cart.splice(idx, 1);
+          renderCart();
+        });
+      });
+    }
+
+    // Add to cart
+    document.querySelectorAll(".add").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const card = btn.closest(".glass");
+        const name = btn.getAttribute("data-name");
+        const price = Number(btn.getAttribute("data-price"));
+        const size = card.querySelector(".size").value;
+        const qty = Number(card.querySelector(".qty").value);
+
+        cart.push({ name, price, size, qty });
+        renderCart();
+        openDrawer();
+      });
+    });
+
+    // Buy via WhatsApp
+    document.querySelectorAll(".wa").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const card = btn.closest(".glass");
+        const name = btn.getAttribute("data-name");
+        const price = btn.getAttribute("data-price");
+        const size = card.querySelector(".size").value;
+        const qty = card.querySelector(".qty").value;
+
+        const msg =
+`Hola, quiero pedir en GhostWear 👻
+Producto: ${name}
+Talla: ${size}
+Cantidad: ${qty}
+Precio: RD$ ${price}
+Mi nombre es:
+Dirección / Sector:`;
+
+        window.open(waLink(msg), "_blank");
+      });
+    });
+
+    // Checkout
+    document.getElementById("checkoutBtn").addEventListener("click", () => {
+      if(cart.length === 0){
+        openDrawer();
+        return;
+      }
+      const total = cart.reduce((a,i)=>a+i.price*i.qty,0);
+      const lines = cart.map(i => `- ${i.name} | Talla ${i.size} | x${i.qty} | RD$ ${i.price*i.qty}`).join("\n");
+
+      const msg =
+`Hola, quiero finalizar mi compra en GhostWear 👻
+
+Items:
+${lines}
+
+Total: RD$ ${total}
+
+Mi nombre es:
+Dirección / Sector:`;
+
+      window.open(waLink(msg), "_blank");
+    });
+
+    // Clear
+    document.getElementById("clearBtn").addEventListener("click", () => {
+      cart = [];
+      renderCart();
+    });
+
+    renderCart();
+  </script>
+</body>
+</html>
