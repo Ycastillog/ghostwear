@@ -443,17 +443,17 @@
   <!-- CART DRAWER -->
   <div id="drawerOverlay" class="fixed inset-0 bg-black/60 hidden z-40"></div>
 
-  <aside id="drawer" class="fixed top-0 right-0 h-full w-[360px] max-w-[92vw] bg-black border-l border-white/10 translate-x-full transition-transform duration-200 z-50">
+  <aside id="drawer" class="fixed top-0 right-0 h-full w-[360px] max-w-[92vw] bg-black border-l border-white/10 translate-x-full transition-transform duration-200 z-50 flex flex-col">
     <div class="p-5 border-b border-white/10 flex items-center justify-between">
       <div class="font-bold text-lg">Tu Carrito</div>
       <button id="closeCart" class="px-3 py-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10">✕</button>
     </div>
 
-    <div id="cartItems" class="p-5 space-y-3 overflow-auto" style="height: calc(100% - 160px);">
+    <div id="cartItems" class="p-5 space-y-3 overflow-y-auto flex-1">
       <div class="text-white/50 text-sm">Tu carrito está vacío.</div>
     </div>
 
-    <div class="p-5 border-t border-white/10">
+    <div class="p-5 border-t border-white/10 bg-black/90 backdrop-blur sticky bottom-0">
       <div class="flex items-center justify-between text-white/80">
         <span>Total:</span>
         <span class="font-bold">RD$ <span id="cartTotal">0</span></span>
@@ -615,4 +615,5 @@ Dirección / Sector:`;
     renderCart();
   </script>
 </body>
+
 </html>
