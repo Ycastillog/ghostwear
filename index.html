@@ -3,617 +3,962 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GhostWear</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="description" content="GhostWear RD: shorts urbanos de fit premium, drop limitado y pedidos por WhatsApp." />
+  <title>GhostWear | Drop limitado RD</title>
   <style>
-    .smoke-bg{
+    :root {
+      color-scheme: dark;
+      --bg: #050505;
+      --panel: #111111;
+      --panel-2: #171717;
+      --ink: #f6f3ee;
+      --muted: #b9b2aa;
+      --line: rgba(246, 243, 238, 0.14);
+      --accent: #d7ff3f;
+      --accent-ink: #111;
+      --danger: #ff6b6b;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
-        radial-gradient(1200px 700px at 15% 15%, rgba(255,255,255,.10), transparent 60%),
-        radial-gradient(900px 600px at 85% 25%, rgba(255,255,255,.07), transparent 55%),
-        radial-gradient(700px 500px at 55% 80%, rgba(255,255,255,.06), transparent 60%),
-        linear-gradient(180deg, #050505 0%, #000 60%, #000 100%);
+        linear-gradient(135deg, rgba(215, 255, 63, 0.06), transparent 34rem),
+        linear-gradient(180deg, #0b0b0b 0%, var(--bg) 42rem);
+      color: var(--ink);
+      overflow-x: hidden;
     }
-    .glass{
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.10);
-      backdrop-filter: blur(10px);
+
+    body.no-scroll { overflow: hidden; }
+    a { color: inherit; text-decoration: none; }
+    button, select, input { font: inherit; }
+    button { cursor: pointer; }
+    img { max-width: 100%; display: block; }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 32px));
+      margin-inline: auto;
     }
-    .soft-border{ border: 1px solid rgba(255,255,255,.10); }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(5, 5, 5, 0.82);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .brand img { width: 48px; height: 48px; object-fit: contain; }
+    .nav-links { display: flex; align-items: center; gap: 22px; color: var(--muted); font-size: 0.9rem; }
+    .nav-links a:hover { color: var(--ink); }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 44px;
+      padding: 0 18px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--ink);
+      font-weight: 750;
+      transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+    }
+
+    .btn:hover { transform: translateY(-1px); border-color: rgba(246, 243, 238, 0.28); }
+    .btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+    .btn.primary:hover { background: #e2ff67; }
+    .btn.full { width: 100%; }
+    .btn.danger { color: var(--danger); }
+    .cart-count {
+      display: inline-grid;
+      place-items: center;
+      min-width: 24px;
+      height: 24px;
+      padding: 0 7px;
+      border-radius: 999px;
+      background: var(--ink);
+      color: #111;
+      font-size: 0.78rem;
+      font-weight: 900;
+    }
+
+    .hero {
+      min-height: calc(100svh - 72px);
+      display: grid;
+      align-items: center;
+      padding: 52px 0 42px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(320px, 1.08fr);
+      align-items: center;
+      gap: clamp(28px, 5vw, 74px);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 11px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 20px rgba(215, 255, 63, 0.8);
+    }
+
+    h1 {
+      margin: 22px 0 0;
+      max-width: 720px;
+      font-size: clamp(3.4rem, 9vw, 7.6rem);
+      line-height: 0.88;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .hero-copy {
+      max-width: 560px;
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.22rem);
+      line-height: 1.65;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .proof {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 38px;
+      max-width: 560px;
+    }
+
+    .proof div {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 13px 12px;
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .proof strong { display: block; font-size: 1.06rem; }
+    .proof span { display: block; margin-top: 4px; color: var(--muted); font-size: 0.82rem; }
+
+    .hero-media {
+      position: relative;
+      min-height: 560px;
+    }
+
+    .hero-photo {
+      position: absolute;
+      inset: 0;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      overflow: hidden;
+      background: var(--panel);
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: contrast(1.05) saturate(0.94);
+    }
+
+    .product-float {
+      position: absolute;
+      left: 22px;
+      right: 22px;
+      bottom: 22px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: end;
+      padding: 18px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(5, 5, 5, 0.76);
+      backdrop-filter: blur(18px);
+    }
+
+    .product-float small, .section-kicker {
+      color: var(--accent);
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+    }
+
+    .product-float h2 { margin: 5px 0 0; font-size: clamp(1.2rem, 3vw, 2rem); }
+    .price { font-weight: 900; font-size: 1.35rem; white-space: nowrap; }
+
+    section { padding: 76px 0; }
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+
+    .section-head h2 {
+      margin: 8px 0 0;
+      font-size: clamp(2rem, 5vw, 4.4rem);
+      line-height: 0.95;
+      text-transform: uppercase;
+    }
+
+    .section-head p {
+      max-width: 530px;
+      margin: 12px 0 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .drop-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.035);
+      overflow: hidden;
+    }
+
+    .product-card {
+      display: grid;
+      grid-template-columns: minmax(240px, 0.92fr) minmax(260px, 1fr);
+      min-height: 430px;
+    }
+
+    .product-img {
+      background: #1a1a1a;
+      min-height: 320px;
+    }
+
+    .product-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .product-body {
+      padding: clamp(20px, 3vw, 32px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 0 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .product-body h3 {
+      margin: 16px 0 8px;
+      font-size: clamp(1.7rem, 4vw, 3rem);
+      line-height: 1;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .product-body p { color: var(--muted); line-height: 1.6; margin: 0; }
+
+    .options {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    label { display: grid; gap: 7px; color: var(--muted); font-size: 0.82rem; font-weight: 750; }
+    select {
+      min-height: 44px;
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: #0d0d0d;
+      color: var(--ink);
+      padding: 0 12px;
+      outline: none;
+    }
+
+    .buy-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .story-band {
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .story-card, .detail-card {
+      padding: clamp(22px, 4vw, 38px);
+    }
+
+    .story-card h2, .detail-card h3 {
+      margin: 8px 0 0;
+      text-transform: uppercase;
+      line-height: 0.98;
+      letter-spacing: 0;
+    }
+
+    .story-card h2 { font-size: clamp(2.2rem, 6vw, 5rem); }
+    .detail-card h3 { font-size: clamp(1.45rem, 3vw, 2.1rem); }
+    .story-card p, .detail-card p { color: var(--muted); line-height: 1.7; }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .step {
+      padding: 24px;
+    }
+
+    .step span {
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: var(--accent-ink);
+      font-weight: 950;
+    }
+
+    .step h3 { margin: 18px 0 8px; }
+    .step p { margin: 0; color: var(--muted); line-height: 1.6; }
+
+    .footer {
+      border-top: 1px solid var(--line);
+      padding: 32px 0;
+      color: var(--muted);
+    }
+
+    .footer .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      background: rgba(0, 0, 0, 0.64);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 180ms ease;
+    }
+
+    .overlay.open { opacity: 1; pointer-events: auto; }
+
+    .drawer {
+      position: fixed;
+      z-index: 60;
+      inset: 0 0 0 auto;
+      width: min(420px, 92vw);
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      background: #070707;
+      border-left: 1px solid var(--line);
+      transform: translateX(100%);
+      transition: transform 180ms ease;
+    }
+
+    .drawer.open { transform: translateX(0); }
+    .drawer-head, .drawer-foot {
+      padding: 20px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .drawer-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .drawer-head h2 { margin: 0; }
+    .drawer-foot { border-top: 1px solid var(--line); border-bottom: 0; }
+    .cart-items { overflow: auto; padding: 20px; display: grid; align-content: start; gap: 12px; }
+    .empty { color: var(--muted); line-height: 1.6; }
+
+    .cart-item {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      background: rgba(255, 255, 255, 0.035);
+      display: grid;
+      gap: 12px;
+    }
+
+    .cart-item-top {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .cart-item h3 { margin: 0 0 5px; font-size: 1rem; }
+    .cart-item p { margin: 0; color: var(--muted); font-size: 0.9rem; line-height: 1.45; }
+    .remove {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--danger);
+      font-weight: 900;
+    }
+
+    .total-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+      font-size: 1.1rem;
+    }
+
+    .total-row strong { font-size: 1.35rem; }
+    .note { color: var(--muted); font-size: 0.82rem; line-height: 1.5; }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hero { min-height: auto; }
+      .hero-grid, .story-band { grid-template-columns: 1fr; }
+      .hero-media { min-height: 440px; }
+      .product-card { grid-template-columns: 1fr; }
+      .drop-grid, .detail-grid, .steps { grid-template-columns: 1fr; }
+      .section-head { display: block; }
+    }
+
+    @media (max-width: 620px) {
+      .wrap { width: min(100% - 24px, var(--max)); }
+      .brand span { display: none; }
+      .nav { min-height: 66px; }
+      .nav-actions .shop-link { display: none; }
+      h1 { font-size: clamp(3rem, 17vw, 4.5rem); }
+      section { padding: 56px 0; }
+      .hero { padding-top: 30px; }
+      .hero-media { min-height: 390px; }
+      .product-float { left: 12px; right: 12px; bottom: 12px; grid-template-columns: 1fr; }
+      .proof, .options, .buy-row { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
-
-<body class="bg-black text-white overflow-x-hidden">
-
-  <!-- NAV -->
-  <header class="fixed top-0 w-full z-50 bg-black/70 backdrop-blur border-b border-white/10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-4">
-      <a href="#top" class="flex items-center gap-3">
-        <img src="./images/logo-ghost.png" alt="GhostWear" class="h-10 md:h-12 object-contain"
-             onerror="this.style.display='none'; document.getElementById('logoFallback').classList.remove('hidden');" />
-        <div id="logoFallback" class="hidden font-extrabold tracking-widest text-xl">GHOST</div>
+<body>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a href="#top" class="brand" aria-label="GhostWear inicio">
+        <img src="./images/logo-ghost.png" alt="" />
+        <span>GhostWear</span>
       </a>
-
-      <nav class="hidden md:flex items-center gap-7 text-sm text-white/75 tracking-wide">
-        <a href="#drop" class="hover:text-white">DROP</a>
-        <a href="#hoodies" class="hover:text-white">HOODIES</a>
-        <a href="#tees" class="hover:text-white">TEES</a>
-        <a href="#accesorios" class="hover:text-white">ACCESORIOS</a>
+      <nav class="nav-links" aria-label="Principal">
+        <a href="#drop">Drop</a>
+        <a href="#fit">Fit</a>
+        <a href="#pedido">Pedido</a>
+        <a href="#contacto">Contacto</a>
       </nav>
-
-      <div class="flex items-center gap-2">
-        <button id="cartBtn" class="rounded-xl px-4 py-2 border border-white/15 bg-white/5 hover:bg-white/10 text-sm">
-          Carrito
-          <span id="cartCount" class="ml-2 inline-flex items-center justify-center min-w-6 h-6 px-2 rounded-full bg-white text-black text-xs font-bold">0</span>
+      <div class="nav-actions">
+        <button class="btn" id="cartBtn" type="button" aria-controls="drawer">
+          Carrito <span class="cart-count" id="cartCount">0</span>
         </button>
-        <a href="#drop" class="hidden sm:inline-flex rounded-xl px-4 py-2 bg-white text-black font-semibold hover:bg-white/90 text-sm">
-          Comprar ahora
-        </a>
+        <a class="btn primary shop-link" href="#drop">Comprar</a>
       </div>
     </div>
   </header>
 
-  <!-- HERO -->
-  <section id="top" class="smoke-bg pt-28 md:pt-32 pb-16 md:pb-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-10 items-center">
-      <div>
-        <div class="inline-flex items-center gap-2 glass rounded-full px-4 py-2 text-xs text-white/80">
-          <span class="inline-block w-2 h-2 rounded-full bg-white"></span>
-          LIMITED DROP • HECHO PARA RD
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow">Drop limitado en RD</span>
+          <h1>Ghost Shorts</h1>
+          <p class="hero-copy">
+            Shorts limpios para calle, playa y gym. Logo discreto, cintura elastica,
+            cordones contrastados y un fit facil de usar todos los dias.
+          </p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#drop">Ver colores</a>
+            <button class="btn" id="heroCartBtn" type="button">Abrir carrito</button>
+          </div>
+          <div class="proof" aria-label="Detalles de compra">
+            <div><strong>RD$ 1,600</strong><span>precio por unidad</span></div>
+            <div><strong>S - XL</strong><span>tallas disponibles</span></div>
+            <div><strong>WhatsApp</strong><span>pedido directo</span></div>
+          </div>
         </div>
 
-        <h1 class="mt-5 text-4xl md:text-6xl font-extrabold leading-tight">
-          Viste como un fantasma.
-          <span class="block text-white/55">Se siente como lujo.</span>
-        </h1>
-
-        <p class="mt-5 text-white/70 leading-relaxed max-w-xl">
-          Street + gym con identidad Ghost. Agrega al carrito y finaliza por WhatsApp en 1 click.
-        </p>
-
-        <div class="mt-7 flex flex-wrap gap-3">
-          <a href="#drop" class="px-6 py-3 rounded-2xl bg-white text-black font-semibold hover:bg-white/90">
-            Ver drop
-          </a>
-          <button id="heroCartBtn" class="px-6 py-3 rounded-2xl border border-white/15 bg-white/5 hover:bg-white/10 font-semibold">
-            Ver carrito
-          </button>
-        </div>
-
-        <div class="mt-10 grid grid-cols-3 gap-3 text-xs text-white/70 max-w-md">
-          <div class="glass rounded-2xl px-4 py-3 text-center">LIMITED DROP</div>
-          <div class="glass rounded-2xl px-4 py-3 text-center">ENVÍO RD</div>
-          <div class="glass rounded-2xl px-4 py-3 text-center">FIT PREMIUM</div>
-        </div>
-      </div>
-
-      <div class="relative">
-        <div class="absolute -inset-10 bg-white/10 blur-3xl rounded-full"></div>
-        <div class="relative glass rounded-3xl p-4">
-          <img src="./images/short-black.jpg" alt="Ghost Drop" class="w-full h-[360px] md:h-[440px] object-cover rounded-2xl soft-border" />
-          <div class="mt-4 flex items-center justify-between">
+        <div class="hero-media" aria-label="Producto destacado">
+          <div class="hero-photo">
+            <img src="./images/short-black.jpg" alt="Shorts GhostWear negro y blanco sobre una mesa de madera" />
+          </div>
+          <div class="product-float">
             <div>
-              <div class="text-white/70 text-xs">DROP ACTUAL</div>
-              <div class="font-bold text-lg">Ghost Shorts</div>
+              <small>Drop actual</small>
+              <h2>Black / White Pack</h2>
             </div>
-            <div class="text-white font-semibold">RD$ 1600</div>
+            <div class="price">RD$ 1,600</div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- SECCIÓN: DROP -->
-  <section id="drop" class="max-w-7xl mx-auto px-4 sm:px-6 py-14">
-    <div class="flex items-end justify-between gap-6">
-      <div>
-        <h2 class="text-3xl font-bold">DROP</h2>
-        <p class="text-white/60 mt-2">Piezas limitadas. Cuando se van, se van.</p>
-      </div>
-    </div>
-
-    <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-      <!-- PRODUCT CARD TEMPLATE -->
-      <div class="glass rounded-3xl p-4">
-        <div class="flex items-center justify-between">
-          <span class="text-xs px-3 py-1 rounded-full bg-white/10 border border-white/10">LIMITED</span>
-          <span class="text-xs text-white/60">DROP</span>
-        </div>
-        <img src="./images/short-black.jpg" class="mt-3 h-48 w-full object-cover rounded-2xl soft-border" alt="Short Ghost Black" />
-        <div class="mt-4">
-          <div class="font-bold">Short Ghost Black</div>
-          <div class="text-white/70 text-sm">RD$ 1600</div>
+    <section id="drop">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Comprar ahora</span>
+            <h2>El drop</h2>
+          </div>
+          <p>
+            Elige color, talla y cantidad. Puedes agregar varios productos al carrito
+            o pedir una pieza directa por WhatsApp.
+          </p>
         </div>
 
-        <div class="mt-4 grid grid-cols-2 gap-2">
-          <select class="size bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-sm">
-            <option>S</option><option selected>M</option><option>L</option><option>XL</option>
-          </select>
-          <select class="qty bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-sm">
-            <option selected>1</option><option>2</option><option>3</option>
-          </select>
-        </div>
+        <div class="drop-grid">
+          <article class="card product-card" data-product-card>
+            <div class="product-img">
+              <img src="./images/short-black.jpg" alt="Short Ghost negro con logo blanco" />
+            </div>
+            <div class="product-body">
+              <div>
+                <div class="badge-row">
+                  <span class="badge">En stock</span>
+                  <span class="badge">Logo bordado</span>
+                </div>
+                <h3>Short Ghost Black</h3>
+                <p>
+                  Negro solido, cordon negro y logo Ghost en blanco. Una pieza base
+                  para fits limpios y repetibles.
+                </p>
+              </div>
+              <div>
+                <div class="price">RD$ 1,600</div>
+                <div class="options">
+                  <label>Talla
+                    <select class="size">
+                      <option>S</option>
+                      <option selected>M</option>
+                      <option>L</option>
+                      <option>XL</option>
+                    </select>
+                  </label>
+                  <label>Cantidad
+                    <select class="qty">
+                      <option selected>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                    </select>
+                  </label>
+                  <label>Entrega
+                    <select class="delivery">
+                      <option selected>Santo Domingo</option>
+                      <option>Interior RD</option>
+                      <option>Retiro</option>
+                    </select>
+                  </label>
+                </div>
+                <div class="buy-row">
+                  <button class="btn primary add" type="button" data-name="Short Ghost Black" data-price="1600">Agregar</button>
+                  <button class="btn wa" type="button" data-name="Short Ghost Black" data-price="1600">WhatsApp</button>
+                </div>
+              </div>
+            </div>
+          </article>
 
-        <div class="mt-3 grid grid-cols-2 gap-2">
-          <button class="add px-4 py-2 rounded-2xl bg-white text-black font-semibold hover:bg-white/90"
-                  data-name="Short Ghost Black" data-price="1600">
-            Agregar
-          </button>
-          <button class="wa px-4 py-2 rounded-2xl border border-white/15 bg-white/5 hover:bg-white/10 font-semibold"
-                  data-name="Short Ghost Black" data-price="1600">
-            WhatsApp
-          </button>
-        </div>
-      </div>
-
-      <div class="glass rounded-3xl p-4">
-        <div class="flex items-center justify-between">
-          <span class="text-xs px-3 py-1 rounded-full bg-white/10 border border-white/10">LIMITED</span>
-          <span class="text-xs text-white/60">DROP</span>
-        </div>
-        <img src="./images/short-white.jpg" class="mt-3 h-48 w-full object-cover rounded-2xl soft-border" alt="Short Ghost White" />
-        <div class="mt-4">
-          <div class="font-bold">Short Ghost White</div>
-          <div class="text-white/70 text-sm">RD$ 1600</div>
-        </div>
-
-        <div class="mt-4 grid grid-cols-2 gap-2">
-          <select class="size bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-sm">
-            <option>S</option><option selected>M</option><option>L</option><option>XL</option>
-          </select>
-          <select class="qty bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-sm">
-            <option selected>1</option><option>2</option><option>3</option>
-          </select>
-        </div>
-
-        <div class="mt-3 grid grid-cols-2 gap-2">
-          <button class="add px-4 py-2 rounded-2xl bg-white text-black font-semibold hover:bg-white/90"
-                  data-name="Short Ghost White" data-price="1600">
-            Agregar
-          </button>
-          <button class="wa px-4 py-2 rounded-2xl border border-white/15 bg-white/5 hover:bg-white/10 font-semibold"
-                  data-name="Short Ghost White" data-price="1600">
-            WhatsApp
-          </button>
-        </div>
-      </div>
-
-      <!-- placeholders -->
-      <div class="glass rounded-3xl p-4 opacity-80">
-        <div class="flex items-center justify-between">
-          <span class="text-xs px-3 py-1 rounded-full bg-white/10 border border-white/10">SOON</span>
-          <span class="text-xs text-white/60">DROP</span>
-        </div>
-        <div class="mt-3 h-48 rounded-2xl soft-border grid place-items-center text-white/40">
-          Próximo producto
-        </div>
-        <div class="mt-4">
-          <div class="font-bold">Hoodie Midnight Ghost</div>
-          <div class="text-white/70 text-sm">RD$ 2450</div>
-        </div>
-        <button class="mt-4 w-full px-4 py-2 rounded-2xl border border-white/15 bg-white/5 hover:bg-white/10 font-semibold">
-          Próximamente
-        </button>
-      </div>
-
-      <div class="glass rounded-3xl p-4 opacity-80">
-        <div class="flex items-center justify-between">
-          <span class="text-xs px-3 py-1 rounded-full bg-white/10 border border-white/10">SOON</span>
-          <span class="text-xs text-white/60">DROP</span>
-        </div>
-        <div class="mt-3 h-48 rounded-2xl soft-border grid place-items-center text-white/40">
-          Próximo producto
-        </div>
-        <div class="mt-4">
-          <div class="font-bold">Tee Phantom Minimal</div>
-          <div class="text-white/70 text-sm">RD$ 1350</div>
-        </div>
-        <button class="mt-4 w-full px-4 py-2 rounded-2xl border border-white/15 bg-white/5 hover:bg-white/10 font-semibold">
-          Próximamente
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECCIÓN: HOODIES -->
-  <section id="hoodies" class="max-w-7xl mx-auto px-4 sm:px-6 py-14 border-t border-white/10">
-    <div>
-      <h2 class="text-3xl font-bold">HOODIES</h2>
-      <p class="text-white/60 mt-2">Oversize, pesado, premium. Street + frío.</p>
-    </div>
-
-    <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-      <!-- hoodie 1 -->
-      <div class="glass rounded-3xl p-4">
-        <img src="./images/hoodie-black.jpg" class="h-48 w-full object-cover rounded-2xl soft-border" alt="Hoodie Black" />
-        <div class="mt-4">
-          <div class="font-bold">Hoodie Midnight Ghost</div>
-          <div class="text-white/70 text-sm">RD$ 2450</div>
-        </div>
-
-        <div class="mt-4 grid grid-cols-2 gap-2">
-          <select class="size bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-sm">
-            <option>S</option><option selected>M</option><option>L</option><option>XL</option>
-          </select>
-          <select class="qty bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-sm">
-            <option selected>1</option><option>2</option>
-          </select>
-        </div>
-
-        <div class="mt-3 grid grid-cols-2 gap-2">
-          <button class="add px-4 py-2 rounded-2xl bg-white text-black font-semibold hover:bg-white/90"
-                  data-name="Hoodie Midnight Ghost" data-price="2450">Agregar</button>
-          <button class="wa px-4 py-2 rounded-2xl border border-white/15 bg-white/5 hover:bg-white/10 font-semibold"
-                  data-name="Hoodie Midnight Ghost" data-price="2450">WhatsApp</button>
+          <article class="card product-card" data-product-card>
+            <div class="product-img">
+              <img src="./images/short-white.jpg" alt="Short Ghost blanco con logo negro" />
+            </div>
+            <div class="product-body">
+              <div>
+                <div class="badge-row">
+                  <span class="badge">En stock</span>
+                  <span class="badge">Cordon negro</span>
+                </div>
+                <h3>Short Ghost White</h3>
+                <p>
+                  Blanco limpio con contraste negro. Fresco, directo y facil de
+                  combinar con tees oversized o tanks.
+                </p>
+              </div>
+              <div>
+                <div class="price">RD$ 1,600</div>
+                <div class="options">
+                  <label>Talla
+                    <select class="size">
+                      <option>S</option>
+                      <option selected>M</option>
+                      <option>L</option>
+                      <option>XL</option>
+                    </select>
+                  </label>
+                  <label>Cantidad
+                    <select class="qty">
+                      <option selected>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                    </select>
+                  </label>
+                  <label>Entrega
+                    <select class="delivery">
+                      <option selected>Santo Domingo</option>
+                      <option>Interior RD</option>
+                      <option>Retiro</option>
+                    </select>
+                  </label>
+                </div>
+                <div class="buy-row">
+                  <button class="btn primary add" type="button" data-name="Short Ghost White" data-price="1600">Agregar</button>
+                  <button class="btn wa" type="button" data-name="Short Ghost White" data-price="1600">WhatsApp</button>
+                </div>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
+    </section>
 
-      <!-- hoodie 2 -->
-      <div class="glass rounded-3xl p-4">
-        <img src="./images/hoodie-gray.jpg" class="h-48 w-full object-cover rounded-2xl soft-border" alt="Hoodie Gray" />
-        <div class="mt-4">
-          <div class="font-bold">Hoodie Specter Gray</div>
-          <div class="text-white/70 text-sm">RD$ 2350</div>
+    <section id="fit">
+      <div class="wrap story-band">
+        <div class="card story-card">
+          <span class="section-kicker">Identidad</span>
+          <h2>Minimal, oscuro, usable.</h2>
+          <p>
+            GhostWear no necesita gritar. La pieza se siente deportiva, pero la
+            marca vive en los detalles: contraste, logo compacto y un look listo
+            para moverse.
+          </p>
         </div>
-
-        <div class="mt-4 grid grid-cols-2 gap-2">
-          <select class="size bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-sm">
-            <option>S</option><option selected>M</option><option>L</option><option>XL</option>
-          </select>
-          <select class="qty bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-sm">
-            <option selected>1</option><option>2</option>
-          </select>
-        </div>
-
-        <div class="mt-3 grid grid-cols-2 gap-2">
-          <button class="add px-4 py-2 rounded-2xl bg-white text-black font-semibold hover:bg-white/90"
-                  data-name="Hoodie Specter Gray" data-price="2350">Agregar</button>
-          <button class="wa px-4 py-2 rounded-2xl border border-white/15 bg-white/5 hover:bg-white/10 font-semibold"
-                  data-name="Hoodie Specter Gray" data-price="2350">WhatsApp</button>
-        </div>
-      </div>
-
-      <!-- placeholders -->
-      <div class="glass rounded-3xl p-4 opacity-80">
-        <div class="h-48 rounded-2xl soft-border grid place-items-center text-white/40">Próximo hoodie</div>
-        <div class="mt-4 font-bold">Hoodie Phantom</div>
-        <div class="text-white/70 text-sm">RD$ 0</div>
-        <button class="mt-4 w-full px-4 py-2 rounded-2xl border border-white/15 bg-white/5">Próximamente</button>
-      </div>
-
-      <div class="glass rounded-3xl p-4 opacity-80">
-        <div class="h-48 rounded-2xl soft-border grid place-items-center text-white/40">Próximo hoodie</div>
-        <div class="mt-4 font-bold">Hoodie Ghost Zip</div>
-        <div class="text-white/70 text-sm">RD$ 0</div>
-        <button class="mt-4 w-full px-4 py-2 rounded-2xl border border-white/15 bg-white/5">Próximamente</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECCIÓN: TEES -->
-  <section id="tees" class="max-w-7xl mx-auto px-4 sm:px-6 py-14 border-t border-white/10">
-    <div>
-      <h2 class="text-3xl font-bold">TEES</h2>
-      <p class="text-white/60 mt-2">Corte limpio, logo discreto. Fácil de combinar.</p>
-    </div>
-
-    <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-      <div class="glass rounded-3xl p-4">
-        <img src="./images/tee-black.jpg" class="h-48 w-full object-cover rounded-2xl soft-border" alt="Tee Black" />
-        <div class="mt-4">
-          <div class="font-bold">Tee Phantom Black</div>
-          <div class="text-white/70 text-sm">RD$ 1350</div>
-        </div>
-
-        <div class="mt-4 grid grid-cols-2 gap-2">
-          <select class="size bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-sm">
-            <option>S</option><option selected>M</option><option>L</option><option>XL</option>
-          </select>
-          <select class="qty bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-sm">
-            <option selected>1</option><option>2</option><option>3</option>
-          </select>
-        </div>
-
-        <div class="mt-3 grid grid-cols-2 gap-2">
-          <button class="add px-4 py-2 rounded-2xl bg-white text-black font-semibold hover:bg-white/90"
-                  data-name="Tee Phantom Black" data-price="1350">Agregar</button>
-          <button class="wa px-4 py-2 rounded-2xl border border-white/15 bg-white/5 hover:bg-white/10 font-semibold"
-                  data-name="Tee Phantom Black" data-price="1350">WhatsApp</button>
+        <div class="detail-grid">
+          <div class="card detail-card">
+            <span class="section-kicker">Material</span>
+            <h3>Ligero y comodo</h3>
+            <p>Construido para calor, entrenamiento y uso diario sin sentirse pesado.</p>
+          </div>
+          <div class="card detail-card">
+            <span class="section-kicker">Fit</span>
+            <h3>Corte limpio</h3>
+            <p>Largo balanceado, cintura elastica y espacio suficiente para moverte.</p>
+          </div>
+          <div class="card detail-card">
+            <span class="section-kicker">Marca</span>
+            <h3>Logo discreto</h3>
+            <p>El detalle Ghost aparece donde importa, sin saturar el outfit.</p>
+          </div>
+          <div class="card detail-card">
+            <span class="section-kicker">Drop</span>
+            <h3>Pocas piezas</h3>
+            <p>Inventario limitado por color y talla para mantener la pieza especial.</p>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="glass rounded-3xl p-4">
-        <img src="./images/tee-white.jpg" class="h-48 w-full object-cover rounded-2xl soft-border" alt="Tee White" />
-        <div class="mt-4">
-          <div class="font-bold">Tee Phantom White</div>
-          <div class="text-white/70 text-sm">RD$ 1350</div>
+    <section id="pedido">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Como comprar</span>
+            <h2>Pedido simple</h2>
+          </div>
+          <p>Sin checkout complicado. El carrito organiza tu pedido y lo envia listo por WhatsApp.</p>
         </div>
-
-        <div class="mt-4 grid grid-cols-2 gap-2">
-          <select class="size bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-sm">
-            <option>S</option><option selected>M</option><option>L</option><option>XL</option>
-          </select>
-          <select class="qty bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-sm">
-            <option selected>1</option><option>2</option><option>3</option>
-          </select>
-        </div>
-
-        <div class="mt-3 grid grid-cols-2 gap-2">
-          <button class="add px-4 py-2 rounded-2xl bg-white text-black font-semibold hover:bg-white/90"
-                  data-name="Tee Phantom White" data-price="1350">Agregar</button>
-          <button class="wa px-4 py-2 rounded-2xl border border-white/15 bg-white/5 hover:bg-white/10 font-semibold"
-                  data-name="Tee Phantom White" data-price="1350">WhatsApp</button>
-        </div>
-      </div>
-
-      <div class="glass rounded-3xl p-4 opacity-80">
-        <div class="h-48 rounded-2xl soft-border grid place-items-center text-white/40">Próxima tee</div>
-        <div class="mt-4 font-bold">Tee Ghost Minimal</div>
-        <div class="text-white/70 text-sm">RD$ 0</div>
-        <button class="mt-4 w-full px-4 py-2 rounded-2xl border border-white/15 bg-white/5">Próximamente</button>
-      </div>
-
-      <div class="glass rounded-3xl p-4 opacity-80">
-        <div class="h-48 rounded-2xl soft-border grid place-items-center text-white/40">Próxima tee</div>
-        <div class="mt-4 font-bold">Tee Specter</div>
-        <div class="text-white/70 text-sm">RD$ 0</div>
-        <button class="mt-4 w-full px-4 py-2 rounded-2xl border border-white/15 bg-white/5">Próximamente</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECCIÓN: ACCESORIOS -->
-  <section id="accesorios" class="max-w-7xl mx-auto px-4 sm:px-6 py-14 border-t border-white/10">
-    <div>
-      <h2 class="text-3xl font-bold">ACCESORIOS</h2>
-      <p class="text-white/60 mt-2">Detalles que completan el fit.</p>
-    </div>
-
-    <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-      <div class="glass rounded-3xl p-4">
-        <img src="./images/cap-black.jpg" class="h-48 w-full object-cover rounded-2xl soft-border" alt="Cap" />
-        <div class="mt-4">
-          <div class="font-bold">Cap Ghost Classic</div>
-          <div class="text-white/70 text-sm">RD$ 950</div>
-        </div>
-        <div class="mt-4 grid grid-cols-2 gap-2">
-          <select class="size bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-sm">
-            <option selected>Única</option>
-          </select>
-          <select class="qty bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-sm">
-            <option selected>1</option><option>2</option><option>3</option>
-          </select>
-        </div>
-        <div class="mt-3 grid grid-cols-2 gap-2">
-          <button class="add px-4 py-2 rounded-2xl bg-white text-black font-semibold hover:bg-white/90"
-                  data-name="Cap Ghost Classic" data-price="950">Agregar</button>
-          <button class="wa px-4 py-2 rounded-2xl border border-white/15 bg-white/5 hover:bg-white/10 font-semibold"
-                  data-name="Cap Ghost Classic" data-price="950">WhatsApp</button>
+        <div class="steps">
+          <div class="card step">
+            <span>1</span>
+            <h3>Elige tu pieza</h3>
+            <p>Selecciona color, talla, cantidad y tipo de entrega.</p>
+          </div>
+          <div class="card step">
+            <span>2</span>
+            <h3>Revisa el carrito</h3>
+            <p>Confirma el total y elimina cualquier item antes de enviar.</p>
+          </div>
+          <div class="card step">
+            <span>3</span>
+            <h3>Finaliza por WhatsApp</h3>
+            <p>El mensaje sale armado para cerrar disponibilidad, pago y entrega.</p>
+          </div>
         </div>
       </div>
+    </section>
+  </main>
 
-      <div class="glass rounded-3xl p-4">
-        <img src="./images/bag-black.jpg" class="h-48 w-full object-cover rounded-2xl soft-border" alt="Bag" />
-        <div class="mt-4">
-          <div class="font-bold">Bag Ghost Utility</div>
-          <div class="text-white/70 text-sm">RD$ 1200</div>
-        </div>
-        <div class="mt-4 grid grid-cols-2 gap-2">
-          <select class="size bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-sm">
-            <option selected>Única</option>
-          </select>
-          <select class="qty bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-sm">
-            <option selected>1</option><option>2</option>
-          </select>
-        </div>
-        <div class="mt-3 grid grid-cols-2 gap-2">
-          <button class="add px-4 py-2 rounded-2xl bg-white text-black font-semibold hover:bg-white/90"
-                  data-name="Bag Ghost Utility" data-price="1200">Agregar</button>
-          <button class="wa px-4 py-2 rounded-2xl border border-white/15 bg-white/5 hover:bg-white/10 font-semibold"
-                  data-name="Bag Ghost Utility" data-price="1200">WhatsApp</button>
-        </div>
-      </div>
-
-      <div class="glass rounded-3xl p-4 opacity-80">
-        <div class="h-48 rounded-2xl soft-border grid place-items-center text-white/40">Próximo accesorio</div>
-        <div class="mt-4 font-bold">Socks Ghost</div>
-        <div class="text-white/70 text-sm">RD$ 0</div>
-        <button class="mt-4 w-full px-4 py-2 rounded-2xl border border-white/15 bg-white/5">Próximamente</button>
-      </div>
-
-      <div class="glass rounded-3xl p-4 opacity-80">
-        <div class="h-48 rounded-2xl soft-border grid place-items-center text-white/40">Próximo accesorio</div>
-        <div class="mt-4 font-bold">Bottle Ghost</div>
-        <div class="text-white/70 text-sm">RD$ 0</div>
-        <button class="mt-4 w-full px-4 py-2 rounded-2xl border border-white/15 bg-white/5">Próximamente</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="border-t border-white/10 py-10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-      <div class="flex items-center gap-3">
-        <img src="./images/logo-ghost.png" alt="GhostWear" class="h-8 object-contain" />
-        <p class="text-white/50 text-sm">© <span id="year"></span> GhostWear</p>
-      </div>
-      <p class="text-white/50 text-sm">Santo Domingo • RD</p>
+  <footer class="footer" id="contacto">
+    <div class="wrap">
+      <a href="#top" class="brand">
+        <img src="./images/logo-ghost.png" alt="" />
+        <span>GhostWear</span>
+      </a>
+      <span>Santo Domingo, RD</span>
+      <span>&copy; <span id="year"></span> GhostWear. Todos los derechos reservados.</span>
     </div>
   </footer>
 
-  <!-- CART DRAWER -->
-  <div id="drawerOverlay" class="fixed inset-0 bg-black/60 hidden z-40"></div>
-
-  <aside id="drawer" class="fixed top-0 right-0 h-full w-[360px] max-w-[92vw] bg-black border-l border-white/10 translate-x-full transition-transform duration-200 z-50 flex flex-col">
-    <div class="p-5 border-b border-white/10 flex items-center justify-between">
-      <div class="font-bold text-lg">Tu Carrito</div>
-      <button id="closeCart" class="px-3 py-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10">✕</button>
+  <div class="overlay" id="drawerOverlay" hidden></div>
+  <aside class="drawer" id="drawer" aria-labelledby="drawerTitle" aria-hidden="true">
+    <div class="drawer-head">
+      <h2 id="drawerTitle">Tu carrito</h2>
+      <button class="remove" id="closeCart" type="button" aria-label="Cerrar carrito">X</button>
     </div>
-
-    <div id="cartItems" class="p-5 space-y-3 overflow-y-auto flex-1">
-      <div class="text-white/50 text-sm">Tu carrito está vacío.</div>
+    <div class="cart-items" id="cartItems">
+      <p class="empty">Tu carrito esta vacio. Agrega un short para preparar tu pedido.</p>
     </div>
-
-    <div class="p-5 border-t border-white/10 bg-black/90 backdrop-blur sticky bottom-0">
-      <div class="flex items-center justify-between text-white/80">
-        <span>Total:</span>
-        <span class="font-bold">RD$ <span id="cartTotal">0</span></span>
+    <div class="drawer-foot">
+      <div class="total-row">
+        <span>Total</span>
+        <strong>RD$ <span id="cartTotal">0</span></strong>
       </div>
-
-      <button id="checkoutBtn" class="mt-4 w-full px-4 py-3 rounded-2xl bg-white text-black font-semibold hover:bg-white/90">
-        Finalizar compra (WhatsApp)
-      </button>
-
-      <button id="clearBtn" class="mt-2 w-full px-4 py-3 rounded-2xl border border-white/15 bg-white/5 hover:bg-white/10 font-semibold">
-        Vaciar carrito
-      </button>
-
-      <p class="text-xs text-white/40 mt-3">*Carrito simulado: el pedido se envía por WhatsApp.</p>
+      <button class="btn primary full" id="checkoutBtn" type="button">Finalizar por WhatsApp</button>
+      <button class="btn danger full" id="clearBtn" type="button" style="margin-top:10px;">Vaciar carrito</button>
+      <p class="note">Configura tu numero real de WhatsApp en la variable <strong>phone</strong> dentro del HTML.</p>
     </div>
   </aside>
 
   <script>
-    // CAMBIA TU NÚMERO AQUÍ: código país + número, sin + ni espacios
     const phone = "1809XXXXXXX";
-
-    // Year
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    function waLink(text){
-      return `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
-    }
-
-    // Drawer open/close
+    const money = new Intl.NumberFormat("es-DO");
+    const year = document.getElementById("year");
     const drawer = document.getElementById("drawer");
     const overlay = document.getElementById("drawerOverlay");
     const cartBtn = document.getElementById("cartBtn");
-    const closeCart = document.getElementById("closeCart");
     const heroCartBtn = document.getElementById("heroCartBtn");
-
-    function openDrawer(){
-      drawer.classList.remove("translate-x-full");
-      overlay.classList.remove("hidden");
-    }
-    function closeDrawer(){
-      drawer.classList.add("translate-x-full");
-      overlay.classList.add("hidden");
-    }
-    cartBtn.addEventListener("click", openDrawer);
-    closeCart.addEventListener("click", closeDrawer);
-    overlay.addEventListener("click", closeDrawer);
-    heroCartBtn.addEventListener("click", openDrawer);
-
-    // Cart state
-    let cart = [];
+    const closeCart = document.getElementById("closeCart");
     const cartItemsEl = document.getElementById("cartItems");
     const cartTotalEl = document.getElementById("cartTotal");
     const cartCountEl = document.getElementById("cartCount");
+    const checkoutBtn = document.getElementById("checkoutBtn");
+    const clearBtn = document.getElementById("clearBtn");
+    let cart = [];
 
-    function renderCart(){
-      cartCountEl.textContent = cart.reduce((a, i) => a + i.qty, 0);
+    year.textContent = new Date().getFullYear();
 
-      if(cart.length === 0){
-        cartItemsEl.innerHTML = `<div class="text-white/50 text-sm">Tu carrito está vacío.</div>`;
-        cartTotalEl.textContent = "0";
-        return;
-      }
-
-      let total = 0;
-      cartItemsEl.innerHTML = cart.map((item, idx) => {
-        const sub = item.price * item.qty;
-        total += sub;
-        return `
-          <div class="glass rounded-2xl p-4">
-            <div class="flex items-start justify-between gap-3">
-              <div>
-                <div class="font-semibold">${item.name}</div>
-                <div class="text-white/60 text-sm">Talla: ${item.size} • Cantidad: ${item.qty}</div>
-                <div class="text-white/70 text-sm mt-1">RD$ ${item.price} c/u</div>
-              </div>
-              <button class="remove px-3 py-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10" data-idx="${idx}">🗑</button>
-            </div>
-          </div>
-        `;
-      }).join("");
-
-      cartTotalEl.textContent = total.toString();
-
-      cartItemsEl.querySelectorAll(".remove").forEach(btn => {
-        btn.addEventListener("click", () => {
-          const idx = Number(btn.getAttribute("data-idx"));
-          cart.splice(idx, 1);
-          renderCart();
-        });
-      });
+    function waLink(text) {
+      return "https://wa.me/" + phone + "?text=" + encodeURIComponent(text);
     }
 
-    // Add to cart
-    document.querySelectorAll(".add").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const card = btn.closest(".glass");
-        const name = btn.getAttribute("data-name");
-        const price = Number(btn.getAttribute("data-price"));
-        const size = card.querySelector(".size").value;
-        const qty = Number(card.querySelector(".qty").value);
+    function openDrawer() {
+      drawer.classList.add("open");
+      overlay.classList.add("open");
+      overlay.hidden = false;
+      drawer.setAttribute("aria-hidden", "false");
+      document.body.classList.add("no-scroll");
+    }
 
-        cart.push({ name, price, size, qty });
-        renderCart();
-        openDrawer();
-      });
-    });
+    function closeDrawer() {
+      drawer.classList.remove("open");
+      overlay.classList.remove("open");
+      drawer.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("no-scroll");
+      window.setTimeout(() => {
+        if (!overlay.classList.contains("open")) overlay.hidden = true;
+      }, 180);
+    }
 
-    // Buy via WhatsApp
-    document.querySelectorAll(".wa").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const card = btn.closest(".glass");
-        const name = btn.getAttribute("data-name");
-        const price = btn.getAttribute("data-price");
-        const size = card.querySelector(".size").value;
-        const qty = card.querySelector(".qty").value;
+    function getChoice(button) {
+      const card = button.closest("[data-product-card]");
+      return {
+        name: button.dataset.name,
+        price: Number(button.dataset.price),
+        size: card.querySelector(".size").value,
+        qty: Number(card.querySelector(".qty").value),
+        delivery: card.querySelector(".delivery").value
+      };
+    }
 
-        const msg =
-`Hola, quiero pedir en GhostWear 👻
-Producto: ${name}
-Talla: ${size}
-Cantidad: ${qty}
-Precio: RD$ ${price}
-Mi nombre es:
-Dirección / Sector:`;
+    function itemKey(item) {
+      return [item.name, item.size, item.delivery].join("|");
+    }
 
-        window.open(waLink(msg), "_blank");
-      });
-    });
+    function renderCart() {
+      const count = cart.reduce((sum, item) => sum + item.qty, 0);
+      const total = cart.reduce((sum, item) => sum + item.qty * item.price, 0);
+      cartCountEl.textContent = count;
+      cartTotalEl.textContent = money.format(total);
 
-    // Checkout
-    document.getElementById("checkoutBtn").addEventListener("click", () => {
-      if(cart.length === 0){
-        openDrawer();
+      if (!cart.length) {
+        cartItemsEl.innerHTML = '<p class="empty">Tu carrito esta vacio. Agrega un short para preparar tu pedido.</p>';
         return;
       }
-      const total = cart.reduce((a,i)=>a+i.price*i.qty,0);
-      const lines = cart.map(i => `- ${i.name} | Talla ${i.size} | x${i.qty} | RD$ ${i.price*i.qty}`).join("\n");
 
-      const msg =
-`Hola, quiero finalizar mi compra en GhostWear 👻
+      cartItemsEl.innerHTML = cart.map((item, index) => {
+        const subtotal = item.qty * item.price;
+        return `
+          <article class="cart-item">
+            <div class="cart-item-top">
+              <div>
+                <h3>${item.name}</h3>
+                <p>Talla ${item.size} | ${item.delivery}</p>
+                <p>${item.qty} x RD$ ${money.format(item.price)}</p>
+              </div>
+              <button class="remove" type="button" data-remove="${index}" aria-label="Quitar ${item.name}">X</button>
+            </div>
+            <strong>RD$ ${money.format(subtotal)}</strong>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function addItem(item) {
+      const existing = cart.find(cartItem => itemKey(cartItem) === itemKey(item));
+      if (existing) existing.qty += item.qty;
+      else cart.push(item);
+      renderCart();
+      openDrawer();
+    }
+
+    function buildSingleMessage(item) {
+      return `Hola, quiero pedir en GhostWear.
+
+Producto: ${item.name}
+Talla: ${item.size}
+Cantidad: ${item.qty}
+Entrega: ${item.delivery}
+Precio: RD$ ${money.format(item.price * item.qty)}
+
+Mi nombre es:
+Sector / direccion:`;
+    }
+
+    function buildCheckoutMessage() {
+      const total = cart.reduce((sum, item) => sum + item.qty * item.price, 0);
+      const lines = cart.map(item => {
+        return `- ${item.name} | Talla ${item.size} | ${item.delivery} | x${item.qty} | RD$ ${money.format(item.qty * item.price)}`;
+      }).join("\n");
+
+      return `Hola, quiero finalizar mi compra en GhostWear.
 
 Items:
 ${lines}
 
-Total: RD$ ${total}
+Total: RD$ ${money.format(total)}
 
 Mi nombre es:
-Dirección / Sector:`;
+Sector / direccion:`;
+    }
 
-      window.open(waLink(msg), "_blank");
+    document.querySelectorAll(".add").forEach(button => {
+      button.addEventListener("click", () => addItem(getChoice(button)));
     });
 
-    // Clear
-    document.getElementById("clearBtn").addEventListener("click", () => {
+    document.querySelectorAll(".wa").forEach(button => {
+      button.addEventListener("click", () => {
+        window.open(waLink(buildSingleMessage(getChoice(button))), "_blank", "noopener");
+      });
+    });
+
+    cartItemsEl.addEventListener("click", event => {
+      const removeButton = event.target.closest("[data-remove]");
+      if (!removeButton) return;
+      cart.splice(Number(removeButton.dataset.remove), 1);
+      renderCart();
+    });
+
+    checkoutBtn.addEventListener("click", () => {
+      if (!cart.length) {
+        openDrawer();
+        return;
+      }
+      window.open(waLink(buildCheckoutMessage()), "_blank", "noopener");
+    });
+
+    clearBtn.addEventListener("click", () => {
       cart = [];
       renderCart();
+    });
+
+    cartBtn.addEventListener("click", openDrawer);
+    heroCartBtn.addEventListener("click", openDrawer);
+    closeCart.addEventListener("click", closeDrawer);
+    overlay.addEventListener("click", closeDrawer);
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") closeDrawer();
     });
 
     renderCart();
   </script>
 </body>
-
 </html>
