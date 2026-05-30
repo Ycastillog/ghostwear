@@ -504,6 +504,12 @@
       text-transform: uppercase;
     }
 
+    .badge.urgent {
+      border-color: rgba(215, 255, 63, 0.72);
+      background: rgba(215, 255, 63, 0.12);
+      color: var(--accent);
+    }
+
     .product-body h3 {
       margin: 16px 0 8px;
       font-size: clamp(1.7rem, 4vw, 3rem);
@@ -647,6 +653,14 @@
       font-weight: 900;
       letter-spacing: 0.06em;
       text-transform: uppercase;
+    }
+
+    .stock-line {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 850;
+      line-height: 1.45;
     }
 
     .options {
@@ -1349,6 +1363,8 @@
             <button class="btn" id="heroCartBtn" type="button">Abrir carrito</button>
           </div>
           <div class="hero-note">
+            <span>Drop activo</span>
+            <span>Quedan pocas unidades</span>
             <span>Limited color run</span>
             <span>Pagos por transferencia</span>
             <span>DM / WhatsApp</span>
@@ -1961,6 +1977,24 @@
     products.forEach(product => {
       product.category = "shorts";
     });
+    products.forEach(product => {
+      const urgencyByColor = {
+        "Royal Blue": { label: "Color mas pedido", line: "Alta salida esta semana. Ideal para armar el look completo." },
+        "Neon Green": { label: "Quedan pocas", line: "Color fuerte del drop, recomendado pedir antes de que se agote." },
+        "Black": { label: "Ultimas unidades", line: "Basico que rota rapido por DM." },
+        "White": { label: "Drop activo", line: "Color limpio para verano y fotos de feed." },
+        "Pink": { label: "Quedan pocas", line: "Tono llamativo con disponibilidad limitada." },
+        "Yellow": { label: "Color mas pedido", line: "Uno de los colores que mas se ve en contenido." }
+      };
+      product.urgency = urgencyByColor[product.color] || { label: "Drop activo", line: "Disponible ahora mientras dure el drop." };
+    });
+    gearProducts[0].urgency = { label: "Pedido por DM", line: "Par suelto disponible para completar cualquier fit." };
+    gearProducts[1].urgency = { label: "Oferta activa", line: "3 pares por RD$ 1,000 mientras dure el pack." };
+    gearProducts[2].urgency = { label: "Colorways limitados", line: "Gorras con combinaciones de feed y stock corto." };
+    gearProducts[3].urgency = { label: "Quedan pocas", line: "Hoodie negro con disponibilidad limitada por talla." };
+    comboProducts[0].urgency = { label: "Combo activo", line: "Short + medias para subir el ticket y cerrar rapido." };
+    comboProducts[1].urgency = { label: "Color mas pedido", line: "Short + gorra para salir con el look completo." };
+    comboProducts[2].urgency = { label: "Full fit limitado", line: "El paquete completo tiene descuento y stock por talla." };
     const cleanShortImages = {
       "Neon Green": "./images/designed/ghostwear-designed-green.jpg",
       "Royal Blue": "./images/designed/ghostwear-designed-hero.jpg",
@@ -2071,6 +2105,7 @@
       const sellLine = options.sellLine || (product.oldPrice ? `Precio normal ${product.oldPrice}` : "Agrega y manda por WhatsApp");
       const photos = product.photos || [{ label: "Real", src: product.image, view: "real" }];
       const primaryPhoto = photos[0];
+      const urgency = product.urgency || { label: "Drop activo", line: "Disponible ahora mientras dure el drop." };
 
       return `
         <article class="card color-card" data-product-card data-category="${product.category}">
@@ -2095,6 +2130,7 @@
               <div class="badge-row">
                 <span class="badge">${badge}</span>
                 <span class="badge">${tag}</span>
+                <span class="badge urgent">${urgency.label}</span>
               </div>
               <div class="color-title">
                 <h3>${product.name}</h3>
@@ -2102,6 +2138,7 @@
               </div>
               <p>${product.note}</p>
               <div class="sell-line">${sellLine}</div>
+              <div class="stock-line">${urgency.line}</div>
             </div>
             <div>
               <div class="options">
@@ -2154,6 +2191,9 @@
     function renderStorefront() {
       const minPrice = Math.min(...allProducts.map(product => product.price));
       const featuredAnnouncements = [
+        "Drop activo",
+        "Quedan pocas unidades",
+        "Color mas pedido: Royal Blue",
         `Shorts ${products[0].priceLabel}`,
         `Medias ${gearProducts.find(product => product.name === "Medias Ghost").priceLabel}`,
         `3 pares ${gearProducts.find(product => product.name.includes("Pack")).priceLabel}`,
