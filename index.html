@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="GhostWear RD: shorts urbanos de fit premium, drop limitado y pedidos por WhatsApp." />
-  <title>GhostWear | Drop limitado RD</title>
+  <meta name="description" content="GhostWear RD: tienda virtual de shorts, medias, gorras y hoodies con pedidos por WhatsApp y envios nacionales." />
+  <title>GhostWear | Tienda virtual RD</title>
   <style>
     :root {
       color-scheme: dark;
@@ -26,7 +26,8 @@
       margin: 0;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
-        linear-gradient(135deg, rgba(215, 255, 63, 0.06), transparent 34rem),
+        linear-gradient(135deg, rgba(215, 255, 63, 0.07), transparent 32rem),
+        linear-gradient(225deg, rgba(255, 255, 255, 0.055), transparent 28rem),
         linear-gradient(180deg, #0b0b0b 0%, var(--bg) 42rem);
       color: var(--ink);
       overflow-x: hidden;
@@ -112,11 +113,65 @@
       font-weight: 900;
     }
 
+    .announce {
+      position: relative;
+      height: 34px;
+      border-bottom: 1px solid var(--line);
+      background: var(--accent);
+      color: var(--accent-ink);
+      font-weight: 950;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: 0.76rem;
+      overflow: hidden;
+    }
+
+    .announce-track {
+      position: absolute;
+      inset: 0 auto auto 0;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      gap: 28px;
+      overflow: hidden;
+      padding: 9px 0;
+      white-space: nowrap;
+    }
+
+    .announce-track span:nth-child(n+5) { display: none; }
+
+    .announce-track span::after {
+      content: "/";
+      margin-left: 28px;
+      opacity: 0.45;
+    }
+
+    @keyframes ghostMarquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
     .hero {
       min-height: calc(100svh - 72px);
       display: grid;
       align-items: center;
-      padding: 52px 0 42px;
+      padding: 44px 0 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "GHOST";
+      position: absolute;
+      right: 0;
+      bottom: -0.22em;
+      z-index: -1;
+      color: rgba(255, 255, 255, 0.025);
+      font-size: clamp(8rem, 23vw, 22rem);
+      font-weight: 950;
+      letter-spacing: 0;
+      line-height: 0.8;
+      pointer-events: none;
     }
 
     .hero-grid {
@@ -153,10 +208,15 @@
     h1 {
       margin: 22px 0 0;
       max-width: 720px;
-      font-size: clamp(3.4rem, 9vw, 7.6rem);
+      font-size: clamp(3.35rem, 8.7vw, 7.2rem);
       line-height: 0.88;
       letter-spacing: 0;
       text-transform: uppercase;
+    }
+
+    .ghost-line {
+      display: block;
+      color: var(--accent);
     }
 
     .hero-copy {
@@ -191,6 +251,24 @@
 
     .proof strong { display: block; font-size: 1.06rem; }
     .proof span { display: block; margin-top: 4px; color: var(--muted); font-size: 0.82rem; }
+
+    .hero-note {
+      max-width: 560px;
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .hero-note span {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 11px;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.03);
+      font-size: 0.83rem;
+      font-weight: 800;
+    }
 
     .hero-media {
       position: relative;
@@ -241,6 +319,55 @@
     .product-float h2 { margin: 5px 0 0; font-size: clamp(1.2rem, 3vw, 2rem); }
     .price { font-weight: 900; font-size: 1.35rem; white-space: nowrap; }
 
+    .drop-switch {
+      display: grid;
+      grid-template-columns: 1.2fr repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      padding-top: 18px;
+    }
+
+    .switch-card {
+      min-height: 250px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+    }
+
+    .switch-card.image {
+      background-size: cover;
+      background-position: center;
+    }
+
+    .switch-card.image::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.78));
+    }
+
+    .switch-card h2, .switch-card h3 {
+      margin: 8px 0 0;
+      text-transform: uppercase;
+      line-height: 0.98;
+      letter-spacing: 0;
+    }
+
+    .switch-card h2 { font-size: clamp(2rem, 5vw, 4rem); }
+    .switch-card h3 { font-size: clamp(1.4rem, 3vw, 2.25rem); }
+    .switch-card p { color: var(--muted); line-height: 1.55; margin: 10px 0 0; }
+
+    .switch-price {
+      color: var(--accent);
+      font-size: 1.1rem;
+      font-weight: 950;
+      text-transform: uppercase;
+    }
+
     section { padding: 76px 0; }
     .section-head {
       display: flex;
@@ -279,8 +406,10 @@
     .card {
       border: 1px solid var(--line);
       border-radius: 8px;
-      background: rgba(255, 255, 255, 0.035);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.022));
       overflow: hidden;
+      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.18);
     }
 
     .product-card {
@@ -337,6 +466,12 @@
       display: flex;
       flex-direction: column;
       min-height: 100%;
+      transition: transform 180ms ease, border-color 180ms ease;
+    }
+
+    .color-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(215, 255, 63, 0.38);
     }
 
     .color-img {
@@ -393,6 +528,15 @@
       color: var(--muted);
       font-weight: 800;
       white-space: nowrap;
+    }
+
+    .sell-line {
+      margin-top: 10px;
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
     }
 
     .options {
@@ -460,6 +604,46 @@
       grid-template-columns: minmax(260px, 0.85fr) minmax(0, 1.15fr);
       gap: 18px;
       align-items: stretch;
+    }
+
+    .obsession {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .obsession-card {
+      padding: clamp(24px, 4vw, 42px);
+      min-height: 360px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      isolation: isolate;
+    }
+
+    .obsession-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(90deg, rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.2));
+    }
+
+    .obsession-card h3 {
+      margin: 8px 0 0;
+      font-size: clamp(2rem, 5vw, 4.6rem);
+      line-height: 0.94;
+      text-transform: uppercase;
+    }
+
+    .obsession-card p {
+      max-width: 460px;
+      color: var(--muted);
+      line-height: 1.65;
     }
 
     .media-feature {
@@ -705,15 +889,14 @@
       z-index: 60;
       inset: 0 0 0 auto;
       width: min(420px, 92vw);
-      display: grid;
+      display: none;
       grid-template-rows: auto 1fr auto;
       background: #070707;
       border-left: 1px solid var(--line);
-      transform: translateX(100%);
       transition: transform 180ms ease;
     }
 
-    .drawer.open { transform: translateX(0); }
+    .drawer.open { display: grid; }
     .drawer-head, .drawer-foot {
       padding: 20px;
       border-bottom: 1px solid var(--line);
@@ -777,7 +960,7 @@
       .hero-grid, .story-band { grid-template-columns: 1fr; }
       .hero-media { min-height: 440px; }
       .product-card { grid-template-columns: 1fr; }
-      .drop-grid, .color-grid, .detail-grid, .steps, .media-layout, .media-grid, .ig-strip, .future-grid { grid-template-columns: 1fr; }
+      .drop-grid, .color-grid, .detail-grid, .steps, .media-layout, .media-grid, .ig-strip, .future-grid, .drop-switch, .obsession { grid-template-columns: 1fr; }
       .section-head { display: block; }
       .media-feature { min-height: 520px; }
     }
@@ -787,16 +970,35 @@
       .brand span { display: none; }
       .nav { min-height: 66px; }
       .nav-actions .shop-link { display: none; }
-      h1 { font-size: clamp(3rem, 17vw, 4.5rem); }
+      h1 { font-size: clamp(2.75rem, 13vw, 3.3rem); }
       section { padding: 56px 0; }
       .hero { padding-top: 30px; }
       .hero-media { min-height: 390px; }
       .product-float { left: 12px; right: 12px; bottom: 12px; grid-template-columns: 1fr; }
       .proof, .options, .buy-row { grid-template-columns: 1fr; }
+      .announce-track { justify-content: flex-start; padding-left: 12px; }
+      .announce-track span:nth-child(n+3) { display: none; }
     }
   </style>
 </head>
 <body>
+  <div class="announce" aria-label="GhostWear novedades">
+    <div class="announce-track">
+      <span>Shorts RD$ 1,600</span>
+      <span>Medias RD$ 350</span>
+      <span>3 pares RD$ 1,000</span>
+      <span>Gorras RD$ 1,500</span>
+      <span>Hoodie RD$ 3,000</span>
+      <span>Envios nacionales</span>
+      <span>Shorts RD$ 1,600</span>
+      <span>Medias RD$ 350</span>
+      <span>3 pares RD$ 1,000</span>
+      <span>Gorras RD$ 1,500</span>
+      <span>Hoodie RD$ 3,000</span>
+      <span>Envios nacionales</span>
+    </div>
+  </div>
+
   <header class="site-header">
     <div class="wrap nav">
       <a href="#top" class="brand" aria-label="GhostWear inicio">
@@ -804,6 +1006,7 @@
         <span>GhostWear</span>
       </a>
       <nav class="nav-links" aria-label="Principal">
+        <a href="#shop">Shop</a>
         <a href="#drop">Drop</a>
         <a href="#media">Media</a>
         <a href="#proximos">Proximos</a>
@@ -824,19 +1027,25 @@
     <section class="hero">
       <div class="wrap hero-grid">
         <div>
-          <span class="eyebrow">Drop limitado en RD</span>
-          <h1>Ghost Shorts</h1>
+          <span class="eyebrow">GhostWear RD / tienda virtual</span>
+          <h1>Desaparece del basico. <span class="ghost-line">Aparece con Ghost.</span></h1>
           <p class="hero-copy">
-            Ahora en una paleta completa de colores. Shorts limpios para calle,
-            playa y gym con logo discreto, cintura elastica y cordones contrastados.
+            Ropa urbana con energia de drop: shorts en 15 colores, medias, gorras
+            y hoodie para armar el fit completo. Pides por WhatsApp, pagas por
+            transferencia y recibes en RD.
           </p>
           <div class="hero-actions">
-            <a class="btn primary" href="#drop">Ver colores</a>
+            <a class="btn primary" href="#shop">Comprar el fit</a>
             <button class="btn" id="heroCartBtn" type="button">Abrir carrito</button>
           </div>
+          <div class="hero-note">
+            <span>Limited color run</span>
+            <span>Pagos por transferencia</span>
+            <span>DM / WhatsApp</span>
+          </div>
           <div class="proof" aria-label="Detalles de compra">
-            <div><strong>Tienda virtual</strong><span>DM y WhatsApp</span></div>
-            <div><strong>15 colores</strong><span>drop expandido</span></div>
+            <div><strong>19 piezas</strong><span>shorts + gear</span></div>
+            <div><strong>Desde RD$350</strong><span>medias y packs</span></div>
             <div><strong>Envios RD</strong><span>nacionales</span></div>
           </div>
         </div>
@@ -848,10 +1057,45 @@
           <div class="product-float">
             <div>
               <small>Drop actual</small>
-              <h2>15 colores disponibles</h2>
+              <h2>El fit completo</h2>
             </div>
-            <div class="price">RD$ 1,600</div>
+            <div class="price">Desde RD$ 350</div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="shop">
+      <div class="wrap">
+        <div class="drop-switch">
+          <article class="card switch-card">
+            <div>
+              <span class="section-kicker">Shop the Ghost</span>
+              <h2>Compra por pieza o arma el combo.</h2>
+            </div>
+            <p>La web queda pensada como vitrina real: producto, precio, talla, cantidad y pedido listo para WhatsApp.</p>
+          </article>
+          <a class="card switch-card image" href="#drop" style="background-image:url('./images/designed/ghostwear-designed-hero.jpg')">
+            <span class="switch-price">RD$ 1,600</span>
+            <div>
+              <h3>Shorts</h3>
+              <p>15 colores para rotar el fit.</p>
+            </div>
+          </a>
+          <a class="card switch-card image" href="#proximos" style="background-image:url('./images/gear/ghostwear-caps.jpg')">
+            <span class="switch-price">RD$ 1,500</span>
+            <div>
+              <h3>Gorras</h3>
+              <p>Colorways de feed.</p>
+            </div>
+          </a>
+          <a class="card switch-card image" href="#proximos" style="background-image:url('./images/ghostwear-socks-mockup.jpg')">
+            <span class="switch-price">RD$ 350</span>
+            <div>
+              <h3>Medias</h3>
+              <p>3 pares por RD$ 1,000.</p>
+            </div>
+          </a>
         </div>
       </div>
     </section>
@@ -860,12 +1104,12 @@
       <div class="wrap">
         <div class="section-head">
           <div>
-            <span class="section-kicker">Comprar ahora</span>
-            <h2>El drop</h2>
+            <span class="section-kicker">Drop principal</span>
+            <h2>Shorts que se ven desde lejos</h2>
           </div>
           <p>
-            Elige color, talla y cantidad. Puedes agregar varios productos al carrito
-            o pedir una pieza directa por WhatsApp.
+            El color es la jugada. El logo queda limpio, el cordon amarra el contraste
+            y el precio se entiende sin preguntar dos veces.
           </p>
         </div>
 
@@ -879,11 +1123,11 @@
         <div class="section-head">
           <div>
             <span class="section-kicker">Media pack</span>
-            <h2>Contenido listo</h2>
+            <h2>Visuales que provocan DM</h2>
           </div>
           <p>
-            Dise&ntilde;o visual para redes: fotos limpias del producto, formatos verticales
-            y piezas que venden color sin llenar la marca de ruido.
+            La marca debe sentirse como feed: color, inventario real, precio claro y
+            ganas de responder la historia.
           </p>
         </div>
 
@@ -892,8 +1136,8 @@
             <img src="./images/designed/ghostwear-designed-green.jpg" alt="Short GhostWear verde neon apilado dentro de caja" />
             <div class="media-copy">
               <span class="section-kicker">Hero post</span>
-              <h3>Drop en color</h3>
-              <p>Imagen principal para anuncio, portada de Instagram o primera pieza del carrusel.</p>
+              <h3>Color que jala vista</h3>
+              <p>El producto se mantiene real, pero la foto ya tiene energia de anuncio.</p>
             </div>
           </article>
 
@@ -902,31 +1146,48 @@
               <span class="format-tag">Reel 9:16</span>
               <div>
                 <h3>Color punch</h3>
-                <p>Tomas rapidas por color con precio y llamada a WhatsApp.</p>
+                <p>Reel corto: caja, short, logo, precio y DM.</p>
               </div>
             </article>
             <article class="card media-card" style="background-image:url('./images/media/ghostwear-media-13.jpg')">
               <span class="format-tag">Story</span>
               <div>
                 <h3>Encuesta de color</h3>
-                <p>Ideal para historias: "cual color va primero?" y reservas por DM.</p>
+                <p>Historias para medir demanda antes de que se acabe la talla.</p>
               </div>
             </article>
             <article class="card media-card" style="background-image:url('./images/media/ghostwear-media-11.jpg')">
               <span class="format-tag">Post 1:1</span>
               <div>
                 <h3>Producto limpio</h3>
-                <p>Foto centrada para feed, catalogo y anuncio simple.</p>
+                <p>Feed claro para que el cliente compre sin descifrar.</p>
               </div>
             </article>
             <article class="card media-card" style="background-image:url('./images/designed/ghostwear-designed-white.jpg')">
               <span class="format-tag">Carrusel</span>
               <div>
-                <h3>Black essential</h3>
-                <p>Slide de cierre para reforzar el basico que combina con todo.</p>
+                <h3>White essential</h3>
+                <p>El basico que cierra cualquier carrusel.</p>
               </div>
             </article>
           </div>
+        </div>
+
+        <div class="obsession">
+          <article class="card obsession-card" style="background-image:url('./images/designed/ghostwear-designed-hero.jpg')">
+            <div>
+              <span class="section-kicker">Por que compra</span>
+              <h3>Porque se siente limitado.</h3>
+            </div>
+            <p>El cliente no ve un short suelto: ve color, paquete, drop y una marca que parece moverse.</p>
+          </article>
+          <article class="card obsession-card" style="background-image:url('./images/gear/ghostwear-hoodie.jpg')">
+            <div>
+              <span class="section-kicker">Como se vende</span>
+              <h3>DM directo. Precio claro.</h3>
+            </div>
+            <p>Cada pieza tiene carrito, WhatsApp y mensaje armado para cerrar talla, sector y entrega.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -1205,6 +1466,7 @@
                 <span>RD$ 1,600</span>
               </div>
               <p>${product.note}</p>
+              <div class="sell-line">Disponible por DM hoy</div>
             </div>
             <div>
               <div class="options">
@@ -1259,6 +1521,7 @@
                 <span>${product.priceLabel}</span>
               </div>
               <p>${product.note}</p>
+              <div class="sell-line">Agrega y manda por WhatsApp</div>
             </div>
             <div>
               <div class="options">
