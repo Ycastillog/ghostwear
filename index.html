@@ -973,6 +973,24 @@
       margin-top: 20px;
     }
 
+    .size-help {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      margin-top: 10px;
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+
+    .size-help:hover {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
     label { display: grid; gap: 7px; color: var(--muted); font-size: 0.82rem; font-weight: 750; }
     select {
       min-height: 44px;
@@ -2550,6 +2568,9 @@
       const urgency = product.urgency || { label: "Drop activo", line: "Disponible ahora mientras dure el drop." };
       const isCombo = product.category === "combos";
       const savedAmount = isCombo && product.normalPrice ? product.normalPrice - product.price : 0;
+      const sizeHelp = product.sizes.length > 1
+        ? `<a class="size-help" href="#tallas" aria-label="Ver guia de tallas para ${product.name}">Ver guia de tallas</a>`
+        : "";
       const priceMarkup = isCombo
         ? `<span class="price-stack"><small class="old-price">${product.oldPrice}</small><strong class="combo-price">${product.priceLabel}</strong><small class="combo-save">Ahorras ${moneyText(savedAmount)}</small></span>`
         : `<span>${product.priceLabel}</span>`;
@@ -2608,6 +2629,7 @@
                   </select>
                 </label>
               </div>
+              ${sizeHelp}
               <div class="buy-row">
                 <button class="btn primary add" type="button" data-name="${product.name}" data-price="${product.price}">Agregar al fit</button>
                 <button class="btn wa" type="button" data-name="${product.name}" data-price="${product.price}">WhatsApp</button>
