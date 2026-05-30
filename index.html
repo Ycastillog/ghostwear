@@ -718,6 +718,10 @@
 
     .color-card:hover .color-img[data-view="detail"] img { transform: scale(1.86); }
 
+    .color-img[data-view="worn"] img {
+      object-position: center top;
+    }
+
     .photo-label {
       position: absolute;
       right: 12px;
@@ -2274,42 +2278,59 @@
       "Black": "./images/designed/ghostwear-short-black-studio.png",
       "White": "./images/designed/ghostwear-short-white-studio.png"
     };
+    const wornShortImages = {
+      "Red": "./images/worn/ghostwear-fit-red.jpg",
+      "Baby Blue": "./images/worn/ghostwear-fit-baby-blue.jpg",
+      "Light Gray": "./images/worn/ghostwear-fit-light-gray.jpg",
+      "Orange": "./images/worn/ghostwear-fit-orange.jpg",
+      "Olive": "./images/worn/ghostwear-fit-olive.jpg",
+      "Aqua": "./images/worn/ghostwear-fit-aqua.jpg",
+      "Sky Blue": "./images/worn/ghostwear-fit-sky-blue.jpg",
+      "Pink": "./images/worn/ghostwear-fit-pink.jpg",
+      "Neon Green": "./images/worn/ghostwear-fit-neon-green.jpg",
+      "Royal Blue": "./images/worn/ghostwear-fit-royal-blue.jpg",
+      "Yellow": "./images/worn/ghostwear-fit-yellow.jpg",
+      "Navy": "./images/worn/ghostwear-fit-navy.jpg",
+      "Lavender": "./images/worn/ghostwear-fit-lavender.jpg",
+      "Black": "./images/worn/ghostwear-fit-black.jpg",
+      "White": "./images/worn/ghostwear-fit-white.jpg"
+    };
     products.forEach(product => {
       const cleanImage = cleanShortImages[product.color] || product.image;
-      product.photos = cleanImage === product.image
-        ? [
-            { label: "Real", src: product.image, view: "real" },
-            { label: "Limpia", src: cleanImage, view: "real" },
-            { label: "Logo", src: product.image, view: "detail" }
-          ]
-        : [
-            { label: "Limpia", src: cleanImage, view: "clean" },
-            { label: "Real", src: product.image, view: "real" },
-            { label: "Logo", src: product.image, view: "detail" }
-          ];
+      const wornImage = wornShortImages[product.color] || product.image;
+      product.photos = [
+        { label: "Limpia", src: cleanImage, view: cleanImage === product.image ? "real" : "clean" },
+        { label: "Real", src: product.image, view: "real" },
+        { label: "Puesto", src: wornImage, view: "worn" }
+      ];
     });
     gearProducts.forEach(product => {
       const realImage = product.realImage || product.image;
+      const wornImage = product.category === "gorras"
+        ? "./images/worn/ghostwear-fit-gorra.jpg"
+        : product.category === "hoodie"
+          ? "./images/worn/ghostwear-fit-hoodie.jpg"
+          : "./images/worn/ghostwear-fit-medias.jpg";
       product.photos = [
         { label: "Limpia", src: product.image, view: product.category === "medias" ? "real" : "clean" },
         { label: "Real", src: realImage, view: "real" },
-        { label: "Logo", src: realImage, view: "detail" }
+        { label: "Puesto", src: wornImage, view: "worn" }
       ];
     });
     comboProducts[0].photos = [
-      { label: "Short", src: "./images/designed/ghostwear-short-royal-blue-studio.png", view: "real" },
-      { label: "Medias", src: "./images/designed/ghostwear-socks-studio.png", view: "real" },
-      { label: "Logo", src: "./images/media/ghostwear-media-10.jpg", view: "detail" }
+      { label: "Limpia", src: "./images/designed/ghostwear-short-royal-blue-studio.png", view: "clean" },
+      { label: "Real", src: "./images/media/ghostwear-media-10.jpg", view: "real" },
+      { label: "Puesto", src: "./images/worn/ghostwear-fit-combo.jpg", view: "worn" }
     ];
     comboProducts[1].photos = [
-      { label: "Short", src: "./images/designed/ghostwear-short-royal-blue-studio.png", view: "real" },
-      { label: "Gorra", src: "./images/designed/ghostwear-caps-studio.png", view: "clean" },
-      { label: "Logo", src: "./images/gear/ghostwear-caps.jpg", view: "detail" }
+      { label: "Limpia", src: "./images/designed/ghostwear-caps-studio.png", view: "clean" },
+      { label: "Real", src: "./images/gear/ghostwear-caps.jpg", view: "real" },
+      { label: "Puesto", src: "./images/worn/ghostwear-fit-gorra.jpg", view: "worn" }
     ];
     comboProducts[2].photos = [
-      { label: "Hoodie", src: "./images/designed/ghostwear-hoodie-studio.png", view: "clean" },
-      { label: "Short", src: "./images/designed/ghostwear-short-royal-blue-studio.png", view: "real" },
-      { label: "Medias", src: "./images/designed/ghostwear-socks-studio.png", view: "real" }
+      { label: "Limpia", src: "./images/designed/ghostwear-hoodie-studio.png", view: "clean" },
+      { label: "Real", src: "./images/gear/ghostwear-hoodie.jpg", view: "real" },
+      { label: "Puesto", src: "./images/worn/ghostwear-fit-hoodie.jpg", view: "worn" }
     ];
     const shopCollections = [
       {
