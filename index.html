@@ -270,6 +270,12 @@
       gap: 18px;
     }
 
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
     .card {
       border: 1px solid var(--line);
       border-radius: 8px;
@@ -326,6 +332,68 @@
     }
 
     .product-body p { color: var(--muted); line-height: 1.6; margin: 0; }
+
+    .color-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+
+    .color-img {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      background: #151515;
+    }
+
+    .color-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 220ms ease;
+    }
+
+    .color-card:hover .color-img img { transform: scale(1.035); }
+
+    .color-chip {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      border: 2px solid rgba(255, 255, 255, 0.86);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    .color-body {
+      padding: 18px;
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .color-title {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .color-title h3 {
+      margin: 0;
+      font-size: 1.25rem;
+      line-height: 1.05;
+      text-transform: uppercase;
+    }
+
+    .color-title span {
+      color: var(--muted);
+      font-weight: 800;
+      white-space: nowrap;
+    }
 
     .options {
       display: grid;
@@ -385,6 +453,92 @@
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
+    }
+
+    .media-layout {
+      display: grid;
+      grid-template-columns: minmax(260px, 0.85fr) minmax(0, 1.15fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .media-feature {
+      min-height: 620px;
+      position: relative;
+      overflow: hidden;
+      background: #101010;
+    }
+
+    .media-feature img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .media-copy {
+      position: absolute;
+      inset: auto 18px 18px;
+      padding: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      background: rgba(5, 5, 5, 0.76);
+      backdrop-filter: blur(16px);
+    }
+
+    .media-copy h3 {
+      margin: 6px 0 0;
+      font-size: clamp(1.7rem, 4vw, 3.3rem);
+      line-height: 0.96;
+      text-transform: uppercase;
+    }
+
+    .media-copy p { margin: 10px 0 0; color: var(--muted); line-height: 1.55; }
+
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .media-card {
+      min-height: 300px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      isolation: isolate;
+    }
+
+    .media-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.72));
+    }
+
+    .media-card h3 {
+      margin: 0;
+      font-size: clamp(1.35rem, 3vw, 2rem);
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .media-card p { color: var(--muted); margin: 10px 0 0; line-height: 1.5; }
+
+    .format-tag {
+      align-self: start;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: var(--accent-ink);
+      font-weight: 950;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     .step {
@@ -508,8 +662,9 @@
       .hero-grid, .story-band { grid-template-columns: 1fr; }
       .hero-media { min-height: 440px; }
       .product-card { grid-template-columns: 1fr; }
-      .drop-grid, .detail-grid, .steps { grid-template-columns: 1fr; }
+      .drop-grid, .color-grid, .detail-grid, .steps, .media-layout, .media-grid { grid-template-columns: 1fr; }
       .section-head { display: block; }
+      .media-feature { min-height: 520px; }
     }
 
     @media (max-width: 620px) {
@@ -535,6 +690,7 @@
       </a>
       <nav class="nav-links" aria-label="Principal">
         <a href="#drop">Drop</a>
+        <a href="#media">Media</a>
         <a href="#fit">Fit</a>
         <a href="#pedido">Pedido</a>
         <a href="#contacto">Contacto</a>
@@ -555,8 +711,8 @@
           <span class="eyebrow">Drop limitado en RD</span>
           <h1>Ghost Shorts</h1>
           <p class="hero-copy">
-            Shorts limpios para calle, playa y gym. Logo discreto, cintura elastica,
-            cordones contrastados y un fit facil de usar todos los dias.
+            Ahora en una paleta completa de colores. Shorts limpios para calle,
+            playa y gym con logo discreto, cintura elastica y cordones contrastados.
           </p>
           <div class="hero-actions">
             <a class="btn primary" href="#drop">Ver colores</a>
@@ -564,19 +720,19 @@
           </div>
           <div class="proof" aria-label="Detalles de compra">
             <div><strong>RD$ 1,600</strong><span>precio por unidad</span></div>
-            <div><strong>S - XL</strong><span>tallas disponibles</span></div>
+            <div><strong>15 colores</strong><span>drop expandido</span></div>
             <div><strong>WhatsApp</strong><span>pedido directo</span></div>
           </div>
         </div>
 
         <div class="hero-media" aria-label="Producto destacado">
           <div class="hero-photo">
-            <img src="./images/short-black.jpg" alt="Shorts GhostWear negro y blanco sobre una mesa de madera" />
+            <img src="./images/media/ghostwear-media-10.jpg" alt="Short GhostWear azul royal sobre piso gris" />
           </div>
           <div class="product-float">
             <div>
               <small>Drop actual</small>
-              <h2>Black / White Pack</h2>
+              <h2>15 colores disponibles</h2>
             </div>
             <div class="price">RD$ 1,600</div>
           </div>
@@ -597,106 +753,64 @@
           </p>
         </div>
 
-        <div class="drop-grid">
-          <article class="card product-card" data-product-card>
-            <div class="product-img">
-              <img src="./images/short-black.jpg" alt="Short Ghost negro con logo blanco" />
-            </div>
-            <div class="product-body">
-              <div>
-                <div class="badge-row">
-                  <span class="badge">En stock</span>
-                  <span class="badge">Logo bordado</span>
-                </div>
-                <h3>Short Ghost Black</h3>
-                <p>
-                  Negro solido, cordon negro y logo Ghost en blanco. Una pieza base
-                  para fits limpios y repetibles.
-                </p>
-              </div>
-              <div>
-                <div class="price">RD$ 1,600</div>
-                <div class="options">
-                  <label>Talla
-                    <select class="size">
-                      <option>S</option>
-                      <option selected>M</option>
-                      <option>L</option>
-                      <option>XL</option>
-                    </select>
-                  </label>
-                  <label>Cantidad
-                    <select class="qty">
-                      <option selected>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                    </select>
-                  </label>
-                  <label>Entrega
-                    <select class="delivery">
-                      <option selected>Santo Domingo</option>
-                      <option>Interior RD</option>
-                      <option>Retiro</option>
-                    </select>
-                  </label>
-                </div>
-                <div class="buy-row">
-                  <button class="btn primary add" type="button" data-name="Short Ghost Black" data-price="1600">Agregar</button>
-                  <button class="btn wa" type="button" data-name="Short Ghost Black" data-price="1600">WhatsApp</button>
-                </div>
-              </div>
+        <div class="color-grid" id="productGrid" aria-live="polite">
+        </div>
+      </div>
+    </section>
+
+    <section id="media">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Media pack</span>
+            <h2>Contenido listo</h2>
+          </div>
+          <p>
+            Dise&ntilde;o visual para redes: fotos limpias del producto, formatos verticales
+            y piezas que venden color sin llenar la marca de ruido.
+          </p>
+        </div>
+
+        <div class="media-layout">
+          <article class="card media-feature">
+            <img src="./images/media/ghostwear-media-01.jpg" alt="Short GhostWear rojo para contenido principal" />
+            <div class="media-copy">
+              <span class="section-kicker">Hero post</span>
+              <h3>Drop en color</h3>
+              <p>Imagen principal para anuncio, portada de Instagram o primera pieza del carrusel.</p>
             </div>
           </article>
 
-          <article class="card product-card" data-product-card>
-            <div class="product-img">
-              <img src="./images/short-white.jpg" alt="Short Ghost blanco con logo negro" />
-            </div>
-            <div class="product-body">
+          <div class="media-grid">
+            <article class="card media-card" style="background-image:url('./images/media/ghostwear-media-09.jpg')">
+              <span class="format-tag">Reel 9:16</span>
               <div>
-                <div class="badge-row">
-                  <span class="badge">En stock</span>
-                  <span class="badge">Cordon negro</span>
-                </div>
-                <h3>Short Ghost White</h3>
-                <p>
-                  Blanco limpio con contraste negro. Fresco, directo y facil de
-                  combinar con tees oversized o tanks.
-                </p>
+                <h3>Color punch</h3>
+                <p>Tomas rapidas por color con precio y llamada a WhatsApp.</p>
               </div>
+            </article>
+            <article class="card media-card" style="background-image:url('./images/media/ghostwear-media-13.jpg')">
+              <span class="format-tag">Story</span>
               <div>
-                <div class="price">RD$ 1,600</div>
-                <div class="options">
-                  <label>Talla
-                    <select class="size">
-                      <option>S</option>
-                      <option selected>M</option>
-                      <option>L</option>
-                      <option>XL</option>
-                    </select>
-                  </label>
-                  <label>Cantidad
-                    <select class="qty">
-                      <option selected>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                    </select>
-                  </label>
-                  <label>Entrega
-                    <select class="delivery">
-                      <option selected>Santo Domingo</option>
-                      <option>Interior RD</option>
-                      <option>Retiro</option>
-                    </select>
-                  </label>
-                </div>
-                <div class="buy-row">
-                  <button class="btn primary add" type="button" data-name="Short Ghost White" data-price="1600">Agregar</button>
-                  <button class="btn wa" type="button" data-name="Short Ghost White" data-price="1600">WhatsApp</button>
-                </div>
+                <h3>Encuesta de color</h3>
+                <p>Ideal para historias: "cual color va primero?" y reservas por DM.</p>
               </div>
-            </div>
-          </article>
+            </article>
+            <article class="card media-card" style="background-image:url('./images/media/ghostwear-media-11.jpg')">
+              <span class="format-tag">Post 1:1</span>
+              <div>
+                <h3>Producto limpio</h3>
+                <p>Foto centrada para feed, catalogo y anuncio simple.</p>
+              </div>
+            </article>
+            <article class="card media-card" style="background-image:url('./images/media/ghostwear-media-14.jpg')">
+              <span class="format-tag">Carrusel</span>
+              <div>
+                <h3>Black essential</h3>
+                <p>Slide de cierre para reforzar el basico que combina con todo.</p>
+              </div>
+            </article>
+          </div>
         </div>
       </div>
     </section>
@@ -812,6 +926,24 @@
     const cartCountEl = document.getElementById("cartCount");
     const checkoutBtn = document.getElementById("checkoutBtn");
     const clearBtn = document.getElementById("clearBtn");
+    const productGrid = document.getElementById("productGrid");
+    const products = [
+      { color: "Red", name: "Short Ghost Red", image: "./images/media/ghostwear-media-01.jpg", hex: "#d71925", note: "Rojo fuerte para looks de playa, gym y calle." },
+      { color: "Baby Blue", name: "Short Ghost Baby Blue", image: "./images/media/ghostwear-media-02.jpg", hex: "#a7d8ff", note: "Azul claro fresco con contraste negro." },
+      { color: "Light Gray", name: "Short Ghost Light Gray", image: "./images/media/ghostwear-media-03.jpg", hex: "#d8d4cd", note: "Gris limpio, facil de combinar todos los dias." },
+      { color: "Orange", name: "Short Ghost Orange", image: "./images/media/ghostwear-media-04.jpg", hex: "#f36a22", note: "Naranja vivo para que el fit se vea desde lejos." },
+      { color: "Olive", name: "Short Ghost Olive", image: "./images/media/ghostwear-media-05.jpg", hex: "#777b52", note: "Olive militar, sobrio y callejero." },
+      { color: "Aqua", name: "Short Ghost Aqua", image: "./images/media/ghostwear-media-06.jpg", hex: "#54ded1", note: "Aqua claro para dias de calor y fits frescos." },
+      { color: "Sky Blue", name: "Short Ghost Sky Blue", image: "./images/media/ghostwear-media-07.jpg", hex: "#35a7df", note: "Azul cielo con vibra deportiva." },
+      { color: "Pink", name: "Short Ghost Pink", image: "./images/media/ghostwear-media-08.jpg", hex: "#ff4f86", note: "Pink intenso para un drop con actitud." },
+      { color: "Neon Green", name: "Short Ghost Neon Green", image: "./images/media/ghostwear-media-09.jpg", hex: "#83f13a", note: "Verde neon, el color mas llamativo del drop." },
+      { color: "Royal Blue", name: "Short Ghost Royal Blue", image: "./images/media/ghostwear-media-10.jpg", hex: "#2454ff", note: "Azul royal con energia street." },
+      { color: "Yellow", name: "Short Ghost Yellow", image: "./images/media/ghostwear-media-11.jpg", hex: "#f4c21c", note: "Amarillo limpio para verano y contenido." },
+      { color: "Navy", name: "Short Ghost Navy", image: "./images/media/ghostwear-media-12.jpg", hex: "#202a64", note: "Azul navy oscuro, serio y combinable." },
+      { color: "Lavender", name: "Short Ghost Lavender", image: "./images/media/ghostwear-media-13.jpg", hex: "#c8afe6", note: "Lavender suave para un fit diferente." },
+      { color: "Black", name: "Short Ghost Black", image: "./images/media/ghostwear-media-14.jpg", hex: "#111111", note: "Negro esencial, logo en blanco y uso diario." },
+      { color: "White", name: "Short Ghost White", image: "./images/media/ghostwear-media-15.jpg", hex: "#f4f1e8", note: "Blanco fresco con cordon negro." }
+    ];
     let cart = [];
 
     year.textContent = new Date().getFullYear();
@@ -847,6 +979,60 @@
         qty: Number(card.querySelector(".qty").value),
         delivery: card.querySelector(".delivery").value
       };
+    }
+
+    function renderProducts() {
+      productGrid.innerHTML = products.map(product => `
+        <article class="card color-card" data-product-card>
+          <div class="color-img">
+            <img src="${product.image}" alt="${product.name}" loading="lazy" />
+            <span class="color-chip" style="background:${product.hex}" aria-hidden="true"></span>
+          </div>
+          <div class="color-body">
+            <div>
+              <div class="badge-row">
+                <span class="badge">En stock</span>
+                <span class="badge">${product.color}</span>
+              </div>
+              <div class="color-title">
+                <h3>${product.name}</h3>
+                <span>RD$ 1,600</span>
+              </div>
+              <p>${product.note}</p>
+            </div>
+            <div>
+              <div class="options">
+                <label>Talla
+                  <select class="size">
+                    <option>S</option>
+                    <option selected>M</option>
+                    <option>L</option>
+                    <option>XL</option>
+                  </select>
+                </label>
+                <label>Cantidad
+                  <select class="qty">
+                    <option selected>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                  </select>
+                </label>
+                <label>Entrega
+                  <select class="delivery">
+                    <option selected>Santo Domingo</option>
+                    <option>Interior RD</option>
+                    <option>Retiro</option>
+                  </select>
+                </label>
+              </div>
+              <div class="buy-row">
+                <button class="btn primary add" type="button" data-name="${product.name}" data-price="1600">Agregar</button>
+                <button class="btn wa" type="button" data-name="${product.name}" data-price="1600">WhatsApp</button>
+              </div>
+            </div>
+          </div>
+        </article>
+      `).join("");
     }
 
     function itemKey(item) {
@@ -919,6 +1105,8 @@ Total: RD$ ${money.format(total)}
 Mi nombre es:
 Sector / direccion:`;
     }
+
+    renderProducts();
 
     document.querySelectorAll(".add").forEach(button => {
       button.addEventListener("click", () => addItem(getChoice(button)));
