@@ -1440,6 +1440,46 @@
       background-position: center;
     }
 
+    .dm-card.athlete-card {
+      grid-column: span 2;
+      min-height: 280px;
+      background:
+        radial-gradient(circle at 14% 18%, rgba(215, 255, 63, 0.16), transparent 34%),
+        linear-gradient(135deg, rgba(36, 84, 255, 0.22), rgba(0, 0, 0, 0.78)),
+        rgba(255, 255, 255, 0.035);
+      border-color: rgba(215, 255, 63, 0.28);
+    }
+
+    .athlete-card h3 {
+      max-width: 620px;
+      font-size: clamp(1.8rem, 4vw, 3.4rem);
+    }
+
+    .athlete-card p {
+      max-width: 620px;
+    }
+
+    .athlete-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .athlete-tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 40px;
+      border-radius: 999px;
+      padding: 0 12px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
     .dm-top {
       display: flex;
       align-items: center;
@@ -1705,7 +1745,8 @@
       .combo-offer-price { border-left: 0; border-top: 1px solid var(--line); padding-left: 0; padding-top: 18px; }
       .section-head { display: block; }
       .media-feature { min-height: 520px; }
-      .dm-card.featured { grid-column: auto; }
+      .dm-card.featured,
+      .dm-card.athlete-card { grid-column: auto; }
       .size-note { position: static; }
     }
 
@@ -2038,17 +2079,32 @@
                 <span>seguidores</span>
               </div>
               <div class="proof-pill">
-                <strong>DM</strong>
-                <span>pedidos</span>
+                <strong>90.4K</strong>
+                <span>@juanco10</span>
               </div>
               <div class="proof-pill">
-                <strong>RD</strong>
-                <span>envios nacionales</span>
+                <strong>DM</strong>
+                <span>pedidos</span>
               </div>
             </div>
           </article>
 
           <div class="dm-grid">
+            <article class="card dm-card athlete-card">
+              <div class="dm-top">
+                <span class="dm-dot">10</span>
+                <span>Visto en cancha</span>
+              </div>
+              <div>
+                <h3>Juan Miguel Suero, El Fantasma.</h3>
+                <p>El apodo conecta perfecto con la marca: contenido real de @juanco10 usando GhostWear en ambiente de basket.</p>
+              </div>
+              <div class="athlete-actions">
+                <a class="btn ig-link" href="https://www.instagram.com/juanco10/" target="_blank" rel="noopener">Ver @juanco10</a>
+                <span class="athlete-tag">Alias El Fantasma</span>
+                <span class="athlete-tag">90.4K seguidores</span>
+              </div>
+            </article>
             <article class="card dm-card featured">
               <div class="dm-top">
                 <span class="dm-dot">GW</span>
