@@ -1150,7 +1150,8 @@
             transferencia y recibes en RD.
           </p>
           <div class="hero-actions">
-            <a class="btn primary" href="#shop">Comprar el fit</a>
+            <button class="btn primary" id="heroLookBtn" type="button">Comprar este look</button>
+            <a class="btn" href="#shop">Ver shop</a>
             <button class="btn" id="heroCartBtn" type="button">Abrir carrito</button>
           </div>
           <div class="hero-note">
@@ -1530,6 +1531,7 @@
     const drawer = document.getElementById("drawer");
     const overlay = document.getElementById("drawerOverlay");
     const cartBtn = document.getElementById("cartBtn");
+    const heroLookBtn = document.getElementById("heroLookBtn");
     const heroCartBtn = document.getElementById("heroCartBtn");
     const closeCart = document.getElementById("closeCart");
     const cartItemsEl = document.getElementById("cartItems");
@@ -2063,6 +2065,40 @@
       openDrawer();
     }
 
+    function addLookToCart() {
+      const lookItems = [
+        {
+          name: products.find(product => product.color === "Royal Blue").name,
+          price: products[0].price,
+          size: "M",
+          qty: 1,
+          delivery: "Santo Domingo"
+        },
+        {
+          name: gearProducts.find(product => product.name === "Medias Ghost").name,
+          price: gearProducts.find(product => product.name === "Medias Ghost").price,
+          size: "Unica",
+          qty: 1,
+          delivery: "Santo Domingo"
+        },
+        {
+          name: gearProducts.find(product => product.name === "Gorra Ghost").name,
+          price: gearProducts.find(product => product.name === "Gorra Ghost").price,
+          size: "Unica",
+          qty: 1,
+          delivery: "Santo Domingo"
+        }
+      ];
+
+      lookItems.forEach(item => {
+        const existing = cart.find(cartItem => itemKey(cartItem) === itemKey(item));
+        if (existing) existing.qty += item.qty;
+        else cart.push(item);
+      });
+      renderCart();
+      openDrawer();
+    }
+
     function buildSingleMessage(item) {
       return `Hola, quiero pedir en GhostWear.
 
@@ -2142,6 +2178,7 @@ Sector / direccion:`;
     });
 
     cartBtn.addEventListener("click", openDrawer);
+    heroLookBtn.addEventListener("click", addLookToCart);
     heroCartBtn.addEventListener("click", openDrawer);
     closeCart.addEventListener("click", closeDrawer);
     overlay.addEventListener("click", closeDrawer);
