@@ -983,19 +983,7 @@
 </head>
 <body>
   <div class="announce" aria-label="GhostWear novedades">
-    <div class="announce-track">
-      <span>Shorts RD$ 1,600</span>
-      <span>Medias RD$ 350</span>
-      <span>3 pares RD$ 1,000</span>
-      <span>Gorras RD$ 1,500</span>
-      <span>Hoodie RD$ 3,000</span>
-      <span>Envios nacionales</span>
-      <span>Shorts RD$ 1,600</span>
-      <span>Medias RD$ 350</span>
-      <span>3 pares RD$ 1,000</span>
-      <span>Gorras RD$ 1,500</span>
-      <span>Hoodie RD$ 3,000</span>
-      <span>Envios nacionales</span>
+    <div class="announce-track" id="announceTrack">
     </div>
   </div>
 
@@ -1043,10 +1031,7 @@
             <span>Pagos por transferencia</span>
             <span>DM / WhatsApp</span>
           </div>
-          <div class="proof" aria-label="Detalles de compra">
-            <div><strong>19 piezas</strong><span>shorts + gear</span></div>
-            <div><strong>Desde RD$350</strong><span>medias y packs</span></div>
-            <div><strong>Envios RD</strong><span>nacionales</span></div>
+          <div class="proof" id="heroStats" aria-label="Detalles de compra">
           </div>
         </div>
 
@@ -1056,10 +1041,10 @@
           </div>
           <div class="product-float">
             <div>
-              <small>Drop actual</small>
-              <h2>El fit completo</h2>
+              <small id="heroTag">Drop actual</small>
+              <h2 id="heroFeature">El fit completo</h2>
             </div>
-            <div class="price">Desde RD$ 350</div>
+            <div class="price" id="heroPrice">Desde RD$ 350</div>
           </div>
         </div>
       </div>
@@ -1067,35 +1052,7 @@
 
     <section id="shop">
       <div class="wrap">
-        <div class="drop-switch">
-          <article class="card switch-card">
-            <div>
-              <span class="section-kicker">Shop the Ghost</span>
-              <h2>Compra por pieza o arma el combo.</h2>
-            </div>
-            <p>La web queda pensada como vitrina real: producto, precio, talla, cantidad y pedido listo para WhatsApp.</p>
-          </article>
-          <a class="card switch-card image" href="#drop" style="background-image:url('./images/designed/ghostwear-designed-hero.jpg')">
-            <span class="switch-price">RD$ 1,600</span>
-            <div>
-              <h3>Shorts</h3>
-              <p>15 colores para rotar el fit.</p>
-            </div>
-          </a>
-          <a class="card switch-card image" href="#proximos" style="background-image:url('./images/gear/ghostwear-caps.jpg')">
-            <span class="switch-price">RD$ 1,500</span>
-            <div>
-              <h3>Gorras</h3>
-              <p>Colorways de feed.</p>
-            </div>
-          </a>
-          <a class="card switch-card image" href="#proximos" style="background-image:url('./images/ghostwear-socks-real.jpg')">
-            <span class="switch-price">RD$ 350</span>
-            <div>
-              <h3>Medias</h3>
-              <p>3 pares por RD$ 1,000.</p>
-            </div>
-          </a>
+        <div class="drop-switch" id="shopCards">
         </div>
       </div>
     </section>
@@ -1346,8 +1303,33 @@
     const cartCountEl = document.getElementById("cartCount");
     const checkoutBtn = document.getElementById("checkoutBtn");
     const clearBtn = document.getElementById("clearBtn");
+    const announceTrack = document.getElementById("announceTrack");
+    const heroStats = document.getElementById("heroStats");
+    const heroTag = document.getElementById("heroTag");
+    const heroFeature = document.getElementById("heroFeature");
+    const heroPrice = document.getElementById("heroPrice");
+    const shopCards = document.getElementById("shopCards");
     const productGrid = document.getElementById("productGrid");
     const gearGrid = document.getElementById("gearGrid");
+    const store = {
+      phone,
+      shipping: "Envios nacionales",
+      payment: "Pagos por transferencia",
+      hero: {
+        tag: "Drop actual",
+        feature: "El fit completo"
+      },
+      metrics: {
+        posts: 17,
+        followers: 2151,
+        piecesLabel: "shorts + gear"
+      }
+    };
+
+    function moneyText(value) {
+      return "RD$ " + money.format(value);
+    }
+
     const products = [
       { color: "Red", name: "Short Ghost Red", image: "./images/media/ghostwear-media-01.jpg", hex: "#d71925", note: "Rojo fuerte para looks de playa, gym y calle." },
       { color: "Baby Blue", name: "Short Ghost Baby Blue", image: "./images/media/ghostwear-media-02.jpg", hex: "#a7d8ff", note: "Azul claro fresco con contraste negro." },
@@ -1364,7 +1346,15 @@
       { color: "Lavender", name: "Short Ghost Lavender", image: "./images/media/ghostwear-media-13.jpg", hex: "#c8afe6", note: "Lavender suave para un fit diferente." },
       { color: "Black", name: "Short Ghost Black", image: "./images/media/ghostwear-media-14.jpg", hex: "#111111", note: "Negro esencial, logo en blanco y uso diario." },
       { color: "White", name: "Short Ghost White", image: "./images/designed/ghostwear-designed-white.jpg", hex: "#f4f1e8", note: "Blanco fresco con cordon negro." }
-    ];
+    ].map(product => ({
+      ...product,
+      tag: product.color,
+      price: 1600,
+      priceLabel: moneyText(1600),
+      sizes: ["S", "M", "L", "XL"],
+      quantities: ["1", "2", "3"],
+      href: "#drop"
+    }));
     const gearProducts = [
       {
         tag: "Medias",
@@ -1411,6 +1401,30 @@
         quantities: ["1", "2"]
       }
     ];
+    const allProducts = [...products, ...gearProducts];
+    const shopCollections = [
+      {
+        title: "Shorts",
+        href: "#drop",
+        image: "./images/designed/ghostwear-designed-hero.jpg",
+        price: products[0].price,
+        note: `${products.length} colores para rotar el fit.`
+      },
+      {
+        title: "Gorras",
+        href: "#proximos",
+        image: "./images/gear/ghostwear-caps.jpg",
+        price: gearProducts.find(product => product.name.includes("Gorra")).price,
+        note: "Colorways de feed."
+      },
+      {
+        title: "Medias",
+        href: "#proximos",
+        image: "./images/ghostwear-socks-real.jpg",
+        price: gearProducts.find(product => product.name === "Medias Ghost").price,
+        note: `3 pares por ${gearProducts.find(product => product.name.includes("Pack")).priceLabel}.`
+      }
+    ];
     let cart = [];
 
     year.textContent = new Date().getFullYear();
@@ -1448,6 +1462,49 @@
       };
     }
 
+    function renderStorefront() {
+      const minPrice = Math.min(...allProducts.map(product => product.price));
+      const featuredAnnouncements = [
+        `Shorts ${products[0].priceLabel}`,
+        `Medias ${gearProducts.find(product => product.name === "Medias Ghost").priceLabel}`,
+        `3 pares ${gearProducts.find(product => product.name.includes("Pack")).priceLabel}`,
+        `Gorras ${gearProducts.find(product => product.name.includes("Gorra")).priceLabel}`,
+        `Hoodie ${gearProducts.find(product => product.name.includes("Hoodie")).priceLabel}`,
+        store.shipping
+      ];
+
+      announceTrack.innerHTML = featuredAnnouncements.map(item => `<span>${item}</span>`).join("");
+      heroTag.textContent = store.hero.tag;
+      heroFeature.textContent = store.hero.feature;
+      heroPrice.textContent = "Desde " + moneyText(minPrice);
+      heroStats.innerHTML = [
+        { value: `${allProducts.length} piezas`, label: store.metrics.piecesLabel },
+        { value: `Desde ${moneyText(minPrice)}`, label: "medias y packs" },
+        { value: "Envios RD", label: "nacionales" }
+      ].map(stat => `
+        <div><strong>${stat.value}</strong><span>${stat.label}</span></div>
+      `).join("");
+
+      shopCards.innerHTML = `
+        <article class="card switch-card">
+          <div>
+            <span class="section-kicker">Shop the Ghost</span>
+            <h2>Compra por pieza o arma el combo.</h2>
+          </div>
+          <p>La web queda pensada como vitrina real: producto, precio, talla, cantidad y pedido listo para WhatsApp.</p>
+        </article>
+        ${shopCollections.map(collection => `
+          <a class="card switch-card image" href="${collection.href}" style="background-image:url('${collection.image}')">
+            <span class="switch-price">${moneyText(collection.price)}</span>
+            <div>
+              <h3>${collection.title}</h3>
+              <p>${collection.note}</p>
+            </div>
+          </a>
+        `).join("")}
+      `;
+    }
+
     function renderProducts() {
       productGrid.innerHTML = products.map(product => `
         <article class="card color-card" data-product-card>
@@ -1463,7 +1520,7 @@
               </div>
               <div class="color-title">
                 <h3>${product.name}</h3>
-                <span>RD$ 1,600</span>
+                <span>${product.priceLabel}</span>
               </div>
               <p>${product.note}</p>
               <div class="sell-line">Disponible por DM hoy</div>
@@ -1472,17 +1529,12 @@
               <div class="options">
                 <label>Talla
                   <select class="size">
-                    <option>S</option>
-                    <option selected>M</option>
-                    <option>L</option>
-                    <option>XL</option>
+                    ${product.sizes.map((size, index) => `<option${index === 1 ? " selected" : ""}>${size}</option>`).join("")}
                   </select>
                 </label>
                 <label>Cantidad
                   <select class="qty">
-                    <option selected>1</option>
-                    <option>2</option>
-                    <option>3</option>
+                    ${product.quantities.map((qty, index) => `<option${index === 0 ? " selected" : ""}>${qty}</option>`).join("")}
                   </select>
                 </label>
                 <label>Entrega
@@ -1494,8 +1546,8 @@
                 </label>
               </div>
               <div class="buy-row">
-                <button class="btn primary add" type="button" data-name="${product.name}" data-price="1600">Agregar</button>
-                <button class="btn wa" type="button" data-name="${product.name}" data-price="1600">WhatsApp</button>
+                <button class="btn primary add" type="button" data-name="${product.name}" data-price="${product.price}">Agregar</button>
+                <button class="btn wa" type="button" data-name="${product.name}" data-price="${product.price}">WhatsApp</button>
               </div>
             </div>
           </div>
@@ -1624,6 +1676,7 @@ Mi nombre es:
 Sector / direccion:`;
     }
 
+    renderStorefront();
     renderProducts();
     renderGear();
 
