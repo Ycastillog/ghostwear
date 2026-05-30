@@ -1655,6 +1655,37 @@
     .total-row strong { font-size: 1.35rem; }
     .note { color: var(--muted); font-size: 0.82rem; line-height: 1.5; }
 
+    .checkout-trust {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: -2px 0 12px;
+      padding: 10px 12px;
+      border: 1px solid rgba(215, 255, 63, 0.24);
+      border-radius: 8px;
+      background: rgba(215, 255, 63, 0.08);
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 900;
+      line-height: 1.35;
+    }
+
+    .checkout-trust::before {
+      content: "boo";
+      display: inline-grid;
+      place-items: center;
+      flex: 0 0 auto;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--ghost-cream);
+      color: #111;
+      font-size: 0.66rem;
+      font-weight: 950;
+      letter-spacing: 0;
+      text-transform: lowercase;
+    }
+
     @media (max-width: 1020px) {
       .nav-links { display: none; }
       .hero { min-height: auto; }
@@ -2222,9 +2253,10 @@
         <span>Total</span>
         <strong>RD$ <span id="cartTotal">0</span></strong>
       </div>
+      <p class="checkout-trust">Confirmamos disponibilidad por WhatsApp antes del pago.</p>
       <button class="btn primary full" id="checkoutBtn" type="button">Mandar DM por WhatsApp</button>
       <button class="btn danger full" id="clearBtn" type="button" style="margin-top:10px;">Vaciar carrito</button>
-      <p class="note">Configura tu numero real de WhatsApp en la variable <strong>phone</strong> dentro del HTML.</p>
+      <p class="note">Te apartamos el pedido por transferencia despues de confirmar talla, color y entrega.</p>
     </div>
   </aside>
 
