@@ -723,6 +723,40 @@
       gap: 18px;
     }
 
+    .policy-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .policy-card {
+      padding: 18px;
+      min-height: 150px;
+    }
+
+    .policy-card strong {
+      display: block;
+      color: var(--accent);
+      font-size: 0.76rem;
+      font-weight: 950;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .policy-card h3 {
+      margin: 14px 0 8px;
+      font-size: 1.05rem;
+      text-transform: uppercase;
+    }
+
+    .policy-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+
     .size-guide {
       display: grid;
       grid-template-columns: 0.78fr 1.22fr;
@@ -1288,7 +1322,7 @@
       .hero-grid, .story-band { grid-template-columns: 1fr; }
       .hero-media { min-height: 440px; }
       .product-card { grid-template-columns: 1fr; }
-      .drop-grid, .color-grid, .detail-grid, .steps, .media-layout, .media-grid, .ig-strip, .future-grid, .drop-switch, .obsession, .size-guide, .size-extra, .social-proof, .dm-grid, .proof-stack { grid-template-columns: 1fr; }
+      .drop-grid, .color-grid, .detail-grid, .steps, .policy-grid, .media-layout, .media-grid, .ig-strip, .future-grid, .drop-switch, .obsession, .size-guide, .size-extra, .social-proof, .dm-grid, .proof-stack { grid-template-columns: 1fr; }
       .section-head { display: block; }
       .media-feature { min-height: 520px; }
       .dm-card.featured { grid-column: auto; }
@@ -1775,6 +1809,29 @@
             <h3>Finaliza por WhatsApp</h3>
             <p>El mensaje sale armado para cerrar disponibilidad, pago y entrega.</p>
           </div>
+        </div>
+
+        <div class="policy-grid" aria-label="Politica de compra GhostWear">
+          <article class="card policy-card">
+            <strong>Pago</strong>
+            <h3>Transferencia</h3>
+            <p>Los pedidos se apartan al confirmar el pago por transferencia bancaria.</p>
+          </article>
+          <article class="card policy-card">
+            <strong>Entrega</strong>
+            <h3>Santo Domingo</h3>
+            <p>Coordinamos punto de retiro o delivery segun disponibilidad del dia.</p>
+          </article>
+          <article class="card policy-card">
+            <strong>Envios</strong>
+            <h3>Nacionales</h3>
+            <p>Enviamos al interior de RD. El costo se confirma por WhatsApp antes de pagar.</p>
+          </article>
+          <article class="card policy-card">
+            <strong>Tiempo</strong>
+            <h3>24-72 horas</h3>
+            <p>Tiempo estimado luego de confirmar pago, talla, color y direccion.</p>
+          </article>
         </div>
       </div>
     </section>
