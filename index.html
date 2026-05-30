@@ -826,12 +826,135 @@
       white-space: nowrap;
     }
 
+    .price-stack {
+      display: grid;
+      justify-items: end;
+      gap: 3px;
+      white-space: nowrap;
+    }
+
+    .old-price {
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 850;
+      text-decoration: line-through;
+      opacity: 0.74;
+    }
+
+    .combo-price {
+      color: var(--accent);
+      font-size: clamp(1.45rem, 3vw, 2rem);
+      font-weight: 950;
+      line-height: 0.94;
+    }
+
+    .combo-save {
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 950;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
     .sell-line {
       margin-top: 10px;
       color: var(--accent);
       font-size: 0.78rem;
       font-weight: 900;
       letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .combo-offer {
+      border-color: rgba(215, 255, 63, 0.46);
+      background:
+        linear-gradient(180deg, rgba(215, 255, 63, 0.075), rgba(255, 255, 255, 0.025)),
+        rgba(255, 255, 255, 0.025);
+    }
+
+    .combo-offer::before {
+      content: "oferta especial";
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      z-index: 4;
+      border-radius: 999px;
+      padding: 7px 10px;
+      background: var(--accent);
+      color: #070707;
+      font-size: 0.68rem;
+      font-weight: 950;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+    }
+
+    .combo-offer .color-img {
+      border-bottom: 1px solid rgba(215, 255, 63, 0.24);
+    }
+
+    .combo-offer .sell-line {
+      display: inline-flex;
+      width: fit-content;
+      border-radius: 999px;
+      padding: 8px 10px;
+      background: rgba(215, 255, 63, 0.12);
+      color: var(--accent);
+    }
+
+    .combo-offer-banner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.75fr);
+      gap: 18px;
+      align-items: center;
+      padding: clamp(22px, 4vw, 34px);
+      margin: 18px 0;
+      border-color: rgba(215, 255, 63, 0.44);
+      background:
+        radial-gradient(circle at 12% 10%, rgba(215, 255, 63, 0.16), transparent 34%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.022));
+    }
+
+    .combo-offer-banner h3 {
+      margin: 8px 0 0;
+      max-width: 720px;
+      font-size: clamp(2rem, 5vw, 4.2rem);
+      line-height: 0.94;
+      text-transform: uppercase;
+    }
+
+    .combo-offer-banner p {
+      margin: 12px 0 0;
+      color: var(--muted);
+      line-height: 1.55;
+      max-width: 620px;
+    }
+
+    .combo-offer-price {
+      display: grid;
+      gap: 10px;
+      justify-items: start;
+      border-left: 1px solid var(--line);
+      padding-left: 20px;
+    }
+
+    .combo-offer-price small {
+      color: var(--muted);
+      font-weight: 900;
+      text-decoration: line-through;
+    }
+
+    .combo-offer-price strong {
+      color: var(--accent);
+      font-size: clamp(2rem, 6vw, 4rem);
+      line-height: 0.9;
+    }
+
+    .combo-offer-price span {
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: 950;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
@@ -1521,7 +1644,8 @@
       .hero-media { min-height: 360px; }
       section .wrap::before { display: none; }
       .product-card { grid-template-columns: 1fr; }
-      .drop-grid, .color-grid, .detail-grid, .steps, .policy-grid, .media-layout, .media-grid, .ig-strip, .future-grid, .drop-switch, .obsession, .size-guide, .size-extra, .social-proof, .dm-grid, .proof-stack { grid-template-columns: 1fr; }
+      .drop-grid, .color-grid, .detail-grid, .steps, .policy-grid, .media-layout, .media-grid, .ig-strip, .future-grid, .drop-switch, .obsession, .size-guide, .size-extra, .social-proof, .dm-grid, .proof-stack, .combo-offer-banner { grid-template-columns: 1fr; }
+      .combo-offer-price { border-left: 0; border-top: 1px solid var(--line); padding-left: 0; padding-top: 18px; }
       .section-head { display: block; }
       .media-feature { min-height: 520px; }
       .dm-card.featured { grid-column: auto; }
@@ -1660,14 +1784,27 @@
       <div class="wrap">
         <div class="section-head">
           <div>
-            <span class="section-kicker">Sube el fit</span>
-            <h2>Combos Ghost</h2>
+            <span class="section-kicker">Oferta especial</span>
+            <h2>Ahorra comprando el fit completo</h2>
           </div>
           <p>
-            Packs listos para subir el fit: eliges talla principal, agregas el combo
-            y el mensaje sale armado para cerrar por WhatsApp.
+            Combos armados para que el cliente resuelva rapido: precio normal claro,
+            precio combo fuerte y DM listo para cerrar por WhatsApp.
           </p>
         </div>
+
+        <article class="card combo-offer-banner">
+          <div>
+            <span class="section-kicker">Drop activo RD</span>
+            <h3>Mientras mas armas el fit, mas duro te sale.</h3>
+            <p>Short + medias, short + gorra o el Full Ghost Fit completo. Te lo apartamos por transferencia y coordinamos envio nacional.</p>
+          </div>
+          <div class="combo-offer-price">
+            <small>Desde RD$ 1,950 normal</small>
+            <strong>RD$ 1,850</strong>
+            <span>Precio combo desde hoy</span>
+          </div>
+        </article>
 
         <div class="color-grid" id="comboGrid" aria-live="polite">
         </div>
@@ -2205,6 +2342,7 @@
         image: "./images/designed/ghostwear-short-royal-blue-studio.png",
         price: 1850,
         priceLabel: "RD$ 1,850",
+        normalPrice: 1950,
         oldPrice: "RD$ 1,950",
         note: "Short Ghost + medias para salir con el fit amarrado. Ahorras RD$ 100.",
         swatch: "#d7ff3f",
@@ -2217,6 +2355,7 @@
         image: "./images/designed/ghostwear-caps-studio.png",
         price: 2950,
         priceLabel: "RD$ 2,950",
+        normalPrice: 3100,
         oldPrice: "RD$ 3,100",
         note: "Short Ghost + gorra Ghost. La vuelta facil para cerrar el look.",
         swatch: "#2454ff",
@@ -2229,6 +2368,7 @@
         image: "./images/designed/ghostwear-hoodie-studio.png",
         price: 4700,
         priceLabel: "RD$ 4,700",
+        normalPrice: 4950,
         oldPrice: "RD$ 4,950",
         note: "Short + hoodie + medias. Full Ghost fit con descuento de RD$ 250.",
         swatch: "#111111",
@@ -2408,9 +2548,14 @@
       const photos = product.photos || [{ label: "Real", src: product.image, view: "real" }];
       const primaryPhoto = photos[0];
       const urgency = product.urgency || { label: "Drop activo", line: "Disponible ahora mientras dure el drop." };
+      const isCombo = product.category === "combos";
+      const savedAmount = isCombo && product.normalPrice ? product.normalPrice - product.price : 0;
+      const priceMarkup = isCombo
+        ? `<span class="price-stack"><small class="old-price">${product.oldPrice}</small><strong class="combo-price">${product.priceLabel}</strong><small class="combo-save">Ahorras ${moneyText(savedAmount)}</small></span>`
+        : `<span>${product.priceLabel}</span>`;
 
       return `
-        <article class="card color-card" data-product-card data-category="${product.category}">
+        <article class="card color-card${isCombo ? " combo-offer" : ""}" data-product-card data-category="${product.category}">
           <div class="color-img" data-view="${primaryPhoto.view}">
             <img src="${primaryPhoto.src}" alt="${product.name} - ${primaryPhoto.label}" loading="lazy" />
             <span class="color-chip" style="background:${swatch}" aria-hidden="true"></span>
@@ -2437,7 +2582,7 @@
               </div>
               <div class="color-title">
                 <h3>${product.name}</h3>
-                <span>${product.priceLabel}</span>
+                ${priceMarkup}
               </div>
               <p>${product.note}</p>
               <div class="sell-line">${sellLine}</div>
@@ -2484,7 +2629,7 @@
         return productCard(product, {
           badge: isCombo ? "Ahorro" : "En stock",
           tag: isCombo ? product.tag : product.tag,
-          sellLine: isCombo ? `Precio normal ${product.oldPrice}` : "Disponible por DM"
+          sellLine: isCombo ? `Oferta combo: ahorras ${moneyText(product.normalPrice - product.price)}` : "Disponible por DM"
         });
       }).join("");
 
@@ -2541,7 +2686,7 @@
       comboGrid.innerHTML = comboProducts.map(product => productCard(product, {
         badge: "Ahorro",
         tag: product.tag,
-        sellLine: `Precio normal ${product.oldPrice}`
+        sellLine: `Oferta combo: ahorras ${moneyText(product.normalPrice - product.price)}`
       })).join("");
     }
 
