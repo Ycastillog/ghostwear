@@ -186,10 +186,10 @@
     }
 
     .hero {
-      min-height: calc(100svh - 72px);
+      min-height: auto;
       display: grid;
       align-items: center;
-      padding: 44px 0 32px;
+      padding: 22px 0 14px;
       position: relative;
       overflow: hidden;
     }
@@ -210,9 +210,9 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 0.92fr) minmax(320px, 1.08fr);
+      grid-template-columns: minmax(0, 0.98fr) minmax(290px, 0.78fr);
       align-items: center;
-      gap: clamp(28px, 5vw, 74px);
+      gap: clamp(22px, 4vw, 48px);
     }
 
     .eyebrow {
@@ -265,10 +265,10 @@
     }
 
     h1 {
-      margin: 22px 0 0;
-      max-width: 720px;
-      font-size: clamp(3.35rem, 8.7vw, 7.2rem);
-      line-height: 0.88;
+      margin: 14px 0 0;
+      max-width: 600px;
+      font-size: clamp(2.7rem, 5.8vw, 4.7rem);
+      line-height: 0.92;
       letter-spacing: 0;
       text-transform: uppercase;
     }
@@ -279,26 +279,30 @@
     }
 
     .hero-copy {
-      max-width: 560px;
-      margin: 24px 0 0;
+      max-width: 590px;
+      margin: 14px 0 0;
       color: var(--muted);
-      font-size: clamp(1rem, 2vw, 1.22rem);
-      line-height: 1.65;
+      font-size: clamp(0.96rem, 1.35vw, 1.05rem);
+      line-height: 1.5;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-top: 30px;
+      margin-top: 18px;
     }
 
     .proof {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 10px;
-      margin-top: 38px;
+      margin-top: 14px;
       max-width: 560px;
+    }
+
+    .hero .proof {
+      display: none;
     }
 
     .proof div {
@@ -313,7 +317,7 @@
 
     .hero-note {
       max-width: 560px;
-      margin-top: 20px;
+      margin-top: 10px;
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
@@ -322,10 +326,10 @@
     .hero-note span {
       border: 1px solid var(--line);
       border-radius: 999px;
-      padding: 8px 11px;
+      padding: 7px 10px;
       color: var(--muted);
       background: rgba(255, 255, 255, 0.03);
-      font-size: 0.83rem;
+      font-size: 0.78rem;
       font-weight: 800;
     }
 
@@ -336,9 +340,13 @@
       background: rgba(215, 255, 63, 0.08);
     }
 
+    .hero-note span:nth-child(n+4) {
+      display: none;
+    }
+
     .hero-media {
       position: relative;
-      min-height: 560px;
+      min-height: 360px;
     }
 
     .ghost-sticker {
@@ -348,8 +356,8 @@
       z-index: 4;
       display: grid;
       place-items: center;
-      width: 92px;
-      height: 92px;
+      width: 78px;
+      height: 78px;
       border-radius: 50%;
       border: 1px solid rgba(17, 17, 17, 0.2);
       background: var(--ghost-cream);
@@ -358,7 +366,7 @@
     }
 
     .ghost-sticker img {
-      width: 72px;
+      width: 61px;
       height: auto;
     }
 
@@ -400,12 +408,12 @@
       position: absolute;
       left: 22px;
       right: 22px;
-      bottom: 22px;
+      bottom: 16px;
       display: grid;
       grid-template-columns: 1fr auto;
       gap: 18px;
       align-items: end;
-      padding: 18px;
+      padding: 15px;
       border-radius: 8px;
       border: 1px solid rgba(255, 255, 255, 0.2);
       background: rgba(5, 5, 5, 0.76);
@@ -420,8 +428,8 @@
       font-size: 0.75rem;
     }
 
-    .product-float h2 { margin: 5px 0 0; font-size: clamp(1.2rem, 3vw, 2rem); }
-    .price { font-weight: 900; font-size: 1.35rem; white-space: nowrap; }
+    .product-float h2 { margin: 4px 0 0; font-size: clamp(1.1rem, 2.4vw, 1.65rem); }
+    .price { font-weight: 900; font-size: 1.2rem; white-space: nowrap; }
 
     .drop-switch {
       display: grid;
@@ -474,8 +482,8 @@
 
     .shop-filter-shell {
       display: grid;
-      gap: 18px;
-      margin-top: 18px;
+      gap: 12px;
+      margin-top: 12px;
     }
 
     .filter-bar {
@@ -516,13 +524,27 @@
       color: var(--muted);
       font-size: 0.9rem;
       font-weight: 800;
+      display: none;
     }
 
     .shop-results {
-      margin-top: 4px;
+      margin-top: 0;
     }
 
-    section { padding: 76px 0; }
+    section { padding: 68px 0; }
+    #shop { padding-top: 18px; }
+    #shop .section-head {
+      margin-bottom: 14px;
+    }
+
+    #shop .section-head h2 {
+      font-size: clamp(1.9rem, 4vw, 3.4rem);
+    }
+
+    #shop .section-head p {
+      max-width: 460px;
+      display: none;
+    }
     section .wrap {
       position: relative;
     }
@@ -1492,7 +1514,7 @@
       .nav-links { display: none; }
       .hero { min-height: auto; }
       .hero-grid, .story-band { grid-template-columns: 1fr; }
-      .hero-media { min-height: 440px; }
+      .hero-media { min-height: 360px; }
       section .wrap::before { display: none; }
       .product-card { grid-template-columns: 1fr; }
       .drop-grid, .color-grid, .detail-grid, .steps, .policy-grid, .media-layout, .media-grid, .ig-strip, .future-grid, .drop-switch, .obsession, .size-guide, .size-extra, .social-proof, .dm-grid, .proof-stack { grid-template-columns: 1fr; }
@@ -1508,9 +1530,10 @@
       .nav { min-height: 66px; }
       .nav-actions .shop-link { display: none; }
       h1 { font-size: clamp(2.75rem, 13vw, 3.3rem); }
-      section { padding: 56px 0; }
-      .hero { padding-top: 30px; }
-      .hero-media { min-height: 390px; }
+      section { padding: 48px 0; }
+      #shop { padding-top: 18px; }
+      .hero { padding-top: 22px; }
+      .hero-media { min-height: 310px; }
       .product-float { left: 12px; right: 12px; bottom: 12px; grid-template-columns: 1fr; }
       .proof, .options, .buy-row { grid-template-columns: 1fr; }
       .size-row { grid-template-columns: 1fr; gap: 6px; }
@@ -1561,11 +1584,10 @@
             <img src="./images/logo-ghost.png" alt="" />
             GhostWear RD / fantasma amigable
           </span>
-          <h1>Desaparece del basico. <span class="ghost-line">Aparece con Ghost.</span></h1>
+          <h1>Arma el fit Ghost. <span class="ghost-line">Drop activo RD.</span></h1>
           <p class="hero-copy">
-            Ropa urbana con flow de drop: shorts en 15 colores, medias, gorras
-            y hoodie para armar el fit completo. Lo pides por DM o WhatsApp,
-            te lo apartamos por transferencia y coordinamos en RD.
+            Shorts en 15 colores, medias, gorras y hoodie para pedir por DM
+            o WhatsApp. Te lo apartamos por transferencia y coordinamos en RD.
           </p>
           <div class="hero-actions">
             <button class="btn primary" id="heroLookBtn" type="button">Armar este fit</button>
