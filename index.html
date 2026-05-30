@@ -1070,6 +1070,7 @@
       </a>
       <nav class="nav-links" aria-label="Principal">
         <a href="#shop">Shop</a>
+        <a href="#combos">Combos</a>
         <a href="#drop">Shorts</a>
         <a href="#gear">Medias/Gear</a>
         <a href="#contenido">Contenido</a>
@@ -1129,6 +1130,24 @@
     <section id="shop">
       <div class="wrap">
         <div class="drop-switch" id="shopCards">
+        </div>
+      </div>
+    </section>
+
+    <section id="combos">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Sube el fit</span>
+            <h2>Combos Ghost</h2>
+          </div>
+          <p>
+            Packs pensados para vender mas rapido: agregas el combo, eliges talla
+            principal y el pedido sale armado por WhatsApp.
+          </p>
+        </div>
+
+        <div class="color-grid" id="comboGrid" aria-live="polite">
         </div>
       </div>
     </section>
@@ -1452,6 +1471,7 @@
     const heroFeature = document.getElementById("heroFeature");
     const heroPrice = document.getElementById("heroPrice");
     const shopCards = document.getElementById("shopCards");
+    const comboGrid = document.getElementById("comboGrid");
     const productGrid = document.getElementById("productGrid");
     const gearGrid = document.getElementById("gearGrid");
     const store = {
@@ -1544,8 +1564,53 @@
         quantities: ["1", "2"]
       }
     ];
-    const allProducts = [...products, ...gearProducts];
+    const comboProducts = [
+      {
+        tag: "Combo",
+        name: "Combo Short + Medias",
+        image: "./images/designed/ghostwear-designed-hero.jpg",
+        price: 1850,
+        priceLabel: "RD$ 1,850",
+        oldPrice: "RD$ 1,950",
+        note: "Incluye un short Ghost y un par de medias Ghost. Ahorras RD$ 100.",
+        swatch: "#d7ff3f",
+        sizes: ["S", "M", "L", "XL"],
+        quantities: ["1", "2"]
+      },
+      {
+        tag: "Combo",
+        name: "Combo Short + Gorra",
+        image: "./images/gear/ghostwear-caps.jpg",
+        price: 2950,
+        priceLabel: "RD$ 2,950",
+        oldPrice: "RD$ 3,100",
+        note: "Short Ghost + gorra Ghost. Combo facil para completar el look.",
+        swatch: "#2454ff",
+        sizes: ["S", "M", "L", "XL"],
+        quantities: ["1", "2"]
+      },
+      {
+        tag: "Full Fit",
+        name: "Full Ghost Fit",
+        image: "./images/gear/ghostwear-hoodie.jpg",
+        price: 4700,
+        priceLabel: "RD$ 4,700",
+        oldPrice: "RD$ 4,950",
+        note: "Short + hoodie + medias. El fit completo con descuento de RD$ 250.",
+        swatch: "#111111",
+        sizes: ["S", "M", "L", "XL"],
+        quantities: ["1"]
+      }
+    ];
+    const allProducts = [...products, ...gearProducts, ...comboProducts];
     const shopCollections = [
+      {
+        title: "Combos",
+        href: "#combos",
+        image: "./images/designed/ghostwear-designed-hero.jpg",
+        price: comboProducts[0].price,
+        note: "Packs listos para subir el fit."
+      },
       {
         title: "Shorts",
         href: "#drop",
@@ -1646,6 +1711,56 @@
           </a>
         `).join("")}
       `;
+    }
+
+    function renderCombos() {
+      comboGrid.innerHTML = comboProducts.map(product => `
+        <article class="card color-card" data-product-card>
+          <div class="color-img">
+            <img src="${product.image}" alt="${product.name}" loading="lazy" />
+            <span class="color-chip" style="background:${product.swatch}" aria-hidden="true"></span>
+          </div>
+          <div class="color-body">
+            <div>
+              <div class="badge-row">
+                <span class="badge">Ahorro</span>
+                <span class="badge">${product.tag}</span>
+              </div>
+              <div class="color-title">
+                <h3>${product.name}</h3>
+                <span>${product.priceLabel}</span>
+              </div>
+              <p>${product.note}</p>
+              <div class="sell-line">Precio normal ${product.oldPrice}</div>
+            </div>
+            <div>
+              <div class="options">
+                <label>Talla
+                  <select class="size">
+                    ${product.sizes.map((size, index) => `<option${index === 1 ? " selected" : ""}>${size}</option>`).join("")}
+                  </select>
+                </label>
+                <label>Cantidad
+                  <select class="qty">
+                    ${product.quantities.map((qty, index) => `<option${index === 0 ? " selected" : ""}>${qty}</option>`).join("")}
+                  </select>
+                </label>
+                <label>Entrega
+                  <select class="delivery">
+                    <option selected>Santo Domingo</option>
+                    <option>Interior RD</option>
+                    <option>Retiro</option>
+                  </select>
+                </label>
+              </div>
+              <div class="buy-row">
+                <button class="btn primary add" type="button" data-name="${product.name}" data-price="${product.price}">Agregar</button>
+                <button class="btn wa" type="button" data-name="${product.name}" data-price="${product.price}">WhatsApp</button>
+              </div>
+            </div>
+          </div>
+        </article>
+      `).join("");
     }
 
     function renderProducts() {
@@ -1820,6 +1935,7 @@ Sector / direccion:`;
     }
 
     renderStorefront();
+    renderCombos();
     renderProducts();
     renderGear();
 
