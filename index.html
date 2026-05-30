@@ -523,6 +523,24 @@
     }
 
     section { padding: 76px 0; }
+    section .wrap {
+      position: relative;
+    }
+
+    section .wrap::before {
+      content: "boo drop";
+      position: absolute;
+      right: 0;
+      top: -28px;
+      color: rgba(244, 241, 220, 0.08);
+      font-size: clamp(2.4rem, 7vw, 6rem);
+      font-weight: 950;
+      letter-spacing: 0;
+      line-height: 1;
+      text-transform: uppercase;
+      pointer-events: none;
+    }
+
     .section-head {
       display: flex;
       justify-content: space-between;
@@ -543,6 +561,11 @@
       margin: 12px 0 0;
       color: var(--muted);
       line-height: 1.65;
+    }
+
+    .section-kicker::before {
+      content: "GHOST / ";
+      color: var(--ghost-cream);
     }
 
     .drop-grid {
@@ -1241,7 +1264,7 @@
       grid-column: span 2;
       background-image:
         linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.82)),
-        url("./images/gear/ghostwear-caps.jpg");
+        url("./images/designed/ghostwear-caps-studio.png");
       background-size: cover;
       background-position: center;
     }
@@ -1470,6 +1493,7 @@
       .hero { min-height: auto; }
       .hero-grid, .story-band { grid-template-columns: 1fr; }
       .hero-media { min-height: 440px; }
+      section .wrap::before { display: none; }
       .product-card { grid-template-columns: 1fr; }
       .drop-grid, .color-grid, .detail-grid, .steps, .policy-grid, .media-layout, .media-grid, .ig-strip, .future-grid, .drop-switch, .obsession, .size-guide, .size-extra, .social-proof, .dm-grid, .proof-stack { grid-template-columns: 1fr; }
       .section-head { display: block; }
@@ -1658,7 +1682,7 @@
 
         <div class="media-layout">
           <article class="card media-feature">
-            <img src="./images/designed/ghostwear-designed-green.jpg" alt="Short GhostWear verde neon apilado dentro de caja" />
+            <img src="./images/designed/ghostwear-short-neon-green-studio.png" alt="Short GhostWear verde neon en foto de estudio limpia" />
             <div class="media-copy">
               <span class="section-kicker">Hero post</span>
               <h3>Color que jala vista</h3>
@@ -1667,28 +1691,28 @@
           </article>
 
           <div class="media-grid">
-            <article class="card media-card" style="background-image:url('./images/designed/ghostwear-designed-hero.jpg')">
+            <article class="card media-card" style="background-image:url('./images/designed/ghostwear-short-royal-blue-studio.png')">
               <span class="format-tag">Reel 9:16</span>
               <div>
                 <h3>Color punch</h3>
                 <p>Reel corto: caja, short, logo, precio y DM.</p>
               </div>
             </article>
-            <article class="card media-card" style="background-image:url('./images/media/ghostwear-media-13.jpg')">
+            <article class="card media-card" style="background-image:url('./images/designed/ghostwear-short-lavender-studio.png')">
               <span class="format-tag">Story</span>
               <div>
                 <h3>Encuesta de color</h3>
                 <p>Historias para medir demanda antes de que se acabe la talla.</p>
               </div>
             </article>
-            <article class="card media-card" style="background-image:url('./images/media/ghostwear-media-11.jpg')">
+            <article class="card media-card" style="background-image:url('./images/designed/ghostwear-socks-studio.png')">
               <span class="format-tag">Post 1:1</span>
               <div>
                 <h3>Producto limpio</h3>
                 <p>Feed claro para que el cliente compre sin descifrar.</p>
               </div>
             </article>
-            <article class="card media-card" style="background-image:url('./images/designed/ghostwear-designed-white.jpg')">
+            <article class="card media-card" style="background-image:url('./images/designed/ghostwear-short-white-studio.png')">
               <span class="format-tag">Carrusel</span>
               <div>
                 <h3>White essential</h3>
@@ -1699,14 +1723,14 @@
         </div>
 
         <div class="obsession">
-          <article class="card obsession-card" style="background-image:url('./images/designed/ghostwear-designed-hero.jpg')">
+          <article class="card obsession-card" style="background-image:url('./images/designed/ghostwear-short-royal-blue-studio.png')">
             <div>
               <span class="section-kicker">Por que compra</span>
               <h3>Porque se siente limitado.</h3>
             </div>
             <p>El cliente no ve un short suelto: ve color, paquete, drop y una marca que parece moverse.</p>
           </article>
-          <article class="card obsession-card" style="background-image:url('./images/gear/ghostwear-hoodie.jpg')">
+          <article class="card obsession-card" style="background-image:url('./images/designed/ghostwear-hoodie-studio.png')">
             <div>
               <span class="section-kicker">Como se vende</span>
               <h3>DM directo. Precio claro.</h3>
@@ -2078,13 +2102,13 @@
       { color: "Aqua", name: "Short Ghost Aqua", image: "./images/media/ghostwear-media-06.jpg", hex: "#54ded1", note: "Aqua claro para dias de calor y fits frescos." },
       { color: "Sky Blue", name: "Short Ghost Sky Blue", image: "./images/media/ghostwear-media-07.jpg", hex: "#35a7df", note: "Azul cielo con vibra deportiva." },
       { color: "Pink", name: "Short Ghost Pink", image: "./images/media/ghostwear-media-08.jpg", hex: "#ff4f86", note: "Pink intenso para un drop con actitud." },
-      { color: "Neon Green", name: "Short Ghost Neon Green", image: "./images/designed/ghostwear-designed-green.jpg", hex: "#83f13a", note: "Verde neon, el color mas llamativo del drop." },
+      { color: "Neon Green", name: "Short Ghost Neon Green", image: "./images/media/ghostwear-media-09.jpg", hex: "#83f13a", note: "Verde neon, el color mas llamativo del drop." },
       { color: "Royal Blue", name: "Short Ghost Royal Blue", image: "./images/media/ghostwear-media-10.jpg", hex: "#2454ff", note: "Azul royal con energia street." },
       { color: "Yellow", name: "Short Ghost Yellow", image: "./images/media/ghostwear-media-11.jpg", hex: "#f4c21c", note: "Amarillo limpio para verano y contenido." },
       { color: "Navy", name: "Short Ghost Navy", image: "./images/media/ghostwear-media-12.jpg", hex: "#202a64", note: "Azul navy oscuro, serio y combinable." },
       { color: "Lavender", name: "Short Ghost Lavender", image: "./images/media/ghostwear-media-13.jpg", hex: "#c8afe6", note: "Lavender suave para un fit diferente." },
       { color: "Black", name: "Short Ghost Black", image: "./images/media/ghostwear-media-14.jpg", hex: "#111111", note: "Negro esencial, logo en blanco y uso diario." },
-      { color: "White", name: "Short Ghost White", image: "./images/designed/ghostwear-designed-white.jpg", hex: "#f4f1e8", note: "Blanco fresco con cordon negro." }
+      { color: "White", name: "Short Ghost White", image: "./images/media/ghostwear-media-15.jpg", hex: "#f4f1e8", note: "Blanco fresco con cordon negro." }
     ].map(product => ({
       ...product,
       tag: product.color,
@@ -2134,7 +2158,8 @@
       {
         tag: "Hoodie",
         name: "Hoodie Ghost Black",
-        image: "./images/gear/ghostwear-hoodie.jpg",
+        image: "./images/designed/ghostwear-hoodie-studio.png",
+        realImage: "./images/gear/ghostwear-hoodie.jpg",
         price: 3000,
         priceLabel: "RD$ 3,000",
         note: "Hoodie negro con logo Ghost grande, bolsillo frontal y fit comodo.",
@@ -2151,7 +2176,7 @@
       {
         tag: "Combo",
         name: "Combo Short + Medias",
-        image: "./images/designed/ghostwear-designed-hero.jpg",
+        image: "./images/designed/ghostwear-short-royal-blue-studio.png",
         price: 1850,
         priceLabel: "RD$ 1,850",
         oldPrice: "RD$ 1,950",
@@ -2163,7 +2188,7 @@
       {
         tag: "Combo",
         name: "Combo Short + Gorra",
-        image: "./images/gear/ghostwear-caps.jpg",
+        image: "./images/designed/ghostwear-caps-studio.png",
         price: 2950,
         priceLabel: "RD$ 2,950",
         oldPrice: "RD$ 3,100",
@@ -2175,7 +2200,7 @@
       {
         tag: "Full Fit",
         name: "Full Ghost Fit",
-        image: "./images/gear/ghostwear-hoodie.jpg",
+        image: "./images/designed/ghostwear-hoodie-studio.png",
         price: 4700,
         priceLabel: "RD$ 4,700",
         oldPrice: "RD$ 4,950",
@@ -2260,7 +2285,7 @@
       { label: "Logo", src: "./images/gear/ghostwear-caps.jpg", view: "detail" }
     ];
     comboProducts[2].photos = [
-      { label: "Hoodie", src: "./images/gear/ghostwear-hoodie.jpg", view: "clean" },
+      { label: "Hoodie", src: "./images/designed/ghostwear-hoodie-studio.png", view: "clean" },
       { label: "Short", src: "./images/designed/ghostwear-short-royal-blue-studio.png", view: "real" },
       { label: "Medias", src: "./images/designed/ghostwear-socks-studio.png", view: "real" }
     ];
@@ -2282,14 +2307,14 @@
       {
         title: "Gorras",
         href: "#gear",
-        image: "./images/gear/ghostwear-caps.jpg",
+        image: "./images/designed/ghostwear-caps-studio.png",
         price: gearProducts.find(product => product.name.includes("Gorra")).price,
         note: "Colorways de feed."
       },
       {
         title: "Medias",
         href: "#gear",
-        image: "./images/ghostwear-socks-real.jpg",
+        image: "./images/designed/ghostwear-socks-studio.png",
         price: gearProducts.find(product => product.name === "Medias Ghost").price,
         note: `3 pares por ${gearProducts.find(product => product.name.includes("Pack")).priceLabel}.`
       }
