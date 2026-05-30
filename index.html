@@ -68,16 +68,18 @@
       font-weight: 900;
       letter-spacing: 0.08em;
       text-transform: uppercase;
+      flex-shrink: 0;
     }
 
     .brand img { width: 48px; height: 48px; object-fit: contain; }
-    .nav-links { display: flex; align-items: center; gap: 22px; color: var(--muted); font-size: 0.9rem; }
+    .nav-links { display: flex; align-items: center; gap: 22px; margin-left: 22px; color: var(--muted); font-size: 0.9rem; }
     .nav-links a:hover { color: var(--ink); }
 
     .nav-actions {
       display: flex;
       align-items: center;
       gap: 10px;
+      flex-shrink: 0;
     }
 
     .btn {
@@ -954,7 +956,7 @@
     .total-row strong { font-size: 1.35rem; }
     .note { color: var(--muted); font-size: 0.82rem; line-height: 1.5; }
 
-    @media (max-width: 900px) {
+    @media (max-width: 1020px) {
       .nav-links { display: none; }
       .hero { min-height: auto; }
       .hero-grid, .story-band { grid-template-columns: 1fr; }
@@ -995,9 +997,9 @@
       </a>
       <nav class="nav-links" aria-label="Principal">
         <a href="#shop">Shop</a>
-        <a href="#drop">Drop</a>
-        <a href="#media">Media</a>
-        <a href="#proximos">Proximos</a>
+        <a href="#drop">Shorts</a>
+        <a href="#gear">Medias/Gear</a>
+        <a href="#contenido">Contenido</a>
         <a href="#fit">Fit</a>
         <a href="#pedido">Pedido</a>
         <a href="#contacto">Contacto</a>
@@ -1075,11 +1077,12 @@
       </div>
     </section>
 
-    <section id="media">
+    <section id="contenido">
+      <span id="media" aria-hidden="true"></span>
       <div class="wrap">
         <div class="section-head">
           <div>
-            <span class="section-kicker">Media pack</span>
+            <span class="section-kicker">Contenido para redes</span>
             <h2>Visuales que provocan DM</h2>
           </div>
           <p>
@@ -1149,7 +1152,7 @@
       </div>
     </section>
 
-    <section id="proximos">
+    <section id="gear">
       <div class="wrap">
         <div class="section-head">
           <div>
@@ -1412,14 +1415,14 @@
       },
       {
         title: "Gorras",
-        href: "#proximos",
+        href: "#gear",
         image: "./images/gear/ghostwear-caps.jpg",
         price: gearProducts.find(product => product.name.includes("Gorra")).price,
         note: "Colorways de feed."
       },
       {
         title: "Medias",
-        href: "#proximos",
+        href: "#gear",
         image: "./images/ghostwear-socks-real.jpg",
         price: gearProducts.find(product => product.name === "Medias Ghost").price,
         note: `3 pares por ${gearProducts.find(product => product.name.includes("Pack")).priceLabel}.`
