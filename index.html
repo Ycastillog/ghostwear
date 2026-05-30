@@ -116,6 +116,10 @@
     .btn.primary:hover { background: #e2ff67; }
     .btn.full { width: 100%; }
     .btn.danger { color: var(--danger); }
+    .btn.ig-link {
+      border-color: rgba(246, 243, 238, 0.22);
+      background: rgba(255, 255, 255, 0.055);
+    }
 
     .btn.primary::before {
       content: "BOO";
@@ -1686,6 +1690,10 @@
       text-transform: lowercase;
     }
 
+    @media (max-width: 1240px) {
+      .nav-actions .ig-link { display: none; }
+    }
+
     @media (max-width: 1020px) {
       .nav-links { display: none; }
       .hero { min-height: auto; }
@@ -1705,7 +1713,8 @@
       .wrap { width: min(100% - 24px, var(--max)); }
       .brand span { display: none; }
       .nav { min-height: 66px; }
-      .nav-actions .shop-link { display: none; }
+      .nav-actions .shop-link,
+      .nav-actions .ig-link { display: none; }
       h1 { font-size: clamp(2.75rem, 13vw, 3.3rem); }
       section { padding: 48px 0; }
       #shop { padding-top: 18px; }
@@ -1745,6 +1754,7 @@
         <a href="#contacto">Contacto</a>
       </nav>
       <div class="nav-actions">
+        <a class="btn ig-link" href="https://www.instagram.com/ghostwear1/" target="_blank" rel="noopener">Ver Instagram</a>
         <button class="btn" id="cartBtn" type="button" aria-controls="drawer">
           Carrito <span class="cart-count" id="cartCount">0</span>
         </button>
@@ -1769,6 +1779,7 @@
           <div class="hero-actions">
             <button class="btn primary" id="heroLookBtn" type="button">Armar este fit</button>
             <a class="btn" href="#shop">Ver shop</a>
+            <a class="btn ig-link" href="https://www.instagram.com/ghostwear1/" target="_blank" rel="noopener">Ver Instagram</a>
             <button class="btn" id="heroCartBtn" type="button">Abrir carrito</button>
           </div>
           <div class="hero-note">
@@ -1976,6 +1987,7 @@
               </div>
             </div>
             <p>Tienda virtual RD. Te lo apartamos por transferencia. Envios nacionales.</p>
+            <a class="btn ig-link" href="https://www.instagram.com/ghostwear1/" target="_blank" rel="noopener">Ver Instagram</a>
           </article>
           <article class="card ig-stat">
             <strong>17</strong>
@@ -2019,6 +2031,7 @@
                 WhatsApp y confirma talla, color y entrega.
               </p>
             </div>
+            <a class="btn ig-link" href="https://www.instagram.com/ghostwear1/" target="_blank" rel="noopener">Ver Instagram</a>
             <div class="proof-stack">
               <div class="proof-pill">
                 <strong>2,151</strong>
