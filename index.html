@@ -936,11 +936,11 @@
         <div class="section-head">
           <div>
             <span class="section-kicker">GhostWear Instagram</span>
-            <h2>Mas que shorts</h2>
+            <h2>Otros productos</h2>
           </div>
           <p>
-            La tienda puede crecer como el feed: gorras, tees, hoodies y medias
-            con el mismo lenguaje grafico Ghost.
+            La tienda ya puede vender como el feed: medias, gorras y hoodies
+            con precios claros y pedido directo por WhatsApp.
           </p>
         </div>
 
@@ -969,34 +969,7 @@
           </article>
         </div>
 
-        <div class="future-grid">
-          <article class="card future-card">
-            <img src="./images/ghostwear-socks-mockup.jpg" alt="Mockup de medias GhostWear blancas con franjas rojas y negras" />
-          </article>
-          <article class="card concept-card">
-            <span class="badge">Diseno media</span>
-            <div class="concept-visual">Socks</div>
-            <div>
-              <h3>Medias Ghost</h3>
-              <p>Ribbed crew socks en blanco con franjas roja/negra y logo Ghost al tobillo.</p>
-            </div>
-          </article>
-          <article class="card concept-card">
-            <span class="badge">Proximo drop</span>
-            <div class="concept-visual">Caps</div>
-            <div>
-              <h3>Gorras</h3>
-              <p>Blanco/rojo, blanco/negro y gris con logo frontal para combinar con shorts.</p>
-            </div>
-          </article>
-          <article class="card concept-card">
-            <span class="badge">Proximo drop</span>
-            <div class="concept-visual">Tees</div>
-            <div>
-              <h3>Tees & Hoodies</h3>
-              <p>Graficos grandes para feed y piezas basicas con logo minimal para venta diaria.</p>
-            </div>
-          </article>
+        <div class="color-grid" id="gearGrid" aria-live="polite">
         </div>
       </div>
     </section>
@@ -1113,6 +1086,7 @@
     const checkoutBtn = document.getElementById("checkoutBtn");
     const clearBtn = document.getElementById("clearBtn");
     const productGrid = document.getElementById("productGrid");
+    const gearGrid = document.getElementById("gearGrid");
     const products = [
       { color: "Red", name: "Short Ghost Red", image: "./images/media/ghostwear-media-01.jpg", hex: "#d71925", note: "Rojo fuerte para looks de playa, gym y calle." },
       { color: "Baby Blue", name: "Short Ghost Baby Blue", image: "./images/media/ghostwear-media-02.jpg", hex: "#a7d8ff", note: "Azul claro fresco con contraste negro." },
@@ -1129,6 +1103,52 @@
       { color: "Lavender", name: "Short Ghost Lavender", image: "./images/media/ghostwear-media-13.jpg", hex: "#c8afe6", note: "Lavender suave para un fit diferente." },
       { color: "Black", name: "Short Ghost Black", image: "./images/media/ghostwear-media-14.jpg", hex: "#111111", note: "Negro esencial, logo en blanco y uso diario." },
       { color: "White", name: "Short Ghost White", image: "./images/designed/ghostwear-designed-white.jpg", hex: "#f4f1e8", note: "Blanco fresco con cordon negro." }
+    ];
+    const gearProducts = [
+      {
+        tag: "Medias",
+        name: "Medias Ghost",
+        image: "./images/ghostwear-socks-mockup.jpg",
+        price: 350,
+        priceLabel: "RD$ 350",
+        note: "Par de medias Ghost. Tambien disponible 3 pares por RD$ 1,000.",
+        swatch: "#f6f3ee",
+        sizes: ["Unica"],
+        quantities: ["1", "2", "3"]
+      },
+      {
+        tag: "Pack",
+        name: "Pack 3 Medias Ghost",
+        image: "./images/ghostwear-socks-mockup.jpg",
+        price: 1000,
+        priceLabel: "RD$ 1,000",
+        note: "Oferta de historia: tres pares para completar el fit.",
+        swatch: "#d7ff3f",
+        sizes: ["Unica"],
+        quantities: ["1", "2"]
+      },
+      {
+        tag: "Gorras",
+        name: "Gorra Ghost",
+        image: "./images/gear/ghostwear-caps.jpg",
+        price: 1500,
+        priceLabel: "RD$ 1,500",
+        note: "Colorways negro, gris, blanco/azul y blanco/rojo con logo frontal.",
+        swatch: "#d9d9d9",
+        sizes: ["Unica"],
+        quantities: ["1", "2", "3"]
+      },
+      {
+        tag: "Hoodie",
+        name: "Hoodie Ghost Black",
+        image: "./images/gear/ghostwear-hoodie.jpg",
+        price: 3000,
+        priceLabel: "RD$ 3,000",
+        note: "Hoodie negro con logo Ghost grande, bolsillo frontal y fit comodo.",
+        swatch: "#111111",
+        sizes: ["S", "M", "L", "XL"],
+        quantities: ["1", "2"]
+      }
     ];
     let cart = [];
 
@@ -1221,6 +1241,55 @@
       `).join("");
     }
 
+    function renderGear() {
+      gearGrid.innerHTML = gearProducts.map(product => `
+        <article class="card color-card" data-product-card>
+          <div class="color-img">
+            <img src="${product.image}" alt="${product.name}" loading="lazy" />
+            <span class="color-chip" style="background:${product.swatch}" aria-hidden="true"></span>
+          </div>
+          <div class="color-body">
+            <div>
+              <div class="badge-row">
+                <span class="badge">En stock</span>
+                <span class="badge">${product.tag}</span>
+              </div>
+              <div class="color-title">
+                <h3>${product.name}</h3>
+                <span>${product.priceLabel}</span>
+              </div>
+              <p>${product.note}</p>
+            </div>
+            <div>
+              <div class="options">
+                <label>Talla
+                  <select class="size">
+                    ${product.sizes.map((size, index) => `<option${index === 0 ? " selected" : ""}>${size}</option>`).join("")}
+                  </select>
+                </label>
+                <label>Cantidad
+                  <select class="qty">
+                    ${product.quantities.map((qty, index) => `<option${index === 0 ? " selected" : ""}>${qty}</option>`).join("")}
+                  </select>
+                </label>
+                <label>Entrega
+                  <select class="delivery">
+                    <option selected>Santo Domingo</option>
+                    <option>Interior RD</option>
+                    <option>Retiro</option>
+                  </select>
+                </label>
+              </div>
+              <div class="buy-row">
+                <button class="btn primary add" type="button" data-name="${product.name}" data-price="${product.price}">Agregar</button>
+                <button class="btn wa" type="button" data-name="${product.name}" data-price="${product.price}">WhatsApp</button>
+              </div>
+            </div>
+          </div>
+        </article>
+      `).join("");
+    }
+
     function itemKey(item) {
       return [item.name, item.size, item.delivery].join("|");
     }
@@ -1293,6 +1362,7 @@ Sector / direccion:`;
     }
 
     renderProducts();
+    renderGear();
 
     document.querySelectorAll(".add").forEach(button => {
       button.addEventListener("click", () => addItem(getChoice(button)));
