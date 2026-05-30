@@ -601,6 +601,76 @@
       gap: 18px;
     }
 
+    .size-guide {
+      display: grid;
+      grid-template-columns: 0.78fr 1.22fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .size-note {
+      padding: clamp(22px, 4vw, 38px);
+      position: sticky;
+      top: 96px;
+    }
+
+    .size-note h2 {
+      margin: 8px 0 0;
+      font-size: clamp(2rem, 5vw, 4rem);
+      line-height: 0.95;
+      text-transform: uppercase;
+    }
+
+    .size-note p {
+      color: var(--muted);
+      line-height: 1.7;
+      margin: 16px 0 0;
+    }
+
+    .size-table {
+      display: grid;
+      gap: 10px;
+    }
+
+    .size-row {
+      display: grid;
+      grid-template-columns: 0.55fr 1fr 1fr 1.2fr;
+      gap: 12px;
+      align-items: center;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .size-row.header {
+      color: var(--accent);
+      font-size: 0.76rem;
+      font-weight: 950;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(215, 255, 63, 0.07);
+    }
+
+    .size-row strong {
+      font-size: 1.4rem;
+      line-height: 1;
+    }
+
+    .size-row span {
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .size-extra {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .size-extra .detail-card { min-height: 100%; }
+
     .media-layout {
       display: grid;
       grid-template-columns: minmax(260px, 0.85fr) minmax(0, 1.15fr);
@@ -962,9 +1032,10 @@
       .hero-grid, .story-band { grid-template-columns: 1fr; }
       .hero-media { min-height: 440px; }
       .product-card { grid-template-columns: 1fr; }
-      .drop-grid, .color-grid, .detail-grid, .steps, .media-layout, .media-grid, .ig-strip, .future-grid, .drop-switch, .obsession { grid-template-columns: 1fr; }
+      .drop-grid, .color-grid, .detail-grid, .steps, .media-layout, .media-grid, .ig-strip, .future-grid, .drop-switch, .obsession, .size-guide, .size-extra { grid-template-columns: 1fr; }
       .section-head { display: block; }
       .media-feature { min-height: 520px; }
+      .size-note { position: static; }
     }
 
     @media (max-width: 620px) {
@@ -978,6 +1049,8 @@
       .hero-media { min-height: 390px; }
       .product-float { left: 12px; right: 12px; bottom: 12px; grid-template-columns: 1fr; }
       .proof, .options, .buy-row { grid-template-columns: 1fr; }
+      .size-row { grid-template-columns: 1fr; gap: 6px; }
+      .size-row.header { display: none; }
       .announce-track { justify-content: flex-start; padding-left: 12px; }
       .announce-track span:nth-child(n+3) { display: none; }
     }
@@ -1000,6 +1073,7 @@
         <a href="#drop">Shorts</a>
         <a href="#gear">Medias/Gear</a>
         <a href="#contenido">Contenido</a>
+        <a href="#tallas">Tallas</a>
         <a href="#fit">Fit</a>
         <a href="#pedido">Pedido</a>
         <a href="#contacto">Contacto</a>
@@ -1191,6 +1265,72 @@
         </div>
 
         <div class="color-grid" id="gearGrid" aria-live="polite">
+        </div>
+      </div>
+    </section>
+
+    <section id="tallas">
+      <div class="wrap size-guide">
+        <article class="card size-note">
+          <span class="section-kicker">Guia de tallas</span>
+          <h2>Elige sin adivinar.</h2>
+          <p>
+            Usa esta guia como referencia rapida para shorts y hoodie. Si estas
+            entre dos tallas, elige la mas grande para un fit mas comodo.
+          </p>
+          <div class="hero-note">
+            <span>Shorts elasticos</span>
+            <span>Hoodie fit comodo</span>
+            <span>Medias talla unica</span>
+          </div>
+        </article>
+
+        <div>
+          <div class="size-table" aria-label="Guia de tallas para GhostWear">
+            <div class="size-row header">
+              <span>Talla</span>
+              <span>Cintura aprox.</span>
+              <span>Peso aprox.</span>
+              <span>Recomendacion</span>
+            </div>
+            <div class="size-row">
+              <strong>S</strong>
+              <span>28 - 30 in</span>
+              <span>100 - 130 lb</span>
+              <span>Fit mas ajustado o cuerpo delgado.</span>
+            </div>
+            <div class="size-row">
+              <strong>M</strong>
+              <span>31 - 33 in</span>
+              <span>130 - 165 lb</span>
+              <span>La talla mas comun para uso diario.</span>
+            </div>
+            <div class="size-row">
+              <strong>L</strong>
+              <span>34 - 36 in</span>
+              <span>165 - 200 lb</span>
+              <span>Fit comodo con mas espacio para moverte.</span>
+            </div>
+            <div class="size-row">
+              <strong>XL</strong>
+              <span>37 - 40 in</span>
+              <span>200 - 240 lb</span>
+              <span>Mas relajado, ideal si prefieres holgura.</span>
+            </div>
+          </div>
+
+          <div class="size-extra">
+            <article class="card detail-card">
+              <span class="section-kicker">Shorts</span>
+              <h3>Cintura elastica</h3>
+              <p>El cordon ayuda a ajustar. Si quieres que caiga mas suelto, sube una talla.</p>
+            </article>
+            <article class="card detail-card">
+              <span class="section-kicker">Hoodie</span>
+              <h3>Fit comodo</h3>
+              <p>Para un look oversized, pide una talla arriba de tu talla normal.</p>
+            </article>
+          </div>
         </div>
       </div>
     </section>
