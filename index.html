@@ -962,6 +962,140 @@
       font-size: 0.8rem;
     }
 
+    .social-proof {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.95fr) minmax(0, 1.05fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .proof-panel {
+      padding: clamp(24px, 4vw, 42px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 28px;
+      min-height: 420px;
+      background:
+        linear-gradient(140deg, rgba(215, 255, 63, 0.14), rgba(255, 255, 255, 0.025) 42%),
+        rgba(255, 255, 255, 0.035);
+    }
+
+    .proof-panel h2 {
+      margin: 8px 0 0;
+      font-size: clamp(2.2rem, 6vw, 5.6rem);
+      line-height: 0.9;
+      text-transform: uppercase;
+    }
+
+    .proof-panel p {
+      max-width: 520px;
+      margin: 14px 0 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .proof-stack {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .proof-pill {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    .proof-pill strong {
+      display: block;
+      font-size: clamp(1.3rem, 3vw, 2.2rem);
+      line-height: 1;
+    }
+
+    .proof-pill span {
+      display: block;
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 850;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .dm-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .dm-card {
+      min-height: 200px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .dm-card.featured {
+      min-height: 260px;
+      grid-column: span 2;
+      background-image:
+        linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.82)),
+        url("./images/gear/ghostwear-caps.jpg");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .dm-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 850;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .dm-dot {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--accent);
+      color: var(--accent-ink);
+      font-weight: 950;
+      letter-spacing: 0;
+    }
+
+    .dm-card h3 {
+      margin: 0;
+      font-size: clamp(1.35rem, 3vw, 2.15rem);
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .dm-card p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .dm-bubble {
+      align-self: flex-start;
+      max-width: 92%;
+      border-radius: 18px 18px 18px 4px;
+      padding: 12px 14px;
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text);
+      line-height: 1.45;
+      border: 1px solid var(--line);
+    }
+
     .future-grid {
       display: grid;
       grid-template-columns: minmax(280px, 1fr) repeat(3, minmax(0, 0.75fr));
@@ -1140,9 +1274,10 @@
       .hero-grid, .story-band { grid-template-columns: 1fr; }
       .hero-media { min-height: 440px; }
       .product-card { grid-template-columns: 1fr; }
-      .drop-grid, .color-grid, .detail-grid, .steps, .media-layout, .media-grid, .ig-strip, .future-grid, .drop-switch, .obsession, .size-guide, .size-extra { grid-template-columns: 1fr; }
+      .drop-grid, .color-grid, .detail-grid, .steps, .media-layout, .media-grid, .ig-strip, .future-grid, .drop-switch, .obsession, .size-guide, .size-extra, .social-proof, .dm-grid, .proof-stack { grid-template-columns: 1fr; }
       .section-head { display: block; }
       .media-feature { min-height: 520px; }
+      .dm-card.featured { grid-column: auto; }
       .size-note { position: static; }
     }
 
@@ -1182,6 +1317,7 @@
         <a href="#drop">Shorts</a>
         <a href="#gear">Medias/Gear</a>
         <a href="#contenido">Contenido</a>
+        <a href="#prueba-social">Prueba</a>
         <a href="#tallas">Tallas</a>
         <a href="#fit">Fit</a>
         <a href="#pedido">Pedido</a>
@@ -1415,6 +1551,83 @@
         </div>
 
         <div class="color-grid" id="gearGrid" aria-live="polite">
+        </div>
+      </div>
+    </section>
+
+    <section id="prueba-social">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Prueba social</span>
+            <h2>La tienda ya se mueve.</h2>
+          </div>
+          <p>
+            Antes de comprar, la gente quiere ver senales claras: seguidores,
+            pedidos por DM, pagos simples y envios nacionales.
+          </p>
+        </div>
+
+        <div class="social-proof">
+          <article class="card proof-panel">
+            <div>
+              <span class="section-kicker">@ghostwear1</span>
+              <h2>2,151 seguidores en Instagram</h2>
+              <p>
+                GhostWear vive como tienda virtual: el cliente ve el drop,
+                pregunta por DM o WhatsApp y confirma talla, color y entrega.
+              </p>
+            </div>
+            <div class="proof-stack">
+              <div class="proof-pill">
+                <strong>2,151</strong>
+                <span>seguidores</span>
+              </div>
+              <div class="proof-pill">
+                <strong>DM</strong>
+                <span>pedidos</span>
+              </div>
+              <div class="proof-pill">
+                <strong>RD</strong>
+                <span>envios nacionales</span>
+              </div>
+            </div>
+          </article>
+
+          <div class="dm-grid">
+            <article class="card dm-card featured">
+              <div class="dm-top">
+                <span class="dm-dot">GW</span>
+                <span>Captura de feed</span>
+              </div>
+              <div>
+                <h3>Productos que ya parecen post.</h3>
+                <p>Gorras, shorts, medias y hoodie con precio claro para cerrar rapido por mensaje.</p>
+              </div>
+            </article>
+            <article class="card dm-card">
+              <div class="dm-top">
+                <span class="dm-dot">DM</span>
+                <span>Pedido por mensaje</span>
+              </div>
+              <div class="dm-bubble">Tienen short azul M y medias disponibles?</div>
+              <div>
+                <h3>Respuesta rapida</h3>
+                <p>El carrito arma el texto con producto, talla, cantidad y sector.</p>
+              </div>
+            </article>
+            <article class="card dm-card">
+              <div class="dm-top">
+                <span class="dm-dot">RD</span>
+                <span>Entrega nacional</span>
+              </div>
+              <div class="dm-bubble">Me lo envian al interior?</div>
+              <div>
+                <h3>Envios nacionales</h3>
+                <p>La compra deja claro si es Santo Domingo, interior RD o retiro.</p>
+              </div>
+            </article>
+          </div>
         </div>
       </div>
     </section>
