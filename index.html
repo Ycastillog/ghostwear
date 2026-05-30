@@ -542,6 +542,64 @@
 
     .color-card:hover .color-img img { transform: scale(1.035); }
 
+    .color-img[data-view="clean"] img {
+      object-fit: contain;
+      padding: 18px;
+      background: radial-gradient(circle at 50% 38%, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0));
+    }
+
+    .color-img[data-view="detail"] img {
+      transform: scale(1.78);
+      transform-origin: 72% 76%;
+    }
+
+    .color-card:hover .color-img[data-view="detail"] img { transform: scale(1.86); }
+
+    .photo-label {
+      position: absolute;
+      right: 12px;
+      bottom: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 999px;
+      padding: 7px 10px;
+      background: rgba(0, 0, 0, 0.58);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      backdrop-filter: blur(10px);
+    }
+
+    .photo-tabs {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.03);
+      border-top: 1px solid var(--line);
+    }
+
+    .photo-tab {
+      min-height: 36px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--muted);
+      font: inherit;
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .photo-tab.active {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #080808;
+    }
+
     .color-chip {
       position: absolute;
       top: 12px;
@@ -1690,6 +1748,41 @@
     products.forEach(product => {
       product.category = "shorts";
     });
+    const cleanShortImages = {
+      "Neon Green": "./images/designed/ghostwear-designed-green.jpg",
+      "Royal Blue": "./images/designed/ghostwear-designed-hero.jpg",
+      "White": "./images/designed/ghostwear-designed-white.jpg"
+    };
+    products.forEach(product => {
+      const cleanImage = cleanShortImages[product.color] || product.image;
+      product.photos = [
+        { label: "Real", src: product.image, view: "real" },
+        { label: "Limpia", src: cleanImage, view: cleanImage === product.image ? "real" : "clean" },
+        { label: "Logo", src: product.image, view: "detail" }
+      ];
+    });
+    gearProducts.forEach(product => {
+      product.photos = [
+        { label: "Real", src: product.image, view: "real" },
+        { label: "Limpia", src: product.image, view: product.category === "medias" ? "real" : "clean" },
+        { label: "Logo", src: product.image, view: "detail" }
+      ];
+    });
+    comboProducts[0].photos = [
+      { label: "Short", src: "./images/designed/ghostwear-designed-hero.jpg", view: "real" },
+      { label: "Medias", src: "./images/ghostwear-socks-real.jpg", view: "real" },
+      { label: "Logo", src: "./images/media/ghostwear-media-10.jpg", view: "detail" }
+    ];
+    comboProducts[1].photos = [
+      { label: "Short", src: "./images/designed/ghostwear-designed-hero.jpg", view: "real" },
+      { label: "Gorra", src: "./images/gear/ghostwear-caps.jpg", view: "clean" },
+      { label: "Logo", src: "./images/gear/ghostwear-caps.jpg", view: "detail" }
+    ];
+    comboProducts[2].photos = [
+      { label: "Hoodie", src: "./images/gear/ghostwear-hoodie.jpg", view: "clean" },
+      { label: "Short", src: "./images/designed/ghostwear-designed-hero.jpg", view: "real" },
+      { label: "Medias", src: "./images/ghostwear-socks-real.jpg", view: "real" }
+    ];
     const shopCollections = [
       {
         title: "Combos",
@@ -1763,12 +1856,26 @@
       const tag = options.tag || product.tag || product.category;
       const selectedSize = options.selectedSize ?? (product.sizes.length > 1 ? 1 : 0);
       const sellLine = options.sellLine || (product.oldPrice ? `Precio normal ${product.oldPrice}` : "Agrega y manda por WhatsApp");
+      const photos = product.photos || [{ label: "Real", src: product.image, view: "real" }];
+      const primaryPhoto = photos[0];
 
       return `
         <article class="card color-card" data-product-card data-category="${product.category}">
-          <div class="color-img">
-            <img src="${product.image}" alt="${product.name}" loading="lazy" />
+          <div class="color-img" data-view="${primaryPhoto.view}">
+            <img src="${primaryPhoto.src}" alt="${product.name} - ${primaryPhoto.label}" loading="lazy" />
             <span class="color-chip" style="background:${swatch}" aria-hidden="true"></span>
+            <span class="photo-label">${primaryPhoto.label}</span>
+          </div>
+          <div class="photo-tabs" aria-label="Fotos de ${product.name}">
+            ${photos.map((photo, index) => `
+              <button
+                class="photo-tab${index === 0 ? " active" : ""}"
+                type="button"
+                data-photo-src="${photo.src}"
+                data-photo-label="${photo.label}"
+                data-photo-view="${photo.view}"
+              >${photo.label}</button>
+            `).join("")}
           </div>
           <div class="color-body">
             <div>
@@ -1875,153 +1982,28 @@
     }
 
     function renderCombos() {
-      comboGrid.innerHTML = comboProducts.map(product => `
-        <article class="card color-card" data-product-card>
-          <div class="color-img">
-            <img src="${product.image}" alt="${product.name}" loading="lazy" />
-            <span class="color-chip" style="background:${product.swatch}" aria-hidden="true"></span>
-          </div>
-          <div class="color-body">
-            <div>
-              <div class="badge-row">
-                <span class="badge">Ahorro</span>
-                <span class="badge">${product.tag}</span>
-              </div>
-              <div class="color-title">
-                <h3>${product.name}</h3>
-                <span>${product.priceLabel}</span>
-              </div>
-              <p>${product.note}</p>
-              <div class="sell-line">Precio normal ${product.oldPrice}</div>
-            </div>
-            <div>
-              <div class="options">
-                <label>Talla
-                  <select class="size">
-                    ${product.sizes.map((size, index) => `<option${index === 1 ? " selected" : ""}>${size}</option>`).join("")}
-                  </select>
-                </label>
-                <label>Cantidad
-                  <select class="qty">
-                    ${product.quantities.map((qty, index) => `<option${index === 0 ? " selected" : ""}>${qty}</option>`).join("")}
-                  </select>
-                </label>
-                <label>Entrega
-                  <select class="delivery">
-                    <option selected>Santo Domingo</option>
-                    <option>Interior RD</option>
-                    <option>Retiro</option>
-                  </select>
-                </label>
-              </div>
-              <div class="buy-row">
-                <button class="btn primary add" type="button" data-name="${product.name}" data-price="${product.price}">Agregar</button>
-                <button class="btn wa" type="button" data-name="${product.name}" data-price="${product.price}">WhatsApp</button>
-              </div>
-            </div>
-          </div>
-        </article>
-      `).join("");
+      comboGrid.innerHTML = comboProducts.map(product => productCard(product, {
+        badge: "Ahorro",
+        tag: product.tag,
+        sellLine: `Precio normal ${product.oldPrice}`
+      })).join("");
     }
 
     function renderProducts() {
-      productGrid.innerHTML = products.map(product => `
-        <article class="card color-card" data-product-card>
-          <div class="color-img">
-            <img src="${product.image}" alt="${product.name}" loading="lazy" />
-            <span class="color-chip" style="background:${product.hex}" aria-hidden="true"></span>
-          </div>
-          <div class="color-body">
-            <div>
-              <div class="badge-row">
-                <span class="badge">En stock</span>
-                <span class="badge">${product.color}</span>
-              </div>
-              <div class="color-title">
-                <h3>${product.name}</h3>
-                <span>${product.priceLabel}</span>
-              </div>
-              <p>${product.note}</p>
-              <div class="sell-line">Disponible por DM hoy</div>
-            </div>
-            <div>
-              <div class="options">
-                <label>Talla
-                  <select class="size">
-                    ${product.sizes.map((size, index) => `<option${index === 1 ? " selected" : ""}>${size}</option>`).join("")}
-                  </select>
-                </label>
-                <label>Cantidad
-                  <select class="qty">
-                    ${product.quantities.map((qty, index) => `<option${index === 0 ? " selected" : ""}>${qty}</option>`).join("")}
-                  </select>
-                </label>
-                <label>Entrega
-                  <select class="delivery">
-                    <option selected>Santo Domingo</option>
-                    <option>Interior RD</option>
-                    <option>Retiro</option>
-                  </select>
-                </label>
-              </div>
-              <div class="buy-row">
-                <button class="btn primary add" type="button" data-name="${product.name}" data-price="${product.price}">Agregar</button>
-                <button class="btn wa" type="button" data-name="${product.name}" data-price="${product.price}">WhatsApp</button>
-              </div>
-            </div>
-          </div>
-        </article>
-      `).join("");
+      productGrid.innerHTML = products.map(product => productCard(product, {
+        badge: "En stock",
+        tag: product.color,
+        sellLine: "Disponible por DM hoy"
+      })).join("");
     }
 
     function renderGear() {
-      gearGrid.innerHTML = gearProducts.map(product => `
-        <article class="card color-card" data-product-card>
-          <div class="color-img">
-            <img src="${product.image}" alt="${product.name}" loading="lazy" />
-            <span class="color-chip" style="background:${product.swatch}" aria-hidden="true"></span>
-          </div>
-          <div class="color-body">
-            <div>
-              <div class="badge-row">
-                <span class="badge">En stock</span>
-                <span class="badge">${product.tag}</span>
-              </div>
-              <div class="color-title">
-                <h3>${product.name}</h3>
-                <span>${product.priceLabel}</span>
-              </div>
-              <p>${product.note}</p>
-              <div class="sell-line">Agrega y manda por WhatsApp</div>
-            </div>
-            <div>
-              <div class="options">
-                <label>Talla
-                  <select class="size">
-                    ${product.sizes.map((size, index) => `<option${index === 0 ? " selected" : ""}>${size}</option>`).join("")}
-                  </select>
-                </label>
-                <label>Cantidad
-                  <select class="qty">
-                    ${product.quantities.map((qty, index) => `<option${index === 0 ? " selected" : ""}>${qty}</option>`).join("")}
-                  </select>
-                </label>
-                <label>Entrega
-                  <select class="delivery">
-                    <option selected>Santo Domingo</option>
-                    <option>Interior RD</option>
-                    <option>Retiro</option>
-                  </select>
-                </label>
-              </div>
-              <div class="buy-row">
-                <button class="btn primary add" type="button" data-name="${product.name}" data-price="${product.price}">Agregar</button>
-                <button class="btn wa" type="button" data-name="${product.name}" data-price="${product.price}">WhatsApp</button>
-              </div>
-            </div>
-          </div>
-        </article>
-      `).join("");
+      gearGrid.innerHTML = gearProducts.map(product => productCard(product, {
+        badge: "En stock",
+        tag: product.tag,
+        selectedSize: 0,
+        sellLine: "Agrega y manda por WhatsApp"
+      })).join("");
     }
 
     function itemKey(item) {
@@ -2145,6 +2127,22 @@ Sector / direccion:`;
     });
 
     document.addEventListener("click", event => {
+      const photoButton = event.target.closest(".photo-tab");
+      if (photoButton) {
+        const card = photoButton.closest("[data-product-card]");
+        const imageWrap = card.querySelector(".color-img");
+        const image = imageWrap.querySelector("img");
+        const label = imageWrap.querySelector(".photo-label");
+        image.src = photoButton.dataset.photoSrc;
+        image.alt = `${card.querySelector("h3").textContent} - ${photoButton.dataset.photoLabel}`;
+        imageWrap.dataset.view = photoButton.dataset.photoView;
+        label.textContent = photoButton.dataset.photoLabel;
+        card.querySelectorAll(".photo-tab").forEach(button => {
+          button.classList.toggle("active", button === photoButton);
+        });
+        return;
+      }
+
       const addButton = event.target.closest(".add");
       if (addButton) {
         addItem(getChoice(addButton));
