@@ -1564,7 +1564,7 @@
             <img src="./images/logo-ghost.png" alt="" />
           </div>
           <div class="hero-photo">
-            <img src="./images/designed/ghostwear-short-royal-studio.png" alt="Short GhostWear royal blue en foto de estudio limpia" />
+            <img src="./images/designed/ghostwear-short-royal-blue-studio.png" alt="Short GhostWear royal blue en foto de estudio limpia" />
           </div>
           <div class="product-float">
             <div>
@@ -2210,11 +2210,23 @@
     comboProducts[0].urgency = { label: "Combo activo", line: "Short + medias para subir el ticket y cerrar rapido." };
     comboProducts[1].urgency = { label: "Color mas pedido", line: "Short + gorra para salir con el look completo." };
     comboProducts[2].urgency = { label: "Full fit limitado", line: "El paquete completo tiene descuento y stock por talla." };
-      const cleanShortImages = {
-        "Neon Green": "./images/designed/ghostwear-designed-green.jpg",
-      "Royal Blue": "./images/designed/ghostwear-short-royal-studio.png",
-        "White": "./images/designed/ghostwear-designed-white.jpg"
-      };
+    const cleanShortImages = {
+      "Red": "./images/designed/ghostwear-short-red-studio.png",
+      "Baby Blue": "./images/designed/ghostwear-short-baby-blue-studio.png",
+      "Light Gray": "./images/designed/ghostwear-short-light-gray-studio.png",
+      "Orange": "./images/designed/ghostwear-short-orange-studio.png",
+      "Olive": "./images/designed/ghostwear-short-olive-studio.png",
+      "Aqua": "./images/designed/ghostwear-short-aqua-studio.png",
+      "Sky Blue": "./images/designed/ghostwear-short-sky-blue-studio.png",
+      "Pink": "./images/designed/ghostwear-short-pink-studio.png",
+      "Neon Green": "./images/designed/ghostwear-short-neon-green-studio.png",
+      "Royal Blue": "./images/designed/ghostwear-short-royal-blue-studio.png",
+      "Yellow": "./images/designed/ghostwear-short-yellow-studio.png",
+      "Navy": "./images/designed/ghostwear-short-navy-studio.png",
+      "Lavender": "./images/designed/ghostwear-short-lavender-studio.png",
+      "Black": "./images/designed/ghostwear-short-black-studio.png",
+      "White": "./images/designed/ghostwear-short-white-studio.png"
+    };
     products.forEach(product => {
       const cleanImage = cleanShortImages[product.color] || product.image;
       product.photos = cleanImage === product.image
@@ -2238,32 +2250,32 @@
       ];
     });
     comboProducts[0].photos = [
-      { label: "Short", src: "./images/designed/ghostwear-short-royal-studio.png", view: "real" },
+      { label: "Short", src: "./images/designed/ghostwear-short-royal-blue-studio.png", view: "real" },
       { label: "Medias", src: "./images/designed/ghostwear-socks-studio.png", view: "real" },
       { label: "Logo", src: "./images/media/ghostwear-media-10.jpg", view: "detail" }
     ];
     comboProducts[1].photos = [
-      { label: "Short", src: "./images/designed/ghostwear-short-royal-studio.png", view: "real" },
+      { label: "Short", src: "./images/designed/ghostwear-short-royal-blue-studio.png", view: "real" },
       { label: "Gorra", src: "./images/designed/ghostwear-caps-studio.png", view: "clean" },
       { label: "Logo", src: "./images/gear/ghostwear-caps.jpg", view: "detail" }
     ];
     comboProducts[2].photos = [
       { label: "Hoodie", src: "./images/gear/ghostwear-hoodie.jpg", view: "clean" },
-      { label: "Short", src: "./images/designed/ghostwear-short-royal-studio.png", view: "real" },
+      { label: "Short", src: "./images/designed/ghostwear-short-royal-blue-studio.png", view: "real" },
       { label: "Medias", src: "./images/designed/ghostwear-socks-studio.png", view: "real" }
     ];
     const shopCollections = [
       {
         title: "Combos",
         href: "#combos",
-        image: "./images/designed/ghostwear-short-royal-studio.png",
+        image: "./images/designed/ghostwear-short-royal-blue-studio.png",
         price: comboProducts[0].price,
         note: "Packs listos para subir el fit."
       },
       {
         title: "Shorts",
         href: "#drop",
-        image: "./images/designed/ghostwear-short-royal-studio.png",
+        image: "./images/designed/ghostwear-short-royal-blue-studio.png",
         price: products[0].price,
         note: `${products.length} colores para rotar el fit.`
       },
