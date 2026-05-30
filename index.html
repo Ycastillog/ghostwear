@@ -370,6 +370,56 @@
       text-transform: uppercase;
     }
 
+    .shop-filter-shell {
+      display: grid;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .filter-btn {
+      min-height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0 16px;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text);
+      font: inherit;
+      font-size: 0.82rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+    }
+
+    .filter-btn:hover {
+      transform: translateY(-2px);
+      border-color: rgba(215, 255, 63, 0.55);
+    }
+
+    .filter-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #080808;
+    }
+
+    .shop-count {
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 800;
+    }
+
+    .shop-results {
+      margin-top: 4px;
+    }
+
     section { padding: 76px 0; }
     .section-head {
       display: flex;
@@ -1129,6 +1179,28 @@
 
     <section id="shop">
       <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Compra rapido</span>
+            <h2>Filtra por categoria</h2>
+          </div>
+          <p>
+            Toca una categoria y compra directo desde aqui: shorts, medias,
+            gorras o hoodie sin bajar toda la pagina.
+          </p>
+        </div>
+        <div class="shop-filter-shell">
+          <div class="filter-bar" id="shopFilters" aria-label="Filtrar productos por categoria">
+            <button class="filter-btn active" type="button" data-filter="todos">Todos</button>
+            <button class="filter-btn" type="button" data-filter="shorts">Shorts</button>
+            <button class="filter-btn" type="button" data-filter="medias">Medias</button>
+            <button class="filter-btn" type="button" data-filter="gorras">Gorras</button>
+            <button class="filter-btn" type="button" data-filter="hoodie">Hoodie</button>
+          </div>
+          <div class="shop-count" id="shopFilterCount">Mostrando todo el drop</div>
+          <div class="color-grid shop-results" id="filteredShopGrid" aria-live="polite">
+          </div>
+        </div>
         <div class="drop-switch" id="shopCards">
         </div>
       </div>
@@ -1471,6 +1543,9 @@
     const heroFeature = document.getElementById("heroFeature");
     const heroPrice = document.getElementById("heroPrice");
     const shopCards = document.getElementById("shopCards");
+    const shopFilters = document.getElementById("shopFilters");
+    const shopFilterCount = document.getElementById("shopFilterCount");
+    const filteredShopGrid = document.getElementById("filteredShopGrid");
     const comboGrid = document.getElementById("comboGrid");
     const productGrid = document.getElementById("productGrid");
     const gearGrid = document.getElementById("gearGrid");
@@ -1564,6 +1639,10 @@
         quantities: ["1", "2"]
       }
     ];
+    gearProducts[0].category = "medias";
+    gearProducts[1].category = "medias";
+    gearProducts[2].category = "gorras";
+    gearProducts[3].category = "hoodie";
     const comboProducts = [
       {
         tag: "Combo",
@@ -1602,7 +1681,13 @@
         quantities: ["1"]
       }
     ];
+    comboProducts.forEach(product => {
+      product.category = "combos";
+    });
     const allProducts = [...products, ...gearProducts, ...comboProducts];
+    products.forEach(product => {
+      product.category = "shorts";
+    });
     const shopCollections = [
       {
         title: "Combos",
@@ -1668,6 +1753,80 @@
         qty: Number(card.querySelector(".qty").value),
         delivery: card.querySelector(".delivery").value
       };
+    }
+
+    function productCard(product, options = {}) {
+      const swatch = product.swatch || product.hex || "#d7ff3f";
+      const badge = options.badge || "En stock";
+      const tag = options.tag || product.tag || product.category;
+      const selectedSize = options.selectedSize ?? (product.sizes.length > 1 ? 1 : 0);
+      const sellLine = options.sellLine || (product.oldPrice ? `Precio normal ${product.oldPrice}` : "Agrega y manda por WhatsApp");
+
+      return `
+        <article class="card color-card" data-product-card data-category="${product.category}">
+          <div class="color-img">
+            <img src="${product.image}" alt="${product.name}" loading="lazy" />
+            <span class="color-chip" style="background:${swatch}" aria-hidden="true"></span>
+          </div>
+          <div class="color-body">
+            <div>
+              <div class="badge-row">
+                <span class="badge">${badge}</span>
+                <span class="badge">${tag}</span>
+              </div>
+              <div class="color-title">
+                <h3>${product.name}</h3>
+                <span>${product.priceLabel}</span>
+              </div>
+              <p>${product.note}</p>
+              <div class="sell-line">${sellLine}</div>
+            </div>
+            <div>
+              <div class="options">
+                <label>Talla
+                  <select class="size">
+                    ${product.sizes.map((size, index) => `<option${index === selectedSize ? " selected" : ""}>${size}</option>`).join("")}
+                  </select>
+                </label>
+                <label>Cantidad
+                  <select class="qty">
+                    ${product.quantities.map((qty, index) => `<option${index === 0 ? " selected" : ""}>${qty}</option>`).join("")}
+                  </select>
+                </label>
+                <label>Entrega
+                  <select class="delivery">
+                    <option selected>Santo Domingo</option>
+                    <option>Interior RD</option>
+                    <option>Retiro</option>
+                  </select>
+                </label>
+              </div>
+              <div class="buy-row">
+                <button class="btn primary add" type="button" data-name="${product.name}" data-price="${product.price}">Agregar</button>
+                <button class="btn wa" type="button" data-name="${product.name}" data-price="${product.price}">WhatsApp</button>
+              </div>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function renderFilteredShop(filter = "todos") {
+      const visibleProducts = filter === "todos"
+        ? allProducts
+        : allProducts.filter(product => product.category === filter);
+      const label = filter === "todos" ? "todo el drop" : filter;
+
+      filteredShopGrid.innerHTML = visibleProducts.map(product => {
+        const isCombo = product.category === "combos";
+        return productCard(product, {
+          badge: isCombo ? "Ahorro" : "En stock",
+          tag: isCombo ? product.tag : product.tag,
+          sellLine: isCombo ? `Precio normal ${product.oldPrice}` : "Compra directa desde Shop"
+        });
+      }).join("");
+
+      shopFilterCount.textContent = `Mostrando ${visibleProducts.length} pieza${visibleProducts.length === 1 ? "" : "s"} de ${label}`;
     }
 
     function renderStorefront() {
@@ -1935,18 +2094,31 @@ Sector / direccion:`;
     }
 
     renderStorefront();
+    renderFilteredShop();
     renderCombos();
     renderProducts();
     renderGear();
 
-    document.querySelectorAll(".add").forEach(button => {
-      button.addEventListener("click", () => addItem(getChoice(button)));
+    shopFilters.addEventListener("click", event => {
+      const button = event.target.closest("[data-filter]");
+      if (!button) return;
+      shopFilters.querySelectorAll(".filter-btn").forEach(filterButton => {
+        filterButton.classList.toggle("active", filterButton === button);
+      });
+      renderFilteredShop(button.dataset.filter);
     });
 
-    document.querySelectorAll(".wa").forEach(button => {
-      button.addEventListener("click", () => {
-        window.open(waLink(buildSingleMessage(getChoice(button))), "_blank", "noopener");
-      });
+    document.addEventListener("click", event => {
+      const addButton = event.target.closest(".add");
+      if (addButton) {
+        addItem(getChoice(addButton));
+        return;
+      }
+
+      const waButton = event.target.closest(".wa");
+      if (waButton) {
+        window.open(waLink(buildSingleMessage(getChoice(waButton))), "_blank", "noopener");
+      }
     });
 
     cartItemsEl.addEventListener("click", event => {
