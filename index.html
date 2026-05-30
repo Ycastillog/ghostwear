@@ -1564,7 +1564,7 @@
             <img src="./images/logo-ghost.png" alt="" />
           </div>
           <div class="hero-photo">
-            <img src="./images/designed/ghostwear-designed-hero.jpg" alt="Shorts GhostWear apilados dentro de caja con empaque negro" />
+            <img src="./images/designed/ghostwear-short-royal-studio.png" alt="Short GhostWear royal blue en foto de estudio limpia" />
           </div>
           <div class="product-float">
             <div>
@@ -2079,7 +2079,7 @@
       { color: "Sky Blue", name: "Short Ghost Sky Blue", image: "./images/media/ghostwear-media-07.jpg", hex: "#35a7df", note: "Azul cielo con vibra deportiva." },
       { color: "Pink", name: "Short Ghost Pink", image: "./images/media/ghostwear-media-08.jpg", hex: "#ff4f86", note: "Pink intenso para un drop con actitud." },
       { color: "Neon Green", name: "Short Ghost Neon Green", image: "./images/designed/ghostwear-designed-green.jpg", hex: "#83f13a", note: "Verde neon, el color mas llamativo del drop." },
-      { color: "Royal Blue", name: "Short Ghost Royal Blue", image: "./images/designed/ghostwear-designed-hero.jpg", hex: "#2454ff", note: "Azul royal con energia street." },
+      { color: "Royal Blue", name: "Short Ghost Royal Blue", image: "./images/media/ghostwear-media-10.jpg", hex: "#2454ff", note: "Azul royal con energia street." },
       { color: "Yellow", name: "Short Ghost Yellow", image: "./images/media/ghostwear-media-11.jpg", hex: "#f4c21c", note: "Amarillo limpio para verano y contenido." },
       { color: "Navy", name: "Short Ghost Navy", image: "./images/media/ghostwear-media-12.jpg", hex: "#202a64", note: "Azul navy oscuro, serio y combinable." },
       { color: "Lavender", name: "Short Ghost Lavender", image: "./images/media/ghostwear-media-13.jpg", hex: "#c8afe6", note: "Lavender suave para un fit diferente." },
@@ -2098,7 +2098,8 @@
       {
         tag: "Medias",
         name: "Medias Ghost",
-        image: "./images/ghostwear-socks-real.jpg",
+        image: "./images/designed/ghostwear-socks-studio.png",
+        realImage: "./images/ghostwear-socks-real.jpg",
         price: 350,
         priceLabel: "RD$ 350",
         note: "Par de medias blancas con logo Ghost bordado en colores.",
@@ -2109,7 +2110,8 @@
       {
         tag: "Pack",
         name: "Pack 3 Medias Ghost",
-        image: "./images/ghostwear-socks-real.jpg",
+        image: "./images/designed/ghostwear-socks-studio.png",
+        realImage: "./images/ghostwear-socks-real.jpg",
         price: 1000,
         priceLabel: "RD$ 1,000",
         note: "Oferta de historia: tres pares con logos Ghost en colores surtidos.",
@@ -2120,7 +2122,8 @@
       {
         tag: "Gorras",
         name: "Gorra Ghost",
-        image: "./images/gear/ghostwear-caps.jpg",
+        image: "./images/designed/ghostwear-caps-studio.png",
+        realImage: "./images/gear/ghostwear-caps.jpg",
         price: 1500,
         priceLabel: "RD$ 1,500",
         note: "Colorways negro, gris, blanco/azul y blanco/rojo con logo frontal.",
@@ -2207,53 +2210,60 @@
     comboProducts[0].urgency = { label: "Combo activo", line: "Short + medias para subir el ticket y cerrar rapido." };
     comboProducts[1].urgency = { label: "Color mas pedido", line: "Short + gorra para salir con el look completo." };
     comboProducts[2].urgency = { label: "Full fit limitado", line: "El paquete completo tiene descuento y stock por talla." };
-    const cleanShortImages = {
-      "Neon Green": "./images/designed/ghostwear-designed-green.jpg",
-      "Royal Blue": "./images/designed/ghostwear-designed-hero.jpg",
-      "White": "./images/designed/ghostwear-designed-white.jpg"
-    };
+      const cleanShortImages = {
+        "Neon Green": "./images/designed/ghostwear-designed-green.jpg",
+      "Royal Blue": "./images/designed/ghostwear-short-royal-studio.png",
+        "White": "./images/designed/ghostwear-designed-white.jpg"
+      };
     products.forEach(product => {
       const cleanImage = cleanShortImages[product.color] || product.image;
-      product.photos = [
-        { label: "Real", src: product.image, view: "real" },
-        { label: "Limpia", src: cleanImage, view: cleanImage === product.image ? "real" : "clean" },
-        { label: "Logo", src: product.image, view: "detail" }
-      ];
+      product.photos = cleanImage === product.image
+        ? [
+            { label: "Real", src: product.image, view: "real" },
+            { label: "Limpia", src: cleanImage, view: "real" },
+            { label: "Logo", src: product.image, view: "detail" }
+          ]
+        : [
+            { label: "Limpia", src: cleanImage, view: "clean" },
+            { label: "Real", src: product.image, view: "real" },
+            { label: "Logo", src: product.image, view: "detail" }
+          ];
     });
     gearProducts.forEach(product => {
+      const realImage = product.realImage || product.image;
       product.photos = [
-        { label: "Real", src: product.image, view: "real" },
         { label: "Limpia", src: product.image, view: product.category === "medias" ? "real" : "clean" },
-        { label: "Logo", src: product.image, view: "detail" }
+        { label: "Real", src: realImage, view: "real" },
+        { label: "Logo", src: realImage, view: "detail" }
       ];
     });
     comboProducts[0].photos = [
-      { label: "Short", src: "./images/designed/ghostwear-designed-hero.jpg", view: "real" },
-      { label: "Medias", src: "./images/ghostwear-socks-real.jpg", view: "real" },
+      { label: "Short", src: "./images/designed/ghostwear-short-royal-studio.png", view: "real" },
+      { label: "Medias", src: "./images/designed/ghostwear-socks-studio.png", view: "real" },
       { label: "Logo", src: "./images/media/ghostwear-media-10.jpg", view: "detail" }
     ];
     comboProducts[1].photos = [
-      { label: "Short", src: "./images/designed/ghostwear-designed-hero.jpg", view: "real" },
-      { label: "Gorra", src: "./images/gear/ghostwear-caps.jpg", view: "clean" },
+      { label: "Short", src: "./images/designed/ghostwear-short-royal-studio.png", view: "real" },
+      { label: "Gorra", src: "./images/designed/ghostwear-caps-studio.png", view: "clean" },
       { label: "Logo", src: "./images/gear/ghostwear-caps.jpg", view: "detail" }
     ];
     comboProducts[2].photos = [
       { label: "Hoodie", src: "./images/gear/ghostwear-hoodie.jpg", view: "clean" },
-      { label: "Short", src: "./images/designed/ghostwear-designed-hero.jpg", view: "real" },
-      { label: "Medias", src: "./images/ghostwear-socks-real.jpg", view: "real" }
+      { label: "Short", src: "./images/designed/ghostwear-short-royal-studio.png", view: "real" },
+      { label: "Medias", src: "./images/designed/ghostwear-socks-studio.png", view: "real" }
     ];
     const shopCollections = [
       {
         title: "Combos",
         href: "#combos",
-        image: "./images/designed/ghostwear-designed-hero.jpg",
+        image: "./images/designed/ghostwear-short-royal-studio.png",
         price: comboProducts[0].price,
         note: "Packs listos para subir el fit."
       },
       {
         title: "Shorts",
         href: "#drop",
-        image: "./images/designed/ghostwear-designed-hero.jpg",
+        image: "./images/designed/ghostwear-short-royal-studio.png",
         price: products[0].price,
         note: `${products.length} colores para rotar el fit.`
       },
