@@ -14,10 +14,10 @@
       --ink: #f6f3ee;
       --muted: #b9b2aa;
       --line: rgba(246, 243, 238, 0.14);
-      --accent: #d7ff3f;
+      --accent: #f4f1dc;
       --accent-ink: #111;
       --ghost-cream: #f4f1dc;
-      --ghost-blue: #2454ff;
+      --ghost-blue: #9fd8ff;
       --ghost-red: #e53935;
       --danger: #ff6b6b;
       --max: 1180px;
@@ -29,10 +29,10 @@
       margin: 0;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at 12% 18%, rgba(244, 241, 220, 0.1), transparent 18rem),
-        radial-gradient(circle at 88% 12%, rgba(36, 84, 255, 0.14), transparent 18rem),
-        radial-gradient(circle at 70% 58%, rgba(229, 57, 53, 0.07), transparent 20rem),
-        linear-gradient(135deg, rgba(215, 255, 63, 0.07), transparent 32rem),
+        radial-gradient(circle at 12% 18%, rgba(244, 241, 220, 0.13), transparent 18rem),
+        radial-gradient(circle at 88% 12%, rgba(159, 216, 255, 0.13), transparent 18rem),
+        radial-gradient(circle at 70% 58%, rgba(229, 57, 53, 0.045), transparent 20rem),
+        linear-gradient(135deg, rgba(244, 241, 220, 0.08), transparent 32rem),
         linear-gradient(225deg, rgba(255, 255, 255, 0.055), transparent 28rem),
         linear-gradient(180deg, #0b0b0b 0%, var(--bg) 42rem);
       color: var(--ink);
@@ -113,7 +113,7 @@
 
     .btn:hover { transform: translateY(-1px); border-color: rgba(246, 243, 238, 0.28); }
     .btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
-    .btn.primary:hover { background: #e2ff67; }
+    .btn.primary:hover { background: #fff8df; }
     .btn.full { width: 100%; }
     .btn.danger { color: var(--danger); }
     .btn.ig-link {
@@ -240,7 +240,7 @@
       height: 8px;
       border-radius: 50%;
       background: var(--accent);
-      box-shadow: 0 0 20px rgba(215, 255, 63, 0.8);
+      box-shadow: 0 0 20px rgba(244, 241, 220, 0.8);
     }
 
     .ghost-tag {
@@ -339,9 +339,9 @@
 
     .hero-note span:nth-child(1),
     .hero-note span:nth-child(2) {
-      border-color: rgba(215, 255, 63, 0.34);
+      border-color: rgba(244, 241, 220, 0.34);
       color: var(--accent);
-      background: rgba(215, 255, 63, 0.08);
+      background: rgba(244, 241, 220, 0.08);
     }
 
     .hero-note span:nth-child(n+4) {
@@ -515,7 +515,7 @@
 
     .filter-btn:hover {
       transform: translateY(-2px);
-      border-color: rgba(215, 255, 63, 0.55);
+      border-color: rgba(244, 241, 220, 0.55);
     }
 
     .filter-btn.active {
@@ -657,15 +657,15 @@
     }
 
     .badge.urgent {
-      border-color: rgba(215, 255, 63, 0.72);
-      background: rgba(215, 255, 63, 0.12);
+      border-color: rgba(244, 241, 220, 0.72);
+      background: rgba(244, 241, 220, 0.12);
       color: var(--accent);
     }
 
     .badge.court {
-      border-color: rgba(255, 255, 255, 0.22);
+      border-color: rgba(159, 216, 255, 0.28);
       background:
-        linear-gradient(135deg, rgba(215, 255, 63, 0.16), rgba(255, 255, 255, 0.04));
+        linear-gradient(135deg, rgba(159, 216, 255, 0.14), rgba(244, 241, 220, 0.06));
       color: var(--ghost-cream);
     }
 
@@ -706,7 +706,7 @@
 
     .color-card:hover {
       transform: translateY(-3px);
-      border-color: rgba(215, 255, 63, 0.38);
+      border-color: rgba(244, 241, 220, 0.38);
     }
 
     .color-img {
@@ -887,9 +887,9 @@
     }
 
     .combo-offer {
-      border-color: rgba(215, 255, 63, 0.46);
+      border-color: rgba(244, 241, 220, 0.46);
       background:
-        linear-gradient(180deg, rgba(215, 255, 63, 0.075), rgba(255, 255, 255, 0.025)),
+        linear-gradient(180deg, rgba(244, 241, 220, 0.075), rgba(255, 255, 255, 0.025)),
         rgba(255, 255, 255, 0.025);
     }
 
@@ -911,7 +911,7 @@
     }
 
     .combo-offer .color-img {
-      border-bottom: 1px solid rgba(215, 255, 63, 0.24);
+      border-bottom: 1px solid rgba(244, 241, 220, 0.24);
     }
 
     .combo-offer .sell-line {
@@ -919,7 +919,7 @@
       width: fit-content;
       border-radius: 999px;
       padding: 8px 10px;
-      background: rgba(215, 255, 63, 0.12);
+      background: rgba(244, 241, 220, 0.12);
       color: var(--accent);
     }
 
@@ -930,9 +930,9 @@
       align-items: center;
       padding: clamp(22px, 4vw, 34px);
       margin: 18px 0;
-      border-color: rgba(215, 255, 63, 0.44);
+      border-color: rgba(244, 241, 220, 0.44);
       background:
-        radial-gradient(circle at 12% 10%, rgba(215, 255, 63, 0.16), transparent 34%),
+        radial-gradient(circle at 12% 10%, rgba(244, 241, 220, 0.16), transparent 34%),
         linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.022));
     }
 
@@ -1164,7 +1164,7 @@
       font-weight: 950;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      background: rgba(215, 255, 63, 0.07);
+      background: rgba(244, 241, 220, 0.07);
     }
 
     .size-row strong {
@@ -1384,7 +1384,7 @@
       gap: 28px;
       min-height: 420px;
       background:
-        linear-gradient(140deg, rgba(215, 255, 63, 0.14), rgba(255, 255, 255, 0.025) 42%),
+        linear-gradient(140deg, rgba(244, 241, 220, 0.14), rgba(255, 255, 255, 0.025) 42%),
         rgba(255, 255, 255, 0.035);
     }
 
@@ -1480,7 +1480,7 @@
         rgba(255, 255, 255, 0.035);
       background-size: cover;
       background-position: center 28%;
-      border-color: rgba(215, 255, 63, 0.28);
+      border-color: rgba(244, 241, 220, 0.28);
     }
 
     .athlete-card h3 {
@@ -1606,7 +1606,7 @@
       display: grid;
       place-items: center;
       background:
-        linear-gradient(135deg, rgba(215, 255, 63, 0.12), transparent),
+        linear-gradient(135deg, rgba(244, 241, 220, 0.12), transparent),
         #101010;
       color: var(--ink);
       font-size: clamp(2rem, 5vw, 4rem);
@@ -1738,9 +1738,9 @@
       gap: 8px;
       margin: -2px 0 12px;
       padding: 10px 12px;
-      border: 1px solid rgba(215, 255, 63, 0.24);
+      border: 1px solid rgba(244, 241, 220, 0.24);
       border-radius: 8px;
-      background: rgba(215, 255, 63, 0.08);
+      background: rgba(244, 241, 220, 0.08);
       color: var(--accent);
       font-size: 0.82rem;
       font-weight: 900;
@@ -1974,18 +1974,18 @@
             <h2>Visuales que provocan DM</h2>
           </div>
           <p>
-            La marca debe sentirse como feed de aqui: color, inventario real,
-            precio claro y ganas de responder la historia.
+            La marca debe sentirse como GhostWear: limpia, fantasmal, de cancha,
+            con inventario real y ganas de responder la historia.
           </p>
         </div>
 
         <div class="media-layout">
           <article class="card media-feature">
-            <img src="./images/designed/ghostwear-short-neon-green-studio.png" alt="Short GhostWear verde neon en foto de estudio limpia" />
+            <img src="./images/designed/ghostwear-designed-white.jpg" alt="Visual GhostWear claro con estilo fantasmal de marca" />
             <div class="media-copy">
               <span class="section-kicker">Hero post</span>
-              <h3>Color que jala vista</h3>
-              <p>Producto real, foto limpia y energia de drop activo RD.</p>
+              <h3>Fantasma claro, cancha real</h3>
+              <p>Foto limpia, logo protagonista y energia de drop activo RD.</p>
             </div>
           </article>
 
@@ -2458,7 +2458,7 @@
         price: 1000,
         priceLabel: "RD$ 1,000",
         note: "Oferta de historia: tres pares con logos Ghost en colores surtidos.",
-        swatch: "#d7ff3f",
+        swatch: "#f4f1dc",
         sizes: ["Unica"],
         quantities: ["1", "2"]
       },
@@ -2501,7 +2501,7 @@
         normalPrice: 1950,
         oldPrice: "RD$ 1,950",
         note: "Short Ghost + medias para salir con el fit amarrado. Ahorras RD$ 100.",
-        swatch: "#d7ff3f",
+        swatch: "#f4f1dc",
         sizes: ["S", "M", "L", "XL"],
         quantities: ["1", "2"]
       },
@@ -2685,7 +2685,7 @@
     }
 
     function productCard(product, options = {}) {
-      const swatch = product.swatch || product.hex || "#d7ff3f";
+      const swatch = product.swatch || product.hex || "#f4f1dc";
       const badge = options.badge || "En stock";
       const tag = options.tag || product.tag || product.category;
       const selectedSize = options.selectedSize ?? (product.sizes.length > 1 ? 1 : 0);
