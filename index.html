@@ -220,60 +220,158 @@
     }
 
     .welcome {
-      padding: 18px 0 0;
+      padding: 18px 0 10px;
     }
 
     .welcome-card {
+      position: relative;
+      overflow: hidden;
       display: grid;
-      grid-template-columns: auto minmax(0, 1fr) auto;
-      align-items: center;
-      gap: 16px;
-      padding: 14px;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 0.68fr);
+      gap: clamp(18px, 4vw, 46px);
+      align-items: stretch;
+      padding: clamp(22px, 4vw, 44px);
       border: 1px solid rgba(244, 241, 220, 0.2);
       border-radius: 8px;
       background:
+        radial-gradient(circle at 82% 18%, rgba(244, 241, 220, 0.14), transparent 18rem),
+        radial-gradient(circle at 8% 86%, rgba(159, 216, 255, 0.12), transparent 18rem),
         linear-gradient(135deg, rgba(244, 241, 220, 0.1), rgba(255, 255, 255, 0.025)),
         rgba(255, 255, 255, 0.035);
     }
 
-    .welcome-ghost {
-      width: 58px;
-      height: 58px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: var(--ghost-cream);
-      box-shadow: 0 14px 34px rgba(244, 241, 220, 0.14);
+    .welcome-card::after {
+      content: "GHOST";
+      position: absolute;
+      right: -0.08em;
+      bottom: -0.25em;
+      color: rgba(244, 241, 220, 0.055);
+      font-size: clamp(5rem, 16vw, 13rem);
+      font-weight: 950;
+      line-height: 0.9;
+      pointer-events: none;
     }
 
-    .welcome-ghost img {
-      width: 42px;
-      height: 42px;
-      object-fit: contain;
+    .welcome-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 18px;
+    }
+
+    .welcome-kicker {
+      width: fit-content;
+      border: 1px solid rgba(244, 241, 220, 0.24);
+      border-radius: 999px;
+      padding: 8px 11px;
+      background: rgba(0, 0, 0, 0.22);
+      color: var(--ghost-cream);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     .welcome-copy {
       display: grid;
-      gap: 4px;
+      gap: 12px;
     }
 
     .welcome-copy strong {
-      font-size: clamp(1.05rem, 2vw, 1.35rem);
+      max-width: 640px;
+      font-size: clamp(2.1rem, 5vw, 4.4rem);
+      line-height: 0.94;
       text-transform: uppercase;
-      letter-spacing: 0.02em;
+      letter-spacing: 0;
     }
 
     .welcome-copy span {
+      max-width: 620px;
       color: var(--muted);
-      line-height: 1.45;
-      font-size: 0.94rem;
+      line-height: 1.55;
+      font-size: clamp(1rem, 1.5vw, 1.12rem);
     }
 
     .welcome-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    .welcome-signals {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      max-width: 620px;
+    }
+
+    .welcome-signals span {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 11px;
+      background: rgba(0, 0, 0, 0.2);
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 850;
+      line-height: 1.35;
+      text-transform: uppercase;
+    }
+
+    .welcome-signals strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--ghost-cream);
+      font-size: 1rem;
+    }
+
+    .welcome-visual {
+      position: relative;
+      z-index: 1;
+      min-height: 320px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(244, 241, 220, 0.14);
+      border-radius: 8px;
+      background:
+        linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.44)),
+        rgba(255, 255, 255, 0.04);
+    }
+
+    .welcome-ghost {
+      width: min(72%, 260px);
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--ghost-cream);
+      box-shadow: 0 28px 80px rgba(244, 241, 220, 0.2);
+    }
+
+    .welcome-ghost img {
+      width: 72%;
+      height: 72%;
+      object-fit: contain;
+    }
+
+    .welcome-caption {
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      bottom: 14px;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      border: 1px solid rgba(244, 241, 220, 0.18);
+      border-radius: 8px;
+      padding: 12px;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(12px);
+      color: var(--ghost-cream);
+      font-size: 0.84rem;
+      font-weight: 900;
+      text-transform: uppercase;
     }
 
     .eyebrow {
@@ -1834,8 +1932,8 @@
       .nav-links { display: none; }
       .hero { min-height: auto; }
       .hero-grid, .story-band { grid-template-columns: 1fr; }
-      .welcome-card { grid-template-columns: auto minmax(0, 1fr); }
-      .welcome-actions { grid-column: 1 / -1; justify-content: flex-start; }
+      .welcome-card { grid-template-columns: 1fr; }
+      .welcome-visual { min-height: 260px; }
       .hero-media { min-height: 360px; }
       section .wrap::before { display: none; }
       .product-card { grid-template-columns: 1fr; }
@@ -1858,9 +1956,15 @@
       section { padding: 48px 0; }
       #shop { padding-top: 18px; }
       .welcome { padding-top: 14px; }
-      .welcome-card { padding: 12px; gap: 12px; }
-      .welcome-ghost { width: 50px; height: 50px; }
-      .welcome-ghost img { width: 36px; height: 36px; }
+      .welcome-card { padding: 16px; gap: 14px; }
+      .welcome-content { gap: 14px; }
+      .welcome-copy { gap: 8px; }
+      .welcome-copy strong { font-size: clamp(2.05rem, 10.5vw, 2.75rem); }
+      .welcome-copy span { font-size: 0.96rem; }
+      .welcome-signals { grid-template-columns: 1fr; }
+      .welcome-signals span { padding: 9px 10px; }
+      .welcome-visual { min-height: 200px; }
+      .welcome-ghost { width: min(62%, 150px); }
       .welcome-actions .btn { flex: 1 1 130px; }
       .hero { padding-top: 22px; }
       .hero-media { min-height: 310px; }
@@ -1913,16 +2017,30 @@
     <section class="welcome" aria-label="Bienvenida GhostWear">
       <div class="wrap">
         <div class="welcome-card">
-          <div class="welcome-ghost" aria-hidden="true">
-            <img src="./images/logo-ghost.png" alt="" />
+          <div class="welcome-content">
+            <span class="welcome-kicker">Bienvenido al mundo GhostWear</span>
+            <div class="welcome-copy">
+              <strong>Entra al drop del Ghost.</strong>
+              <span>Una tienda virtual nacida de la cancha, del apodo El Fantasma y del flow de RD. Aqui ves la pieza, eliges color y confirmas disponibilidad por WhatsApp antes de pagar.</span>
+            </div>
+            <div class="welcome-actions">
+              <a class="btn primary" href="#shop">Ver drop</a>
+              <a class="btn" href="#pedido">Como comprar</a>
+            </div>
+            <div class="welcome-signals" aria-label="Senales de compra">
+              <span><strong>Drop activo</strong> Shorts, medias, gorras y hoodie.</span>
+              <span><strong>Por DM</strong> Te confirmamos talla y color.</span>
+              <span><strong>Envios RD</strong> Nacionales y pagos por transferencia.</span>
+            </div>
           </div>
-          <div class="welcome-copy">
-            <strong>Bienvenido al mundo GhostWear.</strong>
-            <span>Entra tranquilo: aqui armas el fit del Ghost, eliges color y confirmas disponibilidad por WhatsApp antes de pagar.</span>
-          </div>
-          <div class="welcome-actions">
-            <a class="btn primary" href="#shop">Ver drop</a>
-            <a class="btn" href="#pedido">Como comprar</a>
+          <div class="welcome-visual" aria-hidden="true">
+            <div class="welcome-ghost">
+              <img src="./images/logo-ghost.png" alt="" />
+            </div>
+            <div class="welcome-caption">
+              <span>GhostWear RD</span>
+              <span>Friendly Ghost</span>
+            </div>
           </div>
         </div>
       </div>
