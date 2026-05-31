@@ -2314,6 +2314,26 @@
       flex-wrap: wrap;
     }
 
+    .footer-brand-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--ghost-cream);
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .footer-brand-note::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 16px rgba(219, 255, 45, 0.5);
+    }
+
     .overlay {
       position: fixed;
       inset: 0;
@@ -2939,7 +2959,7 @@
                 <p>Reel corto: color, logo, precio y disponible por DM.</p>
               </div>
             </article>
-            <article class="card media-card" style="background-image:url('./images/designed/ghostwear-short-lavender-studio.png')">
+            <article class="card media-card" style="background-image:url('./images/designed/ghostwear-short-lavender-logo-gray.png')">
               <span class="format-tag">Story</span>
               <div>
                 <h3>Encuesta de color</h3>
@@ -2953,7 +2973,7 @@
                 <p>Feed claro para que el cliente pida sin descifrar nada.</p>
               </div>
             </article>
-            <article class="card media-card" style="background-image:url('./images/designed/ghostwear-short-white-studio.png')">
+            <article class="card media-card" style="background-image:url('./images/designed/ghostwear-short-white-logo-black.png')">
               <span class="format-tag">Carrusel</span>
               <div>
                 <h3>White essential</h3>
@@ -3281,6 +3301,7 @@
         <span>GhostWear</span>
       </a>
       <span>Santo Domingo, RD</span>
+      <span class="footer-brand-note">A YC Systems Brand</span>
       <span>&copy; <span id="year"></span> GhostWear. Todos los derechos reservados.</span>
     </div>
   </footer>
@@ -3507,7 +3528,7 @@
         quantities: ["1", "2"],
         includes: ["Short Ghost", "Gorra Ghost"],
         comboImages: [
-          { label: "Short", src: "./images/designed/ghostwear-short-light-gray-studio.png" },
+          { label: "Short", src: "./images/designed/ghostwear-short-light-gray-logo-black.png" },
           { label: "Gorra", src: "./images/designed/ghostwear-caps-studio.png" }
         ]
       },
@@ -3567,8 +3588,8 @@
     comboProducts[2].urgency = { label: "Full fit limitado", line: "El paquete completo tiene descuento y stock por talla." };
     const cleanShortImages = {
       "Red": "./images/designed/ghostwear-short-red-studio.png",
-      "Baby Blue": "./images/designed/ghostwear-short-baby-blue-studio.png",
-      "Light Gray": "./images/designed/ghostwear-short-light-gray-studio.png",
+      "Baby Blue": "./images/designed/ghostwear-short-baby-blue-logo-black.png",
+      "Light Gray": "./images/designed/ghostwear-short-light-gray-logo-black.png",
       "Orange": "./images/designed/ghostwear-short-orange-studio.png",
       "Olive": "./images/designed/ghostwear-short-olive-studio.png",
       "Aqua": "./images/designed/ghostwear-short-aqua-studio.png",
@@ -3578,9 +3599,9 @@
       "Royal Blue": "./images/designed/ghostwear-short-royal-blue-studio.png",
       "Yellow": "./images/designed/ghostwear-short-yellow-studio.png",
       "Navy": "./images/designed/ghostwear-short-navy-studio.png",
-      "Lavender": "./images/designed/ghostwear-short-lavender-studio.png",
+      "Lavender": "./images/designed/ghostwear-short-lavender-logo-gray.png",
       "Black": "./images/designed/ghostwear-short-black-studio.png",
-      "White": "./images/designed/ghostwear-short-white-studio.png"
+      "White": "./images/designed/ghostwear-short-white-logo-black.png"
     };
     const ghostModelImages = {
       court: "./images/model/ghostwear-juanco-model-court.jpg",
