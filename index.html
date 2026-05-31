@@ -1969,7 +1969,8 @@
       #drop,
       #contenido,
       #gear,
-      #fit {
+      #fit,
+      #prueba-social {
         display: none;
       }
       #shop .section-head {
@@ -1990,22 +1991,17 @@
         gap: 12px;
       }
       .color-img {
-        aspect-ratio: 16 / 11;
+        aspect-ratio: 16 / 8.5;
       }
       .color-img[data-view="clean"] img {
         padding: 10px;
       }
       .photo-tabs {
-        gap: 6px;
-        padding: 8px;
-      }
-      .photo-tab {
-        min-height: 32px;
-        font-size: 0.66rem;
+        display: none;
       }
       .color-body {
-        padding: 14px;
-        gap: 12px;
+        padding: 12px;
+        gap: 10px;
       }
       .badge-row {
         gap: 6px;
@@ -2030,23 +2026,27 @@
       .color-body p {
         font-size: 0.9rem;
         line-height: 1.45;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
       }
       .sell-line {
         margin-top: 8px;
       }
       .options {
-        gap: 8px;
+        gap: 6px;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        margin-top: 12px;
+        margin-top: 8px;
       }
       label {
         gap: 5px;
         font-size: 0.7rem;
       }
       select {
-        min-height: 40px;
+        min-height: 36px;
         padding: 0 8px;
-        font-size: 0.78rem;
+        font-size: 0.74rem;
       }
       .availability-line,
       .size-help {
@@ -2055,10 +2055,10 @@
       .buy-row {
         grid-template-columns: 1fr 1fr;
         gap: 8px;
-        margin-top: 10px;
+        margin-top: 8px;
       }
       .buy-row .btn {
-        min-height: 40px;
+        min-height: 38px;
         padding: 0 10px;
         font-size: 0.78rem;
       }
