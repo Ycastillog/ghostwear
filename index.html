@@ -68,6 +68,7 @@
     }
 
     .brand {
+      position: relative;
       display: inline-flex;
       align-items: center;
       gap: 12px;
@@ -77,14 +78,49 @@
       flex-shrink: 0;
     }
 
+    .brand::after {
+      content: "boo";
+      position: absolute;
+      left: 68px;
+      top: -4px;
+      z-index: 2;
+      transform: translateY(-12px) scale(0.86) rotate(-7deg);
+      opacity: 0;
+      border: 1px solid rgba(17, 17, 17, 0.14);
+      border-radius: 999px;
+      padding: 4px 7px;
+      background: var(--ghost-blue);
+      color: #fff;
+      font-size: 0.58rem;
+      font-weight: 950;
+      letter-spacing: 0;
+      text-transform: lowercase;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
+      transition: opacity 180ms ease, transform 180ms ease;
+      pointer-events: none;
+    }
+
     .brand img {
-      width: 48px;
-      height: 48px;
+      width: clamp(118px, 13vw, 158px);
+      height: auto;
       object-fit: contain;
-      padding: 6px;
-      border-radius: 50%;
-      background: var(--ghost-cream);
-      box-shadow: 0 0 0 1px rgba(17, 17, 17, 0.18), 0 12px 34px rgba(244, 241, 220, 0.16);
+      padding: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+      filter: drop-shadow(0 10px 22px rgba(244, 241, 220, 0.12));
+      animation: wordmarkAlive 4.6s ease-in-out infinite;
+      transition: transform 180ms ease, filter 180ms ease;
+    }
+
+    .brand:hover img {
+      transform: translateY(-2px) rotate(-1deg) scale(1.04);
+      filter: drop-shadow(0 14px 28px rgba(244, 241, 220, 0.22)) drop-shadow(0 0 16px rgba(159, 216, 255, 0.22));
+    }
+
+    .brand:hover::after {
+      opacity: 1;
+      transform: translateY(-18px) scale(1) rotate(-7deg);
     }
     .nav-links { display: flex; align-items: center; gap: 22px; margin-left: 22px; color: var(--muted); font-size: 0.9rem; }
     .nav-links a:hover { color: var(--ink); }
@@ -97,6 +133,8 @@
     }
 
     .btn {
+      position: relative;
+      overflow: hidden;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -114,6 +152,20 @@
     .btn:hover { transform: translateY(-1px); border-color: rgba(246, 243, 238, 0.28); }
     .btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
     .btn.primary:hover { background: #fff8df; }
+    .btn.primary::after {
+      content: "";
+      position: absolute;
+      inset: -40% auto -40% -45%;
+      width: 42%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.46), transparent);
+      transform: skewX(-18deg);
+      transition: left 420ms ease;
+      pointer-events: none;
+    }
+
+    .btn.primary:hover::after {
+      left: 112%;
+    }
     .btn.full { width: 100%; }
     .btn.danger { color: var(--danger); }
     .btn.ig-link {
@@ -168,15 +220,13 @@
       position: absolute;
       inset: 0 auto auto 0;
       display: flex;
-      justify-content: center;
-      width: 100%;
+      width: max-content;
       gap: 28px;
       overflow: hidden;
       padding: 9px 0;
       white-space: nowrap;
+      animation: ghostMarquee 28s linear infinite;
     }
-
-    .announce-track span:nth-child(n+5) { display: none; }
 
     .announce-track span::after {
       content: "/";
@@ -189,9 +239,55 @@
       to { transform: translateX(-50%); }
     }
 
+    @keyframes ghostFloat {
+      0%, 100% { transform: translateY(0) rotate(-2deg); }
+      50% { transform: translateY(-10px) rotate(2deg); }
+    }
+
+    @keyframes logoAlive {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg) scale(1);
+        filter: drop-shadow(0 14px 28px rgba(244, 241, 220, 0.12));
+      }
+      42% {
+        transform: translateY(-2px) rotate(-2deg) scale(1.035);
+        filter: drop-shadow(0 18px 34px rgba(244, 241, 220, 0.24)) drop-shadow(0 0 18px rgba(159, 216, 255, 0.16));
+      }
+      48% {
+        transform: translateY(-2px) rotate(2deg) scale(1.035);
+      }
+    }
+
+    @keyframes wordmarkAlive {
+      0%, 100% {
+        transform: translateY(0) scale(1);
+        filter: drop-shadow(0 10px 22px rgba(244, 241, 220, 0.12));
+      }
+      44% {
+        transform: translateY(-1px) scale(1.025);
+        filter: drop-shadow(0 14px 28px rgba(244, 241, 220, 0.22)) drop-shadow(0 0 14px rgba(159, 216, 255, 0.18));
+      }
+      49% {
+        transform: translateY(-1px) rotate(-0.8deg) scale(1.025);
+      }
+      54% {
+        transform: translateY(-1px) rotate(0.8deg) scale(1.025);
+      }
+    }
+
+    @keyframes softPulse {
+      0%, 100% { opacity: 0.58; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.05); }
+    }
+
+    @keyframes orbitDot {
+      from { transform: rotate(0deg) translateX(142px) rotate(0deg); }
+      to { transform: rotate(360deg) translateX(142px) rotate(-360deg); }
+    }
+
     .hero {
       min-height: auto;
-      display: grid;
+      display: none;
       align-items: center;
       padding: 22px 0 14px;
       position: relative;
@@ -212,6 +308,16 @@
       pointer-events: none;
     }
 
+    #combos,
+    #drop,
+    #contenido,
+    #gear,
+    #fit,
+    #prueba-social,
+    #shopCards {
+      display: none;
+    }
+
     .hero-grid {
       display: grid;
       grid-template-columns: minmax(0, 0.98fr) minmax(290px, 0.78fr);
@@ -220,17 +326,66 @@
     }
 
     .welcome {
-      padding: 18px 0 10px;
+      padding: 20px 0 10px;
+    }
+
+    body.intro-active {
+      overflow: hidden;
+    }
+
+    body.intro-active .welcome.intro-gate {
+      position: fixed;
+      inset: 34px 0 0;
+      z-index: 80;
+      display: grid;
+      align-items: center;
+      padding: 18px 0;
+      background:
+        radial-gradient(circle at 50% 20%, rgba(244, 241, 220, 0.12), transparent 22rem),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.88), rgba(0, 0, 0, 0.96)),
+        var(--bg);
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 300ms ease, transform 300ms ease;
+    }
+
+    body.intro-active .welcome.intro-gate::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: radial-gradient(circle at center, #000, transparent 72%);
+      pointer-events: none;
+    }
+
+    body.intro-leaving .welcome.intro-gate {
+      opacity: 0;
+      transform: translateY(-18px);
+      pointer-events: none;
+    }
+
+    body.intro-dismissed .welcome.intro-gate {
+      display: none;
+    }
+
+    body.intro-active .site-header {
+      transform: translateY(-100%);
+      pointer-events: none;
     }
 
     .welcome-card {
       position: relative;
       overflow: hidden;
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(280px, 0.68fr);
+      grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
       gap: clamp(18px, 4vw, 46px);
       align-items: stretch;
-      padding: clamp(22px, 4vw, 44px);
+      min-height: min(640px, calc(100vh - 124px));
+      padding: clamp(22px, 5vw, 64px);
       border: 1px solid rgba(244, 241, 220, 0.2);
       border-radius: 8px;
       background:
@@ -238,6 +393,12 @@
         radial-gradient(circle at 8% 86%, rgba(159, 216, 255, 0.12), transparent 18rem),
         linear-gradient(135deg, rgba(244, 241, 220, 0.1), rgba(255, 255, 255, 0.025)),
         rgba(255, 255, 255, 0.035);
+    }
+
+    body.intro-active .welcome-card {
+      width: min(var(--max), calc(100% - 32px));
+      margin-inline: auto;
+      min-height: min(640px, calc(100vh - 84px));
     }
 
     .welcome-card::after {
@@ -250,6 +411,20 @@
       font-weight: 950;
       line-height: 0.9;
       pointer-events: none;
+    }
+
+    .welcome-card::before {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border: 1px solid rgba(244, 241, 220, 0.08);
+      border-radius: 8px;
+      pointer-events: none;
+    }
+
+    body.intro-active .welcome-card::before {
+      border-color: rgba(244, 241, 220, 0.14);
+      box-shadow: inset 0 0 80px rgba(244, 241, 220, 0.035);
     }
 
     .welcome-content {
@@ -281,8 +456,8 @@
 
     .welcome-copy strong {
       max-width: 640px;
-      font-size: clamp(2.1rem, 5vw, 4.4rem);
-      line-height: 0.94;
+      font-size: clamp(3rem, 7vw, 6.4rem);
+      line-height: 0.88;
       text-transform: uppercase;
       letter-spacing: 0;
     }
@@ -326,6 +501,14 @@
       font-size: 1rem;
     }
 
+    .welcome-subline {
+      color: var(--muted);
+      font-size: 0.86rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
     .welcome-visual {
       position: relative;
       z-index: 1;
@@ -340,19 +523,26 @@
     }
 
     .welcome-ghost {
-      width: min(72%, 260px);
-      aspect-ratio: 1;
+      position: relative;
+      width: min(86%, 360px);
+      min-height: 220px;
       display: grid;
       place-items: center;
-      border-radius: 50%;
-      background: var(--ghost-cream);
-      box-shadow: 0 28px 80px rgba(244, 241, 220, 0.2);
+      border: 0;
+      border-radius: 8px;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(244, 241, 220, 0.14), transparent 68%),
+        rgba(255, 255, 255, 0.02);
+      box-shadow: 0 28px 80px rgba(244, 241, 220, 0.08);
+      animation: ghostFloat 4.8s ease-in-out infinite;
+      cursor: pointer;
     }
 
     .welcome-ghost img {
-      width: 72%;
-      height: 72%;
+      width: 88%;
+      height: auto;
       object-fit: contain;
+      animation: wordmarkAlive 5.8s ease-in-out infinite;
     }
 
     .welcome-caption {
@@ -372,6 +562,60 @@
       font-size: 0.84rem;
       font-weight: 900;
       text-transform: uppercase;
+    }
+
+    .ghost-hint {
+      position: absolute;
+      left: 50%;
+      top: calc(50% + 132px);
+      transform: translateX(-50%);
+      z-index: 2;
+      white-space: nowrap;
+      border: 1px solid rgba(244, 241, 220, 0.18);
+      border-radius: 999px;
+      padding: 8px 11px;
+      background: rgba(0, 0, 0, 0.5);
+      color: var(--ghost-cream);
+      font-size: 0.72rem;
+      font-weight: 950;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      backdrop-filter: blur(12px);
+      cursor: pointer;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    .ghost-hint:hover {
+      transform: translateX(-50%) translateY(-2px);
+      border-color: rgba(244, 241, 220, 0.4);
+      background: rgba(244, 241, 220, 0.1);
+    }
+
+    .welcome-orbit {
+      position: absolute;
+      inset: 50% auto auto 50%;
+      width: 10px;
+      height: 10px;
+      margin: -5px 0 0 -5px;
+      border-radius: 50%;
+      background: var(--ghost-blue);
+      box-shadow: 0 0 24px rgba(159, 216, 255, 0.7);
+      animation: orbitDot 9s linear infinite;
+    }
+
+    .welcome-orbit:nth-child(2) {
+      background: var(--ghost-red);
+      animation-duration: 12s;
+      animation-delay: -3s;
+      transform: rotate(120deg) translateX(120px) rotate(-120deg);
+    }
+
+    .welcome-orbit:nth-child(3) {
+      width: 8px;
+      height: 8px;
+      background: var(--ghost-cream);
+      animation-duration: 15s;
+      animation-delay: -7s;
     }
 
     .eyebrow {
@@ -415,12 +659,13 @@
     }
 
     .ghost-tag img {
-      width: 34px;
-      height: 34px;
+      width: 72px;
+      height: auto;
       object-fit: contain;
-      padding: 5px;
-      border-radius: 50%;
-      background: var(--ghost-cream);
+      padding: 0;
+      border-radius: 0;
+      background: transparent;
+      animation: wordmarkAlive 5.2s ease-in-out infinite;
     }
 
     h1 {
@@ -515,18 +760,20 @@
       z-index: 4;
       display: grid;
       place-items: center;
-      width: 78px;
-      height: 78px;
-      border-radius: 50%;
-      border: 1px solid rgba(17, 17, 17, 0.2);
-      background: var(--ghost-cream);
-      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+      width: 128px;
+      height: 58px;
+      border-radius: 999px;
+      border: 1px solid rgba(244, 241, 220, 0.22);
+      background: rgba(244, 241, 220, 0.86);
+      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.32), 0 0 28px rgba(244, 241, 220, 0.16);
       transform: rotate(7deg);
+      animation: ghostFloat 5.8s ease-in-out infinite;
     }
 
     .ghost-sticker img {
-      width: 61px;
+      width: 96px;
       height: auto;
+      animation: wordmarkAlive 5.4s ease-in-out infinite;
     }
 
     .ghost-sticker::after {
@@ -544,6 +791,117 @@
       font-weight: 950;
       letter-spacing: 0.05em;
       text-transform: uppercase;
+    }
+
+    .category-impact {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin: 2px 0 16px;
+    }
+
+    .category-card {
+      position: relative;
+      min-height: 178px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(244, 241, 220, 0.11), rgba(255, 255, 255, 0.022));
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      isolation: isolate;
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .category-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background-image: var(--category-image);
+      background-size: cover;
+      background-position: center;
+      opacity: 0.78;
+      filter: saturate(0.96) contrast(1.05);
+      transition: transform 220ms ease, opacity 180ms ease;
+    }
+
+    .category-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.74)),
+        radial-gradient(circle at 20% 12%, rgba(244, 241, 220, 0.2), transparent 34%);
+    }
+
+    .category-card .boo-mark {
+      position: absolute;
+      right: 10px;
+      bottom: 8px;
+      color: rgba(244, 241, 220, 0.14);
+      font-size: 2.1rem;
+      font-weight: 950;
+      letter-spacing: 0;
+      animation: softPulse 3.8s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .category-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(244, 241, 220, 0.4);
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
+    }
+
+    .category-card:hover::before {
+      transform: scale(1.04);
+      opacity: 0.9;
+    }
+
+    .category-card strong {
+      display: block;
+      color: var(--accent);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .category-card span {
+      display: block;
+      margin-top: 9px;
+      color: var(--ink);
+      font-size: clamp(1.25rem, 2.7vw, 2rem);
+      font-weight: 950;
+      line-height: 1.05;
+      text-transform: uppercase;
+    }
+
+    .category-card small {
+      width: fit-content;
+      border: 1px solid rgba(244, 241, 220, 0.24);
+      border-radius: 999px;
+      padding: 6px 9px;
+      background: rgba(0, 0, 0, 0.5);
+      color: var(--ghost-cream);
+      font-size: 0.68rem;
+      font-weight: 950;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      backdrop-filter: blur(10px);
+    }
+
+    #shop.shop-discovered .shop-filter-shell,
+    #shop.shop-discovered .category-impact {
+      animation: revealShop 520ms ease both;
+    }
+
+    @keyframes revealShop {
+      from { opacity: 0.4; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .hero-photo {
@@ -862,6 +1220,7 @@
     .color-card:hover {
       transform: translateY(-3px);
       border-color: rgba(244, 241, 220, 0.38);
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
     }
 
     .color-img {
@@ -1089,6 +1448,9 @@
 
     .combo-offer .color-img {
       border-bottom: 1px solid rgba(244, 241, 220, 0.24);
+      background:
+        radial-gradient(circle at 28% 20%, rgba(244, 241, 220, 0.16), transparent 28%),
+        linear-gradient(145deg, #181818, #070707);
     }
 
     .combo-offer .sell-line {
@@ -1098,6 +1460,93 @@
       padding: 8px 10px;
       background: rgba(244, 241, 220, 0.12);
       color: var(--accent);
+    }
+
+    .combo-pieces {
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      z-index: 3;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .combo-piece {
+      min-height: 74px;
+      border: 1px solid rgba(244, 241, 220, 0.22);
+      border-radius: 8px;
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.62);
+      backdrop-filter: blur(12px);
+    }
+
+    .combo-piece img {
+      width: 100%;
+      height: 52px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .combo-piece span {
+      display: block;
+      padding: 5px 6px;
+      color: var(--ghost-cream);
+      font-size: 0.62rem;
+      font-weight: 950;
+      letter-spacing: 0.04em;
+      text-align: center;
+      text-transform: uppercase;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .combo-includes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin: 12px 0 0;
+    }
+
+    .combo-includes span {
+      min-height: 28px;
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid rgba(244, 241, 220, 0.24);
+      border-radius: 999px;
+      padding: 0 9px;
+      background: rgba(244, 241, 220, 0.08);
+      color: var(--ghost-cream);
+      font-size: 0.68rem;
+      font-weight: 950;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .combo-ticket {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      align-items: center;
+      margin-top: 12px;
+      padding: 10px;
+      border: 1px dashed rgba(244, 241, 220, 0.34);
+      border-radius: 8px;
+      background: rgba(244, 241, 220, 0.06);
+    }
+
+    .combo-ticket small {
+      color: var(--muted);
+      font-weight: 850;
+      line-height: 1.35;
+    }
+
+    .combo-ticket strong {
+      color: var(--accent);
+      font-size: 1.12rem;
+      white-space: nowrap;
     }
 
     .combo-offer-banner {
@@ -1946,6 +2395,16 @@
       text-transform: lowercase;
     }
 
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
     @media (max-width: 1240px) {
       .nav-actions .ig-link { display: none; }
     }
@@ -1971,6 +2430,7 @@
     @media (max-width: 620px) {
       .wrap { width: min(100% - 24px, var(--max)); }
       .brand span { display: none; }
+      .brand img { width: 104px; }
       .nav { min-height: 66px; }
       .nav-actions .shop-link,
       .nav-actions .ig-link { display: none; }
@@ -1986,7 +2446,28 @@
       .welcome-signals { display: none; }
       .welcome-visual { display: none; }
       .welcome-actions .btn { flex: 1 1 130px; }
-      .hero { display: none; }
+      .welcome-visual {
+        display: grid;
+        min-height: 230px;
+      }
+      .welcome-ghost {
+        width: min(100%, 290px);
+        min-height: 160px;
+      }
+      .ghost-hint {
+        top: calc(50% + 94px);
+      }
+      .category-impact {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+      .category-card {
+        min-height: 128px;
+        padding: 10px;
+      }
+      .category-card span {
+        font-size: 1rem;
+      }
       #combos,
       #drop,
       #contenido,
@@ -2166,9 +2647,17 @@
       .announce-track { justify-content: flex-start; padding-left: 12px; }
       .announce-track span:nth-child(n+3) { display: none; }
     }
-  </style>
+</style>
 </head>
 <body>
+  <script>
+    try {
+      const forceIntro = new URLSearchParams(location.search).has("intro");
+      document.body.classList.add(!forceIntro && sessionStorage.getItem("ghostIntroSeen") ? "intro-dismissed" : "intro-active");
+    } catch (error) {
+      document.body.classList.add("intro-active");
+    }
+  </script>
   <div class="announce" aria-label="GhostWear novedades">
     <div class="announce-track" id="announceTrack">
     </div>
@@ -2176,59 +2665,50 @@
 
   <header class="site-header">
     <div class="wrap nav">
-      <a href="#top" class="brand" aria-label="GhostWear inicio">
+      <a href="#shop" class="brand" aria-label="Descubrir coleccion GhostWear" data-discover-shop>
         <img src="./images/logo-ghost.png" alt="" />
         <span>GhostWear</span>
       </a>
       <nav class="nav-links" aria-label="Principal">
         <a href="#shop">Shop</a>
-        <a href="#combos">Combos</a>
-        <a href="#drop">Shorts</a>
-        <a href="#gear">Medias/Gear</a>
-        <a href="#contenido">Contenido</a>
-        <a href="#prueba-social">Prueba</a>
+        <a href="#shop" data-shop-filter="combos">Combos</a>
         <a href="#tallas">Tallas</a>
-        <a href="#fit">Fit</a>
-        <a href="#pedido">Pedido</a>
         <a href="#contacto">Contacto</a>
       </nav>
       <div class="nav-actions">
-        <a class="btn ig-link" href="https://www.instagram.com/ghostwear1/" target="_blank" rel="noopener">Ver Instagram</a>
         <button class="btn" id="cartBtn" type="button" aria-controls="drawer">
           Carrito <span class="cart-count" id="cartCount">0</span>
         </button>
-        <a class="btn primary shop-link" href="#drop">Armar fit</a>
       </div>
     </div>
   </header>
 
   <main id="top">
-    <section class="welcome" aria-label="Bienvenida GhostWear">
+    <section class="welcome intro-gate" aria-label="Entrada GhostWear">
       <div class="wrap">
         <div class="welcome-card">
           <div class="welcome-content">
-            <span class="welcome-kicker">Bienvenido a GhostWear</span>
+            <span class="welcome-kicker">Drop activo RD</span>
             <div class="welcome-copy">
-              <strong>Ropa con flow de cancha.</strong>
-              <span>Una tienda virtual clara y directa: miras las piezas, eliges tu talla o color y confirmas disponibilidad por WhatsApp antes de pagar.</span>
+              <strong>Viste diferente.</strong>
+              <span class="welcome-subline">GhostWear. Elige tu color, arma tu fit y confirma por WhatsApp.</span>
             </div>
             <div class="welcome-actions">
-              <a class="btn primary" href="#shop">Ver drop</a>
-              <a class="btn" href="#pedido">Como comprar</a>
-            </div>
-            <div class="welcome-signals" aria-label="Senales de compra">
-              <span><strong>Catalogo simple</strong> Shorts, medias, gorras y hoodie.</span>
-              <span><strong>Por DM</strong> Talla y color confirmados.</span>
-              <span><strong>Envios RD</strong> Pagos por transferencia.</span>
+              <a class="btn primary" href="#shop" data-discover-shop>Ver coleccion</a>
+              <button class="btn" id="welcomeFitBtn" type="button">Armar mi fit</button>
             </div>
           </div>
           <div class="welcome-visual" aria-hidden="true">
+            <span class="welcome-orbit"></span>
+            <span class="welcome-orbit"></span>
+            <span class="welcome-orbit"></span>
             <div class="welcome-ghost">
-              <img src="./images/logo-ghost.png" alt="" />
+              <img src="./images/logo-ghost.png" alt="GhostWear" data-discover-shop />
             </div>
+            <button class="ghost-hint" type="button" data-discover-shop>Entrar a la tienda</button>
             <div class="welcome-caption">
               <span>GhostWear RD</span>
-              <span>Bienvenido</span>
+              <span>Descubre el drop</span>
             </div>
           </div>
         </div>
@@ -2248,7 +2728,7 @@
             pregunta por disponibilidad y armamos el pedido por WhatsApp.
           </p>
           <div class="hero-actions">
-            <a class="btn primary" href="#drop">Ver colores</a>
+            <a class="btn primary" href="#shop">Ver colores</a>
             <button class="btn" id="heroLookBtn" type="button">Comprar este look</button>
             <button class="btn" id="heroCartBtn" type="button">Abrir carrito</button>
           </div>
@@ -2293,9 +2773,32 @@
             shorts, medias, gorras o hoodie sin scrollear de mas.
           </p>
         </div>
+        <div class="category-impact" aria-label="Categorias principales GhostWear">
+          <a class="category-card" href="#shop" data-shop-filter="shorts" style="--category-image:url('./images/designed/ghostwear-short-royal-blue-studio.png')">
+            <small>15 colores</small>
+            <div><strong>Categoria</strong><span>Shorts</span></div>
+            <span class="boo-mark">boo</span>
+          </a>
+          <a class="category-card" href="#shop" data-shop-filter="hoodie" style="--category-image:url('./images/designed/ghostwear-hoodie-studio.png')">
+            <small>Pocas tallas</small>
+            <div><strong>Categoria</strong><span>Hoodie</span></div>
+            <span class="boo-mark">boo</span>
+          </a>
+          <a class="category-card" href="#shop" data-shop-filter="medias" style="--category-image:url('./images/designed/ghostwear-socks-studio.png')">
+            <small>Pack activo</small>
+            <div><strong>Categoria</strong><span>Medias</span></div>
+            <span class="boo-mark">boo</span>
+          </a>
+          <a class="category-card" href="#shop" data-shop-filter="gorras" style="--category-image:url('./images/designed/ghostwear-caps-studio.png')">
+            <small>Colorways</small>
+            <div><strong>Categoria</strong><span>Gorras</span></div>
+            <span class="boo-mark">boo</span>
+          </a>
+        </div>
         <div class="shop-filter-shell">
           <div class="filter-bar" id="shopFilters" aria-label="Filtrar productos por categoria">
             <button class="filter-btn active" type="button" data-filter="todos">Todos</button>
+            <button class="filter-btn" type="button" data-filter="combos">Combos</button>
             <button class="filter-btn" type="button" data-filter="shorts">Shorts</button>
             <button class="filter-btn" type="button" data-filter="medias">Medias</button>
             <button class="filter-btn" type="button" data-filter="gorras">Gorras</button>
@@ -2778,6 +3281,7 @@
     const heroTag = document.getElementById("heroTag");
     const heroFeature = document.getElementById("heroFeature");
     const heroPrice = document.getElementById("heroPrice");
+    const welcomeFitBtn = document.getElementById("welcomeFitBtn");
     const shopCards = document.getElementById("shopCards");
     const shopFilters = document.getElementById("shopFilters");
     const shopFilterCount = document.getElementById("shopFilterCount");
@@ -2916,7 +3420,12 @@
         note: "Short Ghost + medias para salir con el fit amarrado. Ahorras RD$ 100.",
         swatch: "#f4f1dc",
         sizes: ["S", "M", "L", "XL"],
-        quantities: ["1", "2"]
+        quantities: ["1", "2"],
+        includes: ["Short Ghost", "Medias Ghost"],
+        comboImages: [
+          { label: "Short", src: "./images/designed/ghostwear-short-royal-blue-studio.png" },
+          { label: "Medias", src: "./images/designed/ghostwear-socks-studio.png" }
+        ]
       },
       {
         tag: "Combo",
@@ -2929,7 +3438,12 @@
         note: "Short Ghost + gorra Ghost. La vuelta facil para cerrar el look.",
         swatch: "#2454ff",
         sizes: ["S", "M", "L", "XL"],
-        quantities: ["1", "2"]
+        quantities: ["1", "2"],
+        includes: ["Short Ghost", "Gorra Ghost"],
+        comboImages: [
+          { label: "Short", src: "./images/designed/ghostwear-short-light-gray-studio.png" },
+          { label: "Gorra", src: "./images/designed/ghostwear-caps-studio.png" }
+        ]
       },
       {
         tag: "Full Fit",
@@ -2942,7 +3456,13 @@
         note: "Short + hoodie + medias. Full Ghost fit con descuento de RD$ 250.",
         swatch: "#111111",
         sizes: ["S", "M", "L", "XL"],
-        quantities: ["1"]
+        quantities: ["1"],
+        includes: ["Short Ghost", "Hoodie Ghost", "Medias Ghost"],
+        comboImages: [
+          { label: "Short", src: "./images/designed/ghostwear-short-black-studio.png" },
+          { label: "Hoodie", src: "./images/designed/ghostwear-hoodie-studio.png" },
+          { label: "Medias", src: "./images/designed/ghostwear-socks-studio.png" }
+        ]
       }
     ];
     comboProducts.forEach(product => {
@@ -3149,6 +3669,25 @@
       const priceMarkup = isCombo
         ? `<span class="price-stack"><small class="old-price">${product.oldPrice}</small><strong class="combo-price">${product.priceLabel}</strong><small class="combo-save">Ahorras ${moneyText(savedAmount)}</small></span>`
         : `<span>${product.priceLabel}</span>`;
+      const comboPieces = isCombo && product.comboImages
+        ? `<div class="combo-pieces" aria-label="Piezas incluidas en ${product.name}">
+            ${product.comboImages.map(piece => `
+              <span class="combo-piece">
+                <img src="${piece.src}" alt="${piece.label} incluido en ${product.name}" loading="lazy" />
+                <span>${piece.label}</span>
+              </span>
+            `).join("")}
+          </div>`
+        : "";
+      const comboIncludes = isCombo && product.includes
+        ? `<div class="combo-includes">
+            ${product.includes.map(item => `<span>${item}</span>`).join("")}
+          </div>
+          <div class="combo-ticket">
+            <small>Precio por separado ${product.oldPrice}. Oferta para pedir el fit junto.</small>
+            <strong>${product.priceLabel}</strong>
+          </div>`
+        : "";
       const colorPicker = product.colorOptions
         ? `<div class="color-picker" aria-label="Colores disponibles para ${product.name}">
             ${product.colorOptions.map((option, index) => {
@@ -3179,6 +3718,7 @@
             <span class="color-chip" style="background:${swatch}" aria-hidden="true"></span>
             <span class="ghost-corner" aria-hidden="true">BOO</span>
             <span class="photo-label">${primaryPhoto.label}</span>
+            ${comboPieces}
           </div>
           <div class="photo-tabs" aria-label="Fotos de ${product.name}">
             ${photos.map((photo, index) => `
@@ -3203,6 +3743,7 @@
                 <h3>${product.name}</h3>
                 ${priceMarkup}
               </div>
+              ${comboIncludes}
               <p>${product.note}</p>
               ${colorPicker}
               ${product.courtLine ? `<div class="court-line">${product.courtLine}</div>` : ""}
@@ -3247,7 +3788,15 @@
         : filter === "shorts"
           ? [shortsCollectionProduct]
           : allProducts.filter(product => product.category === filter);
-      const label = filter === "todos" ? "todo el drop" : filter;
+      const filterLabels = {
+        todos: "todo el drop",
+        combos: "combos",
+        shorts: "shorts",
+        medias: "medias",
+        gorras: "gorras",
+        hoodie: "hoodie"
+      };
+      const label = filterLabels[filter] || filter;
 
       filteredShopGrid.innerHTML = visibleProducts.map(product => {
         const isCombo = product.category === "combos";
@@ -3261,6 +3810,33 @@
       shopFilterCount.textContent = filter === "shorts"
         ? "Mostrando el short como coleccion. Los colores estan abajo."
         : `Mostrando ${visibleProducts.length} pieza${visibleProducts.length === 1 ? "" : "s"} para ${label === "todo el drop" ? "armar el fit" : label}`;
+    }
+
+    function setShopFilter(filter = "todos") {
+      const filterButton = shopFilters.querySelector(`[data-filter="${filter}"]`) || shopFilters.querySelector('[data-filter="todos"]');
+      shopFilters.querySelectorAll(".filter-btn").forEach(button => {
+        button.classList.toggle("active", button === filterButton);
+      });
+      renderFilteredShop(filterButton.dataset.filter);
+    }
+
+    function revealCollection(filter = "todos") {
+      setShopFilter(filter);
+      const shop = document.getElementById("shop");
+      shop.classList.remove("shop-discovered");
+      void shop.offsetWidth;
+      shop.classList.add("shop-discovered");
+      try {
+        sessionStorage.setItem("ghostIntroSeen", "1");
+      } catch (error) {
+      }
+      document.body.classList.add("intro-leaving");
+      window.setTimeout(() => {
+        document.body.classList.remove("intro-active", "intro-leaving");
+        document.body.classList.add("intro-dismissed");
+        shop.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, document.body.classList.contains("intro-active") ? 260 : 0);
+      window.setTimeout(() => shop.classList.remove("shop-discovered"), 1050);
     }
 
     function renderStorefront() {
@@ -3277,7 +3853,8 @@
         store.shipping
       ];
 
-      announceTrack.innerHTML = featuredAnnouncements.map(item => `<span>${item}</span>`).join("");
+      const marqueeItems = [...featuredAnnouncements, ...featuredAnnouncements];
+      announceTrack.innerHTML = marqueeItems.map(item => `<span>${item}</span>`).join("");
       heroTag.textContent = store.hero.tag;
       heroFeature.textContent = store.hero.feature;
       heroPrice.textContent = products[0].priceLabel;
@@ -3448,13 +4025,28 @@ Sector / direccion:`;
     shopFilters.addEventListener("click", event => {
       const button = event.target.closest("[data-filter]");
       if (!button) return;
-      shopFilters.querySelectorAll(".filter-btn").forEach(filterButton => {
-        filterButton.classList.toggle("active", filterButton === button);
-      });
-      renderFilteredShop(button.dataset.filter);
+      setShopFilter(button.dataset.filter);
     });
 
     document.addEventListener("click", event => {
+      const discoverTarget = event.target.closest("[data-discover-shop]");
+      if (discoverTarget) {
+        event.preventDefault();
+        revealCollection("todos");
+        return;
+      }
+
+      const shopFilterLink = event.target.closest("[data-shop-filter]");
+      if (shopFilterLink) {
+        if (shopFilterLink.tagName === "A") {
+          event.preventDefault();
+          revealCollection(shopFilterLink.dataset.shopFilter);
+          return;
+        }
+        setShopFilter(shopFilterLink.dataset.shopFilter);
+        return;
+      }
+
       const colorButton = event.target.closest("[data-color-option]");
       if (colorButton) {
         selectProductColor(colorButton);
@@ -3512,6 +4104,7 @@ Sector / direccion:`;
     cartBtn.addEventListener("click", openDrawer);
     heroLookBtn.addEventListener("click", addLookToCart);
     heroCartBtn.addEventListener("click", openDrawer);
+    welcomeFitBtn.addEventListener("click", () => revealCollection("combos"));
     closeCart.addEventListener("click", closeDrawer);
     overlay.addEventListener("click", closeDrawer);
     document.addEventListener("keydown", event => {
