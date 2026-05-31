@@ -2018,19 +2018,19 @@
       <div class="wrap">
         <div class="welcome-card">
           <div class="welcome-content">
-            <span class="welcome-kicker">Bienvenido al mundo GhostWear</span>
+            <span class="welcome-kicker">Bienvenido a GhostWear</span>
             <div class="welcome-copy">
-              <strong>Entra al drop del Ghost.</strong>
-              <span>Una tienda virtual nacida de la cancha, del apodo El Fantasma y del flow de RD. Aqui ves la pieza, eliges color y confirmas disponibilidad por WhatsApp antes de pagar.</span>
+              <strong>Ropa con flow de cancha.</strong>
+              <span>Una tienda virtual clara y directa: miras las piezas, eliges tu talla o color y confirmas disponibilidad por WhatsApp antes de pagar.</span>
             </div>
             <div class="welcome-actions">
               <a class="btn primary" href="#shop">Ver drop</a>
               <a class="btn" href="#pedido">Como comprar</a>
             </div>
             <div class="welcome-signals" aria-label="Senales de compra">
-              <span><strong>Drop activo</strong> Shorts, medias, gorras y hoodie.</span>
-              <span><strong>Por DM</strong> Te confirmamos talla y color.</span>
-              <span><strong>Envios RD</strong> Nacionales y pagos por transferencia.</span>
+              <span><strong>Catalogo simple</strong> Shorts, medias, gorras y hoodie.</span>
+              <span><strong>Por DM</strong> Talla y color confirmados.</span>
+              <span><strong>Envios RD</strong> Pagos por transferencia.</span>
             </div>
           </div>
           <div class="welcome-visual" aria-hidden="true">
@@ -2039,7 +2039,7 @@
             </div>
             <div class="welcome-caption">
               <span>GhostWear RD</span>
-              <span>Friendly Ghost</span>
+              <span>Bienvenido</span>
             </div>
           </div>
         </div>
@@ -2051,25 +2051,24 @@
         <div>
           <span class="ghost-tag">
             <img src="./images/logo-ghost.png" alt="" />
-            GhostWear por El Fantasma
+            Producto destacado
           </span>
-          <h1>El fit de El Fantasma. <span class="ghost-line">GhostWear RD.</span></h1>
+          <h1>Short Ghost Colors. <span class="ghost-line">Elige tu color.</span></h1>
           <p class="hero-copy">
-            La marca de Juan Miguel Suero nace de la cancha, del apodo y del
-            flow de RD: shorts, medias, gorras y hoodie para armar el fit Ghost.
+            Un solo modelo de short, 15 colores del drop. Escoge tu talla,
+            pregunta por disponibilidad y armamos el pedido por WhatsApp.
           </p>
           <div class="hero-actions">
-            <button class="btn primary" id="heroLookBtn" type="button">Armar este fit</button>
-            <a class="btn" href="#shop">Ver shop</a>
-            <a class="btn ig-link" href="https://www.instagram.com/ghostwear1/" target="_blank" rel="noopener">Ver Instagram</a>
+            <a class="btn primary" href="#drop">Ver colores</a>
+            <button class="btn" id="heroLookBtn" type="button">Comprar este look</button>
             <button class="btn" id="heroCartBtn" type="button">Abrir carrito</button>
           </div>
           <div class="hero-note">
-            <span>Drop activo</span>
-            <span>Quedan pocas unidades</span>
-            <span>Colores de cancha</span>
-            <span>Te lo apartamos por transferencia</span>
-            <span>DM / WhatsApp</span>
+            <span>15 colores</span>
+            <span>Tallas S / M / L / XL</span>
+            <span>Desde RD$ 1,600</span>
+            <span>Combos disponibles</span>
+            <span>Confirmacion por WhatsApp</span>
           </div>
           <div class="proof" id="heroStats" aria-label="Detalles de compra">
           </div>
@@ -2084,10 +2083,10 @@
           </div>
           <div class="product-float">
             <div>
-              <small id="heroTag">Juan Miguel Suero</small>
-              <h2 id="heroFeature">El Fantasma</h2>
+              <small id="heroTag">Drop principal</small>
+              <h2 id="heroFeature">Short + medias</h2>
             </div>
-            <div class="price" id="heroPrice">Desde RD$ 350</div>
+            <div class="price" id="heroPrice">Desde RD$ 1,600</div>
           </div>
         </div>
       </div>
@@ -2602,8 +2601,8 @@
       shipping: "Envios nacionales",
       payment: "Pagos por transferencia",
       hero: {
-        tag: "Juan Miguel Suero",
-        feature: "El Fantasma"
+        tag: "Drop principal",
+        feature: "Short + medias"
       },
       metrics: {
         posts: 17,
@@ -3040,7 +3039,7 @@
       announceTrack.innerHTML = featuredAnnouncements.map(item => `<span>${item}</span>`).join("");
       heroTag.textContent = store.hero.tag;
       heroFeature.textContent = store.hero.feature;
-      heroPrice.textContent = "Desde " + moneyText(minPrice);
+      heroPrice.textContent = products[0].priceLabel;
       heroStats.innerHTML = [
         { value: `${allProducts.length} piezas`, label: store.metrics.piecesLabel },
         { value: `Desde ${moneyText(minPrice)}`, label: "medias y packs" },
