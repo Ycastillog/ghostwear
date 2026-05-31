@@ -2424,7 +2424,8 @@
         tag: "Medias",
         name: "Medias Ghost",
         image: "./images/designed/ghostwear-socks-studio.png",
-        realImage: "./images/model/ghostwear-socks-detail-real.jpg",
+        realImage: "./images/ghostwear-socks-real.jpg",
+        modelImage: "./images/model/ghostwear-socks-detail-real.jpg",
         price: 350,
         priceLabel: "RD$ 350",
         note: "Par de medias blancas con logo Ghost bordado en colores.",
@@ -2436,7 +2437,8 @@
         tag: "Pack",
         name: "Pack 3 Medias Ghost",
         image: "./images/designed/ghostwear-socks-studio.png",
-        realImage: "./images/model/ghostwear-socks-detail-real.jpg",
+        realImage: "./images/ghostwear-socks-real.jpg",
+        modelImage: "./images/model/ghostwear-socks-detail-real.jpg",
         price: 1000,
         priceLabel: "RD$ 1,000",
         note: "Oferta de historia: tres pares con logos Ghost en colores surtidos.",
@@ -2571,8 +2573,9 @@
     });
     gearProducts.forEach(product => {
       const realImage = product.realImage || product.image;
+      const productModelImage = product.modelImage || realImage;
       const modelImageByCategory = {
-        medias: realImage,
+        medias: productModelImage,
         gorras: realImage,
         hoodie: juancoModelImages.hoodie
       };
