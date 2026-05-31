@@ -662,6 +662,13 @@
       color: var(--accent);
     }
 
+    .badge.court {
+      border-color: rgba(255, 255, 255, 0.22);
+      background:
+        linear-gradient(135deg, rgba(215, 255, 63, 0.16), rgba(255, 255, 255, 0.04));
+      color: var(--ghost-cream);
+    }
+
     .badge.urgent::before {
       content: "boo";
       margin-right: 6px;
@@ -680,6 +687,15 @@
     }
 
     .product-body p { color: var(--muted); line-height: 1.6; margin: 0; }
+
+    .court-line {
+      margin-top: 10px;
+      color: var(--ghost-cream);
+      font-size: 0.86rem;
+      font-weight: 850;
+      letter-spacing: 0.01em;
+      line-height: 1.35;
+    }
 
     .color-card {
       display: flex;
@@ -1845,7 +1861,7 @@
           <div class="hero-note">
             <span>Drop activo</span>
             <span>Quedan pocas unidades</span>
-            <span>Limited color run</span>
+            <span>Colores de cancha</span>
             <span>Te lo apartamos por transferencia</span>
             <span>DM / WhatsApp</span>
           </div>
@@ -1939,8 +1955,8 @@
             <h2>Shorts que se ven desde lejos</h2>
           </div>
           <p>
-            El color es la vuelta. El logo queda limpio, el cordon amarra el contraste
-            y el precio se entiende antes de escribir por DM.
+            Cada color baja con energia de juego: home, away, defensa, buzzer y
+            flow de cancha para conectar GhostWear con El Fantasma.
           </p>
         </div>
 
@@ -2395,21 +2411,21 @@
     }
 
     const products = [
-      { color: "Red", name: "Short Ghost Red", image: "./images/media/ghostwear-media-01.jpg", hex: "#d71925", note: "Rojo fuerte para looks de playa, gym y calle." },
-      { color: "Baby Blue", name: "Short Ghost Baby Blue", image: "./images/media/ghostwear-media-02.jpg", hex: "#a7d8ff", note: "Azul claro fresco con contraste negro." },
-      { color: "Light Gray", name: "Short Ghost Light Gray", image: "./images/media/ghostwear-media-03.jpg", hex: "#d8d4cd", note: "Gris limpio, facil de combinar todos los dias." },
-      { color: "Orange", name: "Short Ghost Orange", image: "./images/media/ghostwear-media-04.jpg", hex: "#f36a22", note: "Naranja vivo para que el fit se vea desde lejos." },
-      { color: "Olive", name: "Short Ghost Olive", image: "./images/media/ghostwear-media-05.jpg", hex: "#777b52", note: "Olive militar, sobrio y callejero." },
-      { color: "Aqua", name: "Short Ghost Aqua", image: "./images/media/ghostwear-media-06.jpg", hex: "#54ded1", note: "Aqua claro para dias de calor y fits frescos." },
-      { color: "Sky Blue", name: "Short Ghost Sky Blue", image: "./images/media/ghostwear-media-07.jpg", hex: "#35a7df", note: "Azul cielo con vibra deportiva." },
-      { color: "Pink", name: "Short Ghost Pink", image: "./images/media/ghostwear-media-08.jpg", hex: "#ff4f86", note: "Pink intenso para un drop con actitud." },
-      { color: "Neon Green", name: "Short Ghost Neon Green", image: "./images/media/ghostwear-media-09.jpg", hex: "#83f13a", note: "Verde neon, el color mas llamativo del drop." },
-      { color: "Royal Blue", name: "Short Ghost Royal Blue", image: "./images/media/ghostwear-media-10.jpg", hex: "#2454ff", note: "Azul royal con energia street." },
-      { color: "Yellow", name: "Short Ghost Yellow", image: "./images/media/ghostwear-media-11.jpg", hex: "#f4c21c", note: "Amarillo limpio para verano y contenido." },
-      { color: "Navy", name: "Short Ghost Navy", image: "./images/media/ghostwear-media-12.jpg", hex: "#202a64", note: "Azul navy oscuro, serio y combinable." },
-      { color: "Lavender", name: "Short Ghost Lavender", image: "./images/media/ghostwear-media-13.jpg", hex: "#c8afe6", note: "Lavender suave para un fit diferente." },
-      { color: "Black", name: "Short Ghost Black", image: "./images/media/ghostwear-media-14.jpg", hex: "#111111", note: "Negro esencial, logo en blanco y uso diario." },
-      { color: "White", name: "Short Ghost White", image: "./images/media/ghostwear-media-15.jpg", hex: "#f4f1e8", note: "Blanco fresco con cordon negro." }
+      { color: "Red", name: "Short Ghost Red", image: "./images/media/ghostwear-media-01.jpg", hex: "#d71925", note: "Rojo de juego caliente: entra duro, se ve desde la grada.", courtTag: "Buzzer rojo", courtLine: "Para el fit que grita clutch cuando llega la hora de cerrar." },
+      { color: "Baby Blue", name: "Short Ghost Baby Blue", image: "./images/media/ghostwear-media-02.jpg", hex: "#a7d8ff", note: "Azul claro tipo warmup fresco, limpio con medias Ghost blancas.", courtTag: "Warmup", courtLine: "Color suave para bajar tranquilo, pero con energia de cancha." },
+      { color: "Light Gray", name: "Short Ghost Light Gray", image: "./images/media/ghostwear-media-03.jpg", hex: "#d8d4cd", note: "Gris de practica: facil de combinar para gym, cancha y calle.", courtTag: "Practice", courtLine: "El short de rotacion diaria cuando el fit va sin mucha vuelta." },
+      { color: "Orange", name: "Short Ghost Orange", image: "./images/media/ghostwear-media-04.jpg", hex: "#f36a22", note: "Naranja de balon: vivo, deportivo y hecho para contenido.", courtTag: "Ball color", courtLine: "La conexion mas directa con basket: color de pelota, flow Ghost." },
+      { color: "Olive", name: "Short Ghost Olive", image: "./images/media/ghostwear-media-05.jpg", hex: "#777b52", note: "Olive defensivo, sobrio y callejero para jugar callado.", courtTag: "Defensa", courtLine: "Para el que no habla mucho, pero se siente cuando entra al juego." },
+      { color: "Aqua", name: "Short Ghost Aqua", image: "./images/media/ghostwear-media-06.jpg", hex: "#54ded1", note: "Aqua fresco de verano, cancha abierta y fit de calor RD.", courtTag: "Summer run", courtLine: "Perfecto para juego al aire libre, playa y vuelta despues de la cancha." },
+      { color: "Sky Blue", name: "Short Ghost Sky Blue", image: "./images/media/ghostwear-media-07.jpg", hex: "#35a7df", note: "Azul cielo con vibra deportiva y energia de uniforme alterno.", courtTag: "Away blue", courtLine: "El color visitante: fresco, visible y facil de combinar." },
+      { color: "Pink", name: "Short Ghost Pink", image: "./images/media/ghostwear-media-08.jpg", hex: "#ff4f86", note: "Pink intenso para romper la cancha y no parecerse a nadie.", courtTag: "Statement", courtLine: "Para el jugador que quiere que el fit sea parte del show." },
+      { color: "Neon Green", name: "Short Ghost Neon Green", image: "./images/media/ghostwear-media-09.jpg", hex: "#83f13a", note: "Verde neon tipo highlight: el color que no se pierde en la jugada.", courtTag: "Highlight", courtLine: "Cuando hay luces, video y story, este color aparece primero." },
+      { color: "Royal Blue", name: "Short Ghost Royal Blue", image: "./images/media/ghostwear-media-10.jpg", hex: "#2454ff", note: "Azul royal con energia de uniforme fuerte y cancha dominicana.", courtTag: "Royal game", courtLine: "El color mas de equipo: serio, deportivo y con presencia." },
+      { color: "Yellow", name: "Short Ghost Yellow", image: "./images/media/ghostwear-media-11.jpg", hex: "#f4c21c", note: "Amarillo ganador, brillante y facil de leer en foto o reel.", courtTag: "Trophy", courtLine: "Para meterle luz al fit: amarillo de trofeo, foto y celebracion." },
+      { color: "Navy", name: "Short Ghost Navy", image: "./images/media/ghostwear-media-12.jpg", hex: "#202a64", note: "Azul navy oscuro tipo uniforme serio para jugar con calma.", courtTag: "Capitan", courtLine: "Color de lider: combina facil y mantiene la vuelta limpia." },
+      { color: "Lavender", name: "Short Ghost Lavender", image: "./images/media/ghostwear-media-13.jpg", hex: "#c8afe6", note: "Lavender suave para un alterno diferente, fino y de coleccion.", courtTag: "Alternate", courtLine: "Ese color raro del equipo que despues todo el mundo pregunta." },
+      { color: "Black", name: "Short Ghost Black", image: "./images/media/ghostwear-media-14.jpg", hex: "#111111", note: "Negro away: esencial, fuerte, logo blanco y uso diario.", courtTag: "Away black", courtLine: "El uniforme oscuro del Ghost: seguro, facil y siempre duro." },
+      { color: "White", name: "Short Ghost White", image: "./images/media/ghostwear-media-15.jpg", hex: "#f4f1e8", note: "Blanco home: fresco, limpio y con cordon negro para contraste.", courtTag: "Home white", courtLine: "El color de casa: limpio para fotos, cancha y salida." }
     ].map(product => ({
       ...product,
       tag: product.color,
@@ -2713,6 +2729,7 @@
               <div class="badge-row">
                 <span class="badge">${badge}</span>
                 <span class="badge">${tag}</span>
+                ${product.courtTag ? `<span class="badge court">${product.courtTag}</span>` : ""}
                 <span class="badge urgent">${urgency.label}</span>
               </div>
               <div class="color-title">
@@ -2720,6 +2737,7 @@
                 ${priceMarkup}
               </div>
               <p>${product.note}</p>
+              ${product.courtLine ? `<div class="court-line">${product.courtLine}</div>` : ""}
               <div class="sell-line">${sellLine}</div>
               <div class="stock-line">${urgency.line}</div>
             </div>
