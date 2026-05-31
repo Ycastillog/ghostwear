@@ -2470,7 +2470,8 @@
       .hero-media { min-height: 360px; }
       section .wrap::before { display: none; }
       .product-card { grid-template-columns: 1fr; }
-      .drop-grid, .color-grid, .detail-grid, .steps, .policy-grid, .media-layout, .media-grid, .ig-strip, .future-grid, .drop-switch, .obsession, .size-guide, .size-extra, .social-proof, .dm-grid, .proof-stack, .combo-offer-banner { grid-template-columns: 1fr; }
+      .drop-grid, .detail-grid, .steps, .policy-grid, .media-layout, .media-grid, .ig-strip, .future-grid, .drop-switch, .obsession, .size-guide, .size-extra, .social-proof, .dm-grid, .proof-stack, .combo-offer-banner { grid-template-columns: 1fr; }
+      .color-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .combo-offer-price { border-left: 0; border-top: 1px solid var(--line); padding-left: 0; padding-top: 18px; }
       .section-head { display: block; }
       .media-feature { min-height: 520px; }
@@ -2543,6 +2544,7 @@
         font-size: 0.76rem;
       }
       .color-grid {
+        grid-template-columns: 1fr;
         gap: 12px;
       }
       .color-img {
@@ -2800,7 +2802,7 @@
           <div class="hero-note">
             <span>15 colores</span>
             <span>Tallas S / M / L / XL</span>
-            <span>Desde RD$ 1,600</span>
+            <span>Desde RD$ 1,500</span>
             <span>Combos disponibles</span>
             <span>Confirmacion por WhatsApp</span>
           </div>
@@ -2820,7 +2822,7 @@
               <small id="heroTag">Drop principal</small>
               <h2 id="heroFeature">Short + medias</h2>
             </div>
-            <div class="price" id="heroPrice">Desde RD$ 1,600</div>
+            <div class="price" id="heroPrice">Desde RD$ 1,500</div>
           </div>
         </div>
       </div>
@@ -2898,8 +2900,8 @@
             <p>Short + medias, short + gorra o el Full Ghost Fit completo. Te lo apartamos por transferencia y coordinamos envio nacional.</p>
           </div>
           <div class="combo-offer-price">
-            <small>Desde RD$ 1,950 normal</small>
-            <strong>RD$ 1,850</strong>
+            <small>Desde RD$ 1,850 normal</small>
+            <strong>RD$ 1,750</strong>
             <span>Precio combo desde hoy</span>
           </div>
         </article>
@@ -3393,8 +3395,8 @@
     ].map(product => ({
       ...product,
       tag: product.color,
-      price: 1600,
-      priceLabel: moneyText(1600),
+      price: 1500,
+      priceLabel: moneyText(1500),
       sizes: ["S", "M", "L", "XL"],
       quantities: ["1", "2", "3"],
       href: "#drop"
@@ -3427,8 +3429,8 @@
       image: "./images/designed/ghostwear-short-red-studio.png",
       realImage: products[0].image,
       hex: products[0].hex,
-      price: 1600,
-      priceLabel: moneyText(1600),
+      price: 1500,
+      priceLabel: moneyText(1500),
       note: products[0].note,
       courtTag: products[0].courtTag,
       courtLine: products[0].courtLine,
@@ -3500,10 +3502,10 @@
         tag: "Combo",
         name: "Combo Short + Medias",
         image: "./images/designed/ghostwear-short-royal-blue-studio.png",
-        price: 1850,
-        priceLabel: "RD$ 1,850",
-        normalPrice: 1950,
-        oldPrice: "RD$ 1,950",
+        price: 1750,
+        priceLabel: "RD$ 1,750",
+        normalPrice: 1850,
+        oldPrice: "RD$ 1,850",
         note: "Short Ghost + medias para salir con el fit amarrado. Ahorras RD$ 100.",
         swatch: "#f4f1dc",
         sizes: ["S", "M", "L", "XL"],
@@ -3518,10 +3520,10 @@
         tag: "Combo",
         name: "Combo Short + Gorra",
         image: "./images/designed/ghostwear-caps-studio.png",
-        price: 2950,
-        priceLabel: "RD$ 2,950",
-        normalPrice: 3100,
-        oldPrice: "RD$ 3,100",
+        price: 2850,
+        priceLabel: "RD$ 2,850",
+        normalPrice: 3000,
+        oldPrice: "RD$ 3,000",
         note: "Short Ghost + gorra Ghost. La vuelta facil para cerrar el look.",
         swatch: "#2454ff",
         sizes: ["S", "M", "L", "XL"],
@@ -3536,10 +3538,10 @@
         tag: "Full Fit",
         name: "Full Ghost Fit",
         image: "./images/designed/ghostwear-hoodie-studio.png",
-        price: 4700,
-        priceLabel: "RD$ 4,700",
-        normalPrice: 4950,
-        oldPrice: "RD$ 4,950",
+        price: 4600,
+        priceLabel: "RD$ 4,600",
+        normalPrice: 4850,
+        oldPrice: "RD$ 4,850",
         note: "Short + hoodie + medias. Full Ghost fit con descuento de RD$ 250.",
         swatch: "#111111",
         sizes: ["S", "M", "L", "XL"],
@@ -3592,8 +3594,8 @@
       "Light Gray": "./images/designed/ghostwear-short-light-gray-logo-black.png",
       "Orange": "./images/designed/ghostwear-short-orange-studio.png",
       "Olive": "./images/designed/ghostwear-short-olive-studio.png",
-      "Aqua": "./images/designed/ghostwear-short-aqua-studio.png",
-      "Sky Blue": "./images/designed/ghostwear-short-sky-blue-studio.png",
+      "Aqua": "./images/designed/ghostwear-short-aqua-logo-gray.png",
+      "Sky Blue": "./images/designed/ghostwear-short-sky-blue-logo-black.png",
       "Pink": "./images/designed/ghostwear-short-pink-studio.png",
       "Neon Green": "./images/designed/ghostwear-short-neon-green-studio.png",
       "Royal Blue": "./images/designed/ghostwear-short-royal-blue-studio.png",
