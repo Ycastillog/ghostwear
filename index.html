@@ -2566,16 +2566,17 @@
       product.photos = [
         { label: "Limpia", src: cleanImage, view: cleanImage === product.image ? "real" : "clean" },
         { label: "Real", src: product.image, view: "real" },
-        { label: "El Fantasma", src: juancoModelImages.court, view: "model" }
+        { label: "El Fantasma", src: cleanImage, view: "model" }
       ];
     });
     gearProducts.forEach(product => {
       const realImage = product.realImage || product.image;
-      const modelImage = product.category === "hoodie"
-        ? juancoModelImages.hoodie
-        : product.category === "gorras"
-          ? juancoModelImages.portrait
-          : juancoModelImages.court;
+      const modelImageByCategory = {
+        medias: realImage,
+        gorras: realImage,
+        hoodie: juancoModelImages.hoodie
+      };
+      const modelImage = modelImageByCategory[product.category] || realImage;
       product.photos = [
         { label: "Limpia", src: product.image, view: product.category === "medias" ? "real" : "clean" },
         { label: "Real", src: realImage, view: "real" },
@@ -2590,7 +2591,7 @@
     comboProducts[1].photos = [
       { label: "Limpia", src: "./images/designed/ghostwear-caps-studio.png", view: "clean" },
       { label: "Real", src: "./images/gear/ghostwear-caps.jpg", view: "real" },
-      { label: "El Fantasma", src: juancoModelImages.portrait, view: "model" }
+      { label: "El Fantasma", src: "./images/gear/ghostwear-caps.jpg", view: "model" }
     ];
     comboProducts[2].photos = [
       { label: "Limpia", src: "./images/designed/ghostwear-hoodie-studio.png", view: "clean" },
