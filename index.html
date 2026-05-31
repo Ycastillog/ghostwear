@@ -2062,6 +2062,71 @@
         padding: 0 10px;
         font-size: 0.78rem;
       }
+      #tallas,
+      #pedido {
+        padding: 34px 0;
+      }
+      .size-note {
+        padding: 16px;
+      }
+      .size-note h2,
+      #pedido .section-head h2 {
+        font-size: clamp(1.55rem, 8vw, 2rem);
+      }
+      .size-note p,
+      #pedido .section-head p {
+        margin-top: 8px;
+        font-size: 0.9rem;
+        line-height: 1.45;
+      }
+      .size-note .hero-note,
+      .size-extra,
+      .policy-grid {
+        display: none;
+      }
+      .size-table {
+        gap: 6px;
+      }
+      .size-row {
+        grid-template-columns: 44px 1fr 1fr;
+        gap: 8px;
+        padding: 10px;
+      }
+      .size-row.header,
+      .size-row span:last-child {
+        display: none;
+      }
+      .size-row strong {
+        font-size: 1.1rem;
+      }
+      .size-row span {
+        font-size: 0.82rem;
+        line-height: 1.25;
+      }
+      .steps {
+        gap: 8px;
+      }
+      .step {
+        min-height: auto;
+        display: grid;
+        grid-template-columns: 38px 1fr;
+        column-gap: 12px;
+        align-items: center;
+        padding: 12px;
+      }
+      .step span {
+        grid-row: 1 / span 2;
+        width: 30px;
+        height: 30px;
+      }
+      .step h3 {
+        margin: 0 0 4px;
+        font-size: 0.98rem;
+      }
+      .step p {
+        font-size: 0.84rem;
+        line-height: 1.35;
+      }
       .product-float { left: 12px; right: 12px; bottom: 12px; grid-template-columns: 1fr; }
       .proof { grid-template-columns: 1fr; }
       .hero-actions .btn { flex: 1 1 140px; justify-content: center; }
