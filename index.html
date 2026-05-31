@@ -971,6 +971,19 @@
       line-height: 1.45;
     }
 
+    .availability-line {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 850;
+      line-height: 1.45;
+    }
+
+    .availability-line strong {
+      color: var(--accent);
+      font-weight: 950;
+    }
+
     .options {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -1764,6 +1777,8 @@
       .hero-media { min-height: 310px; }
       .product-float { left: 12px; right: 12px; bottom: 12px; grid-template-columns: 1fr; }
       .proof, .options, .buy-row { grid-template-columns: 1fr; }
+      .hero-actions .btn { flex: 1 1 140px; justify-content: center; }
+      .hero-copy { max-width: none; }
       .size-row { grid-template-columns: 1fr; gap: 6px; }
       .size-row.header { display: none; }
       .announce-track { justify-content: flex-start; padding-left: 12px; }
@@ -1811,12 +1826,12 @@
         <div>
           <span class="ghost-tag">
             <img src="./images/logo-ghost.png" alt="" />
-            GhostWear RD / fantasma amigable
+            GhostWear por El Fantasma
           </span>
-          <h1>Arma el fit Ghost. <span class="ghost-line">Drop activo RD.</span></h1>
+          <h1>El fit de El Fantasma. <span class="ghost-line">GhostWear RD.</span></h1>
           <p class="hero-copy">
-            Shorts en 15 colores, medias, gorras y hoodie para pedir por DM
-            o WhatsApp. Te lo apartamos por transferencia y coordinamos en RD.
+            La marca de Juan Miguel Suero nace de la cancha, del apodo y del
+            flow de RD: shorts, medias, gorras y hoodie para armar el fit Ghost.
           </p>
           <div class="hero-actions">
             <button class="btn primary" id="heroLookBtn" type="button">Armar este fit</button>
@@ -1840,12 +1855,12 @@
             <img src="./images/logo-ghost.png" alt="" />
           </div>
           <div class="hero-photo">
-            <img src="./images/designed/ghostwear-short-royal-blue-studio.png" alt="Short GhostWear royal blue en foto de estudio limpia" />
+            <img src="./images/model/ghostwear-juanco-model-court.jpg" alt="Juan Miguel Suero El Fantasma usando GhostWear en cancha" />
           </div>
           <div class="product-float">
             <div>
-              <small id="heroTag">Drop actual</small>
-              <h2 id="heroFeature">El fit completo</h2>
+              <small id="heroTag">Juan Miguel Suero</small>
+              <h2 id="heroFeature">El Fantasma</h2>
             </div>
             <div class="price" id="heroPrice">Desde RD$ 350</div>
           </div>
@@ -2212,12 +2227,12 @@
     <section id="fit">
       <div class="wrap story-band">
         <div class="card story-card">
-          <span class="section-kicker">Identidad</span>
-          <h2>Minimal, oscuro, usable.</h2>
+          <span class="section-kicker">Historia de marca</span>
+          <h2>Nace de la cancha, del apodo y del flow RD.</h2>
           <p>
-            GhostWear no necesita gritar. La pieza se siente deportiva, pero la
-            marca vive en los detalles: contraste, logo compacto y un look listo
-            para moverse.
+            GhostWear vive alrededor de Juan Miguel Suero, El Fantasma: ropa
+            deportiva con presencia de calle, lista para entrenar, salir y
+            representar el movimiento sin explicar demasiado.
           </p>
         </div>
         <div class="detail-grid">
@@ -2362,8 +2377,8 @@
       shipping: "Envios nacionales",
       payment: "Pagos por transferencia",
       hero: {
-        tag: "Drop activo RD",
-        feature: "Arma el fit"
+        tag: "Juan Miguel Suero",
+        feature: "El Fantasma"
       },
       metrics: {
         posts: 17,
@@ -2547,7 +2562,7 @@
       product.photos = [
         { label: "Limpia", src: cleanImage, view: cleanImage === product.image ? "real" : "clean" },
         { label: "Real", src: product.image, view: "real" },
-        { label: "Modelo", src: juancoModelImages.court, view: "model" }
+        { label: "El Fantasma", src: juancoModelImages.court, view: "model" }
       ];
     });
     gearProducts.forEach(product => {
@@ -2556,23 +2571,23 @@
       product.photos = [
         { label: "Limpia", src: product.image, view: product.category === "medias" ? "real" : "clean" },
         { label: "Real", src: realImage, view: "real" },
-        { label: "Modelo", src: modelImage, view: "model" }
+        { label: "El Fantasma", src: modelImage, view: "model" }
       ];
     });
     comboProducts[0].photos = [
       { label: "Limpia", src: "./images/designed/ghostwear-short-royal-blue-studio.png", view: "clean" },
       { label: "Real", src: "./images/media/ghostwear-media-10.jpg", view: "real" },
-      { label: "Modelo", src: juancoModelImages.court, view: "model" }
+      { label: "El Fantasma", src: juancoModelImages.court, view: "model" }
     ];
     comboProducts[1].photos = [
       { label: "Limpia", src: "./images/designed/ghostwear-caps-studio.png", view: "clean" },
       { label: "Real", src: "./images/gear/ghostwear-caps.jpg", view: "real" },
-      { label: "Modelo", src: juancoModelImages.court, view: "model" }
+      { label: "El Fantasma", src: juancoModelImages.court, view: "model" }
     ];
     comboProducts[2].photos = [
       { label: "Limpia", src: "./images/designed/ghostwear-hoodie-studio.png", view: "clean" },
       { label: "Real", src: "./images/gear/ghostwear-hoodie.jpg", view: "real" },
-      { label: "Modelo", src: juancoModelImages.hoodie, view: "model" }
+      { label: "El Fantasma", src: juancoModelImages.hoodie, view: "model" }
     ];
     const shopCollections = [
       {
@@ -2652,6 +2667,9 @@
       const urgency = product.urgency || { label: "Drop activo", line: "Disponible ahora mientras dure el drop." };
       const isCombo = product.category === "combos";
       const savedAmount = isCombo && product.normalPrice ? product.normalPrice - product.price : 0;
+      const availabilityCopy = product.sizes.length > 1
+        ? "Disponibilidad por talla/color se confirma por WhatsApp antes del pago."
+        : "Disponibilidad se confirma por WhatsApp antes del pago.";
       const sizeHelp = product.sizes.length > 1
         ? `<a class="size-help" href="#tallas" aria-label="Ver guia de tallas para ${product.name}">Ver guia de tallas</a>`
         : "";
@@ -2713,6 +2731,7 @@
                   </select>
                 </label>
               </div>
+              <p class="availability-line"><strong>Disponible:</strong> ${availabilityCopy}</p>
               ${sizeHelp}
               <div class="buy-row">
                 <button class="btn primary add" type="button" data-name="${product.name}" data-price="${product.price}">Agregar al fit</button>
