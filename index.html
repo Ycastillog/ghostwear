@@ -1458,9 +1458,12 @@
       grid-column: span 2;
       min-height: 280px;
       background:
-        radial-gradient(circle at 14% 18%, rgba(215, 255, 63, 0.16), transparent 34%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.86)),
         linear-gradient(135deg, rgba(36, 84, 255, 0.22), rgba(0, 0, 0, 0.78)),
+        url("./images/model/ghostwear-juanco-shirt-portrait.jpg"),
         rgba(255, 255, 255, 0.035);
+      background-size: cover;
+      background-position: center 28%;
       border-color: rgba(215, 255, 63, 0.28);
     }
 
@@ -1855,7 +1858,7 @@
             <img src="./images/logo-ghost.png" alt="" />
           </div>
           <div class="hero-photo">
-            <img src="./images/model/ghostwear-juanco-model-court.jpg" alt="Juan Miguel Suero El Fantasma usando GhostWear en cancha" />
+            <img src="./images/model/ghostwear-juanco-shirt-portrait.jpg" alt="Juan Miguel Suero El Fantasma usando camiseta GhostWear" />
           </div>
           <div class="product-float">
             <div>
@@ -2421,7 +2424,7 @@
         tag: "Medias",
         name: "Medias Ghost",
         image: "./images/designed/ghostwear-socks-studio.png",
-        realImage: "./images/ghostwear-socks-real.jpg",
+        realImage: "./images/model/ghostwear-socks-detail-real.jpg",
         price: 350,
         priceLabel: "RD$ 350",
         note: "Par de medias blancas con logo Ghost bordado en colores.",
@@ -2433,7 +2436,7 @@
         tag: "Pack",
         name: "Pack 3 Medias Ghost",
         image: "./images/designed/ghostwear-socks-studio.png",
-        realImage: "./images/ghostwear-socks-real.jpg",
+        realImage: "./images/model/ghostwear-socks-detail-real.jpg",
         price: 1000,
         priceLabel: "RD$ 1,000",
         note: "Oferta de historia: tres pares con logos Ghost en colores surtidos.",
@@ -2554,6 +2557,7 @@
       "White": "./images/designed/ghostwear-short-white-studio.png"
     };
     const juancoModelImages = {
+      portrait: "./images/model/ghostwear-juanco-shirt-portrait.jpg",
       court: "./images/model/ghostwear-juanco-model-court.jpg",
       hoodie: "./images/model/ghostwear-juanco-model-hoodie.jpg"
     };
@@ -2562,7 +2566,7 @@
       product.photos = [
         { label: "Limpia", src: cleanImage, view: cleanImage === product.image ? "real" : "clean" },
         { label: "Real", src: product.image, view: "real" },
-        { label: "El Fantasma", src: juancoModelImages.court, view: "model" }
+        { label: "El Fantasma", src: juancoModelImages.portrait, view: "model" }
       ];
     });
     gearProducts.forEach(product => {
