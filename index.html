@@ -954,6 +954,28 @@
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
     }
 
+    .color-picker {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 12px;
+    }
+
+    .color-swatch {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      border: 2px solid rgba(255, 255, 255, 0.32);
+      background: var(--swatch);
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.16);
+      cursor: pointer;
+    }
+
+    .color-swatch.active {
+      border-color: var(--ghost-cream);
+      box-shadow: 0 0 0 3px rgba(244, 241, 220, 0.14), inset 0 0 0 1px rgba(0, 0, 0, 0.18);
+    }
+
     .ghost-corner {
       position: absolute;
       right: 12px;
@@ -2016,6 +2038,14 @@
       .stock-line {
         display: none;
       }
+      .color-picker {
+        gap: 6px;
+        margin-top: 10px;
+      }
+      .color-swatch {
+        width: 26px;
+        height: 26px;
+      }
       .color-title {
         align-items: start;
         gap: 10px;
@@ -2817,6 +2847,7 @@
       urgency: { label: "Drop activo RD", line: "Los colores se confirman por talla y stock antes del pago." },
       href: "#drop"
     };
+    shortsCollectionProduct.colorOptions = products;
     const gearProducts = [
       {
         tag: "Medias",
@@ -3070,6 +3101,34 @@
       };
     }
 
+    function selectProductColor(colorButton) {
+      const card = colorButton.closest("[data-product-card]");
+      const imageWrap = card.querySelector(".color-img");
+      const image = imageWrap.querySelector("img");
+      const title = card.querySelector(".color-title h3");
+      const note = card.querySelector(".color-body p");
+      const chip = card.querySelector(".color-chip");
+      const tagBadge = card.querySelector(".badge-row .badge:nth-child(2)");
+      const addButton = card.querySelector(".add");
+      const waButton = card.querySelector(".wa");
+      const label = imageWrap.querySelector(".photo-label");
+
+      image.src = colorButton.dataset.productImage;
+      image.alt = `${colorButton.dataset.productName} - Limpia`;
+      imageWrap.dataset.view = "clean";
+      title.textContent = colorButton.dataset.productName;
+      note.textContent = colorButton.dataset.productNote;
+      chip.style.background = colorButton.dataset.productHex;
+      tagBadge.textContent = colorButton.dataset.color;
+      addButton.dataset.name = colorButton.dataset.productName;
+      waButton.dataset.name = colorButton.dataset.productName;
+      if (label) label.textContent = "Color";
+
+      card.querySelectorAll("[data-color-option]").forEach(button => {
+        button.classList.toggle("active", button === colorButton);
+      });
+    }
+
     function productCard(product, options = {}) {
       const swatch = product.swatch || product.hex || "#f4f1dc";
       const badge = options.badge || "En stock";
@@ -3090,6 +3149,28 @@
       const priceMarkup = isCombo
         ? `<span class="price-stack"><small class="old-price">${product.oldPrice}</small><strong class="combo-price">${product.priceLabel}</strong><small class="combo-save">Ahorras ${moneyText(savedAmount)}</small></span>`
         : `<span>${product.priceLabel}</span>`;
+      const colorPicker = product.colorOptions
+        ? `<div class="color-picker" aria-label="Colores disponibles para ${product.name}">
+            ${product.colorOptions.map((option, index) => {
+              const cleanImage = cleanShortImages[option.color] || option.image;
+              return `
+                <button
+                  class="color-swatch${index === 0 ? " active" : ""}"
+                  type="button"
+                  style="--swatch:${option.hex}"
+                  title="${option.color}"
+                  aria-label="Ver ${option.name}"
+                  data-color-option
+                  data-color="${option.color}"
+                  data-product-name="${option.name}"
+                  data-product-note="${option.note}"
+                  data-product-image="${cleanImage}"
+                  data-product-hex="${option.hex}"
+                ></button>
+              `;
+            }).join("")}
+          </div>`
+        : "";
 
       return `
         <article class="card color-card${isCombo ? " combo-offer" : ""}" data-product-card data-category="${product.category}">
@@ -3123,6 +3204,7 @@
                 ${priceMarkup}
               </div>
               <p>${product.note}</p>
+              ${colorPicker}
               ${product.courtLine ? `<div class="court-line">${product.courtLine}</div>` : ""}
               <div class="sell-line">${sellLine}</div>
               <div class="stock-line">${urgency.line}</div>
@@ -3373,6 +3455,12 @@ Sector / direccion:`;
     });
 
     document.addEventListener("click", event => {
+      const colorButton = event.target.closest("[data-color-option]");
+      if (colorButton) {
+        selectProductColor(colorButton);
+        return;
+      }
+
       const photoButton = event.target.closest(".photo-tab");
       if (photoButton) {
         const card = photoButton.closest("[data-product-card]");
