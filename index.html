@@ -1320,6 +1320,38 @@
       margin-top: 12px;
     }
 
+    .variant-summary {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .variant-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-height: 30px;
+      padding: 0 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.045);
+      color: var(--muted);
+      font-size: 0.68rem;
+      font-weight: 900;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .variant-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 1px solid rgba(244, 241, 220, 0.55);
+      background: var(--variant-dot, #f4f1dc);
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.18);
+    }
+
     .color-swatch {
       width: 30px;
       height: 30px;
@@ -2523,6 +2555,19 @@
         gap: 6px;
         margin-top: 10px;
       }
+      .variant-summary {
+        gap: 6px;
+        margin-top: 8px;
+      }
+      .variant-chip {
+        min-height: 26px;
+        padding: 0 8px;
+        font-size: 0.62rem;
+      }
+      .variant-dot {
+        width: 12px;
+        height: 12px;
+      }
       .color-swatch {
         width: 26px;
         height: 26px;
@@ -3333,19 +3378,40 @@
       quantities: ["1", "2", "3"],
       href: "#drop"
     }));
+    const logoToneByColor = {
+      "White": { label: "Logo negro", hex: "#080808" },
+      "Light Gray": { label: "Logo negro", hex: "#080808" },
+      "Baby Blue": { label: "Logo negro", hex: "#080808" },
+      "Lavender": { label: "Logo gris", hex: "#cfcfc7" },
+      "Red": { label: "Logo blanco", hex: "#f8f6ee" },
+      "Orange": { label: "Logo blanco", hex: "#f8f6ee" },
+      "Olive": { label: "Logo blanco", hex: "#f8f6ee" },
+      "Aqua": { label: "Logo blanco", hex: "#f8f6ee" },
+      "Sky Blue": { label: "Logo blanco", hex: "#f8f6ee" },
+      "Pink": { label: "Logo blanco", hex: "#f8f6ee" },
+      "Neon Green": { label: "Logo blanco", hex: "#f8f6ee" },
+      "Royal Blue": { label: "Logo blanco", hex: "#f8f6ee" },
+      "Yellow": { label: "Logo blanco", hex: "#f8f6ee" },
+      "Navy": { label: "Logo blanco", hex: "#f8f6ee" },
+      "Black": { label: "Logo blanco", hex: "#f8f6ee" }
+    };
+    products.forEach(product => {
+      product.logoTone = logoToneByColor[product.color] || { label: "Logo blanco", hex: "#f8f6ee" };
+    });
     const shortsCollectionProduct = {
-      color: "Colors",
-      tag: "15 colores",
+      color: products[0].color,
+      tag: products[0].color,
       category: "shorts",
-      name: "Short Ghost Colors",
-      image: "./images/designed/ghostwear-short-white-studio.png",
-      realImage: "./images/media/ghostwear-media-10.jpg",
-      hex: "#f4f1dc",
+      name: products[0].name,
+      image: "./images/designed/ghostwear-short-red-studio.png",
+      realImage: products[0].image,
+      hex: products[0].hex,
       price: 1600,
       priceLabel: moneyText(1600),
-      note: "Un mismo short Ghost, 15 colores del drop. El color se confirma por WhatsApp antes de apartarlo.",
-      courtTag: "Ghost lineup",
-      courtLine: "El cliente elige el color despues: home, away, buzzer, defensa o highlight.",
+      note: products[0].note,
+      courtTag: products[0].courtTag,
+      courtLine: products[0].courtLine,
+      logoTone: products[0].logoTone,
       sizes: ["S", "M", "L", "XL"],
       quantities: ["1", "2", "3"],
       urgency: { label: "Drop activo RD", line: "Los colores se confirman por talla y stock antes del pago." },
@@ -3475,11 +3541,20 @@
     products.forEach(product => {
       const urgencyByColor = {
         "Royal Blue": { label: "Color mas pedido", line: "Se esta moviendo por DM. Ideal para armar el fit completo." },
-        "Neon Green": { label: "Quedan pocas", line: "Color fuerte del drop. Pidelo antes de que se vaya." },
+        "Neon Green": { label: "Pocas unidades", line: "Color verde validado del drop. Se confirma talla antes de apartarlo." },
+        "Red": { label: "Drop activo RD", line: "Rojo disponible por DM. Ideal para combinar con medias Ghost blancas." },
+        "Baby Blue": { label: "Disponible", line: "Baby blue activo en el drop. Pregunta talla antes del pago." },
+        "Light Gray": { label: "Disponible", line: "Gris claro activo: facil de combinar, stock por talla." },
+        "Orange": { label: "Disponible", line: "Orange activo para fotos y cancha. Confirmamos talla por WhatsApp." },
+        "Olive": { label: "Pocas unidades", line: "Olive tiene stock corto. Te confirmamos talla/color antes de pago." },
+        "Aqua": { label: "Disponible", line: "Aqua fresco del drop. Disponible por DM mientras dure." },
+        "Sky Blue": { label: "Disponible", line: "Sky blue activo. Consulta talla y entrega por WhatsApp." },
         "Black": { label: "Ultimas unidades", line: "Basico que rota rapido por DM." },
         "White": { label: "Drop activo RD", line: "Color limpio para verano y fotos de feed." },
         "Pink": { label: "Quedan pocas", line: "Tono llamativo con disponibilidad limitada." },
-        "Yellow": { label: "Color mas pedido", line: "Uno de los colores que mas preguntan por historia." }
+        "Yellow": { label: "Color mas pedido", line: "Uno de los colores que mas preguntan por historia." },
+        "Navy": { label: "Disponible", line: "Navy activo para un fit mas serio. Se confirma por talla." },
+        "Lavender": { label: "Pocas unidades", line: "Lavender es color de coleccion con disponibilidad limitada." }
       };
       product.urgency = urgencyByColor[product.color] || { label: "Drop activo RD", line: "Disponible por DM mientras dure el drop." };
     });
@@ -3629,9 +3704,18 @@
       const note = card.querySelector(".color-body p");
       const chip = card.querySelector(".color-chip");
       const tagBadge = card.querySelector(".badge-row .badge:nth-child(2)");
+      const urgentBadge = card.querySelector(".badge-row .badge.urgent");
       const addButton = card.querySelector(".add");
       const waButton = card.querySelector(".wa");
       const label = imageWrap.querySelector(".photo-label");
+      const stockLine = card.querySelector(".stock-line");
+      const sellLine = card.querySelector(".sell-line");
+      const availabilityLine = card.querySelector(".availability-line");
+      const courtLine = card.querySelector(".court-line");
+      const shortDot = card.querySelector(".variant-short-dot");
+      const shortText = card.querySelector(".variant-short-text");
+      const logoDot = card.querySelector(".variant-logo-dot");
+      const logoText = card.querySelector(".variant-logo-text");
 
       image.src = colorButton.dataset.productImage;
       image.alt = `${colorButton.dataset.productName} - Limpia`;
@@ -3640,6 +3724,15 @@
       note.textContent = colorButton.dataset.productNote;
       chip.style.background = colorButton.dataset.productHex;
       tagBadge.textContent = colorButton.dataset.color;
+      if (shortDot) shortDot.style.setProperty("--variant-dot", colorButton.dataset.productHex);
+      if (shortText) shortText.textContent = `Short ${colorButton.dataset.color}`;
+      if (logoDot) logoDot.style.setProperty("--variant-dot", colorButton.dataset.productLogoHex);
+      if (logoText) logoText.textContent = colorButton.dataset.productLogoLabel;
+      if (urgentBadge) urgentBadge.textContent = colorButton.dataset.productUrgencyLabel;
+      if (stockLine) stockLine.textContent = colorButton.dataset.productUrgencyLine;
+      if (sellLine) sellLine.textContent = colorButton.dataset.productSellLine;
+      if (availabilityLine) availabilityLine.innerHTML = `<strong>Disponible:</strong> ${colorButton.dataset.productAvailability}`;
+      if (courtLine) courtLine.textContent = colorButton.dataset.productCourtLine;
       addButton.dataset.name = colorButton.dataset.productName;
       waButton.dataset.name = colorButton.dataset.productName;
       if (label) label.textContent = "Color";
@@ -3658,6 +3751,7 @@
       const photos = product.photos || [{ label: "Real", src: product.image, view: "real" }];
       const primaryPhoto = photos[0];
       const urgency = product.urgency || { label: "Drop activo", line: "Disponible ahora mientras dure el drop." };
+      const logoTone = product.logoTone || { label: "Logo blanco", hex: "#f8f6ee" };
       const isCombo = product.category === "combos";
       const savedAmount = isCombo && product.normalPrice ? product.normalPrice - product.price : 0;
       const availabilityCopy = product.sizes.length > 1
@@ -3692,6 +3786,8 @@
         ? `<div class="color-picker" aria-label="Colores disponibles para ${product.name}">
             ${product.colorOptions.map((option, index) => {
               const cleanImage = cleanShortImages[option.color] || option.image;
+              const optionUrgency = option.urgency || { label: "Drop activo RD", line: "Disponible por DM mientras dure el drop." };
+              const optionAvailability = `${option.color}: ${optionUrgency.line}`;
               return `
                 <button
                   class="color-swatch${index === 0 ? " active" : ""}"
@@ -3705,11 +3801,41 @@
                   data-product-note="${option.note}"
                   data-product-image="${cleanImage}"
                   data-product-hex="${option.hex}"
+                  data-product-logo-label="${option.logoTone.label}"
+                  data-product-logo-hex="${option.logoTone.hex}"
+                  data-product-urgency-label="${optionUrgency.label}"
+                  data-product-urgency-line="${optionUrgency.line}"
+                  data-product-availability="${optionAvailability}"
+                  data-product-sell-line="${option.color} validado por DM"
+                  data-product-court-line="${option.courtLine || ""}"
                 ></button>
               `;
             }).join("")}
           </div>`
         : "";
+      const variantSummary = product.colorOptions
+        ? `<div class="variant-summary" aria-label="Color seleccionado para ${product.name}">
+            <span class="variant-chip">
+              <span class="variant-dot variant-short-dot" style="--variant-dot:${swatch}" aria-hidden="true"></span>
+              <span class="variant-short-text">Short ${product.colorOptions[0].color}</span>
+            </span>
+            <span class="variant-chip">
+              <span class="variant-dot variant-logo-dot" style="--variant-dot:${logoTone.hex}" aria-hidden="true"></span>
+              <span class="variant-logo-text">${logoTone.label}</span>
+            </span>
+          </div>`
+        : product.category === "shorts"
+          ? `<div class="variant-summary" aria-label="Color de ${product.name}">
+              <span class="variant-chip">
+                <span class="variant-dot" style="--variant-dot:${swatch}" aria-hidden="true"></span>
+                Short ${product.color}
+              </span>
+              <span class="variant-chip">
+                <span class="variant-dot" style="--variant-dot:${logoTone.hex}" aria-hidden="true"></span>
+                ${logoTone.label}
+              </span>
+            </div>`
+          : "";
 
       return `
         <article class="card color-card${isCombo ? " combo-offer" : ""}" data-product-card data-category="${product.category}">
@@ -3746,6 +3872,7 @@
               ${comboIncludes}
               <p>${product.note}</p>
               ${colorPicker}
+              ${variantSummary}
               ${product.courtLine ? `<div class="court-line">${product.courtLine}</div>` : ""}
               <div class="sell-line">${sellLine}</div>
               <div class="stock-line">${urgency.line}</div>
