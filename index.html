@@ -1474,13 +1474,19 @@
       grid-column: span 2;
       min-height: 280px;
       background:
-        linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.86)),
-        linear-gradient(135deg, rgba(36, 84, 255, 0.22), rgba(0, 0, 0, 0.78)),
-        url("./images/model/ghostwear-juanco-shirt-portrait.jpg"),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.88)),
+        radial-gradient(circle at 16% 20%, rgba(244, 241, 220, 0.18), transparent 24%),
+        linear-gradient(135deg, rgba(159, 216, 255, 0.2), rgba(0, 0, 0, 0.78)),
         rgba(255, 255, 255, 0.035);
       background-size: cover;
       background-position: center 28%;
       border-color: rgba(244, 241, 220, 0.28);
+    }
+
+    .athlete-card .dm-dot {
+      width: 52px;
+      height: 52px;
+      font-size: 1rem;
     }
 
     .athlete-card h3 {
@@ -1874,7 +1880,7 @@
             <img src="./images/logo-ghost.png" alt="" />
           </div>
           <div class="hero-photo">
-            <img src="./images/model/ghostwear-juanco-shirt-portrait.jpg" alt="Juan Miguel Suero El Fantasma usando camiseta GhostWear" />
+            <img src="./images/designed/ghostwear-designed-white.jpg" alt="Visual GhostWear claro con logo fantasma y estilo de cancha" />
           </div>
           <div class="product-float">
             <div>
@@ -2132,7 +2138,7 @@
               </div>
               <div>
                 <h3>Juan Miguel Suero, El Fantasma.</h3>
-                <p>El apodo conecta perfecto con la marca: contenido real de @juanco10 usando GhostWear en ambiente de basket.</p>
+                <p>Fundador y cara real de la historia GhostWear. Esta seccion queda lista para fotos oficiales de Juan usando la pieza y contenido directo de @juanco10.</p>
               </div>
               <div class="athlete-actions">
                 <a class="btn ig-link" href="https://www.instagram.com/juanco10/" target="_blank" rel="noopener">Ver @juanco10</a>
@@ -2435,6 +2441,24 @@
       quantities: ["1", "2", "3"],
       href: "#drop"
     }));
+    const shortsCollectionProduct = {
+      color: "Colors",
+      tag: "15 colores",
+      category: "shorts",
+      name: "Short Ghost Colors",
+      image: "./images/designed/ghostwear-short-white-studio.png",
+      realImage: "./images/media/ghostwear-media-10.jpg",
+      hex: "#f4f1dc",
+      price: 1600,
+      priceLabel: moneyText(1600),
+      note: "Un mismo short Ghost, 15 colores del drop. El color se confirma por WhatsApp antes de apartarlo.",
+      courtTag: "Ghost lineup",
+      courtLine: "El cliente elige el color despues: home, away, buzzer, defensa o highlight.",
+      sizes: ["S", "M", "L", "XL"],
+      quantities: ["1", "2", "3"],
+      urgency: { label: "Drop activo RD", line: "Los colores se confirman por talla y stock antes del pago." },
+      href: "#drop"
+    };
     const gearProducts = [
       {
         tag: "Medias",
@@ -2574,8 +2598,7 @@
       "Black": "./images/designed/ghostwear-short-black-studio.png",
       "White": "./images/designed/ghostwear-short-white-studio.png"
     };
-    const juancoModelImages = {
-      portrait: "./images/model/ghostwear-juanco-shirt-portrait.jpg",
+    const ghostModelImages = {
       court: "./images/model/ghostwear-juanco-model-court.jpg",
       hoodie: "./images/model/ghostwear-juanco-model-hoodie.jpg"
     };
@@ -2587,13 +2610,18 @@
         { label: "El Fantasma", src: cleanImage, view: "model" }
       ];
     });
+    shortsCollectionProduct.photos = [
+      { label: "Limpia", src: shortsCollectionProduct.image, view: "clean" },
+      { label: "Real", src: shortsCollectionProduct.realImage, view: "real" },
+      { label: "El Fantasma", src: ghostModelImages.court, view: "model" }
+    ];
     gearProducts.forEach(product => {
       const realImage = product.realImage || product.image;
       const productModelImage = product.modelImage || realImage;
       const modelImageByCategory = {
         medias: productModelImage,
         gorras: realImage,
-        hoodie: juancoModelImages.hoodie
+        hoodie: ghostModelImages.hoodie
       };
       const modelImage = modelImageByCategory[product.category] || realImage;
       product.photos = [
@@ -2605,7 +2633,7 @@
     comboProducts[0].photos = [
       { label: "Limpia", src: "./images/designed/ghostwear-short-royal-blue-studio.png", view: "clean" },
       { label: "Real", src: "./images/media/ghostwear-media-10.jpg", view: "real" },
-      { label: "El Fantasma", src: juancoModelImages.court, view: "model" }
+      { label: "El Fantasma", src: ghostModelImages.court, view: "model" }
     ];
     comboProducts[1].photos = [
       { label: "Limpia", src: "./images/designed/ghostwear-caps-studio.png", view: "clean" },
@@ -2615,7 +2643,7 @@
     comboProducts[2].photos = [
       { label: "Limpia", src: "./images/designed/ghostwear-hoodie-studio.png", view: "clean" },
       { label: "Real", src: "./images/gear/ghostwear-hoodie.jpg", view: "real" },
-      { label: "El Fantasma", src: juancoModelImages.hoodie, view: "model" }
+      { label: "El Fantasma", src: ghostModelImages.hoodie, view: "model" }
     ];
     const shopCollections = [
       {
@@ -2775,8 +2803,10 @@
 
     function renderFilteredShop(filter = "todos") {
       const visibleProducts = filter === "todos"
-        ? allProducts
-        : allProducts.filter(product => product.category === filter);
+        ? [shortsCollectionProduct, ...comboProducts, ...gearProducts]
+        : filter === "shorts"
+          ? [shortsCollectionProduct]
+          : allProducts.filter(product => product.category === filter);
       const label = filter === "todos" ? "todo el drop" : filter;
 
       filteredShopGrid.innerHTML = visibleProducts.map(product => {
@@ -2788,7 +2818,9 @@
         });
       }).join("");
 
-      shopFilterCount.textContent = `Mostrando ${visibleProducts.length} pieza${visibleProducts.length === 1 ? "" : "s"} para ${label === "todo el drop" ? "armar el fit" : label}`;
+      shopFilterCount.textContent = filter === "shorts"
+        ? "Mostrando el short como coleccion. Los colores estan abajo."
+        : `Mostrando ${visibleProducts.length} pieza${visibleProducts.length === 1 ? "" : "s"} para ${label === "todo el drop" ? "armar el fit" : label}`;
     }
 
     function renderStorefront() {
