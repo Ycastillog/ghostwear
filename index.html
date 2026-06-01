@@ -1343,6 +1343,26 @@
       backdrop-filter: blur(10px);
     }
 
+    .zoom-hint {
+      position: absolute;
+      left: 42px;
+      top: 12px;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 999px;
+      padding: 0 9px;
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      font-size: 0.62rem;
+      font-weight: 950;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      backdrop-filter: blur(10px);
+    }
+
     .photo-tabs {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -3795,7 +3815,7 @@
       {
         tag: "Combo",
         name: "Combo Short + Medias",
-        image: "./images/designed/ghostwear-short-royal-blue-studio.png",
+        image: realShortImages["Royal Blue"],
         price: 1750,
         priceLabel: "RD$ 1,750",
         normalPrice: 1850,
@@ -3806,8 +3826,8 @@
         quantities: ["1", "2"],
         includes: ["Short Ghost", "Medias Ghost"],
         comboImages: [
-          { label: "Short", src: "./images/designed/ghostwear-short-royal-blue-studio.png" },
-          { label: "Medias", src: "./images/designed/ghostwear-socks-studio.png" }
+          { label: "Short", src: realShortImages["Royal Blue"] },
+          { label: "Medias", src: "./images/ghostwear-socks-real.jpg" }
         ]
       },
       {
@@ -3824,8 +3844,8 @@
         quantities: ["1", "2"],
         includes: ["Short Ghost", "Gorra Ghost"],
         comboImages: [
-          { label: "Short", src: "./images/designed/ghostwear-short-light-gray-logo-black.png" },
-          { label: "Gorra", src: "./images/designed/ghostwear-caps-studio.png" }
+          { label: "Short", src: realShortImages["Light Gray"] },
+          { label: "Gorra", src: "./images/gear/ghostwear-caps.jpg" }
         ]
       },
       {
@@ -3842,9 +3862,9 @@
         quantities: ["1"],
         includes: ["Short Ghost", "Hoodie Ghost", "Medias Ghost"],
         comboImages: [
-          { label: "Short", src: "./images/designed/ghostwear-short-black-studio.png" },
-          { label: "Hoodie", src: "./images/designed/ghostwear-hoodie-studio.png" },
-          { label: "Medias", src: "./images/designed/ghostwear-socks-studio.png" }
+          { label: "Short", src: realShortImages["Black"] },
+          { label: "Hoodie", src: "./images/gear/ghostwear-hoodie.jpg" },
+          { label: "Medias", src: "./images/ghostwear-socks-real.jpg" }
         ]
       }
     ];
@@ -3932,18 +3952,18 @@
       ];
     });
     comboProducts[0].photos = [
-      { label: "Limpia", src: "./images/designed/ghostwear-short-royal-blue-studio.png", view: "clean" },
       { label: "Real", src: realShortImages["Royal Blue"], view: "real" },
+      { label: "Medias", src: "./images/ghostwear-socks-real.jpg", view: "real" },
       { label: "El Fantasma", src: ghostModelImages.court, view: "model" }
     ];
     comboProducts[1].photos = [
-      { label: "Limpia", src: "./images/designed/ghostwear-caps-studio.png", view: "clean" },
-      { label: "Real", src: "./images/gear/ghostwear-caps.jpg", view: "real" },
+      { label: "Short", src: realShortImages["Light Gray"], view: "real" },
+      { label: "Gorra", src: "./images/gear/ghostwear-caps.jpg", view: "real" },
       { label: "El Fantasma", src: "./images/gear/ghostwear-caps.jpg", view: "model" }
     ];
     comboProducts[2].photos = [
-      { label: "Limpia", src: "./images/designed/ghostwear-hoodie-studio.png", view: "clean" },
-      { label: "Real", src: "./images/gear/ghostwear-hoodie.jpg", view: "real" },
+      { label: "Short", src: realShortImages["Black"], view: "real" },
+      { label: "Hoodie", src: "./images/gear/ghostwear-hoodie.jpg", view: "real" },
       { label: "El Fantasma", src: ghostModelImages.hoodie, view: "model" }
     ];
     const shopCollections = [
@@ -4199,6 +4219,7 @@
             <img src="${primaryPhoto.src}" alt="${product.name} - ${primaryPhoto.label}" loading="lazy" />
             <span class="color-chip" style="background:${swatch}" aria-hidden="true"></span>
             <span class="ghost-corner" aria-hidden="true">BOO</span>
+            <span class="zoom-hint">Ver grande</span>
             <span class="photo-label">${primaryPhoto.label}</span>
             ${comboPieces}
           </div>
