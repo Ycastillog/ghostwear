@@ -122,7 +122,7 @@
       opacity: 1;
       transform: translateY(-18px) scale(1) rotate(-7deg);
     }
-    .nav-links { display: flex; align-items: center; gap: 22px; margin-left: 22px; color: var(--muted); font-size: 0.9rem; }
+    .nav-links { display: flex; align-items: center; gap: 18px; margin-left: 22px; color: var(--muted); font-size: 0.82rem; }
     .nav-links a:hover { color: var(--ink); }
 
     .nav-actions {
@@ -171,6 +171,14 @@
     .btn.ig-link {
       border-color: rgba(246, 243, 238, 0.22);
       background: rgba(255, 255, 255, 0.055);
+    }
+
+    .nav-actions .ig-link {
+      min-height: 38px;
+      padding: 0 13px;
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.02em;
     }
 
     .btn.primary::before {
@@ -1117,6 +1125,7 @@
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
+      align-items: start;
     }
 
     .card {
@@ -1213,7 +1222,6 @@
     .color-card {
       display: flex;
       flex-direction: column;
-      min-height: 100%;
       transition: transform 180ms ease, border-color 180ms ease;
     }
 
@@ -1228,6 +1236,68 @@
       aspect-ratio: 4 / 5;
       overflow: hidden;
       background: #151515;
+      cursor: zoom-in;
+    }
+
+    .shop-results .color-img {
+      aspect-ratio: 2 / 1;
+    }
+
+    .shop-results .photo-tabs,
+    .shop-results .options,
+    .shop-results .availability-line,
+    .shop-results .size-help {
+      display: none;
+    }
+
+    .shop-results .color-body {
+      padding: 12px;
+      gap: 10px;
+    }
+
+    .shop-results .color-body p,
+    .shop-results .stock-line {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .shop-results .sell-line {
+      margin-top: 6px;
+    }
+
+    .shop-results .buy-row {
+      margin-top: 6px;
+    }
+
+    .shop-results .compact-card .color-title {
+      align-items: center;
+      gap: 10px;
+    }
+
+    .shop-results .compact-card .color-title h3 {
+      font-size: clamp(1rem, 2vw, 1.22rem);
+    }
+
+    .shop-results .compact-card .color-title span {
+      font-size: 0.94rem;
+    }
+
+    .shop-results .compact-card .badge-row {
+      gap: 6px;
+    }
+
+    .shop-results .compact-card .badge {
+      min-height: 24px;
+      padding: 0 8px;
+      font-size: 0.64rem;
+    }
+
+    .shop-results .compact-card .buy-row .btn {
+      min-height: 34px;
+      padding: 0 8px;
+      font-size: 0.7rem;
     }
 
     .color-img img {
@@ -1389,9 +1459,7 @@
     .color-body {
       padding: 18px;
       display: flex;
-      flex: 1;
       flex-direction: column;
-      justify-content: space-between;
       gap: 18px;
     }
 
@@ -1479,6 +1547,7 @@
     }
 
     .combo-offer .color-img {
+      aspect-ratio: 4 / 3;
       border-bottom: 1px solid rgba(244, 241, 220, 0.24);
       background:
         radial-gradient(circle at 28% 20%, rgba(244, 241, 220, 0.16), transparent 28%),
@@ -1733,7 +1802,72 @@
     .steps {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
+      gap: 10px;
+    }
+
+    #pedido {
+      padding: 46px 0;
+    }
+
+    #pedido .section-head {
+      margin-bottom: 16px;
+    }
+
+    #pedido .section-head h2 {
+      font-size: clamp(1.8rem, 4vw, 3.1rem);
+    }
+
+    #pedido .section-head p {
+      max-width: 470px;
+      font-size: 0.94rem;
+      line-height: 1.5;
+    }
+
+    #pedido .step {
+      min-height: auto;
+      padding: 14px;
+    }
+
+    #pedido .step span {
+      width: 34px;
+      height: 34px;
+      font-size: 0.86rem;
+    }
+
+    #pedido .step h3 {
+      margin: 12px 0 6px;
+      font-size: 1rem;
+    }
+
+    #pedido .step p {
+      margin: 0;
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+
+    #pedido .policy-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    #pedido .policy-card {
+      min-height: auto;
+      padding: 12px;
+    }
+
+    #pedido .policy-card h3 {
+      margin: 8px 0 5px;
+      font-size: 0.9rem;
+    }
+
+    #pedido .policy-card p {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      font-size: 0.8rem;
+      line-height: 1.35;
     }
 
     .policy-grid {
@@ -1781,28 +1915,33 @@
       align-items: start;
     }
 
+    #tallas {
+      padding: 44px 0;
+    }
+
     .size-note {
-      padding: clamp(22px, 4vw, 38px);
+      padding: 18px;
       position: sticky;
       top: 96px;
     }
 
     .size-note h2 {
       margin: 8px 0 0;
-      font-size: clamp(2rem, 5vw, 4rem);
+      font-size: clamp(1.45rem, 3vw, 2.25rem);
       line-height: 0.95;
       text-transform: uppercase;
     }
 
     .size-note p {
       color: var(--muted);
-      line-height: 1.7;
-      margin: 16px 0 0;
+      font-size: 0.94rem;
+      line-height: 1.45;
+      margin: 8px 0 0;
     }
 
     .size-table {
       display: grid;
-      gap: 10px;
+      gap: 6px;
     }
 
     .size-row {
@@ -1810,7 +1949,7 @@
       grid-template-columns: 0.55fr 1fr 1fr 1.2fr;
       gap: 12px;
       align-items: center;
-      padding: 16px;
+      padding: 9px 12px;
       border: 1px solid var(--line);
       border-radius: 8px;
       background: rgba(255, 255, 255, 0.035);
@@ -1826,17 +1965,18 @@
     }
 
     .size-row strong {
-      font-size: 1.4rem;
+      font-size: 1.12rem;
       line-height: 1;
     }
 
     .size-row span {
       color: var(--muted);
-      line-height: 1.45;
+      font-size: 0.9rem;
+      line-height: 1.35;
     }
 
     .size-extra {
-      display: grid;
+      display: none;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 18px;
       margin-top: 18px;
@@ -2106,20 +2246,20 @@
     .dm-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
+      gap: 12px;
     }
 
     .dm-card {
-      min-height: 200px;
-      padding: 18px;
+      min-height: 150px;
+      padding: 14px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 18px;
+      gap: 12px;
     }
 
     .dm-card.featured {
-      min-height: 260px;
+      min-height: 190px;
       grid-column: span 2;
       background-image:
         linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.82)),
@@ -2130,7 +2270,7 @@
 
     .dm-card.athlete-card {
       grid-column: span 2;
-      min-height: 280px;
+      min-height: 210px;
       background:
         linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.88)),
         radial-gradient(circle at 16% 20%, rgba(244, 241, 220, 0.18), transparent 24%),
@@ -2149,7 +2289,7 @@
 
     .athlete-card h3 {
       max-width: 620px;
-      font-size: clamp(1.8rem, 4vw, 3.4rem);
+      font-size: clamp(1.45rem, 3vw, 2.45rem);
     }
 
     .athlete-card p {
@@ -2334,6 +2474,16 @@
       box-shadow: 0 0 16px rgba(219, 255, 45, 0.5);
     }
 
+    .footer-link {
+      color: var(--ghost-cream);
+      font-size: 0.82rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .footer-link:hover { color: var(--ink); }
+
     .overlay {
       position: fixed;
       inset: 0;
@@ -2404,6 +2554,92 @@
       font-weight: 900;
     }
 
+    .gallery-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 70;
+      display: none;
+      place-items: center;
+      padding: 18px;
+      background: rgba(0, 0, 0, 0.78);
+      backdrop-filter: blur(12px);
+    }
+
+    .gallery-modal.open { display: grid; }
+
+    .gallery-panel {
+      width: min(980px, 96vw);
+      max-height: 92vh;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      overflow: hidden;
+      border: 1px solid rgba(244, 241, 220, 0.22);
+      border-radius: 8px;
+      background: #070707;
+      box-shadow: 0 30px 120px rgba(0, 0, 0, 0.62);
+    }
+
+    .gallery-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .gallery-head h2 {
+      margin: 0;
+      font-size: clamp(1rem, 2.4vw, 1.45rem);
+      text-transform: uppercase;
+    }
+
+    .gallery-stage {
+      min-height: min(68vh, 640px);
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at 50% 20%, rgba(244, 241, 220, 0.08), transparent 32%),
+        #0b0b0b;
+    }
+
+    .gallery-stage img {
+      width: 100%;
+      height: 100%;
+      max-height: 68vh;
+      object-fit: contain;
+      display: block;
+    }
+
+    .gallery-tabs {
+      display: flex;
+      gap: 8px;
+      padding: 12px;
+      overflow-x: auto;
+      border-top: 1px solid var(--line);
+    }
+
+    .gallery-tab {
+      min-height: 34px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0 12px;
+      background: rgba(255, 255, 255, 0.045);
+      color: var(--muted);
+      font-size: 0.72rem;
+      font-weight: 950;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .gallery-tab.active {
+      background: var(--accent);
+      color: var(--accent-ink);
+      border-color: transparent;
+    }
+
     .total-row {
       display: flex;
       align-items: center;
@@ -2457,10 +2693,6 @@
       }
     }
 
-    @media (max-width: 1240px) {
-      .nav-actions .ig-link { display: none; }
-    }
-
     @media (max-width: 1020px) {
       .nav-links { display: none; }
       .hero { min-height: auto; }
@@ -2472,6 +2704,9 @@
       .product-card { grid-template-columns: 1fr; }
       .drop-grid, .detail-grid, .steps, .policy-grid, .media-layout, .media-grid, .ig-strip, .future-grid, .drop-switch, .obsession, .size-guide, .size-extra, .social-proof, .dm-grid, .proof-stack, .combo-offer-banner { grid-template-columns: 1fr; }
       .color-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .color-img { aspect-ratio: 4 / 3; }
+      #pedido .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      #pedido .policy-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
       .combo-offer-price { border-left: 0; border-top: 1px solid var(--line); padding-left: 0; padding-top: 18px; }
       .section-head { display: block; }
       .media-feature { min-height: 520px; }
@@ -2640,6 +2875,9 @@
         padding: 0 10px;
         font-size: 0.78rem;
       }
+      #pedido .steps {
+        grid-template-columns: 1fr;
+      }
       #tallas,
       #pedido {
         padding: 34px 0;
@@ -2738,11 +2976,14 @@
       </a>
       <nav class="nav-links" aria-label="Principal">
         <a href="#shop">Shop</a>
-        <a href="#shop" data-shop-filter="combos">Combos</a>
         <a href="#tallas">Tallas</a>
         <a href="#contacto">Contacto</a>
+        <a href="#carrito" data-cart-link>Carrito</a>
       </nav>
       <div class="nav-actions">
+        <a class="btn ig-link" href="https://www.instagram.com/ghostwear1/" target="_blank" rel="noopener" aria-label="Abrir Instagram de GhostWear">
+          IG
+        </a>
         <button class="btn" id="cartBtn" type="button" aria-controls="drawer">
           Carrito <span class="cart-count" id="cartCount">0</span>
         </button>
@@ -3303,6 +3544,7 @@
         <span>GhostWear</span>
       </a>
       <span>Santo Domingo, RD</span>
+      <a class="footer-link" href="https://www.instagram.com/ghostwear1/" target="_blank" rel="noopener">@ghostwear1</a>
       <span class="footer-brand-note">A YC Systems Brand</span>
       <span>&copy; <span id="year"></span> GhostWear. Todos los derechos reservados.</span>
     </div>
@@ -3329,13 +3571,32 @@
     </div>
   </aside>
 
+  <div class="gallery-modal" id="galleryModal" aria-hidden="true">
+    <div class="gallery-panel" role="dialog" aria-modal="true" aria-labelledby="galleryTitle">
+      <div class="gallery-head">
+        <h2 id="galleryTitle">GhostWear</h2>
+        <button class="remove" id="closeGallery" type="button" aria-label="Cerrar imagen">X</button>
+      </div>
+      <div class="gallery-stage">
+        <img id="galleryImage" src="./images/logo-ghost.png" alt="GhostWear" />
+      </div>
+      <div class="gallery-tabs" id="galleryTabs" aria-label="Tomas del producto"></div>
+    </div>
+  </div>
+
   <script>
     const phone = "1809XXXXXXX";
     const money = new Intl.NumberFormat("es-DO");
     const year = document.getElementById("year");
     const drawer = document.getElementById("drawer");
     const overlay = document.getElementById("drawerOverlay");
+    const galleryModal = document.getElementById("galleryModal");
+    const galleryTitle = document.getElementById("galleryTitle");
+    const galleryImage = document.getElementById("galleryImage");
+    const galleryTabs = document.getElementById("galleryTabs");
+    const closeGallery = document.getElementById("closeGallery");
     const cartBtn = document.getElementById("cartBtn");
+    const cartLinks = document.querySelectorAll("[data-cart-link]");
     const heroLookBtn = document.getElementById("heroLookBtn");
     const heroCartBtn = document.getElementById("heroCartBtn");
     const closeCart = document.getElementById("closeCart");
@@ -3374,6 +3635,19 @@
 
     function moneyText(value) {
       return "RD$ " + money.format(value);
+    }
+
+    function attrText(value) {
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+    }
+
+    function attrJson(value) {
+      return attrText(JSON.stringify(value));
     }
 
     const products = [
@@ -3708,6 +3982,37 @@
       }, 180);
     }
 
+    function setGalleryPhoto(photos, index) {
+      const photo = photos[index] || photos[0];
+      if (!photo) return;
+      galleryImage.src = photo.src;
+      galleryImage.alt = `${galleryTitle.textContent} - ${photo.label}`;
+      galleryTabs.querySelectorAll(".gallery-tab").forEach((button, buttonIndex) => {
+        button.classList.toggle("active", buttonIndex === index);
+      });
+    }
+
+    function openGallery(title, photos, startIndex = 0) {
+      if (!photos.length) return;
+      galleryTitle.textContent = title;
+      galleryTabs.innerHTML = photos.map((photo, index) => `
+        <button class="gallery-tab${index === startIndex ? " active" : ""}" type="button" data-gallery-index="${index}">
+          ${photo.label}
+        </button>
+      `).join("");
+      galleryModal.dataset.photos = JSON.stringify(photos);
+      galleryModal.classList.add("open");
+      galleryModal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("no-scroll");
+      setGalleryPhoto(photos, startIndex);
+    }
+
+    function closeGalleryModal() {
+      galleryModal.classList.remove("open");
+      galleryModal.setAttribute("aria-hidden", "true");
+      if (!drawer.classList.contains("open")) document.body.classList.remove("no-scroll");
+    }
+
     function getChoice(button) {
       const card = button.closest("[data-product-card]");
       return {
@@ -3742,6 +4047,12 @@
 
       image.src = colorButton.dataset.productImage;
       image.alt = `${colorButton.dataset.productName} - Limpia`;
+      imageWrap.dataset.galleryTitle = colorButton.dataset.productName;
+      imageWrap.dataset.galleryPhotos = JSON.stringify([
+        { label: "Limpia", src: colorButton.dataset.productImage, view: "clean" },
+        { label: "Real", src: colorButton.dataset.productRealImage, view: "real" },
+        { label: "El Fantasma", src: colorButton.dataset.productImage, view: "model" }
+      ]);
       imageWrap.dataset.view = "clean";
       title.textContent = colorButton.dataset.productName;
       note.textContent = colorButton.dataset.productNote;
@@ -3776,6 +4087,7 @@
       const urgency = product.urgency || { label: "Drop activo", line: "Disponible ahora mientras dure el drop." };
       const logoTone = product.logoTone || { label: "Logo blanco", hex: "#f8f6ee" };
       const isCombo = product.category === "combos";
+      const compact = options.compact || false;
       const savedAmount = isCombo && product.normalPrice ? product.normalPrice - product.price : 0;
       const availabilityCopy = product.sizes.length > 1
         ? "Disponibilidad por talla/color se confirma por WhatsApp antes del pago."
@@ -3823,6 +4135,7 @@
                   data-product-name="${option.name}"
                   data-product-note="${option.note}"
                   data-product-image="${cleanImage}"
+                  data-product-real-image="${option.image}"
                   data-product-hex="${option.hex}"
                   data-product-logo-label="${option.logoTone.label}"
                   data-product-logo-hex="${option.logoTone.hex}"
@@ -3861,8 +4174,8 @@
           : "";
 
       return `
-        <article class="card color-card${isCombo ? " combo-offer" : ""}" data-product-card data-category="${product.category}">
-          <div class="color-img" data-view="${primaryPhoto.view}">
+        <article class="card color-card${isCombo ? " combo-offer" : ""}${compact ? " compact-card" : ""}" data-product-card data-category="${product.category}">
+          <div class="color-img" data-view="${primaryPhoto.view}" data-gallery-title="${attrText(product.name)}" data-gallery-photos="${attrJson(photos)}">
             <img src="${primaryPhoto.src}" alt="${product.name} - ${primaryPhoto.label}" loading="lazy" />
             <span class="color-chip" style="background:${swatch}" aria-hidden="true"></span>
             <span class="ghost-corner" aria-hidden="true">BOO</span>
@@ -3885,8 +4198,8 @@
               <div class="badge-row">
                 <span class="badge">${badge}</span>
                 <span class="badge">${tag}</span>
-                ${product.courtTag ? `<span class="badge court">${product.courtTag}</span>` : ""}
-                <span class="badge urgent">${urgency.label}</span>
+                ${!compact && product.courtTag ? `<span class="badge court">${product.courtTag}</span>` : ""}
+                ${!compact ? `<span class="badge urgent">${urgency.label}</span>` : ""}
               </div>
               <div class="color-title">
                 <h3>${product.name}</h3>
@@ -3894,11 +4207,11 @@
               </div>
               ${comboIncludes}
               <p>${product.note}</p>
-              ${colorPicker}
-              ${variantSummary}
-              ${product.courtLine ? `<div class="court-line">${product.courtLine}</div>` : ""}
+              ${!compact ? colorPicker : ""}
+              ${!compact ? variantSummary : ""}
+              ${!compact && product.courtLine ? `<div class="court-line">${product.courtLine}</div>` : ""}
               <div class="sell-line">${sellLine}</div>
-              <div class="stock-line">${urgency.line}</div>
+              ${!compact ? `<div class="stock-line">${urgency.line}</div>` : ""}
             </div>
             <div>
               <div class="options">
@@ -3934,7 +4247,7 @@
 
     function renderFilteredShop(filter = "todos") {
       const visibleProducts = filter === "todos"
-        ? [shortsCollectionProduct, ...comboProducts, ...gearProducts]
+        ? [shortsCollectionProduct, ...gearProducts]
         : filter === "shorts"
           ? [shortsCollectionProduct]
           : allProducts.filter(product => product.category === filter);
@@ -3953,7 +4266,8 @@
         return productCard(product, {
           badge: isCombo ? "Ahorro" : "En stock",
           tag: isCombo ? product.tag : product.tag,
-          sellLine: isCombo ? `Oferta combo: ahorras ${moneyText(product.normalPrice - product.price)}` : "Disponible por DM"
+          sellLine: isCombo ? `Oferta combo: ahorras ${moneyText(product.normalPrice - product.price)}` : "Disponible por DM",
+          compact: filter === "todos"
         });
       }).join("");
 
@@ -4219,6 +4533,17 @@ Sector / direccion:`;
         return;
       }
 
+      const galleryTarget = event.target.closest(".color-img");
+      if (galleryTarget) {
+        const card = galleryTarget.closest("[data-product-card]");
+        const title = galleryTarget.dataset.galleryTitle || card.querySelector("h3").textContent;
+        const photos = JSON.parse(galleryTarget.dataset.galleryPhotos || "[]");
+        const currentSrc = galleryTarget.querySelector("img").getAttribute("src");
+        const startIndex = Math.max(0, photos.findIndex(photo => photo.src === currentSrc));
+        openGallery(title, photos, startIndex);
+        return;
+      }
+
       const addButton = event.target.closest(".add");
       if (addButton) {
         addItem(getChoice(addButton));
@@ -4252,13 +4577,27 @@ Sector / direccion:`;
     });
 
     cartBtn.addEventListener("click", openDrawer);
+    cartLinks.forEach(link => link.addEventListener("click", event => {
+      event.preventDefault();
+      openDrawer();
+    }));
     heroLookBtn.addEventListener("click", addLookToCart);
     heroCartBtn.addEventListener("click", openDrawer);
     welcomeFitBtn.addEventListener("click", () => revealCollection("combos"));
     closeCart.addEventListener("click", closeDrawer);
     overlay.addEventListener("click", closeDrawer);
+    closeGallery.addEventListener("click", closeGalleryModal);
+    galleryModal.addEventListener("click", event => {
+      if (event.target === galleryModal) closeGalleryModal();
+      const tab = event.target.closest("[data-gallery-index]");
+      if (!tab) return;
+      setGalleryPhoto(JSON.parse(galleryModal.dataset.photos || "[]"), Number(tab.dataset.galleryIndex));
+    });
     document.addEventListener("keydown", event => {
-      if (event.key === "Escape") closeDrawer();
+      if (event.key === "Escape") {
+        closeGalleryModal();
+        closeDrawer();
+      }
     });
 
     renderCart();
