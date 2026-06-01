@@ -3675,6 +3675,26 @@
       quantities: ["1", "2", "3"],
       href: "#drop"
     }));
+    const realShortImages = {
+      "Red": "./images/real/ghostwear-real-3081.jpg",
+      "Baby Blue": "./images/real/ghostwear-real-3082.jpg",
+      "Light Gray": "./images/real/ghostwear-real-3083.jpg",
+      "Orange": "./images/real/ghostwear-real-3084.jpg",
+      "Olive": "./images/real/ghostwear-real-3085.jpg",
+      "Aqua": "./images/real/ghostwear-real-3086.jpg",
+      "Sky Blue": "./images/real/ghostwear-real-3087.jpg",
+      "Pink": "./images/real/ghostwear-real-3088.jpg",
+      "Neon Green": "./images/real/ghostwear-real-3089.jpg",
+      "Royal Blue": "./images/real/ghostwear-real-3090.jpg",
+      "Yellow": "./images/real/ghostwear-real-3091.jpg",
+      "Navy": "./images/real/ghostwear-real-3092.jpg",
+      "Lavender": "./images/real/ghostwear-real-3093.jpg",
+      "Black": "./images/real/ghostwear-real-3094.jpg",
+      "White": "./images/real/ghostwear-real-3095.jpg"
+    };
+    products.forEach(product => {
+      product.image = realShortImages[product.color] || product.image;
+    });
     const logoToneByColor = {
       "White": { label: "Logo negro", hex: "#080808" },
       "Light Gray": { label: "Logo negro", hex: "#080808" },
@@ -3913,7 +3933,7 @@
     });
     comboProducts[0].photos = [
       { label: "Limpia", src: "./images/designed/ghostwear-short-royal-blue-studio.png", view: "clean" },
-      { label: "Real", src: "./images/media/ghostwear-media-10.jpg", view: "real" },
+      { label: "Real", src: realShortImages["Royal Blue"], view: "real" },
       { label: "El Fantasma", src: ghostModelImages.court, view: "model" }
     ];
     comboProducts[1].photos = [
