@@ -1361,6 +1361,21 @@
       letter-spacing: 0.06em;
       text-transform: uppercase;
       backdrop-filter: blur(10px);
+      pointer-events: none;
+      transition: opacity 160ms ease, transform 160ms ease;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .zoom-hint {
+        opacity: 0;
+        transform: translateY(-4px);
+      }
+
+      .color-card:hover .zoom-hint,
+      .color-card:focus-within .zoom-hint {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .photo-tabs {
@@ -2615,6 +2630,7 @@
     }
 
     .gallery-stage {
+      position: relative;
       min-height: min(68vh, 640px);
       display: grid;
       place-items: center;
@@ -2630,6 +2646,35 @@
       object-fit: contain;
       display: block;
     }
+
+    .gallery-arrow {
+      position: absolute;
+      top: 50%;
+      z-index: 2;
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(244, 241, 220, 0.24);
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.48);
+      color: var(--ghost-cream);
+      font-size: 1.45rem;
+      font-weight: 950;
+      line-height: 1;
+      transform: translateY(-50%);
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+    }
+
+    .gallery-arrow:hover {
+      background: var(--accent);
+      color: var(--accent-ink);
+      border-color: transparent;
+    }
+
+    .gallery-arrow.prev { left: 14px; }
+    .gallery-arrow.next { right: 14px; }
 
     .gallery-tabs {
       display: flex;
@@ -3598,7 +3643,9 @@
         <button class="remove" id="closeGallery" type="button" aria-label="Cerrar imagen">X</button>
       </div>
       <div class="gallery-stage">
+        <button class="gallery-arrow prev" id="galleryPrev" type="button" aria-label="Foto anterior">‹</button>
         <img id="galleryImage" src="./images/logo-ghost.png" alt="GhostWear" />
+        <button class="gallery-arrow next" id="galleryNext" type="button" aria-label="Foto siguiente">›</button>
       </div>
       <div class="gallery-tabs" id="galleryTabs" aria-label="Tomas del producto"></div>
     </div>
@@ -3614,6 +3661,8 @@
     const galleryTitle = document.getElementById("galleryTitle");
     const galleryImage = document.getElementById("galleryImage");
     const galleryTabs = document.getElementById("galleryTabs");
+    const galleryPrev = document.getElementById("galleryPrev");
+    const galleryNext = document.getElementById("galleryNext");
     const closeGallery = document.getElementById("closeGallery");
     const cartBtn = document.getElementById("cartBtn");
     const cartLinks = document.querySelectorAll("[data-cart-link]");
@@ -3894,7 +3943,26 @@
         "Lavender": { label: "Pocas unidades", line: "Lavender es color de coleccion con disponibilidad limitada." }
       };
       product.urgency = urgencyByColor[product.color] || { label: "Drop activo RD", line: "Disponible por DM mientras dure el drop." };
+      const availabilityByColor = {
+        "Royal Blue": { label: "Pocas tallas", line: "Se confirma S, M, L o XL por WhatsApp antes de apartar." },
+        "Neon Green": { label: "Pocas tallas", line: "Color activo con disponibilidad corta por talla." },
+        "Red": { label: "Disponible", line: "Activo para pedir por color y talla." },
+        "Baby Blue": { label: "Disponible", line: "Activo para confirmar talla por WhatsApp." },
+        "Light Gray": { label: "Disponible", line: "Color facil de combinar, sujeto a talla." },
+        "Orange": { label: "Disponible", line: "Activo para confirmar por WhatsApp." },
+        "Olive": { label: "Pocas tallas", line: "Se revisa talla antes de pago." },
+        "Aqua": { label: "Disponible", line: "Activo mientras dure el drop." },
+        "Sky Blue": { label: "Disponible", line: "Se confirma talla y entrega por WhatsApp." },
+        "Black": { label: "Pocas tallas", line: "Basico de rotacion rapida." },
+        "White": { label: "Por confirmar", line: "Color limpio, se valida talla antes de apartar." },
+        "Pink": { label: "Pocas tallas", line: "Color llamativo con disponibilidad limitada." },
+        "Yellow": { label: "Por confirmar", line: "Se valida disponibilidad por talla." },
+        "Navy": { label: "Disponible", line: "Activo para un fit mas serio." },
+        "Lavender": { label: "Pocas tallas", line: "Color de coleccion con disponibilidad limitada." }
+      };
+      product.availability = availabilityByColor[product.color] || { label: "Por confirmar", line: "Se valida disponibilidad por DM." };
     });
+    shortsCollectionProduct.availability = products[0].availability;
     gearProducts[0].urgency = { label: "Pedido por DM", line: "Par suelto para completar cualquier fit." };
     gearProducts[1].urgency = { label: "Oferta activa", line: "3 pares por RD$ 1,000 mientras dure el pack." };
     gearProducts[2].urgency = { label: "Colorways limitados", line: "Gorras con combinaciones de feed y stock corto." };
@@ -4025,11 +4093,20 @@
     function setGalleryPhoto(photos, index) {
       const photo = photos[index] || photos[0];
       if (!photo) return;
+      galleryModal.dataset.currentIndex = String(index);
       galleryImage.src = photo.src;
       galleryImage.alt = `${galleryTitle.textContent} - ${photo.label}`;
       galleryTabs.querySelectorAll(".gallery-tab").forEach((button, buttonIndex) => {
         button.classList.toggle("active", buttonIndex === index);
       });
+    }
+
+    function moveGallery(step) {
+      const photos = JSON.parse(galleryModal.dataset.photos || "[]");
+      if (!photos.length) return;
+      const currentIndex = Number(galleryModal.dataset.currentIndex || 0);
+      const nextIndex = (currentIndex + step + photos.length) % photos.length;
+      setGalleryPhoto(photos, nextIndex);
     }
 
     function openGallery(title, photos, startIndex = 0) {
@@ -4041,6 +4118,7 @@
         </button>
       `).join("");
       galleryModal.dataset.photos = JSON.stringify(photos);
+      galleryModal.dataset.currentIndex = String(startIndex);
       galleryModal.classList.add("open");
       galleryModal.setAttribute("aria-hidden", "false");
       document.body.classList.add("no-scroll");
@@ -4055,9 +4133,19 @@
 
     function getChoice(button) {
       const card = button.closest("[data-product-card]");
+      const variantText = card.querySelector(".variant-summary")?.textContent.replace(/\s+/g, " ").trim();
+      const statusText = card.querySelector(".availability-line")?.textContent.replace(/\s+/g, " ").trim();
+      const currentImage = card.querySelector(".color-img img")?.getAttribute("src");
+      const productPath = currentImage ? currentImage.replace("./", "") : "";
       return {
         name: button.dataset.name,
         price: Number(button.dataset.price),
+        unitPrice: button.dataset.priceLabel || moneyText(Number(button.dataset.price)),
+        category: button.dataset.category || card.dataset.category,
+        variant: variantText || button.dataset.name,
+        status: statusText || "Estado: por confirmar por WhatsApp",
+        image: productPath ? `https://ghostwear1.com/${productPath}` : "https://ghostwear1.com/",
+        link: "https://ghostwear1.com/",
         size: card.querySelector(".size").value,
         qty: Number(card.querySelector(".qty").value),
         delivery: card.querySelector(".delivery").value
@@ -4105,7 +4193,7 @@
       if (urgentBadge) urgentBadge.textContent = colorButton.dataset.productUrgencyLabel;
       if (stockLine) stockLine.textContent = colorButton.dataset.productUrgencyLine;
       if (sellLine) sellLine.textContent = colorButton.dataset.productSellLine;
-      if (availabilityLine) availabilityLine.innerHTML = `<strong>Disponible:</strong> ${colorButton.dataset.productAvailability}`;
+      if (availabilityLine) availabilityLine.innerHTML = `<strong>Estado:</strong> ${colorButton.dataset.productAvailability}`;
       if (courtLine) courtLine.textContent = colorButton.dataset.productCourtLine;
       addButton.dataset.name = colorButton.dataset.productName;
       waButton.dataset.name = colorButton.dataset.productName;
@@ -4130,7 +4218,7 @@
       const compact = options.compact || false;
       const savedAmount = isCombo && product.normalPrice ? product.normalPrice - product.price : 0;
       const availabilityCopy = product.sizes.length > 1
-        ? "Disponibilidad por talla/color se confirma por WhatsApp antes del pago."
+        ? (product.availability ? `${product.availability.label}: ${product.availability.line}` : "Por confirmar: disponibilidad por talla/color se confirma por WhatsApp antes del pago.")
         : "Disponibilidad se confirma por WhatsApp antes del pago.";
       const sizeHelp = product.sizes.length > 1
         ? `<a class="size-help" href="#tallas" aria-label="Ver guia de tallas para ${product.name}">Ver guia de tallas</a>`
@@ -4162,7 +4250,8 @@
             ${product.colorOptions.map((option, index) => {
               const cleanImage = cleanShortImages[option.color] || option.image;
               const optionUrgency = option.urgency || { label: "Drop activo RD", line: "Disponible por DM mientras dure el drop." };
-              const optionAvailability = `${option.color}: ${optionUrgency.line}`;
+              const optionStatus = option.availability || { label: "Por confirmar", line: optionUrgency.line };
+              const optionAvailability = `${optionStatus.label}: ${optionStatus.line}`;
               return `
                 <button
                   class="color-swatch${index === 0 ? " active" : ""}"
@@ -4274,11 +4363,11 @@
                   </select>
                 </label>
               </div>
-              <p class="availability-line"><strong>Disponible:</strong> ${availabilityCopy}</p>
+              <p class="availability-line"><strong>Estado:</strong> ${availabilityCopy}</p>
               ${sizeHelp}
               <div class="buy-row">
-                <button class="btn primary add" type="button" data-name="${product.name}" data-price="${product.price}">Agregar al fit</button>
-                <button class="btn wa" type="button" data-name="${product.name}" data-price="${product.price}">WhatsApp</button>
+                <button class="btn primary add" type="button" data-name="${product.name}" data-price="${product.price}" data-price-label="${product.priceLabel}" data-category="${product.category}">Agregar al fit</button>
+                <button class="btn wa" type="button" data-name="${product.name}" data-price="${product.price}" data-price-label="${product.priceLabel}" data-category="${product.category}">WhatsApp</button>
               </div>
             </div>
           </div>
@@ -4492,13 +4581,19 @@
     }
 
     function buildSingleMessage(item) {
-      return `Hola, quiero armar este fit en GhostWear.
+      return `Hola GhostWear, quiero armar este fit.
 
 Producto: ${item.name}
+Variante: ${item.variant}
 Talla: ${item.size}
 Cantidad: ${item.qty}
 Entrega: ${item.delivery}
-Precio: RD$ ${money.format(item.price * item.qty)}
+Precio unitario: ${item.unitPrice}
+Total: RD$ ${money.format(item.price * item.qty)}
+${item.status}
+
+Foto / referencia: ${item.image}
+Pagina: ${item.link}
 
 Mi nombre es:
 Sector / direccion:`;
@@ -4507,15 +4602,16 @@ Sector / direccion:`;
     function buildCheckoutMessage() {
       const total = cart.reduce((sum, item) => sum + item.qty * item.price, 0);
       const lines = cart.map(item => {
-        return `- ${item.name} | Talla ${item.size} | ${item.delivery} | x${item.qty} | RD$ ${money.format(item.qty * item.price)}`;
+        return `- ${item.name} | ${item.variant} | Talla ${item.size} | ${item.delivery} | x${item.qty} | RD$ ${money.format(item.qty * item.price)}`;
       }).join("\n");
 
-      return `Hola, quiero cerrar este pedido en GhostWear.
+      return `Hola GhostWear, quiero cerrar este pedido.
 
 Items:
 ${lines}
 
 Total: RD$ ${money.format(total)}
+Pagina: https://ghostwear1.com/
 
 Mi nombre es:
 Sector / direccion:`;
@@ -4628,6 +4724,8 @@ Sector / direccion:`;
     closeCart.addEventListener("click", closeDrawer);
     overlay.addEventListener("click", closeDrawer);
     closeGallery.addEventListener("click", closeGalleryModal);
+    galleryPrev.addEventListener("click", () => moveGallery(-1));
+    galleryNext.addEventListener("click", () => moveGallery(1));
     galleryModal.addEventListener("click", event => {
       if (event.target === galleryModal) closeGalleryModal();
       const tab = event.target.closest("[data-gallery-index]");
@@ -4639,6 +4737,8 @@ Sector / direccion:`;
         closeGalleryModal();
         closeDrawer();
       }
+      if (galleryModal.classList.contains("open") && event.key === "ArrowLeft") moveGallery(-1);
+      if (galleryModal.classList.contains("open") && event.key === "ArrowRight") moveGallery(1);
     });
 
     renderCart();
