@@ -3,8 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="GhostWear RD: tienda virtual de shorts, medias, gorras y hoodies con pedidos por WhatsApp y envios nacionales." />
-  <title>GhostWear | Tienda virtual RD</title>
+  <meta name="description" content="GhostWear RD: shorts, medias, gorras, hoodies y combos con pedido por WhatsApp, entrega nacional y USA por cotizacion." />
+  <meta name="keywords" content="GhostWear, shorts RD, ropa deportiva RD, gorras Ghost, medias Ghost, hoodie GhostWear, streetwear dominicano" />
+  <meta property="og:title" content="GhostWear | Drop activo RD" />
+  <meta property="og:description" content="Arma tu fit GhostWear por WhatsApp. Shorts, medias, gorras, hoodie y combos con entrega nacional y USA por cotizacion." />
+  <meta property="og:image" content="https://ghostwear1.com/images/logo-ghost.png" />
+  <meta property="og:url" content="https://ghostwear1.com/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <title>GhostWear RD | Shorts, medias, gorras y hoodies por DM</title>
   <style>
     :root {
       color-scheme: dark;
@@ -1836,7 +1842,7 @@
 
     .steps {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 10px;
     }
 
@@ -2770,7 +2776,7 @@
       .drop-grid, .detail-grid, .steps, .policy-grid, .media-layout, .media-grid, .ig-strip, .future-grid, .drop-switch, .obsession, .size-guide, .size-extra, .social-proof, .dm-grid, .proof-stack, .combo-offer-banner { grid-template-columns: 1fr; }
       .color-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .color-img { aspect-ratio: 4 / 3; }
-      #pedido .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      #pedido .steps { grid-template-columns: repeat(4, minmax(0, 1fr)); }
       #pedido .policy-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
       .combo-offer-price { border-left: 0; border-top: 1px solid var(--line); padding-left: 0; padding-top: 18px; }
       .section-head { display: block; }
@@ -2961,8 +2967,18 @@
         line-height: 1.45;
       }
       .size-note .hero-note,
-      .size-extra,
-      .policy-grid {
+      .size-extra {
+        display: none;
+      }
+      #pedido .policy-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+      #pedido .policy-card {
+        padding: 10px;
+      }
+      #pedido .policy-card p {
         display: none;
       }
       .size-table {
@@ -3007,6 +3023,19 @@
       .step p {
         font-size: 0.84rem;
         line-height: 1.35;
+      }
+      .filter-btn,
+      .photo-tab,
+      .gallery-tab,
+      .buy-row .btn,
+      .nav-actions .btn {
+        min-height: 42px;
+      }
+      .filter-bar {
+        gap: 8px;
+        overflow-x: auto;
+        padding-bottom: 2px;
+        scrollbar-width: none;
       }
       .product-float { left: 12px; right: 12px; bottom: 12px; grid-template-columns: 1fr; }
       .proof { grid-template-columns: 1fr; }
@@ -3061,10 +3090,10 @@
       <div class="wrap">
         <div class="welcome-card">
           <div class="welcome-content">
-            <span class="welcome-kicker">Drop activo RD</span>
+            <span class="welcome-kicker">Drop activo RD / USA por cotizacion</span>
             <div class="welcome-copy">
               <strong>Viste diferente.</strong>
-              <span class="welcome-subline">GhostWear. Elige tu color, arma tu fit y confirma por WhatsApp.</span>
+              <span class="welcome-subline">GhostWear. Elige tu color, arma tu fit y confirma entrega por WhatsApp.</span>
             </div>
             <div class="welcome-actions">
               <a class="btn primary" href="#shop" data-discover-shop>Ver coleccion</a>
@@ -3110,6 +3139,7 @@
             <span>Tallas S / M / L / XL</span>
             <span>Desde RD$ 1,500</span>
             <span>Combos disponibles</span>
+            <span>USA por cotizacion</span>
             <span>Confirmacion por WhatsApp</span>
           </div>
           <div class="proof" id="heroStats" aria-label="Detalles de compra">
@@ -3319,7 +3349,7 @@
           </div>
           <p>
             El gear completa la vuelta: medias, gorras y hoodie con precio claro,
-            stock limitado y pedido directo por WhatsApp.
+            disponibilidad por DM y envio que se cotiza antes de pagar.
           </p>
         </div>
 
@@ -3332,7 +3362,7 @@
                 <p>GHOST WEAR</p>
               </div>
             </div>
-            <p>Tienda virtual RD. Te lo apartamos por transferencia. Envios nacionales.</p>
+            <p>Tienda virtual RD. Te lo apartamos por DM. Envios RD y USA por cotizacion.</p>
             <a class="btn ig-link" href="https://www.instagram.com/ghostwear1/" target="_blank" rel="noopener">Ver Instagram</a>
           </article>
           <article class="card ig-stat">
@@ -3556,46 +3586,51 @@
             <span class="section-kicker">Como comprar</span>
             <h2>Pedido por DM</h2>
           </div>
-          <p>Sin checkout raro. Armas el fit, revisas el carrito y el DM sale listo por WhatsApp.</p>
+          <p>Sin checkout raro. Armas el fit, confirmas disponibilidad y el DM sale listo para cerrar por WhatsApp.</p>
         </div>
         <div class="steps">
           <div class="card step">
             <span>1</span>
-            <h3>Elige tu fit</h3>
-            <p>Selecciona color, talla, cantidad y como quieres recibirlo.</p>
+            <h3>Elige</h3>
+            <p>Selecciona color, talla, cantidad y entrega.</p>
           </div>
           <div class="card step">
             <span>2</span>
-            <h3>Revisa la vuelta</h3>
-            <p>Confirma el total y quita cualquier item antes de mandar el DM.</p>
+            <h3>Confirma</h3>
+            <p>Revisamos disponibilidad por talla/color antes de pago.</p>
           </div>
           <div class="card step">
             <span>3</span>
-            <h3>Manda el DM</h3>
-            <p>El mensaje sale armado para cerrar disponibilidad, pago y entrega.</p>
+            <h3>Paga</h3>
+            <p>El metodo y comprobante se coordinan por DM.</p>
+          </div>
+          <div class="card step">
+            <span>4</span>
+            <h3>Recibe</h3>
+            <p>Entrega RD o USA por cotizacion, segun tu ubicacion.</p>
           </div>
         </div>
 
         <div class="policy-grid" aria-label="Politica de compra GhostWear">
           <article class="card policy-card">
             <strong>Pago</strong>
-            <h3>Transferencia</h3>
-            <p>Te lo apartamos cuando confirmas el pago por transferencia.</p>
+            <h3>Se confirma por DM</h3>
+            <p>El total y metodo se revisan antes de apartar la pieza.</p>
           </article>
           <article class="card policy-card">
             <strong>Entrega</strong>
-            <h3>Santo Domingo</h3>
-            <p>Coordinamos retiro o delivery segun disponibilidad del dia.</p>
+            <h3>RD por coordinar</h3>
+            <p>Sector, ciudad o retiro se confirma por WhatsApp.</p>
           </article>
           <article class="card policy-card">
-            <strong>Envios</strong>
-            <h3>Nacionales</h3>
-            <p>Mandamos al interior de RD. El costo se confirma por WhatsApp antes de pagar.</p>
+            <strong>Cambios</strong>
+            <h3>Antes de usar</h3>
+            <p>Talla y color se validan por DM antes del pago.</p>
           </article>
           <article class="card policy-card">
-            <strong>Tiempo</strong>
-            <h3>24-72 horas</h3>
-            <p>Estimado luego de confirmar pago, talla, color y direccion.</p>
+            <strong>Pedidos USA</strong>
+            <h3>Por cotizacion</h3>
+            <p>Ciudad, estado y ZIP se piden para calcular envio.</p>
           </article>
         </div>
       </div>
@@ -3689,8 +3724,8 @@
     const gearGrid = document.getElementById("gearGrid");
     const store = {
       phone,
-      shipping: "Envios nacionales",
-      payment: "Pagos por transferencia",
+      shipping: "RD + USA por cotizacion",
+      payment: "Pago se confirma por DM",
       hero: {
         tag: "Drop principal",
         feature: "Short + medias"
@@ -3926,23 +3961,23 @@
     });
     products.forEach(product => {
       const urgencyByColor = {
-        "Royal Blue": { label: "Color mas pedido", line: "Se esta moviendo por DM. Ideal para armar el fit completo." },
-        "Neon Green": { label: "Pocas unidades", line: "Color verde validado del drop. Se confirma talla antes de apartarlo." },
-        "Red": { label: "Drop activo RD", line: "Rojo disponible por DM. Ideal para combinar con medias Ghost blancas." },
-        "Baby Blue": { label: "Disponible", line: "Baby blue activo en el drop. Pregunta talla antes del pago." },
-        "Light Gray": { label: "Disponible", line: "Gris claro activo: facil de combinar, stock por talla." },
-        "Orange": { label: "Disponible", line: "Orange activo para fotos y cancha. Confirmamos talla por WhatsApp." },
-        "Olive": { label: "Pocas unidades", line: "Olive tiene stock corto. Te confirmamos talla/color antes de pago." },
-        "Aqua": { label: "Disponible", line: "Aqua fresco del drop. Disponible por DM mientras dure." },
-        "Sky Blue": { label: "Disponible", line: "Sky blue activo. Consulta talla y entrega por WhatsApp." },
-        "Black": { label: "Ultimas unidades", line: "Basico que rota rapido por DM." },
-        "White": { label: "Drop activo RD", line: "Color limpio para verano y fotos de feed." },
-        "Pink": { label: "Quedan pocas", line: "Tono llamativo con disponibilidad limitada." },
-        "Yellow": { label: "Color mas pedido", line: "Uno de los colores que mas preguntan por historia." },
-        "Navy": { label: "Disponible", line: "Navy activo para un fit mas serio. Se confirma por talla." },
-        "Lavender": { label: "Pocas unidades", line: "Lavender es color de coleccion con disponibilidad limitada." }
+        "Royal Blue": { label: "Color mas pedido", line: "Se mueve rapido por DM. Talla se confirma antes de pago." },
+        "Neon Green": { label: "Pocas unidades", line: "Color activo del drop. Talla se confirma antes de apartar." },
+        "Red": { label: "Disponible por DM", line: "Rojo activo. Ideal con medias Ghost blancas." },
+        "Baby Blue": { label: "Disponible por DM", line: "Baby blue activo. Pregunta talla antes del pago." },
+        "Light Gray": { label: "Disponible por DM", line: "Gris claro activo; stock se valida por talla." },
+        "Orange": { label: "Disponible por DM", line: "Orange activo para fotos y cancha. Confirmamos talla por WhatsApp." },
+        "Olive": { label: "Pocas unidades", line: "Olive tiene stock corto. Talla/color se confirma antes de pago." },
+        "Aqua": { label: "Disponible por DM", line: "Aqua fresco del drop. Envio se cotiza si aplica." },
+        "Sky Blue": { label: "Disponible por DM", line: "Sky blue activo. Entrega se confirma por WhatsApp." },
+        "Black": { label: "Ultimas unidades", line: "Basico que rota rapido. Talla se confirma antes de pago." },
+        "White": { label: "Por confirmar", line: "Color limpio para verano. Se valida talla por DM." },
+        "Pink": { label: "Pocas unidades", line: "Tono llamativo con disponibilidad limitada." },
+        "Yellow": { label: "Por confirmar", line: "Color solicitado. Se valida disponibilidad por talla." },
+        "Navy": { label: "Disponible por DM", line: "Navy activo para un fit mas serio. Se confirma por talla." },
+        "Lavender": { label: "Pocas unidades", line: "Color de coleccion con disponibilidad limitada." }
       };
-      product.urgency = urgencyByColor[product.color] || { label: "Drop activo RD", line: "Disponible por DM mientras dure el drop." };
+      product.urgency = urgencyByColor[product.color] || { label: "Disponible por DM", line: "Talla y envio se confirman por WhatsApp." };
       const availabilityByColor = {
         "Royal Blue": { label: "Pocas tallas", line: "Se confirma S, M, L o XL por WhatsApp antes de apartar." },
         "Neon Green": { label: "Pocas tallas", line: "Color activo con disponibilidad corta por talla." },
@@ -4360,6 +4395,7 @@
                     <option selected>Santo Domingo</option>
                     <option>Interior RD</option>
                     <option>Retiro</option>
+                    <option>USA por cotizacion</option>
                   </select>
                 </label>
               </div>
@@ -4437,6 +4473,7 @@
       const minPrice = Math.min(...allProducts.map(product => product.price));
       const featuredAnnouncements = [
         "Drop activo RD",
+        "USA por cotizacion",
         "Quedan pocas unidades",
         "Color mas pedido: Royal Blue",
         `Shorts ${products[0].priceLabel}`,
@@ -4455,7 +4492,7 @@
       heroStats.innerHTML = [
         { value: `${allProducts.length} piezas`, label: store.metrics.piecesLabel },
         { value: `Desde ${moneyText(minPrice)}`, label: "medias y packs" },
-        { value: "Envios RD", label: "nacionales" }
+        { value: "RD + USA", label: "por cotizacion" }
       ].map(stat => `
         <div><strong>${stat.value}</strong><span>${stat.label}</span></div>
       `).join("");
@@ -4527,6 +4564,7 @@
             <div class="cart-item-top">
               <div>
                 <h3>${item.name}</h3>
+                <p>${item.variant || item.name}</p>
                 <p>Talla ${item.size} | ${item.delivery}</p>
                 <p>${item.qty} x RD$ ${money.format(item.price)}</p>
               </div>
@@ -4547,24 +4585,45 @@
     }
 
     function addLookToCart() {
+      const royalShort = products.find(product => product.color === "Royal Blue");
+      const socks = gearProducts.find(product => product.name === "Medias Ghost");
+      const cap = gearProducts.find(product => product.name === "Gorra Ghost");
       const lookItems = [
         {
-          name: products.find(product => product.color === "Royal Blue").name,
-          price: products[0].price,
+          name: royalShort.name,
+          price: royalShort.price,
+          unitPrice: royalShort.priceLabel,
+          category: royalShort.category,
+          variant: `Short ${royalShort.color} ${royalShort.logoTone.label}`,
+          status: `${royalShort.availability.label}: ${royalShort.availability.line}`,
+          image: `https://ghostwear1.com/${royalShort.image.replace("./", "")}`,
+          link: "https://ghostwear1.com/",
           size: "M",
           qty: 1,
           delivery: "Santo Domingo"
         },
         {
-          name: gearProducts.find(product => product.name === "Medias Ghost").name,
-          price: gearProducts.find(product => product.name === "Medias Ghost").price,
+          name: socks.name,
+          price: socks.price,
+          unitPrice: socks.priceLabel,
+          category: socks.category,
+          variant: "Medias talla unica",
+          status: "Disponible por DM: se confirma antes de pago.",
+          image: "https://ghostwear1.com/images/ghostwear-socks-real.jpg",
+          link: "https://ghostwear1.com/",
           size: "Unica",
           qty: 1,
           delivery: "Santo Domingo"
         },
         {
-          name: gearProducts.find(product => product.name === "Gorra Ghost").name,
-          price: gearProducts.find(product => product.name === "Gorra Ghost").price,
+          name: cap.name,
+          price: cap.price,
+          unitPrice: cap.priceLabel,
+          category: cap.category,
+          variant: "Gorra Ghost",
+          status: "Disponible por DM: colorway se confirma antes de pago.",
+          image: "https://ghostwear1.com/images/gear/ghostwear-caps.jpg",
+          link: "https://ghostwear1.com/",
           size: "Unica",
           qty: 1,
           delivery: "Santo Domingo"
@@ -4581,6 +4640,9 @@
     }
 
     function buildSingleMessage(item) {
+      const locationPrompt = item.delivery.includes("USA")
+        ? "Ciudad / Estado / ZIP:"
+        : "Sector o ciudad:";
       return `Hola GhostWear, quiero armar este fit.
 
 Producto: ${item.name}
@@ -4596,11 +4658,14 @@ Foto / referencia: ${item.image}
 Pagina: ${item.link}
 
 Mi nombre es:
-Sector / direccion:`;
+${locationPrompt}
+Referencia de entrega:`;
     }
 
     function buildCheckoutMessage() {
       const total = cart.reduce((sum, item) => sum + item.qty * item.price, 0);
+      const hasUsa = cart.some(item => item.delivery.includes("USA"));
+      const locationPrompt = hasUsa ? "Ciudad / Estado / ZIP:" : "Sector o ciudad:";
       const lines = cart.map(item => {
         return `- ${item.name} | ${item.variant} | Talla ${item.size} | ${item.delivery} | x${item.qty} | RD$ ${money.format(item.qty * item.price)}`;
       }).join("\n");
@@ -4614,7 +4679,8 @@ Total: RD$ ${money.format(total)}
 Pagina: https://ghostwear1.com/
 
 Mi nombre es:
-Sector / direccion:`;
+${locationPrompt}
+Referencia de entrega:`;
     }
 
     renderStorefront();
