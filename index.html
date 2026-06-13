@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="GhostWear RD: shorts, medias, gorras, hoodies y combos con pedido por WhatsApp, entrega nacional y USA por cotizacion." />
-  <meta name="keywords" content="GhostWear, shorts RD, ropa deportiva RD, gorras Ghost, medias Ghost, hoodie GhostWear, streetwear dominicano" />
+  <meta name="description" content="GhostWear RD: shorts, tees, medias, gorras, hoodies y combos con pedido por WhatsApp, entrega nacional y USA por cotizacion." />
+  <meta name="keywords" content="GhostWear, shorts RD, tees Ghost, ropa deportiva RD, gorras Ghost, medias Ghost, hoodie GhostWear, streetwear dominicano" />
   <meta property="og:title" content="GhostWear | Drop activo RD" />
-  <meta property="og:description" content="Arma tu fit GhostWear por WhatsApp. Shorts, medias, gorras, hoodie y combos con entrega nacional y USA por cotizacion." />
-  <meta property="og:image" content="https://ghostwear1.com/images/logo-ghost.png" />
+  <meta property="og:description" content="Arma tu fit GhostWear por WhatsApp. Shorts, tees, medias, gorras, hoodie y combos con entrega nacional y USA por cotizacion." />
+  <meta property="og:image" content="https://ghostwear1.com/images/logo-ghost-transparent.png" />
   <meta property="og:url" content="https://ghostwear1.com/" />
   <meta name="twitter:card" content="summary_large_image" />
-  <title>GhostWear RD | Shorts, medias, gorras y hoodies por DM</title>
+  <title>GhostWear RD | Shorts, tees, medias, gorras y hoodies por DM</title>
   <style>
     :root {
       color-scheme: dark;
@@ -185,6 +185,19 @@
       font-size: 0.78rem;
       font-weight: 900;
       letter-spacing: 0.02em;
+    }
+
+    #cartBtn {
+      min-height: 44px;
+      border-color: rgba(244, 241, 220, 0.42);
+      background: linear-gradient(180deg, rgba(244, 241, 220, 0.14), rgba(255, 255, 255, 0.04));
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28), inset 0 0 0 1px rgba(244, 241, 220, 0.05);
+      font-weight: 950;
+    }
+
+    #cartBtn:hover {
+      border-color: rgba(244, 241, 220, 0.68);
+      background: linear-gradient(180deg, rgba(244, 241, 220, 0.22), rgba(255, 255, 255, 0.06));
     }
 
     .btn.primary::before {
@@ -470,7 +483,7 @@
 
     .welcome-copy strong {
       max-width: 640px;
-      font-size: clamp(3rem, 7vw, 6.4rem);
+      font-size: clamp(3rem, 6.4vw, 5.85rem);
       line-height: 0.88;
       text-transform: uppercase;
       letter-spacing: 0;
@@ -493,14 +506,18 @@
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 10px;
-      max-width: 620px;
+      grid-column: 1 / -1;
+      max-width: none;
     }
 
     .welcome-signals span {
+      display: flex;
+      align-items: center;
+      gap: 9px;
       border: 1px solid var(--line);
       border-radius: 8px;
-      padding: 11px;
-      background: rgba(0, 0, 0, 0.2);
+      padding: 9px 11px;
+      background: rgba(0, 0, 0, 0.16);
       color: var(--muted);
       font-size: 0.78rem;
       font-weight: 850;
@@ -508,11 +525,25 @@
       text-transform: uppercase;
     }
 
+    .signal-icon {
+      display: inline-grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      flex: 0 0 auto;
+      border: 1px solid rgba(244, 241, 220, 0.18);
+      border-radius: 999px;
+      background: rgba(244, 241, 220, 0.08);
+      color: var(--ghost-cream);
+      font-size: 0.9rem;
+      line-height: 1;
+    }
+
     .welcome-signals strong {
       display: block;
       margin-bottom: 4px;
       color: var(--ghost-cream);
-      font-size: 1rem;
+      font-size: 0.95rem;
     }
 
     .welcome-subline {
@@ -576,6 +607,139 @@
       font-size: 0.84rem;
       font-weight: 900;
       text-transform: uppercase;
+    }
+
+    .welcome-collage {
+      position: relative;
+      z-index: 1;
+      width: min(100%, 480px);
+      min-height: 390px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.82fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 10px;
+      padding: 10px;
+    }
+
+    .welcome-product {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(244, 241, 220, 0.18);
+      border-radius: 8px;
+      background: #111;
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.36);
+    }
+
+    .welcome-product img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(1.04) contrast(1.02);
+    }
+
+    .welcome-product.main {
+      grid-row: 1 / span 2;
+    }
+
+    .welcome-product::after {
+      content: attr(data-label);
+      position: absolute;
+      left: 10px;
+      bottom: 10px;
+      border-radius: 999px;
+      padding: 7px 9px;
+      background: rgba(0, 0, 0, 0.62);
+      color: var(--ghost-cream);
+      font-size: 0.68rem;
+      font-weight: 950;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      backdrop-filter: blur(10px);
+    }
+
+    .welcome-product-mark {
+      position: absolute;
+      right: 12px;
+      top: 12px;
+      width: 92px;
+      filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.4));
+    }
+
+    .welcome-model-shot {
+      position: relative;
+      z-index: 1;
+      width: min(100%, 440px);
+      height: min(520px, 58vh);
+      min-height: 340px;
+      overflow: hidden;
+      border: 1px solid rgba(244, 241, 220, 0.18);
+      border-radius: 8px;
+      background: #101010;
+      box-shadow: 0 34px 90px rgba(0, 0, 0, 0.4);
+    }
+
+    .welcome-model-shot img:first-child {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: saturate(1.03) contrast(1.02);
+    }
+
+    .welcome-model-shot::after {
+      content: attr(data-label);
+      position: absolute;
+      left: 14px;
+      bottom: 14px;
+      border-radius: 999px;
+      padding: 8px 11px;
+      background: rgba(0, 0, 0, 0.62);
+      color: var(--ghost-cream);
+      font-size: 0.72rem;
+      font-weight: 950;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      backdrop-filter: blur(10px);
+    }
+
+    .welcome-logo-focus {
+      position: relative;
+      z-index: 1;
+      width: min(100%, 520px);
+      min-height: 390px;
+      display: grid;
+      place-items: center;
+      padding: clamp(24px, 4vw, 54px);
+    }
+
+    .welcome-logo-focus::before {
+      content: "";
+      position: absolute;
+      inset: 14% 4% 18%;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 50% 48%, rgba(244, 241, 220, 0.18), transparent 58%),
+        radial-gradient(circle at 62% 42%, rgba(159, 216, 255, 0.12), transparent 40%);
+      filter: blur(18px);
+      opacity: 0.88;
+      pointer-events: none;
+    }
+
+    .welcome-logo-focus img {
+      position: relative;
+      z-index: 1;
+      width: min(78%, 330px);
+      height: auto;
+      object-fit: contain;
+      filter:
+        drop-shadow(0 20px 42px rgba(0, 0, 0, 0.56))
+        drop-shadow(0 0 16px rgba(244, 241, 220, 0.12));
+      animation: wordmarkAlive 5.8s ease-in-out infinite;
+    }
+
+    .welcome-logo-focus .ghost-hint {
+      top: auto;
+      bottom: 18px;
     }
 
     .ghost-hint {
@@ -809,7 +973,7 @@
 
     .category-impact {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
       gap: 10px;
       margin: 2px 0 16px;
     }
@@ -906,6 +1070,27 @@
       letter-spacing: 0.06em;
       text-transform: uppercase;
       backdrop-filter: blur(10px);
+    }
+
+    .category-cta {
+      position: absolute;
+      left: 16px;
+      bottom: 14px;
+      z-index: 1;
+      color: var(--ghost-cream);
+      font-size: 0.72rem;
+      font-weight: 950;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    .category-card:hover .category-cta,
+    .category-card:focus-visible .category-cta {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     #shop.shop-discovered .shop-filter-shell,
@@ -2861,7 +3046,36 @@
       .welcome-copy { gap: 6px; }
       .welcome-copy strong { font-size: clamp(1.55rem, 8vw, 2rem); line-height: 0.95; }
       .welcome-copy span { font-size: 0.82rem; line-height: 1.35; }
-      .welcome-signals { display: none; }
+      .welcome-signals {
+        display: flex;
+        overflow-x: auto;
+        scrollbar-width: none;
+        margin-inline: -12px;
+        padding-inline: 12px;
+        gap: 6px;
+        scroll-snap-type: x proximity;
+      }
+      .welcome-signals::-webkit-scrollbar {
+        display: none;
+      }
+      .welcome-signals span {
+        flex: 0 0 auto;
+        min-width: 112px;
+        scroll-snap-align: start;
+        padding: 7px 7px;
+        gap: 6px;
+        font-size: 0.54rem;
+        line-height: 1.2;
+      }
+      .signal-icon {
+        width: 22px;
+        height: 22px;
+        font-size: 0.68rem;
+      }
+      .welcome-signals strong {
+        margin-bottom: 2px;
+        font-size: 0.68rem;
+      }
       .welcome-visual { display: none; }
       .welcome-actions .btn { flex: 1 1 130px; }
       .category-impact {
@@ -3122,7 +3336,7 @@
   <header class="site-header">
     <div class="wrap nav">
       <a href="#shop" class="brand" aria-label="Descubrir coleccion GhostWear" data-discover-shop>
-        <img src="./images/logo-ghost.png" alt="" />
+        <img src="./images/logo-ghost-transparent.png" alt="" />
         <span>GhostWear</span>
       </a>
       <nav class="nav-links" aria-label="Principal">
@@ -3150,7 +3364,7 @@
             <span class="welcome-kicker">Drop activo RD / USA por cotizacion</span>
             <div class="welcome-copy">
               <strong>Viste diferente.</strong>
-              <span class="welcome-subline">GhostWear. Elige tu color, arma tu fit y confirma entrega por WhatsApp.</span>
+              <span class="welcome-subline">GhostWear. No sigas a la multitud. Construye tu propio fit.</span>
             </div>
             <div class="welcome-actions">
               <a class="btn primary" href="#shop" data-discover-shop>Ver coleccion</a>
@@ -3158,17 +3372,21 @@
             </div>
           </div>
           <div class="welcome-visual" aria-hidden="true">
-            <span class="welcome-orbit"></span>
-            <span class="welcome-orbit"></span>
-            <span class="welcome-orbit"></span>
-            <div class="welcome-ghost">
-              <img src="./images/logo-ghost.png" alt="GhostWear" data-discover-shop />
+            <div class="welcome-logo-focus">
+              <span class="welcome-orbit"></span>
+              <span class="welcome-orbit"></span>
+              <span class="welcome-orbit"></span>
+              <img src="./images/logo-ghost-transparent.png" alt="" />
             </div>
-            <button class="ghost-hint" type="button" data-discover-shop>Entrar a la tienda</button>
             <div class="welcome-caption">
               <span>GhostWear RD</span>
               <span>Descubre el drop</span>
             </div>
+          </div>
+          <div class="welcome-signals" aria-label="Prueba social GhostWear">
+            <span><i class="signal-icon" aria-hidden="true">🎨</i><span><strong>15 colores</strong> disponibles por DM</span></span>
+            <span><i class="signal-icon" aria-hidden="true">🌎</i><span><strong>RD + USA</strong> entrega por cotizacion</span></span>
+            <span><i class="signal-icon" aria-hidden="true">📦</i><span><strong>+50</strong> pedidos entregados</span></span>
           </div>
         </div>
       </div>
@@ -3178,13 +3396,13 @@
       <div class="wrap hero-grid">
         <div>
           <span class="ghost-tag">
-            <img src="./images/logo-ghost.png" alt="" />
+            <img src="./images/logo-ghost-transparent.png" alt="" />
             Producto destacado
           </span>
-          <h1>Short Ghost Colors. <span class="ghost-line">Elige tu color.</span></h1>
+          <h1>GhostWear. <span class="ghost-line">Construye tu propio fit.</span></h1>
           <p class="hero-copy">
-            Un solo modelo de short, 15 colores del drop. Escoge tu talla,
-            pregunta por disponibilidad y armamos el pedido por WhatsApp.
+            Streetwear para quienes no necesitan llamar la atencion para destacar.
+            Elige pieza, talla y entrega; confirmamos disponibilidad por WhatsApp.
           </p>
           <div class="hero-actions">
             <a class="btn primary" href="#shop">Ver colores</a>
@@ -3194,8 +3412,8 @@
           <div class="hero-note">
             <span>15 colores</span>
             <span>Tallas S / M / L / XL</span>
-            <span>Desde RD$ 1,500</span>
-            <span>Combos disponibles</span>
+            <span>Tees RD$ 2,300</span>
+            <span>Pedidos por DM</span>
             <span>USA por cotizacion</span>
             <span>Confirmacion por WhatsApp</span>
           </div>
@@ -3205,7 +3423,7 @@
 
         <div class="hero-media" aria-label="Producto destacado">
           <div class="ghost-sticker" aria-hidden="true">
-            <img src="./images/logo-ghost.png" alt="" />
+            <img src="./images/logo-ghost-transparent.png" alt="" />
           </div>
           <div class="hero-photo">
             <img src="./images/designed/ghostwear-designed-white.jpg" alt="Visual GhostWear claro con logo fantasma y estilo de cancha" />
@@ -3230,28 +3448,38 @@
           </div>
           <p>
             Toca una categoria y encuentra rapido lo que vas a pedir por DM:
-            shorts, medias, gorras o hoodie sin scrollear de mas.
+            shorts, tees, medias, gorras o hoodie sin scrollear de mas.
           </p>
         </div>
         <div class="category-impact" aria-label="Categorias principales GhostWear">
           <a class="category-card" href="#shop" data-shop-filter="shorts" style="--category-image:url('./images/designed/ghostwear-short-royal-blue-studio.png')">
             <small>15 colores</small>
             <div><strong>Categoria</strong><span>Shorts</span></div>
+            <em class="category-cta">Ver categoria -></em>
             <span class="boo-mark">boo</span>
           </a>
           <a class="category-card" href="#shop" data-shop-filter="hoodie" style="--category-image:url('./images/designed/ghostwear-hoodie-studio.png')">
             <small>Pocas tallas</small>
             <div><strong>Categoria</strong><span>Hoodie</span></div>
+            <em class="category-cta">Ver categoria -></em>
             <span class="boo-mark">boo</span>
           </a>
           <a class="category-card" href="#shop" data-shop-filter="medias" style="--category-image:url('./images/designed/ghostwear-socks-studio.png')">
             <small>Pack activo</small>
             <div><strong>Categoria</strong><span>Medias</span></div>
+            <em class="category-cta">Ver categoria -></em>
             <span class="boo-mark">boo</span>
           </a>
           <a class="category-card" href="#shop" data-shop-filter="gorras" style="--category-image:url('./images/designed/ghostwear-caps-studio.png')">
             <small>Colorways</small>
             <div><strong>Categoria</strong><span>Gorras</span></div>
+            <em class="category-cta">Ver categoria -></em>
+            <span class="boo-mark">boo</span>
+          </a>
+          <a class="category-card" href="#shop" data-shop-filter="tees" style="--category-image:url('./images/designed/ghostwear-designed-white.jpg')">
+            <small>Entrada facil</small>
+            <div><strong>Categoria</strong><span>Tees</span></div>
+            <em class="category-cta">Ver categoria -></em>
             <span class="boo-mark">boo</span>
           </a>
         </div>
@@ -3263,6 +3491,7 @@
             <button class="filter-btn" type="button" data-filter="medias">Medias</button>
             <button class="filter-btn" type="button" data-filter="gorras">Gorras</button>
             <button class="filter-btn" type="button" data-filter="hoodie">Hoodie</button>
+            <button class="filter-btn" type="button" data-filter="tees">Tees</button>
           </div>
           <div class="shop-count" id="shopFilterCount">Mostrando todo el drop</div>
           <div class="color-grid shop-results" id="filteredShopGrid" aria-live="polite">
@@ -3405,7 +3634,7 @@
             <h2>Otros productos</h2>
           </div>
           <p>
-            El gear completa la vuelta: medias, gorras y hoodie con precio claro,
+            El gear completa la vuelta: tees, medias, gorras y hoodie con precio claro,
             disponibilidad por DM y envio que se cotiza antes de pagar.
           </p>
         </div>
@@ -3504,7 +3733,7 @@
               </div>
               <div>
                 <h3>Productos que ya parecen post.</h3>
-                <p>Gorras, shorts, medias y hoodie con precio claro para cerrar por DM.</p>
+                <p>Gorras, shorts, tees, medias y hoodie con precio claro para cerrar por DM.</p>
               </div>
             </article>
             <article class="card dm-card">
@@ -3697,7 +3926,7 @@
   <footer class="footer" id="contacto">
     <div class="wrap">
       <a href="#top" class="brand">
-        <img src="./images/logo-ghost.png" alt="" />
+        <img src="./images/logo-ghost-transparent.png" alt="" />
         <span>GhostWear</span>
       </a>
       <span>Santo Domingo, RD</span>
@@ -3736,7 +3965,7 @@
       </div>
       <div class="gallery-stage">
         <button class="gallery-arrow prev" id="galleryPrev" type="button" aria-label="Foto anterior">‹</button>
-        <img id="galleryImage" src="./images/logo-ghost.png" alt="GhostWear" />
+        <img id="galleryImage" src="./images/logo-ghost-transparent.png" alt="GhostWear" />
         <button class="gallery-arrow next" id="galleryNext" type="button" aria-label="Foto siguiente">›</button>
       </div>
       <div class="gallery-tabs" id="galleryTabs" aria-label="Tomas del producto"></div>
@@ -3946,12 +4175,25 @@
         swatch: "#111111",
         sizes: ["S", "M", "L", "XL"],
         quantities: ["1", "2"]
+      },
+      {
+        tag: "Tees",
+        name: "Tee Ghost Basic",
+        image: "./images/designed/ghostwear-designed-white.jpg",
+        realImage: "./images/designed/ghostwear-designed-white.jpg",
+        price: 2300,
+        priceLabel: "RD$ 2,300",
+        note: "Camiseta Ghost Basic para entrar al drop sin complicarse.",
+        swatch: "#f4f1e8",
+        sizes: ["S", "M", "L", "XL"],
+        quantities: ["1", "2", "3"]
       }
     ];
     gearProducts[0].category = "medias";
     gearProducts[1].category = "medias";
     gearProducts[2].category = "gorras";
     gearProducts[3].category = "hoodie";
+    gearProducts[4].category = "tees";
     const comboProducts = [
       {
         tag: "Combo",
@@ -4059,6 +4301,7 @@
     gearProducts[1].urgency = { label: "Oferta activa", line: "3 pares por RD$ 1,000 mientras dure el pack." };
     gearProducts[2].urgency = { label: "Colorways limitados", line: "Gorras con combinaciones de feed y stock corto." };
     gearProducts[3].urgency = { label: "Quedan pocas", line: "Hoodie negro con disponibilidad limitada por talla." };
+    gearProducts[4].urgency = { label: "Entrada del drop", line: "Tee Basic disponible por DM; talla se confirma antes de pago." };
     comboProducts[0].urgency = { label: "Combo activo", line: "Short + medias para armar el fit sin pensarlo mucho." };
     comboProducts[1].urgency = { label: "Color mas pedido", line: "Short + gorra para salir con el look completo." };
     comboProducts[2].urgency = { label: "Full fit limitado", line: "El paquete completo tiene descuento y stock por talla." };
@@ -4102,7 +4345,8 @@
       const modelImageByCategory = {
         medias: productModelImage,
         gorras: realImage,
-        hoodie: ghostModelImages.hoodie
+        hoodie: ghostModelImages.hoodie,
+        tees: realImage
       };
       const modelImage = modelImageByCategory[product.category] || realImage;
       product.photos = [
@@ -4154,6 +4398,13 @@
         image: "./images/designed/ghostwear-socks-studio.png",
         price: gearProducts.find(product => product.name === "Medias Ghost").price,
         note: `3 pares por ${gearProducts.find(product => product.name.includes("Pack")).priceLabel}.`
+      },
+      {
+        title: "Tees",
+        href: "#gear",
+        image: "./images/designed/ghostwear-designed-white.jpg",
+        price: gearProducts.find(product => product.name.includes("Tee")).price,
+        note: "La entrada facil al fit Ghost."
       }
     ];
     let cart = [];
@@ -4481,7 +4732,8 @@
         shorts: "shorts",
         medias: "medias",
         gorras: "gorras",
-        hoodie: "hoodie"
+        hoodie: "hoodie",
+        tees: "tees"
       };
       const label = filterLabels[filter] || filter;
 
@@ -4539,6 +4791,7 @@
         `3 pares ${gearProducts.find(product => product.name.includes("Pack")).priceLabel}`,
         `Gorras ${gearProducts.find(product => product.name.includes("Gorra")).priceLabel}`,
         `Hoodie ${gearProducts.find(product => product.name.includes("Hoodie")).priceLabel}`,
+        `Tees ${gearProducts.find(product => product.name.includes("Tee")).priceLabel}`,
         store.shipping
       ];
 
