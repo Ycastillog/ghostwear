@@ -2524,7 +2524,7 @@
       grid-column: span 2;
       background-image:
         linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.82)),
-        url("./images/designed/ghostwear-caps-studio.png");
+        url("./images/inventory/caps/ghostwear-cap-23.webp");
       background-size: cover;
       background-position: center;
     }
@@ -3466,14 +3466,14 @@
             <em class="category-cta">Ver categoria -></em>
             <span class="boo-mark">boo</span>
           </a>
-          <a class="category-card" href="#shop" data-shop-filter="gorras" style="--category-image:url('./images/designed/ghostwear-caps-studio.png')">
-            <small>Colorways</small>
+          <a class="category-card" href="#shop" data-shop-filter="gorras" style="--category-image:url('./images/inventory/caps/ghostwear-cap-23.webp')">
+            <small>11 colorways</small>
             <div><strong>Categoria</strong><span>Gorras</span></div>
             <em class="category-cta">Ver categoria -></em>
             <span class="boo-mark">boo</span>
           </a>
-          <a class="category-card" href="#shop" data-shop-filter="tees" style="--category-image:url('./images/designed/ghostwear-designed-white.jpg')">
-            <small>Entrada facil</small>
+          <a class="category-card" href="#shop" data-shop-filter="tees" style="--category-image:url('./images/inventory/tees/ghostwear-tee-04.webp')">
+            <small>5 disenos</small>
             <div><strong>Categoria</strong><span>Tees</span></div>
             <em class="category-cta">Ver categoria -></em>
             <span class="boo-mark">boo</span>
@@ -4121,12 +4121,287 @@
       href: "#drop"
     };
     shortsCollectionProduct.colorOptions = products;
+    const capProducts = [
+      {
+        tag: "Gorra",
+        category: "gorras",
+        name: "Gorra Ghost White / Baby Blue",
+        image: "./images/inventory/caps/ghostwear-cap-01.webp",
+        realImage: "./images/inventory/caps/ghostwear-cap-14.webp",
+        price: 1500,
+        priceLabel: "RD$ 1,500",
+        note: "Trucker blanca con azul baby, logo Ghost frontal y sticker en la visera.",
+        swatch: "#9fd8ff",
+        sizes: ["Unica"],
+        quantities: ["1", "2", "3"],
+        urgency: { label: "Colorway activo", line: "Blanca/azul disponible por DM; se confirma stock antes de apartar." },
+        photos: [
+          { label: "Frontal", src: "./images/inventory/caps/ghostwear-cap-01.webp", view: "clean" },
+          { label: "Catalogo", src: "./images/inventory/caps/ghostwear-cap-14.webp", view: "clean" },
+          { label: "Angulo", src: "./images/inventory/caps/ghostwear-cap-15.webp", view: "clean" },
+          { label: "Perfil", src: "./images/inventory/caps/ghostwear-cap-16.webp", view: "clean" }
+        ]
+      },
+      {
+        tag: "Gorra",
+        category: "gorras",
+        name: "Gorra Ghost White / Blue Slash",
+        image: "./images/inventory/caps/ghostwear-cap-17.webp",
+        realImage: "./images/inventory/caps/ghostwear-cap-05.webp",
+        price: 1500,
+        priceLabel: "RD$ 1,500",
+        note: "Blanca con visera azul y bordado lateral tipo slash para un look mas agresivo.",
+        swatch: "#2aaee8",
+        sizes: ["Unica"],
+        quantities: ["1", "2", "3"],
+        urgency: { label: "Colorway especial", line: "Slash azul disponible por DM mientras dure el drop." },
+        photos: [
+          { label: "Perfil", src: "./images/inventory/caps/ghostwear-cap-17.webp", view: "clean" },
+          { label: "Lateral", src: "./images/inventory/caps/ghostwear-cap-05.webp", view: "clean" },
+          { label: "Turquesa", src: "./images/inventory/caps/ghostwear-cap-24.webp", view: "clean" }
+        ]
+      },
+      {
+        tag: "Gorra",
+        category: "gorras",
+        name: "Gorra Ghost Red / White Logo",
+        image: "./images/inventory/caps/ghostwear-cap-23.webp",
+        realImage: "./images/inventory/caps/ghostwear-cap-22.webp",
+        price: 1500,
+        priceLabel: "RD$ 1,500",
+        note: "Roja completa con logo blanco Ghost y malla roja. La mas directa del drop.",
+        swatch: "#e53935",
+        sizes: ["Unica"],
+        quantities: ["1", "2", "3"],
+        urgency: { label: "Color fuerte", line: "Roja activa; stock se confirma por WhatsApp." },
+        photos: [
+          { label: "Frontal", src: "./images/inventory/caps/ghostwear-cap-23.webp", view: "clean" },
+          { label: "Perfil", src: "./images/inventory/caps/ghostwear-cap-22.webp", view: "clean" },
+          { label: "Angulo", src: "./images/inventory/caps/ghostwear-cap-19.webp", view: "clean" },
+          { label: "Catalogo", src: "./images/inventory/caps/ghostwear-cap-20.webp", view: "clean" }
+        ]
+      },
+      {
+        tag: "Gorra",
+        category: "gorras",
+        name: "Gorra Ghost Red / Gold Logo",
+        image: "./images/inventory/caps/ghostwear-cap-25.webp",
+        realImage: "./images/inventory/caps/ghostwear-cap-29.webp",
+        price: 1500,
+        priceLabel: "RD$ 1,500",
+        note: "Roja con logo oscuro/dorado para un contraste mas premium.",
+        swatch: "#d71925",
+        sizes: ["Unica"],
+        quantities: ["1", "2", "3"],
+        urgency: { label: "Variante limitada", line: "Logo gold se confirma por DM antes de apartar." },
+        photos: [
+          { label: "Frontal", src: "./images/inventory/caps/ghostwear-cap-25.webp", view: "clean" },
+          { label: "Perfil", src: "./images/inventory/caps/ghostwear-cap-29.webp", view: "clean" }
+        ]
+      },
+      {
+        tag: "Gorra",
+        category: "gorras",
+        name: "Gorra Ghost Black",
+        image: "./images/inventory/caps/ghostwear-cap-06.webp",
+        realImage: "./images/inventory/caps/ghostwear-cap-18.webp",
+        price: 1500,
+        priceLabel: "RD$ 1,500",
+        note: "Negra con logo blanco, basica fuerte para uso diario.",
+        swatch: "#111111",
+        sizes: ["Unica"],
+        quantities: ["1", "2", "3"],
+        urgency: { label: "Basico esencial", line: "Negra se mueve rapido; confirmar stock por DM." },
+        photos: [
+          { label: "Frontal", src: "./images/inventory/caps/ghostwear-cap-06.webp", view: "clean" },
+          { label: "Angulo", src: "./images/inventory/caps/ghostwear-cap-18.webp", view: "clean" }
+        ]
+      },
+      {
+        tag: "Gorra",
+        category: "gorras",
+        name: "Gorra Ghost Cream / Green",
+        image: "./images/inventory/caps/ghostwear-cap-07.webp",
+        realImage: "./images/inventory/caps/ghostwear-cap-07.webp",
+        price: 1500,
+        priceLabel: "RD$ 1,500",
+        note: "Crema con verde, logo frontal oscuro y vibra retro limpia.",
+        swatch: "#2e6b4d",
+        sizes: ["Unica"],
+        quantities: ["1", "2", "3"],
+        urgency: { label: "Color retro", line: "Crema/verde disponible por DM; se confirma unidad." }
+      },
+      {
+        tag: "Gorra",
+        category: "gorras",
+        name: "Gorra Ghost Pink",
+        image: "./images/inventory/caps/ghostwear-cap-08.webp",
+        realImage: "./images/inventory/caps/ghostwear-cap-08.webp",
+        price: 1500,
+        priceLabel: "RD$ 1,500",
+        note: "Rosada con logo Ghost oscuro, color llamativo para romper el fit.",
+        swatch: "#f5a2b7",
+        sizes: ["Unica"],
+        quantities: ["1", "2", "3"],
+        urgency: { label: "Color statement", line: "Pink con disponibilidad limitada por DM." }
+      },
+      {
+        tag: "Gorra",
+        category: "gorras",
+        name: "Gorra Ghost Gray",
+        image: "./images/inventory/caps/ghostwear-cap-09.webp",
+        realImage: "./images/inventory/caps/ghostwear-cap-09.webp",
+        price: 1500,
+        priceLabel: "RD$ 1,500",
+        note: "Gris con logo Ghost oscuro, facil de combinar con todo.",
+        swatch: "#b8b8b8",
+        sizes: ["Unica"],
+        quantities: ["1", "2", "3"],
+        urgency: { label: "Neutral activo", line: "Gris se confirma por DM segun stock." }
+      },
+      {
+        tag: "Gorra",
+        category: "gorras",
+        name: "Gorra Ghost Cream / Brown",
+        image: "./images/inventory/caps/ghostwear-cap-27.webp",
+        realImage: "./images/inventory/caps/ghostwear-cap-26.webp",
+        price: 1500,
+        priceLabel: "RD$ 1,500",
+        note: "Crema con marron, logo oscuro y tono vintage para fit tranquilo.",
+        swatch: "#7a4a2f",
+        sizes: ["Unica"],
+        quantities: ["1", "2", "3"],
+        urgency: { label: "Vintage drop", line: "Crema/marron activo; stock se confirma por DM." },
+        photos: [
+          { label: "Frontal", src: "./images/inventory/caps/ghostwear-cap-27.webp", view: "clean" },
+          { label: "Perfil", src: "./images/inventory/caps/ghostwear-cap-26.webp", view: "clean" },
+          { label: "Lateral", src: "./images/inventory/caps/ghostwear-cap-30.webp", view: "clean" },
+          { label: "Catalogo", src: "./images/inventory/caps/ghostwear-cap-31.webp", view: "clean" },
+          { label: "Angulo", src: "./images/inventory/caps/ghostwear-cap-21.webp", view: "clean" }
+        ]
+      },
+      {
+        tag: "Gorra",
+        category: "gorras",
+        name: "Gorra Ghost Brown Mesh",
+        image: "./images/inventory/caps/ghostwear-cap-34.webp",
+        realImage: "./images/inventory/caps/ghostwear-cap-28.webp",
+        price: 1500,
+        priceLabel: "RD$ 1,500",
+        note: "Marron fuzzy con malla oscura y logo blanco. Textura premium.",
+        swatch: "#9a5a2b",
+        sizes: ["Unica"],
+        quantities: ["1", "2", "3"],
+        urgency: { label: "Textura premium", line: "Brown mesh se confirma por DM antes de apartar." },
+        photos: [
+          { label: "Frontal", src: "./images/inventory/caps/ghostwear-cap-34.webp", view: "clean" },
+          { label: "Perfil", src: "./images/inventory/caps/ghostwear-cap-28.webp", view: "clean" }
+        ]
+      },
+      {
+        tag: "Gorra",
+        category: "gorras",
+        name: "Gorra Ghost Cream / Royal Blue",
+        image: "./images/inventory/caps/ghostwear-cap-35.webp",
+        realImage: "./images/inventory/caps/ghostwear-cap-36.webp",
+        price: 1500,
+        priceLabel: "RD$ 1,500",
+        note: "Crema con royal blue, malla azul y ghost azul en el logo.",
+        swatch: "#2454ff",
+        sizes: ["Unica"],
+        quantities: ["1", "2", "3"],
+        urgency: { label: "Color mas limpio", line: "Crema/royal blue activo; confirma unidad por DM." },
+        photos: [
+          { label: "Frontal", src: "./images/inventory/caps/ghostwear-cap-35.webp", view: "clean" },
+          { label: "Perfil", src: "./images/inventory/caps/ghostwear-cap-36.webp", view: "clean" },
+          { label: "Angulo", src: "./images/inventory/caps/ghostwear-cap-32.webp", view: "clean" },
+          { label: "Catalogo", src: "./images/inventory/caps/ghostwear-cap-33.webp", view: "clean" }
+        ]
+      }
+    ];
+    const teeProducts = [
+      {
+        tag: "Tee",
+        category: "tees",
+        name: "Tee Ghost Fire Back",
+        image: "./images/inventory/tees/ghostwear-tee-01.webp",
+        realImage: "./images/inventory/tees/ghostwear-tee-01.webp",
+        price: 2300,
+        priceLabel: "RD$ 2,300",
+        note: "T-shirt blanca con arte grande de fuego en espalda. Pieza protagonista.",
+        swatch: "#f4f1e8",
+        sizes: ["S", "M", "L", "XL"],
+        quantities: ["1", "2", "3"],
+        urgency: { label: "Arte espalda", line: "Diseno Fire Back se confirma por talla antes de pago." }
+      },
+      {
+        tag: "Tee",
+        category: "tees",
+        name: "Tee Ghost Fire Chest",
+        image: "./images/inventory/tees/ghostwear-tee-02.webp",
+        realImage: "./images/inventory/misc/ghostwear-cap-13.webp",
+        price: 2300,
+        priceLabel: "RD$ 2,300",
+        note: "T-shirt blanca con logo Ghost Wear flame pequeno en el pecho.",
+        swatch: "#f4f1e8",
+        sizes: ["S", "M", "L", "XL"],
+        quantities: ["1", "2", "3"],
+        urgency: { label: "Entrada facil", line: "Fire Chest disponible por talla mientras dure el drop." },
+        photos: [
+          { label: "Frontal", src: "./images/inventory/tees/ghostwear-tee-02.webp", view: "clean" },
+          { label: "Empaque", src: "./images/inventory/misc/ghostwear-cap-13.webp", view: "clean" }
+        ]
+      },
+      {
+        tag: "Tee",
+        category: "tees",
+        name: "Tee Ghost Shadow Back",
+        image: "./images/inventory/tees/ghostwear-tee-03.webp",
+        realImage: "./images/inventory/tees/ghostwear-tee-03.webp",
+        price: 2300,
+        priceLabel: "RD$ 2,300",
+        note: "T-shirt blanca con arte trasero negro/gris de sombras Ghost.",
+        swatch: "#f4f1e8",
+        sizes: ["S", "M", "L", "XL"],
+        quantities: ["1", "2", "3"],
+        urgency: { label: "Back print", line: "Shadow Back se confirma por talla y stock." }
+      },
+      {
+        tag: "Tee",
+        category: "tees",
+        name: "Tee Ghost Purple Drip",
+        image: "./images/inventory/tees/ghostwear-tee-04.webp",
+        realImage: "./images/inventory/tees/ghostwear-tee-04.webp",
+        price: 2300,
+        priceLabel: "RD$ 2,300",
+        note: "T-shirt blanca con grafico frontal morado/negro y fantasma grande.",
+        swatch: "#7b5cff",
+        sizes: ["S", "M", "L", "XL"],
+        quantities: ["1", "2", "3"],
+        urgency: { label: "Grafico fuerte", line: "Purple Drip disponible por DM; talla se confirma." }
+      },
+      {
+        tag: "Tee",
+        category: "tees",
+        name: "Tee Ghost Red Logo",
+        image: "./images/inventory/tees/ghostwear-tee-05.webp",
+        realImage: "./images/inventory/tees/ghostwear-tee-05.webp",
+        price: 2300,
+        priceLabel: "RD$ 2,300",
+        note: "T-shirt roja con logo blanco GHOST grande al frente.",
+        swatch: "#e53935",
+        sizes: ["S", "M", "L", "XL"],
+        quantities: ["1", "2", "3"],
+        urgency: { label: "Roja activa", line: "Red Logo se confirma por talla antes de pago." }
+      }
+    ];
     const gearProducts = [
       {
         tag: "Medias",
+        category: "medias",
         name: "Medias Ghost",
-        image: "./images/designed/ghostwear-socks-studio.png",
-        realImage: "./images/ghostwear-socks-real.jpg",
+        image: "./images/inventory/misc/ghostwear-cap-10.webp",
+        realImage: "./images/inventory/misc/ghostwear-cap-11.webp",
         modelImage: "./images/model/ghostwear-socks-detail-real.jpg",
         price: 350,
         priceLabel: "RD$ 350",
@@ -4137,9 +4412,10 @@
       },
       {
         tag: "Pack",
+        category: "medias",
         name: "Pack 3 Medias Ghost",
-        image: "./images/designed/ghostwear-socks-studio.png",
-        realImage: "./images/ghostwear-socks-real.jpg",
+        image: "./images/inventory/misc/ghostwear-cap-10.webp",
+        realImage: "./images/inventory/misc/ghostwear-cap-11.webp",
         modelImage: "./images/model/ghostwear-socks-detail-real.jpg",
         price: 1000,
         priceLabel: "RD$ 1,000",
@@ -4148,20 +4424,10 @@
         sizes: ["Unica"],
         quantities: ["1", "2"]
       },
-      {
-        tag: "Gorras",
-        name: "Gorra Ghost",
-        image: "./images/designed/ghostwear-caps-studio.png",
-        realImage: "./images/gear/ghostwear-caps.jpg",
-        price: 1500,
-        priceLabel: "RD$ 1,500",
-        note: "Colorways negro, gris, blanco/azul y blanco/rojo con logo frontal.",
-        swatch: "#d9d9d9",
-        sizes: ["Unica"],
-        quantities: ["1", "2", "3"]
-      },
+      ...capProducts,
       {
         tag: "Hoodie",
+        category: "hoodie",
         name: "Hoodie Ghost Black",
         image: "./images/designed/ghostwear-hoodie-studio.png",
         realImage: "./images/gear/ghostwear-hoodie.jpg",
@@ -4172,24 +4438,13 @@
         sizes: ["S", "M", "L", "XL"],
         quantities: ["1", "2"]
       },
-      {
-        tag: "Tees",
-        name: "Tee Ghost Basic",
-        image: "./images/designed/ghostwear-designed-white.jpg",
-        realImage: "./images/designed/ghostwear-designed-white.jpg",
-        price: 2300,
-        priceLabel: "RD$ 2,300",
-        note: "Camiseta Ghost Basic para entrar al drop sin complicarse.",
-        swatch: "#f4f1e8",
-        sizes: ["S", "M", "L", "XL"],
-        quantities: ["1", "2", "3"]
-      }
+      ...teeProducts
     ];
-    gearProducts[0].category = "medias";
-    gearProducts[1].category = "medias";
-    gearProducts[2].category = "gorras";
-    gearProducts[3].category = "hoodie";
-    gearProducts[4].category = "tees";
+    const socksProduct = gearProducts.find(product => product.name === "Medias Ghost");
+    const socksPackProduct = gearProducts.find(product => product.name.includes("Pack 3"));
+    const hoodieProduct = gearProducts.find(product => product.category === "hoodie");
+    const firstCapProduct = capProducts[0];
+    const firstTeeProduct = teeProducts[0];
     const comboProducts = [
       {
         tag: "Combo",
@@ -4212,7 +4467,7 @@
       {
         tag: "Combo",
         name: "Combo Short + Gorra",
-        image: "./images/designed/ghostwear-caps-studio.png",
+        image: firstCapProduct.image,
         price: 2850,
         priceLabel: "RD$ 2,850",
         normalPrice: 3000,
@@ -4224,7 +4479,7 @@
         includes: ["Short Ghost", "Gorra Ghost"],
         comboImages: [
           { label: "Short", src: realShortImages["Light Gray"] },
-          { label: "Gorra", src: "./images/gear/ghostwear-caps.jpg" }
+          { label: "Gorra", src: firstCapProduct.image }
         ]
       },
       {
@@ -4293,11 +4548,9 @@
       product.availability = availabilityByColor[product.color] || { label: "Por confirmar", line: "Se valida disponibilidad por DM." };
     });
     shortsCollectionProduct.availability = products[0].availability;
-    gearProducts[0].urgency = { label: "Pedido por DM", line: "Par suelto para completar cualquier fit." };
-    gearProducts[1].urgency = { label: "Oferta activa", line: "3 pares por RD$ 1,000 mientras dure el pack." };
-    gearProducts[2].urgency = { label: "Colorways limitados", line: "Gorras con combinaciones de feed y stock corto." };
-    gearProducts[3].urgency = { label: "Quedan pocas", line: "Hoodie negro con disponibilidad limitada por talla." };
-    gearProducts[4].urgency = { label: "Entrada del drop", line: "Tee Basic disponible por DM; talla se confirma antes de pago." };
+    if (socksProduct) socksProduct.urgency = { label: "Pedido por DM", line: "Par suelto para completar cualquier fit." };
+    if (socksPackProduct) socksPackProduct.urgency = { label: "Oferta activa", line: "3 pares por RD$ 1,000 mientras dure el pack." };
+    if (hoodieProduct) hoodieProduct.urgency = { label: "Quedan pocas", line: "Hoodie negro con disponibilidad limitada por talla." };
     comboProducts[0].urgency = { label: "Combo activo", line: "Short + medias para armar el fit sin pensarlo mucho." };
     comboProducts[1].urgency = { label: "Color mas pedido", line: "Short + gorra para salir con el look completo." };
     comboProducts[2].urgency = { label: "Full fit limitado", line: "El paquete completo tiene descuento y stock por talla." };
@@ -4336,6 +4589,7 @@
       { label: "El Fantasma", src: ghostModelImages.court, view: "model" }
     ];
     gearProducts.forEach(product => {
+      if (product.photos) return;
       const realImage = product.realImage || product.image;
       const productModelImage = product.modelImage || realImage;
       const modelImageByCategory = {
@@ -4358,8 +4612,8 @@
     ];
     comboProducts[1].photos = [
       { label: "Short", src: realShortImages["Light Gray"], view: "real" },
-      { label: "Gorra", src: "./images/gear/ghostwear-caps.jpg", view: "real" },
-      { label: "El Fantasma", src: "./images/gear/ghostwear-caps.jpg", view: "model" }
+      { label: "Gorra", src: firstCapProduct.image, view: "clean" },
+      { label: "El Fantasma", src: firstCapProduct.realImage, view: "clean" }
     ];
     comboProducts[2].photos = [
       { label: "Short", src: realShortImages["Black"], view: "real" },
@@ -4384,9 +4638,9 @@
       {
         title: "Gorras",
         href: "#gear",
-        image: "./images/designed/ghostwear-caps-studio.png",
-        price: gearProducts.find(product => product.name.includes("Gorra")).price,
-        note: "Gorras para cerrar el look."
+        image: firstCapProduct.image,
+        price: firstCapProduct.price,
+        note: `${capProducts.length} colorways de gorras con fotos limpias.`
       },
       {
         title: "Medias",
@@ -4398,9 +4652,9 @@
       {
         title: "Tees",
         href: "#gear",
-        image: "./images/designed/ghostwear-designed-white.jpg",
-        price: gearProducts.find(product => product.name.includes("Tee")).price,
-        note: "La entrada facil al fit Ghost."
+        image: firstTeeProduct.image,
+        price: firstTeeProduct.price,
+        note: `${teeProducts.length} tees con frente/espalda listos para pedir.`
       }
     ];
     let cart = [];
@@ -4894,7 +5148,7 @@
     function addLookToCart() {
       const royalShort = products.find(product => product.color === "Royal Blue");
       const socks = gearProducts.find(product => product.name === "Medias Ghost");
-      const cap = gearProducts.find(product => product.name === "Gorra Ghost");
+      const cap = firstCapProduct;
       const lookItems = [
         {
           name: royalShort.name,
@@ -4927,9 +5181,9 @@
           price: cap.price,
           unitPrice: cap.priceLabel,
           category: cap.category,
-          variant: "Gorra Ghost",
+          variant: cap.name,
           status: "Disponible por DM: colorway se confirma antes de pago.",
-          image: "https://ghostwear1.com/images/gear/ghostwear-caps.jpg",
+          image: `https://ghostwear1.com/${cap.image.replace("./", "")}`,
           link: "https://ghostwear1.com/",
           size: "Unica",
           qty: 1,
