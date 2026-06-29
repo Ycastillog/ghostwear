@@ -412,14 +412,18 @@
       gap: clamp(18px, 4vw, 46px);
       align-items: stretch;
       min-height: min(640px, calc(100vh - 124px));
-      padding: clamp(22px, 5vw, 64px);
+      padding: clamp(24px, 5vw, 62px);
       border: 1px solid rgba(244, 241, 220, 0.2);
       border-radius: 8px;
       background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.026) 1px, transparent 1px),
         radial-gradient(circle at 82% 18%, rgba(244, 241, 220, 0.14), transparent 18rem),
         radial-gradient(circle at 8% 86%, rgba(159, 216, 255, 0.12), transparent 18rem),
         linear-gradient(135deg, rgba(244, 241, 220, 0.1), rgba(255, 255, 255, 0.025)),
         rgba(255, 255, 255, 0.035);
+      background-size: 58px 58px, 58px 58px, auto, auto, auto, auto;
+      box-shadow: 0 34px 120px rgba(0, 0, 0, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.06);
     }
 
     body.intro-active .welcome-card {
@@ -429,14 +433,15 @@
     }
 
     .welcome-card::after {
-      content: "GHOST";
+      content: "BOO DROP";
       position: absolute;
-      right: -0.08em;
-      bottom: -0.25em;
-      color: rgba(244, 241, 220, 0.055);
-      font-size: clamp(5rem, 16vw, 13rem);
+      right: 0.04em;
+      top: -0.24em;
+      color: rgba(244, 241, 220, 0.065);
+      font-size: clamp(4.2rem, 10vw, 7.6rem);
       font-weight: 950;
       line-height: 0.9;
+      white-space: nowrap;
       pointer-events: none;
     }
 
@@ -483,10 +488,11 @@
 
     .welcome-copy strong {
       max-width: 640px;
-      font-size: clamp(3rem, 6.4vw, 5.85rem);
+      font-size: clamp(3rem, 6.1vw, 5.65rem);
       line-height: 0.88;
       text-transform: uppercase;
       letter-spacing: 0;
+      text-wrap: balance;
     }
 
     .welcome-copy span {
@@ -508,42 +514,67 @@
       gap: 10px;
       grid-column: 1 / -1;
       max-width: none;
+      position: relative;
+      z-index: 2;
     }
 
-    .welcome-signals span {
-      display: flex;
+    .welcome-signals > span {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
       align-items: center;
       gap: 9px;
       border: 1px solid var(--line);
       border-radius: 8px;
-      padding: 9px 11px;
-      background: rgba(0, 0, 0, 0.16);
+      min-height: 78px;
+      padding: 12px 14px;
+      background: rgba(0, 0, 0, 0.34);
       color: var(--muted);
-      font-size: 0.78rem;
+      font-size: 0.74rem;
       font-weight: 850;
       line-height: 1.35;
       text-transform: uppercase;
+      backdrop-filter: blur(14px);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.045);
+    }
+
+    .welcome-signals > span > span {
+      min-width: 0;
     }
 
     .signal-icon {
       display: inline-grid;
       place-items: center;
-      width: 30px;
-      height: 30px;
+      width: 38px;
+      height: 38px;
       flex: 0 0 auto;
       border: 1px solid rgba(244, 241, 220, 0.18);
       border-radius: 999px;
       background: rgba(244, 241, 220, 0.08);
       color: var(--ghost-cream);
-      font-size: 0.9rem;
+      font-size: 0.72rem;
+      font-style: normal;
+      font-weight: 950;
       line-height: 1;
     }
+
+    .welcome-signals > span .signal-icon {
+      font-size: 0;
+    }
+
+    .welcome-signals > span .signal-icon::before {
+      font-size: 0.72rem;
+    }
+
+    .welcome-signals > span:nth-child(1) .signal-icon::before { content: "15"; }
+    .welcome-signals > span:nth-child(2) .signal-icon::before { content: "RD"; }
+    .welcome-signals > span:nth-child(3) .signal-icon::before { content: "50+"; }
 
     .welcome-signals strong {
       display: block;
       margin-bottom: 4px;
       color: var(--ghost-cream);
-      font-size: 0.95rem;
+      font-size: 1.05rem;
+      line-height: 1;
     }
 
     .welcome-subline {
@@ -563,8 +594,10 @@
       border: 1px solid rgba(244, 241, 220, 0.14);
       border-radius: 8px;
       background:
+        radial-gradient(circle at 50% 45%, rgba(244, 241, 220, 0.13), transparent 44%),
         linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.44)),
         rgba(255, 255, 255, 0.04);
+      box-shadow: inset 0 0 70px rgba(244, 241, 220, 0.035);
     }
 
     .welcome-ghost {
@@ -735,6 +768,48 @@
         drop-shadow(0 18px 36px rgba(0, 0, 0, 0.52))
         drop-shadow(0 0 12px rgba(244, 241, 220, 0.08));
       animation: wordmarkAlive 5.8s ease-in-out infinite;
+    }
+
+    .welcome-product-peek {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 16px;
+      z-index: 3;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      pointer-events: none;
+    }
+
+    .welcome-peek-card {
+      min-height: 92px;
+      overflow: hidden;
+      border: 1px solid rgba(244, 241, 220, 0.18);
+      border-radius: 8px;
+      background: rgba(0, 0, 0, 0.54);
+      box-shadow: 0 18px 38px rgba(0, 0, 0, 0.28);
+    }
+
+    .welcome-peek-card img {
+      width: 100%;
+      height: 72px;
+      object-fit: cover;
+      filter: saturate(1.04) contrast(1.02);
+    }
+
+    .welcome-peek-card span {
+      display: block;
+      padding: 5px 7px;
+      color: var(--ghost-cream);
+      font-size: 0.62rem;
+      font-weight: 950;
+      letter-spacing: 0.06em;
+      text-align: center;
+      text-transform: uppercase;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .welcome-logo-focus .ghost-hint {
@@ -973,17 +1048,17 @@
 
     .category-impact {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-      gap: 10px;
-      margin: 2px 0 16px;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 12px;
+      margin: 4px 0 18px;
     }
 
     .category-card {
       position: relative;
-      min-height: 178px;
-      border: 1px solid var(--line);
+      min-height: 192px;
+      border: 1px solid rgba(244, 241, 220, 0.16);
       border-radius: 8px;
-      padding: 14px;
+      padding: 16px;
       overflow: hidden;
       background:
         linear-gradient(135deg, rgba(244, 241, 220, 0.11), rgba(255, 255, 255, 0.022));
@@ -1013,7 +1088,7 @@
       inset: 0;
       z-index: -1;
       background:
-        linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.74)),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.82)),
         radial-gradient(circle at 20% 12%, rgba(244, 241, 220, 0.2), transparent 34%);
     }
 
@@ -1052,10 +1127,11 @@
       display: block;
       margin-top: 9px;
       color: var(--ink);
-      font-size: clamp(1.25rem, 2.7vw, 2rem);
+      font-size: clamp(1.35rem, 2.5vw, 2.05rem);
       font-weight: 950;
       line-height: 1.05;
       text-transform: uppercase;
+      text-wrap: balance;
     }
 
     .category-card small {
@@ -1413,6 +1489,7 @@
     .color-card {
       display: flex;
       flex-direction: column;
+      min-width: 0;
       transition: transform 180ms ease, border-color 180ms ease;
     }
 
@@ -1442,7 +1519,7 @@
     }
 
     .shop-results .color-body {
-      padding: 12px;
+      padding: 14px;
       gap: 10px;
     }
 
@@ -1463,16 +1540,16 @@
     }
 
     .shop-results .compact-card .color-title {
-      align-items: center;
+      align-items: start;
       gap: 10px;
     }
 
     .shop-results .compact-card .color-title h3 {
-      font-size: clamp(1rem, 2vw, 1.22rem);
+      font-size: clamp(1.02rem, 1.65vw, 1.2rem);
     }
 
     .shop-results .compact-card .color-title span {
-      font-size: 0.94rem;
+      font-size: 0.9rem;
     }
 
     .shop-results .compact-card .badge-row {
@@ -1486,9 +1563,9 @@
     }
 
     .shop-results .compact-card .buy-row .btn {
-      min-height: 34px;
-      padding: 0 8px;
-      font-size: 0.7rem;
+      min-height: 38px;
+      padding: 0 10px;
+      font-size: 0.72rem;
     }
 
     .shop-results .compact-card .wa {
@@ -1601,6 +1678,9 @@
       letter-spacing: 0.04em;
       text-transform: uppercase;
       cursor: pointer;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .photo-tab.active {
@@ -1704,6 +1784,7 @@
       display: flex;
       flex-direction: column;
       gap: 18px;
+      min-width: 0;
     }
 
     .color-title {
@@ -1711,19 +1792,23 @@
       align-items: start;
       justify-content: space-between;
       gap: 16px;
+      min-width: 0;
     }
 
     .color-title h3 {
+      min-width: 0;
       margin: 0;
       font-size: 1.25rem;
       line-height: 1.05;
       text-transform: uppercase;
+      text-wrap: balance;
     }
 
     .color-title span {
       color: var(--muted);
       font-weight: 800;
       white-space: nowrap;
+      flex: 0 0 auto;
     }
 
     .price-stack {
@@ -1972,7 +2057,7 @@
 
     .options {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 10px;
       margin-top: 20px;
     }
@@ -2017,6 +2102,13 @@
     .buy-row .wa {
       border-color: rgba(244, 241, 220, 0.32);
       color: var(--ghost-cream);
+    }
+
+    .buy-row .btn {
+      min-width: 0;
+      white-space: normal;
+      text-align: center;
+      line-height: 1.12;
     }
 
     .buy-row .wa::before {
@@ -3011,8 +3103,14 @@
       .nav-links { display: none; }
       .hero { min-height: auto; }
       .hero-grid, .story-band { grid-template-columns: 1fr; }
-      .welcome-card { grid-template-columns: 1fr; }
-      .welcome-visual { min-height: 260px; }
+      .welcome-card {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+      .welcome-visual { min-height: 340px; }
+      .welcome-signals {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
       .hero-media { min-height: 360px; }
       section .wrap::before { display: none; }
       .product-card { grid-template-columns: 1fr; }
@@ -3039,44 +3137,74 @@
       h1 { font-size: clamp(2.75rem, 13vw, 3.3rem); }
       section { padding: 42px 0; }
       #shop { padding-top: 14px; }
+      body.intro-active .welcome.intro-gate {
+        align-items: start;
+        overflow-y: auto;
+        padding: 12px 0 18px;
+      }
+      body.intro-active .welcome-card {
+        width: min(100% - 24px, var(--max));
+        min-height: auto;
+      }
       .welcome { padding: 8px 0 4px; }
-      .welcome-card { padding: 12px; gap: 10px; }
+      .welcome-card { padding: 14px; gap: 12px; }
       .welcome-content { gap: 10px; }
       .welcome-kicker { padding: 6px 9px; font-size: 0.66rem; }
       .welcome-copy { gap: 6px; }
-      .welcome-copy strong { font-size: clamp(1.55rem, 8vw, 2rem); line-height: 0.95; }
+      .welcome-copy strong { font-size: clamp(2.2rem, 12vw, 3.15rem); line-height: 0.9; }
       .welcome-copy span { font-size: 0.82rem; line-height: 1.35; }
       .welcome-signals {
-        display: flex;
-        overflow-x: auto;
-        scrollbar-width: none;
-        margin-inline: -12px;
-        padding-inline: 12px;
-        gap: 6px;
-        scroll-snap-type: x proximity;
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-inline: 0;
+        padding-inline: 0;
+        gap: 7px;
       }
       .welcome-signals::-webkit-scrollbar {
         display: none;
       }
-      .welcome-signals span {
-        flex: 0 0 auto;
-        min-width: 96px;
-        scroll-snap-align: start;
-        padding: 6px 7px;
-        gap: 5px;
-        font-size: 0;
-        line-height: 1.05;
+      .welcome-signals > span {
+        min-height: 54px;
+        padding: 8px 10px;
+        gap: 8px;
+        font-size: 0.68rem;
+        line-height: 1.2;
       }
       .signal-icon {
-        width: 20px;
-        height: 20px;
-        font-size: 0.62rem;
+        width: 30px;
+        height: 30px;
       }
       .welcome-signals strong {
         margin-bottom: 0;
-        font-size: 0.64rem;
+        font-size: 0.82rem;
       }
-      .welcome-visual { display: none; }
+      .welcome-visual {
+        display: grid;
+        min-height: 230px;
+      }
+      .welcome-logo-focus {
+        min-height: 230px;
+        padding: 18px;
+      }
+      .welcome-logo-focus img {
+        width: min(72%, 230px);
+      }
+      .welcome-product-peek {
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        gap: 6px;
+      }
+      .welcome-peek-card {
+        min-height: 64px;
+      }
+      .welcome-peek-card img {
+        height: 48px;
+      }
+      .welcome-peek-card span {
+        padding: 4px 5px;
+        font-size: 0.54rem;
+      }
       .welcome-actions .btn { flex: 1 1 130px; }
       .category-impact {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -3183,8 +3311,11 @@
       }
       .options {
         gap: 6px;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         margin-top: 8px;
+      }
+      .options label:last-child {
+        grid-column: 1 / -1;
       }
       label {
         gap: 5px;
@@ -3200,14 +3331,14 @@
         display: none;
       }
       .buy-row {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
         gap: 8px;
         margin-top: 8px;
       }
       .buy-row .btn {
-        min-height: 38px;
+        min-height: 42px;
         padding: 0 10px;
-        font-size: 0.78rem;
+        font-size: 0.82rem;
       }
       #pedido .steps {
         grid-template-columns: 1fr;
@@ -3377,6 +3508,20 @@
               <span class="welcome-orbit"></span>
               <span class="welcome-orbit"></span>
               <img src="./images/logo-ghost-transparent.png" alt="" />
+            </div>
+            <div class="welcome-product-peek">
+              <span class="welcome-peek-card">
+                <img src="./images/inventory/tees/ghostwear-tee-04.webp" alt="" />
+                <span>Tees</span>
+              </span>
+              <span class="welcome-peek-card">
+                <img src="./images/inventory/caps/ghostwear-cap-23.webp" alt="" />
+                <span>Gorras</span>
+              </span>
+              <span class="welcome-peek-card">
+                <img src="./images/designed/ghostwear-short-royal-blue-studio.png" alt="" />
+                <span>Shorts</span>
+              </span>
             </div>
           </div>
           <div class="welcome-signals" aria-label="Prueba social GhostWear">
