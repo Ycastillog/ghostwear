@@ -518,6 +518,33 @@
       gap: 10px;
     }
 
+    .welcome-color-rack {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      max-width: 520px;
+      padding-top: 2px;
+    }
+
+    .welcome-color-rack span {
+      width: 20px;
+      height: 20px;
+      border: 2px solid rgba(244, 241, 220, 0.78);
+      border-radius: 999px;
+      background: var(--dot);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28);
+    }
+
+    .welcome-color-rack strong {
+      margin-left: 4px;
+      color: var(--ghost-cream);
+      font-size: 0.72rem;
+      font-weight: 950;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
     .welcome-signals {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1060,7 +1087,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
       gap: 12px;
-      margin: 4px 0 18px;
+      margin: 8px 0 18px;
     }
 
     .category-card {
@@ -1070,8 +1097,7 @@
       border-radius: 8px;
       padding: 16px;
       overflow: hidden;
-      background:
-        linear-gradient(135deg, rgba(244, 241, 220, 0.11), rgba(255, 255, 255, 0.022));
+      background: linear-gradient(135deg, rgba(244, 241, 220, 0.12), rgba(255, 255, 255, 0.035));
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -1087,8 +1113,8 @@
       background-image: var(--category-image);
       background-size: cover;
       background-position: center;
-      opacity: 0.78;
-      filter: saturate(0.96) contrast(1.05);
+      opacity: 0.86;
+      filter: saturate(1.02) contrast(1.04);
       transition: transform 220ms ease, opacity 180ms ease;
     }
 
@@ -1098,8 +1124,8 @@
       inset: 0;
       z-index: -1;
       background:
-        linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.82)),
-        radial-gradient(circle at 20% 12%, rgba(244, 241, 220, 0.2), transparent 34%);
+        linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.72)),
+        radial-gradient(circle at 18% 10%, rgba(244, 241, 220, 0.26), transparent 36%);
     }
 
     .category-card .boo-mark {
@@ -1127,14 +1153,24 @@
 
     .category-card strong {
       display: block;
+      position: relative;
+      z-index: 2;
       color: var(--accent);
       font-size: 0.78rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
+    .category-card > div {
+      position: relative;
+      z-index: 2;
+      margin-bottom: 24px;
+    }
+
     .category-card span {
       display: block;
+      position: relative;
+      z-index: 2;
       margin-top: 9px;
       color: var(--ink);
       font-size: clamp(1.35rem, 2.5vw, 2.05rem);
@@ -1145,6 +1181,8 @@
     }
 
     .category-card small {
+      position: relative;
+      z-index: 2;
       width: fit-content;
       border: 1px solid rgba(244, 241, 220, 0.24);
       border-radius: 999px;
@@ -1162,21 +1200,22 @@
       position: absolute;
       left: 16px;
       bottom: 14px;
-      z-index: 1;
+      z-index: 3;
       color: var(--ghost-cream);
       font-size: 0.72rem;
       font-weight: 950;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      opacity: 0;
-      transform: translateY(6px);
+      opacity: 0.92;
+      transform: translateY(0);
       transition: opacity 180ms ease, transform 180ms ease;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.85);
     }
 
     .category-card:hover .category-cta,
     .category-card:focus-visible .category-cta {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(-2px);
     }
 
     #shop.shop-discovered .shop-filter-shell,
@@ -1334,7 +1373,10 @@
     }
 
     section { padding: 68px 0; }
-    #shop { padding-top: 18px; }
+    #shop {
+      padding-top: 46px;
+      scroll-margin-top: 92px;
+    }
     #shop .section-head {
       margin-bottom: 14px;
     }
@@ -1344,8 +1386,8 @@
     }
 
     #shop .section-head p {
-      max-width: 460px;
-      display: none;
+      max-width: 520px;
+      display: block;
     }
     section .wrap {
       position: relative;
@@ -3216,6 +3258,17 @@
         font-size: 0.54rem;
       }
       .welcome-actions .btn { flex: 1 1 130px; }
+      .welcome-color-rack {
+        gap: 7px;
+      }
+      .welcome-color-rack span {
+        width: 17px;
+        height: 17px;
+      }
+      .welcome-color-rack strong {
+        flex-basis: 100%;
+        margin-left: 0;
+      }
       .category-impact {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 8px;
@@ -3510,6 +3563,24 @@
             <div class="welcome-actions">
               <a class="btn primary" href="#shop" data-discover-shop>Ver coleccion</a>
               <button class="btn" id="welcomeFitBtn" type="button">Ver combos</button>
+            </div>
+            <div class="welcome-color-rack" aria-label="Colores de shorts disponibles">
+              <span style="--dot:#d71925"></span>
+              <span style="--dot:#aee0ff"></span>
+              <span style="--dot:#d8d4cd"></span>
+              <span style="--dot:#ff6a21"></span>
+              <span style="--dot:#727653"></span>
+              <span style="--dot:#54ded1"></span>
+              <span style="--dot:#2eb4df"></span>
+              <span style="--dot:#ff4f86"></span>
+              <span style="--dot:#83f13a"></span>
+              <span style="--dot:#2454ff"></span>
+              <span style="--dot:#f4c21c"></span>
+              <span style="--dot:#202a64"></span>
+              <span style="--dot:#c8afe6"></span>
+              <span style="--dot:#111111"></span>
+              <span style="--dot:#f4f1e8"></span>
+              <strong>15 colores de shorts</strong>
             </div>
           </div>
           <div class="welcome-visual" aria-hidden="true">
@@ -5162,9 +5233,9 @@
 
     function renderFilteredShop(filter = "todos") {
       const visibleProducts = filter === "todos"
-        ? [shortsCollectionProduct, ...gearProducts]
+        ? [...products, ...gearProducts]
         : filter === "shorts"
-          ? [shortsCollectionProduct]
+          ? products
           : allProducts.filter(product => product.category === filter);
       const filterLabels = {
         todos: "todo el drop",
@@ -5188,7 +5259,7 @@
       }).join("");
 
       shopFilterCount.textContent = filter === "shorts"
-        ? "Mostrando el short como coleccion. Los colores estan abajo."
+        ? `Mostrando ${products.length} colores de shorts disponibles.`
         : `Mostrando ${visibleProducts.length} pieza${visibleProducts.length === 1 ? "" : "s"} para ${label === "todo el drop" ? "armar el fit" : label}`;
     }
 
