@@ -3683,7 +3683,7 @@
           </div>
           <p>
             Cada color baja con energia de juego: home, away, defensa, buzzer y
-            flow de cancha para conectar GhostWear con El Fantasma.
+            flow de cancha para conectar GhostWear con la cultura de juego.
           </p>
         </div>
 
@@ -3711,7 +3711,7 @@
             <img src="./images/designed/ghostwear-designed-white.jpg" alt="Visual GhostWear claro con estilo fantasmal de marca" />
             <div class="media-copy">
               <span class="section-kicker">Hero post</span>
-              <h3>Fantasma claro, cancha real</h3>
+              <h3>Ghost claro, cancha real</h3>
               <p>Foto limpia, logo protagonista y energia de drop activo RD.</p>
             </div>
           </article>
@@ -3858,12 +3858,11 @@
                 <span>Visto en cancha</span>
               </div>
               <div>
-                <h3>Juan Miguel Suero, El Fantasma.</h3>
-                <p>Fundador y cara real de la historia GhostWear. Esta seccion queda lista para fotos oficiales de Juan usando la pieza y contenido directo de @juanco10.</p>
+                <h3>Juan Miguel Suero.</h3>
+                <p>Fundador y cara real de la historia GhostWear. Esta seccion queda lista para fotos oficiales usando la pieza y contenido directo de @juanco10.</p>
               </div>
               <div class="athlete-actions">
                 <a class="btn ig-link" href="https://www.instagram.com/juanco10/" target="_blank" rel="noopener">Ver @juanco10</a>
-                <span class="athlete-tag">Alias El Fantasma</span>
                 <span class="athlete-tag">90.4K seguidores</span>
               </div>
             </article>
@@ -3974,11 +3973,11 @@
       <div class="wrap story-band">
         <div class="card story-card">
           <span class="section-kicker">Historia de marca</span>
-          <h2>Nace de la cancha, del apodo y del flow RD.</h2>
+          <h2>Nace de la cancha y del flow RD.</h2>
           <p>
-            GhostWear vive alrededor de Juan Miguel Suero, El Fantasma: ropa
-            deportiva con presencia de calle, lista para entrenar, salir y
-            representar el movimiento sin explicar demasiado.
+            GhostWear vive alrededor de Juan Miguel Suero: ropa deportiva con
+            presencia de calle, lista para entrenar, salir y representar el
+            movimiento sin explicar demasiado.
           </p>
         </div>
         <div class="detail-grid">
@@ -4757,14 +4756,12 @@
       const cleanImage = cleanShortImages[product.color] || product.image;
       product.photos = [
         { label: "Limpia", src: cleanImage, view: cleanImage === product.image ? "real" : "clean" },
-        { label: "Real", src: product.image, view: "real" },
-        { label: "El Fantasma", src: cleanImage, view: "model" }
+        { label: "Real", src: product.image, view: "real" }
       ];
     });
     shortsCollectionProduct.photos = [
       { label: "Limpia", src: shortsCollectionProduct.image, view: "clean" },
-      { label: "Real", src: shortsCollectionProduct.realImage, view: "real" },
-      { label: "El Fantasma", src: ghostModelImages.court, view: "model" }
+      { label: "Real", src: shortsCollectionProduct.realImage, view: "real" }
     ];
     gearProducts.forEach(product => {
       if (product.photos) return;
@@ -4779,24 +4776,20 @@
       const modelImage = modelImageByCategory[product.category] || realImage;
       product.photos = [
         { label: "Limpia", src: product.image, view: product.category === "medias" ? "real" : "clean" },
-        { label: "Real", src: realImage, view: "real" },
-        { label: "El Fantasma", src: modelImage, view: "model" }
+        { label: "Real", src: realImage, view: "real" }
       ];
     });
     comboProducts[0].photos = [
       { label: "Real", src: realShortImages["Royal Blue"], view: "real" },
-      { label: "Medias", src: "./images/ghostwear-socks-real.jpg", view: "real" },
-      { label: "El Fantasma", src: ghostModelImages.court, view: "model" }
+      { label: "Medias", src: "./images/ghostwear-socks-real.jpg", view: "real" }
     ];
     comboProducts[1].photos = [
       { label: "Short", src: realShortImages["Light Gray"], view: "real" },
-      { label: "Gorra", src: firstCapProduct.image, view: "clean" },
-      { label: "El Fantasma", src: firstCapProduct.realImage, view: "clean" }
+      { label: "Gorra", src: firstCapProduct.image, view: "clean" }
     ];
     comboProducts[2].photos = [
       { label: "Short", src: realShortImages["Black"], view: "real" },
-      { label: "Hoodie", src: "./images/gear/ghostwear-hoodie.jpg", view: "real" },
-      { label: "El Fantasma", src: ghostModelImages.hoodie, view: "model" }
+      { label: "Hoodie", src: "./images/gear/ghostwear-hoodie.jpg", view: "real" }
     ];
     const shopCollections = [
       {
@@ -4950,8 +4943,7 @@
       imageWrap.dataset.galleryTitle = colorButton.dataset.productName;
       imageWrap.dataset.galleryPhotos = JSON.stringify([
         { label: "Limpia", src: colorButton.dataset.productImage, view: "clean" },
-        { label: "Real", src: colorButton.dataset.productRealImage, view: "real" },
-        { label: "El Fantasma", src: colorButton.dataset.productImage, view: "model" }
+        { label: "Real", src: colorButton.dataset.productRealImage, view: "real" }
       ]);
       imageWrap.dataset.view = "clean";
       title.textContent = colorButton.dataset.productName;
