@@ -365,6 +365,10 @@
       padding: 20px 0 10px;
     }
 
+    .welcome .wrap::before {
+      display: none;
+    }
+
     body.intro-active {
       overflow: hidden;
     }
@@ -443,11 +447,11 @@
     }
 
     .welcome-card::after {
-      content: "BOO DROP";
+      content: "";
       position: absolute;
       right: 0.04em;
       top: -0.24em;
-      color: rgba(244, 241, 220, 0.065);
+      color: rgba(244, 241, 220, 0.035);
       font-size: clamp(4.2rem, 10vw, 7.6rem);
       font-weight: 950;
       line-height: 0.9;
@@ -565,7 +569,7 @@
     }
 
     .welcome-signals {
-      display: grid;
+      display: none;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 10px;
       grid-column: 1 / -1;
@@ -674,22 +678,7 @@
     }
 
     .welcome-spotlight {
-      position: absolute;
-      left: 18px;
-      bottom: 126px;
-      z-index: 3;
-      display: grid;
-      grid-template-columns: 92px minmax(0, 1fr);
-      align-items: center;
-      gap: 11px;
-      width: min(52%, 280px);
-      min-height: 106px;
-      border: 1px solid rgba(244, 241, 220, 0.18);
-      border-radius: 8px;
-      padding: 10px;
-      background: rgba(0, 0, 0, 0.56);
-      box-shadow: 0 22px 52px rgba(0, 0, 0, 0.38);
-      backdrop-filter: blur(14px);
+      display: none;
     }
 
     .welcome-spotlight img {
@@ -723,20 +712,7 @@
     }
 
     .welcome-side-ticket {
-      position: absolute;
-      right: 18px;
-      top: 18px;
-      z-index: 3;
-      display: grid;
-      gap: 4px;
-      min-width: 134px;
-      border: 1px solid rgba(244, 241, 220, 0.18);
-      border-radius: 8px;
-      padding: 11px;
-      background: rgba(244, 241, 220, 0.9);
-      color: #111;
-      box-shadow: 0 18px 38px rgba(0, 0, 0, 0.28);
-      text-transform: uppercase;
+      display: none;
     }
 
     .welcome-side-ticket small {
@@ -893,14 +869,15 @@
       width: min(100%, 520px);
       min-height: 390px;
       display: grid;
-      place-items: center;
-      padding: clamp(24px, 4vw, 54px);
+      align-items: start;
+      justify-items: center;
+      padding: clamp(62px, 7vw, 82px) clamp(24px, 4vw, 54px) 150px;
     }
 
     .welcome-logo-focus::before {
       content: "";
       position: absolute;
-      inset: 14% 4% 18%;
+      inset: 10% 4% 30%;
       border-radius: 50%;
       background:
         radial-gradient(circle at 50% 48%, rgba(244, 241, 220, 0.15), transparent 58%),
@@ -913,7 +890,7 @@
     .welcome-logo-focus img {
       position: relative;
       z-index: 1;
-      width: min(78%, 330px);
+      width: min(74%, 320px);
       height: auto;
       object-fit: contain;
       filter:
@@ -924,28 +901,28 @@
 
     .welcome-product-peek {
       position: absolute;
-      left: 18px;
-      right: 18px;
-      bottom: 16px;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
       z-index: 3;
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
+      gap: 12px;
       pointer-events: none;
     }
 
     .welcome-peek-card {
-      min-height: 92px;
+      min-height: 126px;
       overflow: hidden;
       border: 1px solid rgba(244, 241, 220, 0.18);
       border-radius: 8px;
-      background: rgba(0, 0, 0, 0.54);
+      background: rgba(0, 0, 0, 0.58);
       box-shadow: 0 18px 38px rgba(0, 0, 0, 0.28);
     }
 
     .welcome-peek-card img {
       width: 100%;
-      height: 72px;
+      height: 96px;
       object-fit: cover;
       filter: saturate(1.04) contrast(1.02);
     }
@@ -3328,11 +3305,7 @@
         font-size: 0.62rem;
       }
       .welcome-signals {
-        display: grid;
-        grid-template-columns: 1fr;
-        margin-inline: 0;
-        padding-inline: 0;
-        gap: 7px;
+        display: none;
       }
       .welcome-signals::-webkit-scrollbar {
         display: none;
@@ -3716,9 +3689,9 @@
               <span class="welcome-subline">Shorts, t-shirts, gorras y medias listos para pedir por WhatsApp.</span>
             </div>
             <div class="welcome-proof-line" aria-label="Detalles rapidos del drop">
-              <span>Shorts RD$ 1,500</span>
-              <span>Size S-M-L-XL</span>
-              <span>Cantidad hasta 3</span>
+              <span>Drop activo</span>
+              <span>Arma tu fit</span>
+              <span>Pedido por WhatsApp</span>
             </div>
             <div class="welcome-actions">
               <a class="btn primary" href="#shop" data-discover-shop>Ver coleccion</a>
@@ -3740,47 +3713,30 @@
               <span style="--dot:#c8afe6"></span>
               <span style="--dot:#111111"></span>
               <span style="--dot:#f4f1e8"></span>
-              <strong>15 colores de shorts</strong>
             </div>
           </div>
           <div class="welcome-visual" aria-hidden="true">
             <div class="welcome-drop-badge">Drop listo para hoy</div>
-            <div class="welcome-side-ticket">
-              <small>Desde</small>
-              <strong>RD$ 1,500</strong>
-            </div>
             <div class="welcome-logo-focus">
               <span class="welcome-orbit"></span>
               <span class="welcome-orbit"></span>
               <span class="welcome-orbit"></span>
               <img src="./images/logo-ghost-transparent.png" alt="" />
             </div>
-            <div class="welcome-spotlight">
-              <img src="./images/designed/ghostwear-short-royal-blue-studio.png" alt="" />
-              <div>
-                <strong>Shorts Ghost</strong>
-                <span>15 colores / S-M-L-XL</span>
-              </div>
-            </div>
             <div class="welcome-product-peek">
+              <span class="welcome-peek-card">
+                <img src="./images/designed/ghostwear-short-red-studio.png" alt="" />
+                <span>Shorts</span>
+              </span>
               <span class="welcome-peek-card">
                 <img src="./images/inventory/tees/ghostwear-tee-04.webp" alt="" />
                 <span>T-Shirts</span>
               </span>
               <span class="welcome-peek-card">
-                <img src="./images/inventory/caps/studio/cap-01-azul-con-blanco-front.webp" alt="" />
+                <img src="./images/inventory/caps/studio/cap-09-negra-ghost-blanco-front.webp" alt="" />
                 <span>Gorras</span>
               </span>
-              <span class="welcome-peek-card">
-                <img src="./images/designed/ghostwear-short-royal-blue-studio.png" alt="" />
-                <span>Shorts</span>
-              </span>
             </div>
-          </div>
-          <div class="welcome-signals" aria-label="Prueba social GhostWear">
-            <span><i class="signal-icon" aria-hidden="true">🎨</i><span><strong>15 colores</strong> disponibles por DM</span></span>
-            <span><i class="signal-icon" aria-hidden="true">🌎</i><span><strong>RD + USA</strong> entrega por cotizacion</span></span>
-            <span><i class="signal-icon" aria-hidden="true">📦</i><span><strong>+50</strong> pedidos entregados</span></span>
           </div>
         </div>
       </div>
