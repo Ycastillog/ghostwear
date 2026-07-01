@@ -3272,7 +3272,7 @@
     }
 
     @media (max-width: 620px) {
-      .wrap { width: min(100% - 24px, var(--max)); }
+      .wrap { width: min(100% - 20px, var(--max)); }
       .brand span { display: none; }
       .brand img { width: 104px; }
       .nav { min-height: 60px; }
@@ -3284,25 +3284,32 @@
       body.intro-active .welcome.intro-gate {
         align-items: start;
         overflow-y: auto;
-        padding: 12px 0 18px;
+        padding: 10px 0;
       }
       body.intro-active .welcome-card {
-        width: min(100% - 24px, var(--max));
+        width: min(100% - 18px, var(--max));
         min-height: auto;
       }
-      .welcome { padding: 8px 0 4px; }
-      .welcome-card { padding: 14px; gap: 12px; }
-      .welcome-content { gap: 10px; }
-      .welcome-kicker { padding: 6px 9px; font-size: 0.66rem; }
-      .welcome-copy { gap: 6px; }
-      .welcome-copy strong { font-size: clamp(2.2rem, 12vw, 3.15rem); line-height: 0.9; }
-      .welcome-copy span { font-size: 0.82rem; line-height: 1.35; }
+      .welcome { padding: 6px 0 4px; }
+      .welcome-card {
+        padding: 12px;
+        gap: 10px;
+        border-radius: 14px;
+        background:
+          linear-gradient(180deg, rgba(244, 241, 220, 0.06), transparent 32%),
+          rgba(255, 255, 255, 0.045);
+      }
+      .welcome-content { gap: 9px; }
+      .welcome-kicker { padding: 6px 9px; font-size: 0.62rem; white-space: normal; }
+      .welcome-copy { gap: 5px; }
+      .welcome-copy strong { font-size: clamp(1.92rem, 10.4vw, 2.65rem); line-height: 0.9; }
+      .welcome-copy span { font-size: 0.78rem; line-height: 1.32; }
       .welcome-proof-line {
         gap: 6px;
       }
       .welcome-proof-line span {
         padding: 6px 8px;
-        font-size: 0.62rem;
+        font-size: 0.58rem;
       }
       .welcome-signals {
         display: none;
@@ -3327,14 +3334,15 @@
       }
       .welcome-visual {
         display: grid;
-        min-height: 230px;
+        min-height: 184px;
+        border-radius: 12px;
       }
       .welcome-logo-focus {
-        min-height: 230px;
-        padding: 18px;
+        min-height: 184px;
+        padding: 34px 14px 62px;
       }
       .welcome-logo-focus img {
-        width: min(72%, 230px);
+        width: min(64%, 178px);
       }
       .welcome-drop-badge {
         top: 10px;
@@ -3370,42 +3378,74 @@
         font-size: 0.58rem;
       }
       .welcome-product-peek {
-        left: 10px;
-        right: 10px;
-        bottom: 10px;
-        gap: 6px;
+        left: 9px;
+        right: 9px;
+        bottom: 9px;
+        gap: 7px;
       }
       .welcome-peek-card {
-        min-height: 64px;
+        min-height: 62px;
+        border-radius: 8px;
       }
       .welcome-peek-card img {
-        height: 48px;
+        height: 46px;
       }
       .welcome-peek-card span {
         padding: 4px 5px;
         font-size: 0.54rem;
       }
-      .welcome-actions .btn { flex: 1 1 130px; }
-      .welcome-color-rack {
+      .welcome-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+      .welcome-actions .btn {
+        min-height: 46px;
+        padding: 0 10px;
+        justify-content: center;
+        font-size: 0.86rem;
+        white-space: nowrap;
+      }
+      .welcome-actions .btn.primary {
         gap: 7px;
       }
+      .welcome-actions .btn.primary::before {
+        width: 36px;
+        height: 28px;
+        font-size: 0.62rem;
+      }
+      .welcome-color-rack {
+        gap: 7px;
+        max-width: 100%;
+      }
       .welcome-color-rack span {
-        width: 17px;
-        height: 17px;
+        width: 16px;
+        height: 16px;
       }
       .welcome-color-rack strong {
         flex-basis: 100%;
         margin-left: 0;
       }
       .category-impact {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 8px;
+        grid-template-columns: none;
+        grid-auto-flow: column;
+        grid-auto-columns: minmax(238px, 76vw);
+        gap: 10px;
+        overflow-x: auto;
+        padding: 2px 10px 10px 0;
+        margin-right: -10px;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+      }
+      .category-impact::-webkit-scrollbar {
+        display: none;
       }
       .category-card {
-        min-height: 112px;
-        padding: 10px;
+        min-height: 156px;
+        padding: 12px;
+        scroll-snap-align: start;
       }
-      .category-card span:not(.boo-mark) { font-size: clamp(1.35rem, 7vw, 1.8rem); }
+      .category-card span:not(.boo-mark) { font-size: clamp(1.75rem, 10vw, 2.3rem); }
       .category-card span {
         font-size: 1rem;
       }
@@ -3418,25 +3458,32 @@
         display: none;
       }
       #shop .section-head {
-        margin-bottom: 10px;
+        margin-bottom: 12px;
       }
       #shop .section-head h2 {
-        font-size: clamp(1.75rem, 9vw, 2.35rem);
+        font-size: clamp(1.95rem, 10vw, 2.55rem);
+        line-height: 0.95;
+      }
+      #shop .section-head p {
+        margin-top: 10px;
+        font-size: 0.94rem;
+        line-height: 1.45;
       }
       .filter-row {
         gap: 8px;
       }
       .filter-btn {
-        min-height: 38px;
-        padding: 0 13px;
+        flex: 0 0 auto;
+        min-height: 44px;
+        padding: 0 15px;
         font-size: 0.76rem;
       }
       .color-grid {
         grid-template-columns: 1fr;
-        gap: 12px;
+        gap: 14px;
       }
       .color-img {
-        aspect-ratio: 16 / 8.5;
+        aspect-ratio: 16 / 9.5;
       }
       .color-img[data-view="clean"] img {
         padding: 10px;
@@ -3445,7 +3492,7 @@
         display: none;
       }
       .color-body {
-        padding: 12px;
+        padding: 13px;
         gap: 10px;
       }
       .badge-row {
@@ -3487,7 +3534,8 @@
         gap: 10px;
       }
       .color-title h3 {
-        font-size: 1.08rem;
+        font-size: 1.14rem;
+        line-height: 1.05;
       }
       .color-body p {
         font-size: 0.9rem;
@@ -3527,7 +3575,7 @@
         margin-top: 8px;
       }
       .buy-row .btn {
-        min-height: 42px;
+        min-height: 44px;
         padding: 0 10px;
         font-size: 0.82rem;
       }
@@ -3625,10 +3673,15 @@
         height: 42px;
       }
       .filter-bar {
+        flex-wrap: nowrap;
         gap: 8px;
         overflow-x: auto;
-        padding-bottom: 2px;
+        padding: 2px 10px 8px 0;
+        margin-right: -10px;
         scrollbar-width: none;
+      }
+      .filter-bar::-webkit-scrollbar {
+        display: none;
       }
       .product-float { left: 12px; right: 12px; bottom: 12px; grid-template-columns: 1fr; }
       .proof { grid-template-columns: 1fr; }
