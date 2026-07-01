@@ -3695,7 +3695,7 @@
             </div>
             <div class="welcome-actions">
               <a class="btn primary" href="#shop" data-discover-shop>Ver coleccion</a>
-              <button class="btn" id="welcomeFitBtn" type="button">Ver combos</button>
+              <button class="btn" id="welcomeFitBtn" type="button">Armar combo</button>
             </div>
             <div class="welcome-color-rack" aria-label="Colores de shorts disponibles">
               <span style="--dot:#d71925"></span>
@@ -3836,7 +3836,7 @@
         <div class="shop-filter-shell">
           <div class="filter-bar" id="shopFilters" aria-label="Filtrar productos por categoria">
             <button class="filter-btn active" type="button" data-filter="todos">Todos</button>
-            <button class="filter-btn" type="button" data-filter="combos">Combos</button>
+            <button class="filter-btn" type="button" data-filter="combos">Armar combo</button>
             <button class="filter-btn" type="button" data-filter="shorts">Shorts</button>
             <button class="filter-btn" type="button" data-filter="medias">Medias</button>
             <button class="filter-btn" type="button" data-filter="gorras">Gorras</button>
@@ -3856,25 +3856,25 @@
       <div class="wrap">
         <div class="section-head">
           <div>
-            <span class="section-kicker">Oferta especial</span>
-            <h2>Ahorra comprando el fit completo</h2>
+            <span class="section-kicker">Arma tu combo</span>
+            <h2>Elige las piezas y cerramos el fit por WhatsApp</h2>
           </div>
           <p>
-            Combos armados para que el cliente resuelva rapido: precio normal claro,
-            precio combo fuerte y DM listo para cerrar por WhatsApp.
+            El cliente combina short, gorra, medias, t-shirt o hoodie segun su flow.
+            Confirmamos talla, color y disponibilidad antes de apartar.
           </p>
         </div>
 
         <article class="card combo-offer-banner">
           <div>
-            <span class="section-kicker">Drop activo RD</span>
-            <h3>Mientras mas armas el fit, mas duro te sale.</h3>
-            <p>Short + medias, short + gorra o el Full Ghost Fit completo. Te lo apartamos por transferencia y coordinamos envio nacional.</p>
+            <span class="section-kicker">Combo a tu forma</span>
+            <h3>Arma el pedido con las piezas que quieras.</h3>
+            <p>Selecciona una base, ajusta talla y cantidad, y te confirmamos por WhatsApp si ese color esta disponible.</p>
           </div>
           <div class="combo-offer-price">
-            <small>Desde RD$ 1,850 normal</small>
-            <strong>RD$ 1,750</strong>
-            <span>Precio combo desde hoy</span>
+            <small>Pedido guiado</small>
+            <strong>Por DM</strong>
+            <span>Precio final despues de elegir piezas</span>
           </div>
         </article>
 
@@ -5378,14 +5378,13 @@
         ...capProducts.filter(product => !capOrder.includes(product.name))
       ];
       const lanes = {
-        combos: [...comboProducts],
         shorts: orderedShorts,
         gorras: orderedCaps,
         tees: [...teeProducts],
         medias: gearProducts.filter(product => product.category === "medias"),
         hoodie: gearProducts.filter(product => product.category === "hoodie")
       };
-      const pattern = ["shorts", "gorras", "tees", "medias", "combos", "shorts", "gorras", "hoodie", "tees", "shorts", "gorras", "medias"];
+      const pattern = ["shorts", "gorras", "tees", "medias", "shorts", "gorras", "hoodie", "tees", "shorts", "gorras", "medias"];
       const mixed = [];
       const takeNext = category => {
         const product = lanes[category]?.shift();
