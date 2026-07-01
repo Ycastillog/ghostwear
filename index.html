@@ -2178,6 +2178,118 @@
       text-transform: uppercase;
     }
 
+    .combo-builder {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+      gap: 18px;
+      align-items: stretch;
+      padding: clamp(18px, 3vw, 28px);
+      border-color: rgba(244, 241, 220, 0.42);
+      background:
+        radial-gradient(circle at 12% 18%, rgba(244, 241, 220, 0.14), transparent 32%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025));
+    }
+
+    .combo-builder-visual {
+      min-height: 100%;
+      display: grid;
+      align-content: end;
+      gap: 14px;
+      border: 1px solid rgba(244, 241, 220, 0.16);
+      border-radius: 8px;
+      padding: 18px;
+      background:
+        linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.58)),
+        url("./images/designed/ghostwear-short-red-studio.png") center / cover;
+      overflow: hidden;
+    }
+
+    .combo-builder-visual h3 {
+      max-width: 440px;
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 4rem);
+      line-height: 0.92;
+      text-transform: uppercase;
+      text-wrap: balance;
+    }
+
+    .combo-builder-visual p {
+      max-width: 420px;
+      margin: 0;
+      color: var(--ghost-cream);
+      font-weight: 850;
+      line-height: 1.45;
+    }
+
+    .combo-builder-form {
+      display: grid;
+      gap: 12px;
+      align-content: start;
+    }
+
+    .combo-builder-form label,
+    .combo-builder-form fieldset {
+      display: grid;
+      gap: 7px;
+      margin: 0;
+      border: 0;
+      padding: 0;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 950;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .combo-builder-form fieldset {
+      gap: 10px;
+    }
+
+    .combo-builder-form legend {
+      padding: 0;
+      color: var(--muted);
+    }
+
+    .combo-builder-form select {
+      width: 100%;
+    }
+
+    .combo-extra-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .combo-extra {
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(244, 241, 220, 0.18);
+      border-radius: 8px;
+      padding: 0 10px;
+      background: rgba(255, 255, 255, 0.045);
+      color: var(--text);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+
+    .combo-extra input {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--accent);
+    }
+
+    .combo-builder-note {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+
     .stock-line {
       margin-top: 8px;
       color: var(--muted);
@@ -3449,7 +3561,6 @@
       .category-card span {
         font-size: 1rem;
       }
-      #combos,
       #drop,
       #contenido,
       #gear,
@@ -3484,6 +3595,45 @@
       }
       .color-img {
         aspect-ratio: 16 / 9.5;
+      }
+      .combo-builder {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 13px;
+      }
+      .combo-builder-visual {
+        min-height: 150px;
+        align-content: end;
+        padding: 14px;
+        background-position: center 42%;
+      }
+      .combo-builder-visual h3 {
+        max-width: 260px;
+        font-size: clamp(1.12rem, 6vw, 1.45rem);
+        line-height: 1;
+      }
+      .combo-builder-visual p {
+        max-width: 280px;
+        font-size: 0.76rem;
+        line-height: 1.3;
+      }
+      .combo-extra-grid {
+        grid-template-columns: 1fr;
+      }
+      .combo-builder-form label,
+      .combo-builder-form fieldset {
+        font-size: 0.7rem;
+      }
+      .combo-builder-form .combo-extra {
+        display: flex;
+        min-height: 46px;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+        padding: 0 12px;
+      }
+      .combo-builder-form .combo-extra span {
+        line-height: 1;
       }
       .color-img[data-view="clean"] img {
         padding: 10px;
@@ -5452,6 +5602,84 @@
       return mixed;
     }
 
+    function comboBuilderMarkup() {
+      const firstShort = products[0];
+      const firstCap = capProducts[0];
+      const firstTee = teeProducts[0];
+      const socks = gearProducts.find(product => product.name === "Medias Ghost");
+      const hoodie = gearProducts.find(product => product.category === "hoodie");
+      const baseOptions = [
+        { label: `Short Ghost (${firstShort.priceLabel})`, value: "Short Ghost" },
+        { label: `Gorra Ghost (${firstCap.priceLabel})`, value: "Gorra Ghost" },
+        { label: `T-Shirt Ghost (${firstTee.priceLabel})`, value: "T-Shirt Ghost" },
+        { label: `Medias Ghost (${socks.priceLabel})`, value: "Medias Ghost" },
+        { label: `Hoodie Ghost (${hoodie.priceLabel})`, value: "Hoodie Ghost" }
+      ];
+      const extras = [
+        "Short extra",
+        "Gorra",
+        "T-Shirt",
+        "Medias",
+        "Hoodie"
+      ];
+
+      return `
+        <article class="card combo-builder" data-combo-builder>
+          <div class="combo-builder-visual">
+            <span class="section-kicker">Armar combo</span>
+            <h3>Arma tu combo.</h3>
+            <p>Mezcla short, gorra, t-shirt, medias o hoodie. Confirmamos colores, tallas y precio por WhatsApp.</p>
+          </div>
+          <form class="combo-builder-form">
+            <label>Base del combo
+              <select class="combo-base">
+                ${baseOptions.map(option => `<option value="${option.value}">${option.label}</option>`).join("")}
+              </select>
+            </label>
+            <fieldset>
+              <legend>Agregar piezas</legend>
+              <div class="combo-extra-grid">
+                ${extras.map(extra => `
+                  <label class="combo-extra">
+                    <input type="checkbox" value="${extra}" />
+                    <span>${extra}</span>
+                  </label>
+                `).join("")}
+              </div>
+            </fieldset>
+            <div class="options">
+              <label>Talla base
+                <select class="combo-size">
+                  <option selected>S</option>
+                  <option>M</option>
+                  <option>L</option>
+                  <option>XL</option>
+                  <option>Unica</option>
+                </select>
+              </label>
+              <label>Cantidad
+                <select class="combo-qty">
+                  <option selected>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                </select>
+              </label>
+              <label>Entrega
+                <select class="combo-delivery">
+                  <option selected>Santo Domingo</option>
+                  <option>Interior RD</option>
+                  <option>Retiro</option>
+                  <option>USA por cotizacion</option>
+                </select>
+              </label>
+            </div>
+            <p class="combo-builder-note">El precio final se confirma despues de validar color, talla y stock. Ideal para pedir un fit completo sin que venga armado de antemano.</p>
+            <button class="btn primary full combo-wa" type="button">Mandar combo por WhatsApp</button>
+          </form>
+        </article>
+      `;
+    }
+
     function renderFilteredShop(filter = "todos") {
       const visibleProducts = filter === "todos"
         ? buildMixedDropProducts()
@@ -5468,6 +5696,12 @@
         tees: "t-shirts"
       };
       const label = filterLabels[filter] || filter;
+
+      if (filter === "combos") {
+        filteredShopGrid.innerHTML = comboBuilderMarkup();
+        shopFilterCount.textContent = "Arma tu combo con las piezas que quieras y mandalo por WhatsApp.";
+        return;
+      }
 
       filteredShopGrid.innerHTML = visibleProducts.map(product => {
         const isCombo = product.category === "combos";
@@ -5561,11 +5795,7 @@
     }
 
     function renderCombos() {
-      comboGrid.innerHTML = comboProducts.map(product => productCard(product, {
-        badge: "Ahorro",
-        tag: product.tag,
-        sellLine: `Oferta combo: ahorras ${moneyText(product.normalPrice - product.price)}`
-      })).join("");
+      comboGrid.innerHTML = comboBuilderMarkup();
     }
 
     function renderProducts() {
@@ -5726,6 +5956,30 @@ ${locationPrompt}
 Referencia de entrega:`;
     }
 
+    function buildComboMessage(builder) {
+      const base = builder.querySelector(".combo-base").value;
+      const extras = [...builder.querySelectorAll(".combo-extra input:checked")].map(input => input.value);
+      const size = builder.querySelector(".combo-size").value;
+      const qty = builder.querySelector(".combo-qty").value;
+      const delivery = builder.querySelector(".combo-delivery").value;
+      const locationPrompt = delivery.includes("USA") ? "Ciudad / Estado / ZIP:" : "Sector o ciudad:";
+
+      return `Hola GhostWear, quiero armar un combo a mi forma.
+
+Base: ${base}
+Agregar: ${extras.length ? extras.join(", ") : "Por confirmar"}
+Talla base: ${size}
+Cantidad: ${qty}
+Entrega: ${delivery}
+
+Quiero que me confirmen colores disponibles, tallas y precio final del combo.
+Pagina: https://ghostwear1.com/
+
+Mi nombre es:
+${locationPrompt}
+Referencia de entrega:`;
+    }
+
     renderStorefront();
     renderFilteredShop();
     renderCombos();
@@ -5827,6 +6081,13 @@ Referencia de entrega:`;
       event.preventDefault();
       openDrawer();
     }));
+    document.addEventListener("click", event => {
+      const comboButton = event.target.closest(".combo-wa");
+      if (!comboButton) return;
+      const builder = comboButton.closest("[data-combo-builder]");
+      if (!builder) return;
+      window.open(waLink(buildComboMessage(builder)), "_blank", "noopener");
+    });
     heroLookBtn.addEventListener("click", addLookToCart);
     heroCartBtn.addEventListener("click", openDrawer);
     welcomeFitBtn.addEventListener("click", () => revealCollection("combos"));
