@@ -512,6 +512,25 @@
       font-size: clamp(1rem, 1.5vw, 1.12rem);
     }
 
+    .welcome-proof-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      max-width: 560px;
+    }
+
+    .welcome-proof-line span {
+      border: 1px solid rgba(244, 241, 220, 0.18);
+      border-radius: 999px;
+      padding: 7px 10px;
+      background: rgba(0, 0, 0, 0.24);
+      color: var(--ghost-cream);
+      font-size: 0.72rem;
+      font-weight: 950;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
     .welcome-actions {
       display: flex;
       flex-wrap: wrap;
@@ -635,6 +654,102 @@
         linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.44)),
         rgba(255, 255, 255, 0.04);
       box-shadow: inset 0 0 70px rgba(244, 241, 220, 0.035);
+    }
+
+    .welcome-drop-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      z-index: 4;
+      border: 1px solid rgba(244, 241, 220, 0.22);
+      border-radius: 999px;
+      padding: 8px 11px;
+      background: rgba(0, 0, 0, 0.55);
+      color: var(--ghost-cream);
+      font-size: 0.7rem;
+      font-weight: 950;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      backdrop-filter: blur(12px);
+    }
+
+    .welcome-spotlight {
+      position: absolute;
+      left: 18px;
+      bottom: 126px;
+      z-index: 3;
+      display: grid;
+      grid-template-columns: 92px minmax(0, 1fr);
+      align-items: center;
+      gap: 11px;
+      width: min(52%, 280px);
+      min-height: 106px;
+      border: 1px solid rgba(244, 241, 220, 0.18);
+      border-radius: 8px;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.56);
+      box-shadow: 0 22px 52px rgba(0, 0, 0, 0.38);
+      backdrop-filter: blur(14px);
+    }
+
+    .welcome-spotlight img {
+      width: 92px;
+      height: 86px;
+      object-fit: cover;
+      border-radius: 8px;
+      background: var(--accent);
+    }
+
+    .welcome-spotlight strong,
+    .welcome-spotlight span {
+      display: block;
+      text-transform: uppercase;
+    }
+
+    .welcome-spotlight strong {
+      color: var(--ghost-cream);
+      font-size: 0.9rem;
+      font-weight: 950;
+      line-height: 1;
+    }
+
+    .welcome-spotlight span {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 0.68rem;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      line-height: 1.35;
+    }
+
+    .welcome-side-ticket {
+      position: absolute;
+      right: 18px;
+      top: 18px;
+      z-index: 3;
+      display: grid;
+      gap: 4px;
+      min-width: 134px;
+      border: 1px solid rgba(244, 241, 220, 0.18);
+      border-radius: 8px;
+      padding: 11px;
+      background: rgba(244, 241, 220, 0.9);
+      color: #111;
+      box-shadow: 0 18px 38px rgba(0, 0, 0, 0.28);
+      text-transform: uppercase;
+    }
+
+    .welcome-side-ticket small {
+      font-size: 0.62rem;
+      font-weight: 950;
+      letter-spacing: 0.08em;
+      opacity: 0.7;
+    }
+
+    .welcome-side-ticket strong {
+      font-size: 1.05rem;
+      font-weight: 950;
+      line-height: 1;
     }
 
     .welcome-ghost {
@@ -3205,6 +3320,13 @@
       .welcome-copy { gap: 6px; }
       .welcome-copy strong { font-size: clamp(2.2rem, 12vw, 3.15rem); line-height: 0.9; }
       .welcome-copy span { font-size: 0.82rem; line-height: 1.35; }
+      .welcome-proof-line {
+        gap: 6px;
+      }
+      .welcome-proof-line span {
+        padding: 6px 8px;
+        font-size: 0.62rem;
+      }
       .welcome-signals {
         display: grid;
         grid-template-columns: 1fr;
@@ -3240,6 +3362,39 @@
       }
       .welcome-logo-focus img {
         width: min(72%, 230px);
+      }
+      .welcome-drop-badge {
+        top: 10px;
+        left: 10px;
+        padding: 6px 8px;
+        font-size: 0.58rem;
+      }
+      .welcome-side-ticket {
+        top: 10px;
+        right: 10px;
+        min-width: 110px;
+        padding: 8px;
+      }
+      .welcome-side-ticket strong {
+        font-size: 0.86rem;
+      }
+      .welcome-spotlight {
+        left: 10px;
+        bottom: 82px;
+        width: min(76%, 260px);
+        grid-template-columns: 72px minmax(0, 1fr);
+        min-height: 86px;
+        padding: 8px;
+      }
+      .welcome-spotlight img {
+        width: 72px;
+        height: 68px;
+      }
+      .welcome-spotlight strong {
+        font-size: 0.76rem;
+      }
+      .welcome-spotlight span {
+        font-size: 0.58rem;
       }
       .welcome-product-peek {
         left: 10px;
@@ -3560,6 +3715,11 @@
               <strong>Viste diferente.</strong>
               <span class="welcome-subline">Shorts, t-shirts, gorras y medias listos para pedir por WhatsApp.</span>
             </div>
+            <div class="welcome-proof-line" aria-label="Detalles rapidos del drop">
+              <span>Shorts RD$ 1,500</span>
+              <span>Size S-M-L-XL</span>
+              <span>Cantidad hasta 3</span>
+            </div>
             <div class="welcome-actions">
               <a class="btn primary" href="#shop" data-discover-shop>Ver coleccion</a>
               <button class="btn" id="welcomeFitBtn" type="button">Ver combos</button>
@@ -3584,11 +3744,23 @@
             </div>
           </div>
           <div class="welcome-visual" aria-hidden="true">
+            <div class="welcome-drop-badge">Drop listo para hoy</div>
+            <div class="welcome-side-ticket">
+              <small>Desde</small>
+              <strong>RD$ 1,500</strong>
+            </div>
             <div class="welcome-logo-focus">
               <span class="welcome-orbit"></span>
               <span class="welcome-orbit"></span>
               <span class="welcome-orbit"></span>
               <img src="./images/logo-ghost-transparent.png" alt="" />
+            </div>
+            <div class="welcome-spotlight">
+              <img src="./images/designed/ghostwear-short-royal-blue-studio.png" alt="" />
+              <div>
+                <strong>Shorts Ghost</strong>
+                <span>15 colores / S-M-L-XL</span>
+              </div>
             </div>
             <div class="welcome-product-peek">
               <span class="welcome-peek-card">
@@ -4685,7 +4857,7 @@
         note: "Oferta de historia: tres pares con logos Ghost en colores surtidos.",
         swatch: "#f4f1dc",
         sizes: ["Unica"],
-        quantities: ["1", "2"],
+        quantities: ["1", "2", "3"],
         photos: [
           { label: "Pack", src: "./images/designed/ghostwear-socks-studio.png", view: "clean" },
           { label: "Real", src: "./images/ghostwear-socks-real.jpg", view: "real" },
@@ -4704,7 +4876,7 @@
         note: "Hoodie negro con logo Ghost grande, bolsillo frontal y fit comodo.",
         swatch: "#111111",
         sizes: ["S", "M", "L", "XL"],
-        quantities: ["1", "2"]
+        quantities: ["1", "2", "3"]
       },
       ...teeProducts
     ];
@@ -4725,7 +4897,7 @@
         note: "Short Ghost + medias para salir con el fit amarrado. Ahorras RD$ 100.",
         swatch: "#f4f1dc",
         sizes: ["S", "M", "L", "XL"],
-        quantities: ["1", "2"],
+        quantities: ["1", "2", "3"],
         includes: ["Short Ghost", "Medias Ghost"],
         comboImages: [
           { label: "Short", src: realShortImages["Royal Blue"] },
@@ -4743,7 +4915,7 @@
         note: "Short Ghost + gorra Ghost. La vuelta facil para cerrar el look.",
         swatch: "#2454ff",
         sizes: ["S", "M", "L", "XL"],
-        quantities: ["1", "2"],
+        quantities: ["1", "2", "3"],
         includes: ["Short Ghost", "Gorra Ghost"],
         comboImages: [
           { label: "Short", src: realShortImages["Light Gray"] },
@@ -4761,7 +4933,7 @@
         note: "Short + hoodie + medias. Full Ghost fit con descuento de RD$ 250.",
         swatch: "#111111",
         sizes: ["S", "M", "L", "XL"],
-        quantities: ["1"],
+        quantities: ["1", "2", "3"],
         includes: ["Short Ghost", "Hoodie Ghost", "Medias Ghost"],
         comboImages: [
           { label: "Short", src: realShortImages["Black"] },
@@ -5200,7 +5372,7 @@
             </div>
             <div>
               <div class="options">
-                <label>Talla
+                <label>Size
                   <select class="size">
                     ${product.sizes.map((size, index) => `<option${index === selectedSize ? " selected" : ""}>${size}</option>`).join("")}
                   </select>
