@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="GhostWear RD: shorts, tees, medias, gorras, hoodies y combos con pedido por WhatsApp, entrega nacional y USA por cotizacion." />
-  <meta name="keywords" content="GhostWear, shorts RD, tees Ghost, ropa deportiva RD, gorras Ghost, medias Ghost, hoodie GhostWear, streetwear dominicano" />
+  <meta name="description" content="GhostWear RD: shorts, t-shirts, medias, gorras, hoodies y combos con pedido por WhatsApp, entrega nacional y USA por cotizacion." />
+  <meta name="keywords" content="GhostWear, shorts RD, t-shirts Ghost, ropa deportiva RD, gorras Ghost, medias Ghost, hoodie GhostWear, streetwear dominicano" />
   <meta property="og:title" content="GhostWear | Drop activo RD" />
-  <meta property="og:description" content="Arma tu fit GhostWear por WhatsApp. Shorts, tees, medias, gorras, hoodie y combos con entrega nacional y USA por cotizacion." />
+  <meta property="og:description" content="Arma tu fit GhostWear por WhatsApp. Shorts, t-shirts, medias, gorras, hoodie y combos con entrega nacional y USA por cotizacion." />
   <meta property="og:image" content="https://ghostwear1.com/images/social/ghostwear-share-preview-v2.jpg" />
   <meta property="og:image:secure_url" content="https://ghostwear1.com/images/social/ghostwear-share-preview-v2.jpg" />
   <meta property="og:image:type" content="image/jpeg" />
@@ -16,9 +16,9 @@
   <meta property="og:url" content="https://ghostwear1.com/" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="GhostWear | Drop activo RD" />
-  <meta name="twitter:description" content="Shorts, tees, medias, gorras, hoodies y combos por WhatsApp." />
+  <meta name="twitter:description" content="Shorts, t-shirts, medias, gorras, hoodies y combos por WhatsApp." />
   <meta name="twitter:image" content="https://ghostwear1.com/images/social/ghostwear-share-preview-v2.jpg" />
-  <title>GhostWear RD | Shorts, tees, medias, gorras y hoodies por DM</title>
+  <title>GhostWear RD | Shorts, t-shirts, medias, gorras y hoodies por DM</title>
   <style>
     :root {
       color-scheme: dark;
@@ -249,6 +249,7 @@
       text-transform: uppercase;
       font-size: 0.76rem;
       overflow: hidden;
+      pointer-events: none;
     }
 
     .announce-track {
@@ -370,7 +371,7 @@
 
     body.intro-active .welcome.intro-gate {
       position: fixed;
-      inset: 34px 0 0;
+      inset: 0;
       z-index: 80;
       display: grid;
       align-items: center;
@@ -409,6 +410,7 @@
 
     body.intro-active .site-header {
       transform: translateY(-100%);
+      visibility: hidden;
       pointer-events: none;
     }
 
@@ -3500,14 +3502,14 @@
       <div class="wrap">
         <div class="welcome-card">
           <div class="welcome-content">
-            <span class="welcome-kicker">Drop activo RD / USA por cotizacion</span>
+            <span class="welcome-kicker">Drop activo RD / entregas nacionales</span>
             <div class="welcome-copy">
               <strong>Viste diferente.</strong>
-              <span class="welcome-subline">GhostWear. No sigas a la multitud. Construye tu propio fit.</span>
+              <span class="welcome-subline">Shorts, t-shirts, gorras y medias listos para pedir por WhatsApp.</span>
             </div>
             <div class="welcome-actions">
               <a class="btn primary" href="#shop" data-discover-shop>Ver coleccion</a>
-              <button class="btn" id="welcomeFitBtn" type="button">Armar mi fit</button>
+              <button class="btn" id="welcomeFitBtn" type="button">Ver combos</button>
             </div>
           </div>
           <div class="welcome-visual" aria-hidden="true">
@@ -3520,7 +3522,7 @@
             <div class="welcome-product-peek">
               <span class="welcome-peek-card">
                 <img src="./images/inventory/tees/ghostwear-tee-04.webp" alt="" />
-                <span>Tees</span>
+                <span>T-Shirts</span>
               </span>
               <span class="welcome-peek-card">
                 <img src="./images/inventory/caps/studio/cap-01-azul-con-blanco-front.webp" alt="" />
@@ -3561,7 +3563,7 @@
           <div class="hero-note">
             <span>15 colores</span>
             <span>Tallas S / M / L / XL</span>
-            <span>Tees RD$ 2,300</span>
+            <span>T-Shirts RD$ 2,300</span>
             <span>Pedidos por DM</span>
             <span>USA por cotizacion</span>
             <span>Confirmacion por WhatsApp</span>
@@ -3597,7 +3599,7 @@
           </div>
           <p>
             Toca una categoria y encuentra rapido lo que vas a pedir por DM:
-            shorts, tees, medias, gorras o hoodie sin scrollear de mas.
+            shorts, t-shirts, medias, gorras o hoodie sin scrollear de mas.
           </p>
         </div>
         <div class="category-impact" aria-label="Categorias principales GhostWear">
@@ -3627,7 +3629,7 @@
           </a>
           <a class="category-card" href="#shop" data-shop-filter="tees" style="--category-image:url('./images/inventory/tees/ghostwear-tee-04.webp')">
             <small>3 modelos</small>
-            <div><strong>Categoria</strong><span>Tees</span></div>
+            <div><strong>Categoria</strong><span>T-Shirts</span></div>
             <em class="category-cta">Ver categoria -></em>
             <span class="boo-mark">boo</span>
           </a>
@@ -3640,7 +3642,7 @@
             <button class="filter-btn" type="button" data-filter="medias">Medias</button>
             <button class="filter-btn" type="button" data-filter="gorras">Gorras</button>
             <button class="filter-btn" type="button" data-filter="hoodie">Hoodie</button>
-            <button class="filter-btn" type="button" data-filter="tees">Tees</button>
+            <button class="filter-btn" type="button" data-filter="tees">T-Shirts</button>
           </div>
           <div class="shop-count" id="shopFilterCount">Mostrando todo el drop</div>
           <div class="color-grid shop-results" id="filteredShopGrid" aria-live="polite">
@@ -3783,7 +3785,7 @@
             <h2>Otros productos</h2>
           </div>
           <p>
-            El gear completa la vuelta: tees, medias, gorras y hoodie con precio claro,
+            El gear completa la vuelta: t-shirts, medias, gorras y hoodie con precio claro,
             disponibilidad por DM y envio que se cotiza antes de pagar.
           </p>
         </div>
@@ -3881,7 +3883,7 @@
               </div>
               <div>
                 <h3>Productos que ya parecen post.</h3>
-                <p>Gorras, shorts, tees, medias y hoodie con precio claro para cerrar por DM.</p>
+                <p>Gorras, shorts, t-shirts, medias y hoodie con precio claro para cerrar por DM.</p>
               </div>
             </article>
             <article class="card dm-card">
@@ -4087,11 +4089,11 @@
   <div class="overlay" id="drawerOverlay" hidden></div>
   <aside class="drawer" id="drawer" aria-labelledby="drawerTitle" aria-hidden="true">
     <div class="drawer-head">
-      <h2 id="drawerTitle">Tu fit</h2>
+      <h2 id="drawerTitle">Tu carrito</h2>
       <button class="remove" id="closeCart" type="button" aria-label="Cerrar carrito">X</button>
     </div>
     <div class="cart-items" id="cartItems">
-      <p class="empty">Tu fit esta vacio. Agrega una pieza y manda el DM.</p>
+      <p class="empty">Tu carrito esta vacio. Agrega una pieza y manda el DM.</p>
     </div>
     <div class="drawer-foot">
       <div class="total-row">
@@ -4529,9 +4531,9 @@
     ];
     const teeProducts = [
       {
-        tag: "Tee",
+        tag: "T-Shirt",
         category: "tees",
-        name: "Tee Ghost Fire",
+        name: "T-Shirt Ghost Fire",
         image: "./images/inventory/tees/ghostwear-tee-02.webp",
         realImage: "./images/inventory/tees/ghostwear-tee-01.webp",
         price: 2300,
@@ -4548,9 +4550,9 @@
         ]
       },
       {
-        tag: "Tee",
+        tag: "T-Shirt",
         category: "tees",
-        name: "Tee Ghost Purple Shadow",
+        name: "T-Shirt Ghost Purple Shadow",
         image: "./images/inventory/tees/ghostwear-tee-04.webp",
         realImage: "./images/inventory/tees/ghostwear-tee-03.webp",
         price: 2300,
@@ -4566,9 +4568,9 @@
         ]
       },
       {
-        tag: "Tee",
+        tag: "T-Shirt",
         category: "tees",
-        name: "Tee Ghost Red Logo",
+        name: "T-Shirt Ghost Red Logo",
         image: "./images/inventory/tees/ghostwear-tee-05.webp",
         realImage: "./images/inventory/tees/ghostwear-tee-05.webp",
         price: 2300,
@@ -4593,21 +4595,31 @@
         note: "Par de medias blancas con logo Ghost bordado en colores.",
         swatch: "#f6f3ee",
         sizes: ["Unica"],
-        quantities: ["1", "2", "3"]
+        quantities: ["1", "2", "3"],
+        photos: [
+          { label: "Azul", src: "./images/inventory/misc/ghostwear-cap-10.webp", view: "clean" },
+          { label: "Amarilla", src: "./images/inventory/misc/ghostwear-cap-11.webp", view: "clean" },
+          { label: "En uso", src: "./images/model/ghostwear-socks-detail-real.jpg", view: "real" }
+        ]
       },
       {
         tag: "Pack",
         category: "medias",
         name: "Pack 3 Medias Ghost",
-        image: "./images/inventory/misc/ghostwear-cap-10.webp",
-        realImage: "./images/inventory/misc/ghostwear-cap-11.webp",
+        image: "./images/designed/ghostwear-socks-studio.png",
+        realImage: "./images/ghostwear-socks-real.jpg",
         modelImage: "./images/model/ghostwear-socks-detail-real.jpg",
         price: 1000,
         priceLabel: "RD$ 1,000",
         note: "Oferta de historia: tres pares con logos Ghost en colores surtidos.",
         swatch: "#f4f1dc",
         sizes: ["Unica"],
-        quantities: ["1", "2"]
+        quantities: ["1", "2"],
+        photos: [
+          { label: "Pack", src: "./images/designed/ghostwear-socks-studio.png", view: "clean" },
+          { label: "Real", src: "./images/ghostwear-socks-real.jpg", view: "real" },
+          { label: "En uso", src: "./images/model/ghostwear-socks-detail-real.jpg", view: "real" }
+        ]
       },
       ...capProducts,
       {
@@ -4829,11 +4841,11 @@
         note: `3 pares por ${gearProducts.find(product => product.name.includes("Pack")).priceLabel}.`
       },
       {
-        title: "Tees",
+        title: "T-Shirts",
         href: "#gear",
         image: firstTeeProduct.image,
         price: firstTeeProduct.price,
-        note: `${teeProducts.length} tees con frente/espalda listos para pedir.`
+        note: `${teeProducts.length} t-shirts con frente/espalda listos para pedir.`
       }
     ];
     let cart = [];
@@ -5139,7 +5151,7 @@
               <p class="availability-line"><strong>Estado:</strong> ${availabilityCopy}</p>
               ${sizeHelp}
               <div class="buy-row">
-                <button class="btn primary add" type="button" data-name="${product.name}" data-price="${product.price}" data-price-label="${product.priceLabel}" data-category="${product.category}">Agregar al fit</button>
+                <button class="btn primary add" type="button" data-name="${product.name}" data-price="${product.price}" data-price-label="${product.priceLabel}" data-category="${product.category}">Agregar al carrito</button>
                 <button class="btn wa" type="button" data-name="${product.name}" data-price="${product.price}" data-price-label="${product.priceLabel}" data-category="${product.category}">Pedir por WhatsApp</button>
               </div>
             </div>
@@ -5161,7 +5173,7 @@
         medias: "medias",
         gorras: "gorras",
         hoodie: "hoodie",
-        tees: "tees"
+        tees: "t-shirts"
       };
       const label = filterLabels[filter] || filter;
 
@@ -5219,7 +5231,7 @@
         `3 pares ${gearProducts.find(product => product.name.includes("Pack")).priceLabel}`,
         `Gorras ${gearProducts.find(product => product.name.includes("Gorra")).priceLabel}`,
         `Hoodie ${gearProducts.find(product => product.name.includes("Hoodie")).priceLabel}`,
-        `Tees ${gearProducts.find(product => product.name.includes("Tee")).priceLabel}`,
+        `T-Shirts ${firstTeeProduct.priceLabel}`,
         store.shipping
       ];
 
@@ -5292,7 +5304,7 @@
       cartTotalEl.textContent = money.format(total);
 
       if (!cart.length) {
-        cartItemsEl.innerHTML = '<p class="empty">Tu fit esta vacio. Agrega una pieza y manda el DM.</p>';
+        cartItemsEl.innerHTML = '<p class="empty">Tu carrito esta vacio. Agrega una pieza y manda el DM.</p>';
         return;
       }
 
