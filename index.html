@@ -5359,9 +5359,50 @@
       `;
     }
 
+    function buildMixedDropProducts() {
+      const shortOrder = ["Red", "Black", "Royal Blue", "Baby Blue", "Neon Green", "White", "Orange", "Pink", "Navy", "Light Gray", "Olive", "Aqua", "Sky Blue", "Yellow", "Lavender"];
+      const capOrder = [
+        "Gorra 09 - Negra completa ghost blanco",
+        "Gorra 08 - Azul con blanco lineas",
+        "Gorra 01 - Azul con blanco",
+        "Gorra 14 - Rosada completa ghost negro",
+        "Gorra 06 - Roja en pana ghost negro",
+        "Gorra 12 - Gris completa ghost negro"
+      ];
+      const orderedShorts = [
+        ...shortOrder.map(color => products.find(product => product.color === color)).filter(Boolean),
+        ...products.filter(product => !shortOrder.includes(product.color))
+      ];
+      const orderedCaps = [
+        ...capOrder.map(name => capProducts.find(product => product.name === name)).filter(Boolean),
+        ...capProducts.filter(product => !capOrder.includes(product.name))
+      ];
+      const lanes = {
+        combos: [...comboProducts],
+        shorts: orderedShorts,
+        gorras: orderedCaps,
+        tees: [...teeProducts],
+        medias: gearProducts.filter(product => product.category === "medias"),
+        hoodie: gearProducts.filter(product => product.category === "hoodie")
+      };
+      const pattern = ["shorts", "gorras", "tees", "medias", "combos", "shorts", "gorras", "hoodie", "tees", "shorts", "gorras", "medias"];
+      const mixed = [];
+      const takeNext = category => {
+        const product = lanes[category]?.shift();
+        if (product && !mixed.includes(product)) mixed.push(product);
+      };
+
+      while (Object.values(lanes).some(group => group.length)) {
+        pattern.forEach(takeNext);
+        Object.keys(lanes).forEach(takeNext);
+      }
+
+      return mixed;
+    }
+
     function renderFilteredShop(filter = "todos") {
       const visibleProducts = filter === "todos"
-        ? [...products, ...gearProducts]
+        ? buildMixedDropProducts()
         : filter === "shorts"
           ? products
           : allProducts.filter(product => product.category === filter);
