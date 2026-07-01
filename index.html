@@ -1464,9 +1464,28 @@
       margin-top: 0;
     }
 
+    .shop-results.sparse-results {
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 420px));
+      justify-content: center;
+      align-items: stretch;
+    }
+
+    .shop-results.sparse-results .color-card {
+      min-height: 100%;
+    }
+
+    .shop-results.sparse-results .color-img {
+      aspect-ratio: 16 / 9;
+    }
+
+    .shop-results.sparse-results .color-body {
+      min-height: 178px;
+    }
+
     section { padding: 68px 0; }
     #shop {
       padding-top: 46px;
+      padding-bottom: 82px;
       scroll-margin-top: 92px;
     }
     #shop .section-head {
@@ -2184,6 +2203,8 @@
       grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
       gap: 18px;
       align-items: stretch;
+      width: min(100%, 1120px);
+      justify-self: center;
       padding: clamp(18px, 3vw, 28px);
       border-color: rgba(244, 241, 220, 0.42);
       background:
@@ -5698,11 +5719,13 @@
       const label = filterLabels[filter] || filter;
 
       if (filter === "combos") {
+        filteredShopGrid.classList.add("sparse-results");
         filteredShopGrid.innerHTML = comboBuilderMarkup();
         shopFilterCount.textContent = "Arma tu combo con las piezas que quieras y mandalo por WhatsApp.";
         return;
       }
 
+      filteredShopGrid.classList.toggle("sparse-results", filter !== "todos" && visibleProducts.length <= 3);
       filteredShopGrid.innerHTML = visibleProducts.map(product => {
         const isCombo = product.category === "combos";
         return productCard(product, {
