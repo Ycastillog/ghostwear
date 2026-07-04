@@ -1,2 +1,15 @@
 *.HEIC
 index.backup.html
+outputs/
+scripts/__pycache__/
+scripts/build_*reel.py
+*-test-cut.jpg
+*-rembg-preview.jpg
+*-grabcut-test.png
+*-grid.jpg
+*-auto-preview.jpg
+test-*.jpg
+test-*.png
+cap-real-studio-contact.jpg
+cap-studio*.jpg
+ghost-estudio-contact.jpg
