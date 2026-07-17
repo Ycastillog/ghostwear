@@ -541,6 +541,14 @@
       gap: 10px;
     }
 
+    .welcome-actions .btn.primary::before {
+      display: none;
+    }
+
+    .welcome-actions .btn {
+      min-width: 0;
+    }
+
     .welcome-color-rack {
       display: flex;
       flex-wrap: wrap;
@@ -658,6 +666,60 @@
         linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.44)),
         rgba(255, 255, 255, 0.04);
       box-shadow: inset 0 0 70px rgba(244, 241, 220, 0.035);
+    }
+
+    .welcome-hero-shot {
+      position: relative;
+      z-index: 2;
+      width: min(100%, 560px);
+      min-height: 430px;
+      overflow: hidden;
+      border: 1px solid rgba(244, 241, 220, 0.16);
+      border-radius: 8px;
+      background: #101010;
+      box-shadow: 0 34px 90px rgba(0, 0, 0, 0.44);
+    }
+
+    .welcome-hero-shot img {
+      width: 100%;
+      height: 100%;
+      min-height: 430px;
+      object-fit: cover;
+      object-position: center;
+      filter: saturate(1.02) contrast(1.05) brightness(0.92);
+      transform: scale(1.015);
+    }
+
+    .welcome-hero-shot::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, transparent 42%, rgba(0, 0, 0, 0.68)),
+        radial-gradient(circle at 28% 18%, rgba(244, 241, 220, 0.16), transparent 28%);
+      pointer-events: none;
+    }
+
+    .welcome-hero-label {
+      position: absolute;
+      left: 16px;
+      right: 16px;
+      bottom: 16px;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      border-top: 1px solid rgba(244, 241, 220, 0.24);
+      padding-top: 13px;
+      color: var(--ghost-cream);
+      font-size: 0.72rem;
+      font-weight: 950;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .welcome-hero-label span:last-child {
+      color: var(--muted);
     }
 
     .welcome-drop-badge {
@@ -3417,11 +3479,18 @@
       body.intro-active .welcome.intro-gate {
         align-items: start;
         overflow-y: auto;
+        overflow-x: hidden;
         padding: 10px 0;
       }
       body.intro-active .welcome-card {
-        width: min(100% - 18px, var(--max));
+        width: calc(100vw - 20px);
+        max-width: calc(100vw - 20px);
         min-height: auto;
+      }
+      body.intro-active .welcome .wrap {
+        width: 100%;
+        max-width: 100vw;
+        overflow: hidden;
       }
       .welcome { padding: 6px 0 4px; }
       .welcome-card {
@@ -3433,10 +3502,23 @@
           rgba(255, 255, 255, 0.045);
       }
       .welcome-content { gap: 9px; }
+      .welcome-content,
+      .welcome-copy,
+      .welcome-copy span,
+      .welcome-proof-line {
+        width: 100%;
+        max-width: calc(100vw - 54px);
+      }
       .welcome-kicker { padding: 6px 9px; font-size: 0.62rem; white-space: normal; }
       .welcome-copy { gap: 5px; }
       .welcome-copy strong { font-size: clamp(1.92rem, 10.4vw, 2.65rem); line-height: 0.9; }
       .welcome-copy span { font-size: 0.78rem; line-height: 1.32; }
+      .welcome-subline {
+        display: block;
+        max-width: 100%;
+        overflow-wrap: anywhere;
+        letter-spacing: 0.04em;
+      }
       .welcome-proof-line {
         gap: 6px;
       }
@@ -3511,10 +3593,7 @@
         font-size: 0.58rem;
       }
       .welcome-product-peek {
-        left: 9px;
-        right: 9px;
-        bottom: 9px;
-        gap: 7px;
+        display: none;
       }
       .welcome-peek-card {
         min-height: 62px;
@@ -3529,10 +3608,12 @@
       }
       .welcome-actions {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
         gap: 8px;
       }
       .welcome-actions .btn {
+        width: 100%;
+        max-width: 100%;
         min-height: 46px;
         padding: 0 10px;
         justify-content: center;
@@ -3543,9 +3624,7 @@
         gap: 7px;
       }
       .welcome-actions .btn.primary::before {
-        width: 36px;
-        height: 28px;
-        font-size: 0.62rem;
+        display: none;
       }
       .welcome-color-rack {
         gap: 7px;
@@ -3558,6 +3637,34 @@
       .welcome-color-rack strong {
         flex-basis: 100%;
         margin-left: 0;
+      }
+      .welcome-card,
+      .welcome-content,
+      .welcome-visual {
+        min-width: 0;
+        max-width: 100%;
+        overflow: hidden;
+      }
+      .welcome-visual {
+        min-height: 288px;
+      }
+      .welcome-hero-shot {
+        width: 100%;
+        min-height: 286px;
+        border-radius: 12px;
+      }
+      .welcome-hero-shot img {
+        min-height: 286px;
+      }
+      .welcome-hero-label {
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        font-size: 0.58rem;
+        justify-content: flex-start;
+      }
+      .welcome-hero-label span:last-child {
+        display: none;
       }
       .category-impact {
         grid-template-columns: none;
@@ -3910,7 +4017,7 @@
             <span class="welcome-kicker">Drop activo RD / entregas nacionales</span>
             <div class="welcome-copy">
               <strong>Viste diferente.</strong>
-              <span class="welcome-subline">Shorts, t-shirts, gorras y medias listos para pedir por WhatsApp.</span>
+              <span class="welcome-subline">Shorts, gorras y medias listos por WhatsApp.</span>
             </div>
             <div class="welcome-proof-line" aria-label="Detalles rapidos del drop">
               <span>Drop activo</span>
@@ -3919,7 +4026,7 @@
             </div>
             <div class="welcome-actions">
               <a class="btn primary" href="#shop" data-discover-shop>Ver coleccion</a>
-              <button class="btn" id="welcomeFitBtn" type="button">Armar combo</button>
+              <button class="btn" id="welcomeFitBtn" type="button">Pedir por WhatsApp</button>
             </div>
             <div class="welcome-color-rack" aria-label="Colores de shorts disponibles">
               <span style="--dot:#d71925"></span>
@@ -3941,11 +4048,12 @@
           </div>
           <div class="welcome-visual" aria-hidden="true">
             <div class="welcome-drop-badge">Drop listo para hoy</div>
-            <div class="welcome-logo-focus">
-              <span class="welcome-orbit"></span>
-              <span class="welcome-orbit"></span>
-              <span class="welcome-orbit"></span>
-              <img src="./images/logo-ghost-transparent.png" alt="" />
+            <div class="welcome-hero-shot">
+              <img src="./images/designed/ghostwear-designed-white.jpg" alt="" />
+              <div class="welcome-hero-label">
+                <span>Short + medias</span>
+                <span>Desde RD$ 1,500</span>
+              </div>
             </div>
             <div class="welcome-product-peek">
               <span class="welcome-peek-card">
