@@ -439,6 +439,10 @@
       overflow: hidden;
     }
 
+    body.intro-active main > section:not(.welcome) {
+      display: none;
+    }
+
     body.intro-active .welcome.intro-gate {
       position: fixed;
       inset: 0;
@@ -2447,7 +2451,7 @@
       padding: 18px;
       background:
         linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.58)),
-        url("./images/designed/ghostwear-short-red-studio.png") center / cover;
+        url("./images/designed/ghostwear-short-red-studio.webp") center / cover;
       overflow: hidden;
     }
 
@@ -3177,7 +3181,7 @@
       grid-column: span 2;
       background-image:
         linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.82)),
-        url("./images/media/ghostwear-media-01.jpg");
+        url("./images/media/ghostwear-media-01.webp");
       background-size: cover;
       background-position: center;
     }
@@ -4356,15 +4360,15 @@
             </div>
             <nav class="welcome-product-peek" aria-label="Entrar por categoria">
               <a class="welcome-peek-card" href="#shop" data-shop-filter="shorts">
-                <img src="./images/designed/ghostwear-short-red-studio.png" alt="Shorts GhostWear" decoding="async" />
+                <img src="./images/designed/ghostwear-short-red-studio.webp" alt="Shorts GhostWear" loading="lazy" decoding="async" />
                 <span>Shorts</span>
               </a>
               <a class="welcome-peek-card" href="#shop" data-shop-filter="tees">
-                <img src="./images/inventory/tees/ghostwear-tee-04.webp" alt="T-Shirts GhostWear" decoding="async" />
+                <img src="./images/inventory/tees/ghostwear-tee-04.webp" alt="T-Shirts GhostWear" loading="lazy" decoding="async" />
                 <span>T-Shirts</span>
               </a>
               <a class="welcome-peek-card" href="#shop" data-shop-filter="gorras">
-                <img src="./images/inventory/caps/studio/cap-09-negra-ghost-blanco-front.webp" alt="Gorras GhostWear" decoding="async" />
+                <img src="./images/inventory/caps/studio/cap-09-negra-ghost-blanco-front.webp" alt="Gorras GhostWear" loading="lazy" decoding="async" />
                 <span>Gorras</span>
               </a>
             </nav>
@@ -4433,19 +4437,19 @@
           </p>
         </div>
         <div class="category-impact" aria-label="Categorias principales GhostWear">
-          <a class="category-card" href="#shop" data-shop-filter="shorts" style="--category-image:url('./images/designed/ghostwear-short-royal-blue-studio.png')">
+          <a class="category-card" href="#shop" data-shop-filter="shorts" style="--category-image:url('./images/designed/ghostwear-short-royal-blue-studio.webp')">
             <small>15 colores</small>
             <div><strong>Categoria</strong><span>Shorts</span></div>
             <em class="category-cta">Ver categoria -></em>
             <span class="boo-mark">boo</span>
           </a>
-          <a class="category-card" href="#shop" data-shop-filter="hoodie" style="--category-image:url('./images/designed/ghostwear-hoodie-studio.png')">
+          <a class="category-card" href="#shop" data-shop-filter="hoodie" style="--category-image:url('./images/designed/ghostwear-hoodie-studio.webp')">
             <small>Pocas tallas</small>
             <div><strong>Categoria</strong><span>Hoodie</span></div>
             <em class="category-cta">Ver categoria -></em>
             <span class="boo-mark">boo</span>
           </a>
-          <a class="category-card" href="#shop" data-shop-filter="medias" style="--category-image:url('./images/designed/ghostwear-socks-studio.png')">
+          <a class="category-card" href="#shop" data-shop-filter="medias" style="--category-image:url('./images/designed/ghostwear-socks-studio.webp')">
             <small>Pack activo</small>
             <div><strong>Categoria</strong><span>Medias</span></div>
             <em class="category-cta">Ver categoria -></em>
@@ -4563,28 +4567,28 @@
           </article>
 
           <div class="media-grid">
-            <article class="card media-card" style="background-image:url('./images/designed/ghostwear-short-royal-blue-studio.png')">
+            <article class="card media-card" style="background-image:url('./images/designed/ghostwear-short-royal-blue-studio.webp')">
               <span class="format-tag">Reel 9:16</span>
               <div>
                 <h3>Color punch</h3>
                 <p>Reel corto: color, logo, precio y disponible por DM.</p>
               </div>
             </article>
-            <article class="card media-card" style="background-image:url('./images/designed/ghostwear-short-lavender-logo-gray.png')">
+            <article class="card media-card" style="background-image:url('./images/designed/ghostwear-short-lavender-logo-gray.webp')">
               <span class="format-tag">Story</span>
               <div>
                 <h3>Encuesta de color</h3>
                 <p>Historias para medir demanda antes de que se acabe la talla.</p>
               </div>
             </article>
-            <article class="card media-card" style="background-image:url('./images/designed/ghostwear-socks-studio.png')">
+            <article class="card media-card" style="background-image:url('./images/designed/ghostwear-socks-studio.webp')">
               <span class="format-tag">Post 1:1</span>
               <div>
                 <h3>Producto limpio</h3>
                 <p>Feed claro para que el cliente pida sin descifrar nada.</p>
               </div>
             </article>
-            <article class="card media-card" style="background-image:url('./images/designed/ghostwear-short-white-logo-black.png')">
+            <article class="card media-card" style="background-image:url('./images/designed/ghostwear-short-white-logo-black.webp')">
               <span class="format-tag">Carrusel</span>
               <div>
                 <h3>White essential</h3>
@@ -4595,14 +4599,14 @@
         </div>
 
         <div class="obsession">
-          <article class="card obsession-card" style="background-image:url('./images/designed/ghostwear-short-royal-blue-studio.png')">
+          <article class="card obsession-card" style="background-image:url('./images/designed/ghostwear-short-royal-blue-studio.webp')">
             <div>
               <span class="section-kicker">Por que compra</span>
               <h3>Porque se siente limitado.</h3>
             </div>
             <p>El cliente no ve un short suelto: ve color, paquete, drop y una marca que parece moverse.</p>
           </article>
-          <article class="card obsession-card" style="background-image:url('./images/designed/ghostwear-hoodie-studio.png')">
+          <article class="card obsession-card" style="background-image:url('./images/designed/ghostwear-hoodie-studio.webp')">
             <div>
               <span class="section-kicker">Como se vende</span>
               <h3>DM directo. Fit claro.</h3>
@@ -4749,15 +4753,15 @@
 
         <div class="real-drop-strip" aria-label="Fotografias reales del drop GhostWear">
           <figure class="real-drop-shot">
-            <img src="./images/media/ghostwear-media-01.jpg" alt="Short GhostWear rojo fotografiado en inventario real" loading="lazy" decoding="async" />
+            <img src="./images/media/ghostwear-media-01.webp" alt="Short GhostWear rojo fotografiado en inventario real" loading="lazy" decoding="async" />
             <figcaption><strong>Producto real</strong><span>Short rojo GhostWear</span></figcaption>
           </figure>
           <figure class="real-drop-shot">
-            <img src="./images/media/ghostwear-media-02.jpg" alt="Short GhostWear azul claro fotografiado en inventario real" loading="lazy" decoding="async" />
+            <img src="./images/media/ghostwear-media-02.webp" alt="Short GhostWear azul claro fotografiado en inventario real" loading="lazy" decoding="async" />
             <figcaption><strong>Color comprobable</strong><span>Azul claro disponible</span></figcaption>
           </figure>
           <figure class="real-drop-shot">
-            <img src="./images/media/ghostwear-media-04.jpg" alt="Short GhostWear naranja fotografiado en inventario real" loading="lazy" decoding="async" />
+            <img src="./images/media/ghostwear-media-04.webp" alt="Short GhostWear naranja fotografiado en inventario real" loading="lazy" decoding="async" />
             <figcaption><strong>Drop activo</strong><span>Naranja GhostWear</span></figcaption>
           </figure>
         </div>
@@ -5048,21 +5052,21 @@
     }
 
     const products = [
-      { color: "Red", name: "Short Ghost Red", image: "./images/media/ghostwear-media-01.jpg", hex: "#d71925", note: "Rojo de juego caliente: entra duro, se ve desde la grada.", courtTag: "Buzzer rojo", courtLine: "Para el fit que grita clutch cuando llega la hora de cerrar." },
-      { color: "Baby Blue", name: "Short Ghost Baby Blue", image: "./images/media/ghostwear-media-02.jpg", hex: "#a7d8ff", note: "Azul claro tipo warmup fresco, limpio con medias Ghost blancas.", courtTag: "Warmup", courtLine: "Color suave para bajar tranquilo, pero con energia de cancha." },
-      { color: "Light Gray", name: "Short Ghost Light Gray", image: "./images/media/ghostwear-media-03.jpg", hex: "#d8d4cd", note: "Gris de practica: facil de combinar para gym, cancha y calle.", courtTag: "Practice", courtLine: "El short de rotacion diaria cuando el fit va sin mucha vuelta." },
-      { color: "Orange", name: "Short Ghost Orange", image: "./images/media/ghostwear-media-04.jpg", hex: "#f36a22", note: "Naranja de balon: vivo, deportivo y hecho para contenido.", courtTag: "Ball color", courtLine: "La conexion mas directa con basket: color de pelota, flow Ghost." },
-      { color: "Olive", name: "Short Ghost Olive", image: "./images/media/ghostwear-media-05.jpg", hex: "#777b52", note: "Olive defensivo, sobrio y callejero para jugar callado.", courtTag: "Defensa", courtLine: "Para el que no habla mucho, pero se siente cuando entra al juego." },
-      { color: "Aqua", name: "Short Ghost Aqua", image: "./images/media/ghostwear-media-06.jpg", hex: "#54ded1", note: "Aqua fresco de verano, cancha abierta y fit de calor RD.", courtTag: "Summer run", courtLine: "Perfecto para juego al aire libre, playa y vuelta despues de la cancha." },
-      { color: "Sky Blue", name: "Short Ghost Sky Blue", image: "./images/media/ghostwear-media-07.jpg", hex: "#35a7df", note: "Azul cielo con vibra deportiva y energia de uniforme alterno.", courtTag: "Away blue", courtLine: "El color visitante: fresco, visible y facil de combinar." },
-      { color: "Pink", name: "Short Ghost Pink", image: "./images/media/ghostwear-media-08.jpg", hex: "#ff4f86", note: "Pink intenso para romper la cancha y no parecerse a nadie.", courtTag: "Statement", courtLine: "Para el jugador que quiere que el fit sea parte del show." },
-      { color: "Neon Green", name: "Short Ghost Neon Green", image: "./images/media/ghostwear-media-09.jpg", hex: "#83f13a", note: "Verde neon tipo highlight: el color que no se pierde en la jugada.", courtTag: "Highlight", courtLine: "Cuando hay luces, video y story, este color aparece primero." },
-      { color: "Royal Blue", name: "Short Ghost Royal Blue", image: "./images/media/ghostwear-media-10.jpg", hex: "#2454ff", note: "Azul royal con energia de uniforme fuerte y cancha dominicana.", courtTag: "Royal game", courtLine: "El color mas de equipo: serio, deportivo y con presencia." },
-      { color: "Yellow", name: "Short Ghost Yellow", image: "./images/media/ghostwear-media-11.jpg", hex: "#f4c21c", note: "Amarillo ganador, brillante y facil de leer en foto o reel.", courtTag: "Trophy", courtLine: "Para meterle luz al fit: amarillo de trofeo, foto y celebracion." },
-      { color: "Navy", name: "Short Ghost Navy", image: "./images/media/ghostwear-media-12.jpg", hex: "#202a64", note: "Azul navy oscuro tipo uniforme serio para jugar con calma.", courtTag: "Capitan", courtLine: "Color de lider: combina facil y mantiene la vuelta limpia." },
-      { color: "Lavender", name: "Short Ghost Lavender", image: "./images/media/ghostwear-media-13.jpg", hex: "#c8afe6", note: "Lavender suave para un alterno diferente, fino y de coleccion.", courtTag: "Alternate", courtLine: "Ese color raro del equipo que despues todo el mundo pregunta." },
-      { color: "Black", name: "Short Ghost Black", image: "./images/media/ghostwear-media-14.jpg", hex: "#111111", note: "Negro away: esencial, fuerte, logo blanco y uso diario.", courtTag: "Away black", courtLine: "El uniforme oscuro del Ghost: seguro, facil y siempre duro." },
-      { color: "White", name: "Short Ghost White", image: "./images/media/ghostwear-media-15.jpg", hex: "#f4f1e8", note: "Blanco home: fresco, limpio y con cordon negro para contraste.", courtTag: "Home white", courtLine: "El color de casa: limpio para fotos, cancha y salida." }
+      { color: "Red", name: "Short Ghost Red", image: "./images/media/ghostwear-media-01.webp", hex: "#d71925", note: "Rojo de juego caliente: entra duro, se ve desde la grada.", courtTag: "Buzzer rojo", courtLine: "Para el fit que grita clutch cuando llega la hora de cerrar." },
+      { color: "Baby Blue", name: "Short Ghost Baby Blue", image: "./images/media/ghostwear-media-02.webp", hex: "#a7d8ff", note: "Azul claro tipo warmup fresco, limpio con medias Ghost blancas.", courtTag: "Warmup", courtLine: "Color suave para bajar tranquilo, pero con energia de cancha." },
+      { color: "Light Gray", name: "Short Ghost Light Gray", image: "./images/media/ghostwear-media-03.webp", hex: "#d8d4cd", note: "Gris de practica: facil de combinar para gym, cancha y calle.", courtTag: "Practice", courtLine: "El short de rotacion diaria cuando el fit va sin mucha vuelta." },
+      { color: "Orange", name: "Short Ghost Orange", image: "./images/media/ghostwear-media-04.webp", hex: "#f36a22", note: "Naranja de balon: vivo, deportivo y hecho para contenido.", courtTag: "Ball color", courtLine: "La conexion mas directa con basket: color de pelota, flow Ghost." },
+      { color: "Olive", name: "Short Ghost Olive", image: "./images/media/ghostwear-media-05.webp", hex: "#777b52", note: "Olive defensivo, sobrio y callejero para jugar callado.", courtTag: "Defensa", courtLine: "Para el que no habla mucho, pero se siente cuando entra al juego." },
+      { color: "Aqua", name: "Short Ghost Aqua", image: "./images/media/ghostwear-media-06.webp", hex: "#54ded1", note: "Aqua fresco de verano, cancha abierta y fit de calor RD.", courtTag: "Summer run", courtLine: "Perfecto para juego al aire libre, playa y vuelta despues de la cancha." },
+      { color: "Sky Blue", name: "Short Ghost Sky Blue", image: "./images/media/ghostwear-media-07.webp", hex: "#35a7df", note: "Azul cielo con vibra deportiva y energia de uniforme alterno.", courtTag: "Away blue", courtLine: "El color visitante: fresco, visible y facil de combinar." },
+      { color: "Pink", name: "Short Ghost Pink", image: "./images/media/ghostwear-media-08.webp", hex: "#ff4f86", note: "Pink intenso para romper la cancha y no parecerse a nadie.", courtTag: "Statement", courtLine: "Para el jugador que quiere que el fit sea parte del show." },
+      { color: "Neon Green", name: "Short Ghost Neon Green", image: "./images/media/ghostwear-media-09.webp", hex: "#83f13a", note: "Verde neon tipo highlight: el color que no se pierde en la jugada.", courtTag: "Highlight", courtLine: "Cuando hay luces, video y story, este color aparece primero." },
+      { color: "Royal Blue", name: "Short Ghost Royal Blue", image: "./images/media/ghostwear-media-10.webp", hex: "#2454ff", note: "Azul royal con energia de uniforme fuerte y cancha dominicana.", courtTag: "Royal game", courtLine: "El color mas de equipo: serio, deportivo y con presencia." },
+      { color: "Yellow", name: "Short Ghost Yellow", image: "./images/media/ghostwear-media-11.webp", hex: "#f4c21c", note: "Amarillo ganador, brillante y facil de leer en foto o reel.", courtTag: "Trophy", courtLine: "Para meterle luz al fit: amarillo de trofeo, foto y celebracion." },
+      { color: "Navy", name: "Short Ghost Navy", image: "./images/media/ghostwear-media-12.webp", hex: "#202a64", note: "Azul navy oscuro tipo uniforme serio para jugar con calma.", courtTag: "Capitan", courtLine: "Color de lider: combina facil y mantiene la vuelta limpia." },
+      { color: "Lavender", name: "Short Ghost Lavender", image: "./images/media/ghostwear-media-13.webp", hex: "#c8afe6", note: "Lavender suave para un alterno diferente, fino y de coleccion.", courtTag: "Alternate", courtLine: "Ese color raro del equipo que despues todo el mundo pregunta." },
+      { color: "Black", name: "Short Ghost Black", image: "./images/media/ghostwear-media-14.webp", hex: "#111111", note: "Negro away: esencial, fuerte, logo blanco y uso diario.", courtTag: "Away black", courtLine: "El uniforme oscuro del Ghost: seguro, facil y siempre duro." },
+      { color: "White", name: "Short Ghost White", image: "./images/media/ghostwear-media-15.webp", hex: "#f4f1e8", note: "Blanco home: fresco, limpio y con cordon negro para contraste.", courtTag: "Home white", courtLine: "El color de casa: limpio para fotos, cancha y salida." }
     ].map(product => ({
       ...product,
       tag: product.color,
@@ -5117,7 +5121,7 @@
       tag: products[0].color,
       category: "shorts",
       name: products[0].name,
-      image: "./images/designed/ghostwear-short-red-studio.png",
+      image: "./images/designed/ghostwear-short-red-studio.webp",
       realImage: products[0].image,
       hex: products[0].hex,
       price: 1500,
@@ -5463,7 +5467,7 @@
         tag: "Pack",
         category: "medias",
         name: "Pack 3 Medias Ghost",
-        image: "./images/designed/ghostwear-socks-studio.png",
+        image: "./images/designed/ghostwear-socks-studio.webp",
         realImage: "./images/ghostwear-socks-real.jpg",
         modelImage: "./images/model/ghostwear-socks-detail-real.jpg",
         price: 1000,
@@ -5473,7 +5477,7 @@
         sizes: ["Unica"],
         quantities: ["1", "2", "3"],
         photos: [
-          { label: "Pack", src: "./images/designed/ghostwear-socks-studio.png", view: "clean" },
+          { label: "Pack", src: "./images/designed/ghostwear-socks-studio.webp", view: "clean" },
           { label: "Real", src: "./images/ghostwear-socks-real.jpg", view: "real" },
           { label: "En uso", src: "./images/model/ghostwear-socks-detail-real.jpg", view: "real" }
         ]
@@ -5483,7 +5487,7 @@
         tag: "Hoodie",
         category: "hoodie",
         name: "Hoodie Ghost Black",
-        image: "./images/designed/ghostwear-hoodie-studio.png",
+        image: "./images/designed/ghostwear-hoodie-studio.webp",
         realImage: "./images/gear/ghostwear-hoodie.jpg",
         price: 3000,
         priceLabel: "RD$ 3,000",
@@ -5539,7 +5543,7 @@
       {
         tag: "Full Fit",
         name: "Full Ghost Fit",
-        image: "./images/designed/ghostwear-hoodie-studio.png",
+        image: "./images/designed/ghostwear-hoodie-studio.webp",
         price: 4600,
         priceLabel: "RD$ 4,600",
         normalPrice: 4850,
@@ -5609,21 +5613,21 @@
     comboProducts[1].urgency = { label: "Color mas pedido", line: "Short + gorra para salir con el look completo." };
     comboProducts[2].urgency = { label: "Full fit limitado", line: "El paquete completo tiene descuento y stock por talla." };
     const cleanShortImages = {
-      "Red": "./images/designed/ghostwear-short-red-studio.png",
-      "Baby Blue": "./images/designed/ghostwear-short-baby-blue-logo-black.png",
-      "Light Gray": "./images/designed/ghostwear-short-light-gray-logo-black.png",
-      "Orange": "./images/designed/ghostwear-short-orange-studio.png",
-      "Olive": "./images/designed/ghostwear-short-olive-studio.png",
-      "Aqua": "./images/designed/ghostwear-short-aqua-logo-gray.png",
-      "Sky Blue": "./images/designed/ghostwear-short-sky-blue-logo-black.png",
-      "Pink": "./images/designed/ghostwear-short-pink-studio.png",
-      "Neon Green": "./images/designed/ghostwear-short-neon-green-studio.png",
-      "Royal Blue": "./images/designed/ghostwear-short-royal-blue-studio.png",
-      "Yellow": "./images/designed/ghostwear-short-yellow-studio.png",
-      "Navy": "./images/designed/ghostwear-short-navy-studio.png",
-      "Lavender": "./images/designed/ghostwear-short-lavender-logo-gray.png",
-      "Black": "./images/designed/ghostwear-short-black-studio.png",
-      "White": "./images/designed/ghostwear-short-white-logo-black.png"
+      "Red": "./images/designed/ghostwear-short-red-studio.webp",
+      "Baby Blue": "./images/designed/ghostwear-short-baby-blue-logo-black.webp",
+      "Light Gray": "./images/designed/ghostwear-short-light-gray-logo-black.webp",
+      "Orange": "./images/designed/ghostwear-short-orange-studio.webp",
+      "Olive": "./images/designed/ghostwear-short-olive-studio.webp",
+      "Aqua": "./images/designed/ghostwear-short-aqua-logo-gray.webp",
+      "Sky Blue": "./images/designed/ghostwear-short-sky-blue-logo-black.webp",
+      "Pink": "./images/designed/ghostwear-short-pink-studio.webp",
+      "Neon Green": "./images/designed/ghostwear-short-neon-green-studio.webp",
+      "Royal Blue": "./images/designed/ghostwear-short-royal-blue-studio.webp",
+      "Yellow": "./images/designed/ghostwear-short-yellow-studio.webp",
+      "Navy": "./images/designed/ghostwear-short-navy-studio.webp",
+      "Lavender": "./images/designed/ghostwear-short-lavender-logo-gray.webp",
+      "Black": "./images/designed/ghostwear-short-black-studio.webp",
+      "White": "./images/designed/ghostwear-short-white-logo-black.webp"
     };
     const ghostModelImages = {
       court: "./images/model/ghostwear-juanco-model-court.jpg",
@@ -5672,14 +5676,14 @@
       {
         title: "Combos",
         href: "#combos",
-        image: "./images/designed/ghostwear-short-royal-blue-studio.png",
+        image: "./images/designed/ghostwear-short-royal-blue-studio.webp",
         price: comboProducts[0].price,
         note: "Combos listos para resolver la vuelta."
       },
       {
         title: "Shorts",
         href: "#drop",
-        image: "./images/designed/ghostwear-short-royal-blue-studio.png",
+        image: "./images/designed/ghostwear-short-royal-blue-studio.webp",
         price: products[0].price,
         note: `${products.length} colores para armar el fit.`
       },
@@ -5693,7 +5697,7 @@
       {
         title: "Medias",
         href: "#gear",
-        image: "./images/designed/ghostwear-socks-studio.png",
+        image: "./images/designed/ghostwear-socks-studio.webp",
         price: gearProducts.find(product => product.name === "Medias Ghost").price,
         note: `3 pares por ${gearProducts.find(product => product.name.includes("Pack")).priceLabel}.`
       },
@@ -6300,11 +6304,12 @@
     }
 
     function renderProducts() {
+      const prioritizeCatalogImages = document.body.classList.contains("intro-dismissed");
       productGrid.innerHTML = products.map((product, index) => productCard(product, {
         badge: "En stock",
         tag: product.color,
         sellLine: "Disponible por DM hoy",
-        eagerImage: index < 3
+        eagerImage: prioritizeCatalogImages && index < 3
       })).join("");
     }
 
