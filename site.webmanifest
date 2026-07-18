@@ -1,0 +1,22 @@
+{
+  "name": "GhostWear RD",
+  "short_name": "GhostWear",
+  "description": "Streetwear dominicano con pedidos directos por WhatsApp.",
+  "start_url": "./?catalog",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#050505",
+  "theme_color": "#050505",
+  "icons": [
+    {
+      "src": "./images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
