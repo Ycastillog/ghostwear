@@ -668,61 +668,6 @@
       box-shadow: inset 0 0 70px rgba(244, 241, 220, 0.035);
     }
 
-    .welcome-hero-shot {
-      position: relative;
-      z-index: 2;
-      width: min(100%, 560px);
-      height: clamp(430px, 46vw, 560px);
-      min-height: 430px;
-      overflow: hidden;
-      border: 1px solid rgba(244, 241, 220, 0.16);
-      border-radius: 8px;
-      background: #101010;
-      box-shadow: 0 34px 90px rgba(0, 0, 0, 0.44);
-    }
-
-    .welcome-hero-shot img {
-      width: 100%;
-      height: 100%;
-      min-height: 0;
-      object-fit: cover;
-      object-position: center 62%;
-      filter: saturate(1.02) contrast(1.05) brightness(0.92);
-      transform: scale(1.015);
-    }
-
-    .welcome-hero-shot::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(180deg, transparent 42%, rgba(0, 0, 0, 0.68)),
-        radial-gradient(circle at 28% 18%, rgba(244, 241, 220, 0.16), transparent 28%);
-      pointer-events: none;
-    }
-
-    .welcome-hero-label {
-      position: absolute;
-      left: 16px;
-      right: 16px;
-      bottom: 16px;
-      z-index: 2;
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      border-top: 1px solid rgba(244, 241, 220, 0.24);
-      padding-top: 13px;
-      color: var(--ghost-cream);
-      font-size: 0.72rem;
-      font-weight: 950;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .welcome-hero-label span:last-child {
-      color: var(--muted);
-    }
-
     .welcome-drop-badge {
       position: absolute;
       top: 14px;
@@ -3558,11 +3503,12 @@
         border-radius: 12px;
       }
       .welcome-logo-focus {
-        min-height: 184px;
-        padding: 34px 14px 62px;
+        min-height: 288px;
+        align-items: center;
+        padding: 44px 14px;
       }
       .welcome-logo-focus img {
-        width: min(64%, 178px);
+        width: min(72%, 220px);
       }
       .welcome-drop-badge {
         top: 10px;
@@ -3643,26 +3589,6 @@
       }
       .welcome-visual {
         min-height: 288px;
-      }
-      .welcome-hero-shot {
-        width: 100%;
-        height: 300px;
-        min-height: 286px;
-        border-radius: 8px;
-      }
-      .welcome-hero-shot img {
-        min-height: 0;
-        object-position: center 62%;
-      }
-      .welcome-hero-label {
-        left: 12px;
-        right: 12px;
-        bottom: 12px;
-        font-size: 0.58rem;
-        justify-content: flex-start;
-      }
-      .welcome-hero-label span:last-child {
-        display: none;
       }
       .category-impact {
         grid-template-columns: none;
@@ -4046,13 +3972,12 @@
             </div>
           </div>
           <div class="welcome-visual" aria-hidden="true">
-            <div class="welcome-drop-badge">Drop listo para hoy</div>
-            <div class="welcome-hero-shot">
-              <img src="./images/designed/ghostwear-designed-white.jpg" alt="" />
-              <div class="welcome-hero-label">
-                <span>Short + medias</span>
-                <span>Desde RD$ 1,500</span>
-              </div>
+            <div class="welcome-drop-badge">Universo GhostWear</div>
+            <div class="welcome-logo-focus">
+              <span class="welcome-orbit"></span>
+              <span class="welcome-orbit"></span>
+              <span class="welcome-orbit"></span>
+              <img src="./images/logo-ghost-transparent.png" alt="" />
             </div>
             <div class="welcome-product-peek">
               <span class="welcome-peek-card">
