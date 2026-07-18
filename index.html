@@ -186,9 +186,40 @@
             <h2>Compra sin dar vueltas</h2>
           </div>
           <p>
-            Toca una categoria y encuentra rapido lo que vas a pedir por DM:
-            shorts, t-shirts, medias, gorras o hoodie sin scrollear de mas.
+            Explora el drop, filtra y abre solo la pieza que quieres revisar.
+            Mas productos a la vista y menos vueltas antes de pedir.
           </p>
+        </div>
+        <div class="shop-filter-shell">
+          <div class="shop-browse-tools">
+            <label class="shop-search">
+              <span>Buscar</span>
+              <input id="shopSearch" type="search" placeholder="Pieza, color o categoria" autocomplete="off" />
+            </label>
+            <label class="shop-sort">
+              <span>Ordenar</span>
+              <select id="shopSort">
+                <option value="featured">Destacados</option>
+                <option value="price-asc">Precio menor</option>
+                <option value="price-desc">Precio mayor</option>
+              </select>
+            </label>
+          </div>
+          <div class="filter-bar" id="shopFilters" aria-label="Filtrar productos por categoria">
+            <button class="filter-btn active" type="button" data-filter="todos">Todos</button>
+            <button class="filter-btn" type="button" data-filter="combos">Armar combo</button>
+            <button class="filter-btn" type="button" data-filter="shorts">Shorts</button>
+            <button class="filter-btn" type="button" data-filter="medias">Medias</button>
+            <button class="filter-btn" type="button" data-filter="gorras">Gorras</button>
+            <button class="filter-btn" type="button" data-filter="hoodie">Hoodie</button>
+            <button class="filter-btn" type="button" data-filter="tees">T-Shirts</button>
+          </div>
+          <div class="shop-count" id="shopFilterCount">Mostrando todo el drop</div>
+          <div class="color-grid shop-results" id="filteredShopGrid" aria-live="polite">
+          </div>
+          <div class="shop-load-more" id="shopLoadMoreWrap" hidden>
+            <button class="btn secondary" id="shopLoadMore" type="button">Ver mas productos</button>
+          </div>
         </div>
         <div class="category-impact" aria-label="Categorias principales GhostWear">
           <a class="category-card" href="#shop" data-shop-filter="shorts" style="--category-image:url('./images/designed/ghostwear-short-royal-blue-studio.webp')">
@@ -227,20 +258,6 @@
           <span><strong>Entrega nacional</strong>Santo Domingo e interior</span>
           <span><strong>Cambios coordinados</strong>Antes de usar la pieza</span>
           <span><strong>Atencion directa</strong>Por WhatsApp</span>
-        </div>
-        <div class="shop-filter-shell">
-          <div class="filter-bar" id="shopFilters" aria-label="Filtrar productos por categoria">
-            <button class="filter-btn active" type="button" data-filter="todos">Todos</button>
-            <button class="filter-btn" type="button" data-filter="combos">Armar combo</button>
-            <button class="filter-btn" type="button" data-filter="shorts">Shorts</button>
-            <button class="filter-btn" type="button" data-filter="medias">Medias</button>
-            <button class="filter-btn" type="button" data-filter="gorras">Gorras</button>
-            <button class="filter-btn" type="button" data-filter="hoodie">Hoodie</button>
-            <button class="filter-btn" type="button" data-filter="tees">T-Shirts</button>
-          </div>
-          <div class="shop-count" id="shopFilterCount">Mostrando todo el drop</div>
-          <div class="color-grid shop-results" id="filteredShopGrid" aria-live="polite">
-          </div>
         </div>
         <div class="drop-switch" id="shopCards">
         </div>

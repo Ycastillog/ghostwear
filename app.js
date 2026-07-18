@@ -32,9 +32,16 @@ const phone = "18099770166";
     const shopFilters = document.getElementById("shopFilters");
     const shopFilterCount = document.getElementById("shopFilterCount");
     const filteredShopGrid = document.getElementById("filteredShopGrid");
+    const shopSearch = document.getElementById("shopSearch");
+    const shopSort = document.getElementById("shopSort");
+    const shopLoadMore = document.getElementById("shopLoadMore");
+    const shopLoadMoreWrap = document.getElementById("shopLoadMoreWrap");
     const comboGrid = document.getElementById("comboGrid");
     const productGrid = document.getElementById("productGrid");
     const gearGrid = document.getElementById("gearGrid");
+    const shopPageSize = 12;
+    let activeShopFilter = "todos";
+    let visibleShopLimit = shopPageSize;
     const store = {
       phone,
       shipping: "RD + USA por cotizacion",
@@ -1099,22 +1106,25 @@ const phone = "18099770166";
               <div class="badge-row">
                 <span class="badge">${badge}</span>
                 <span class="badge">${tag}</span>
-                ${!compact && product.courtTag ? `<span class="badge court">${product.courtTag}</span>` : ""}
-                ${!compact ? `<span class="badge urgent">${urgency.label}</span>` : ""}
+                ${product.courtTag ? `<span class="badge court">${product.courtTag}</span>` : ""}
+                <span class="badge urgent">${urgency.label}</span>
               </div>
               <div class="color-title">
                 <h3>${product.name}</h3>
                 ${priceMarkup}
               </div>
-              ${comboIncludes}
-              <p>${product.note}</p>
-              ${!compact ? colorPicker : ""}
-              ${!compact ? variantSummary : ""}
-              ${!compact && product.courtLine ? `<div class="court-line">${product.courtLine}</div>` : ""}
-              <div class="sell-line">${sellLine}</div>
-              ${!compact ? `<div class="stock-line">${urgency.line}</div>` : ""}
+              ${compact ? `<button class="details-toggle" type="button" aria-expanded="false">Ver opciones</button>` : ""}
+              <div class="product-details">
+                ${comboIncludes}
+                <p>${product.note}</p>
+                ${colorPicker}
+                ${variantSummary}
+                ${product.courtLine ? `<div class="court-line">${product.courtLine}</div>` : ""}
+                <div class="sell-line">${sellLine}</div>
+                <div class="stock-line">${urgency.line}</div>
+              </div>
             </div>
-            <div>
+            <div class="purchase-panel">
               <div class="options">
                 <label>Size
                   <select class="size">
@@ -1265,13 +1275,22 @@ const phone = "18099770166";
       `;
     }
 
-    function renderFilteredShop(filter = "todos") {
+    function normalizeShopText(value = "") {
+      return String(value)
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase();
+    }
+
+    function shopProductsFor(filter) {
+      if (filter === "todos") return buildMixedDropProducts();
+      if (filter === "shorts") return products;
+      return allProducts.filter(product => product.category === filter);
+    }
+
+    function renderFilteredShop(filter = activeShopFilter) {
+      activeShopFilter = filter;
       filteredShopGrid.setAttribute("aria-busy", "true");
-      const visibleProducts = filter === "todos"
-        ? buildMixedDropProducts().slice(0, 6)
-        : filter === "shorts"
-          ? products
-          : allProducts.filter(product => product.category === filter);
       const filterLabels = {
         todos: "todo el drop",
         combos: "combos",
@@ -1284,31 +1303,66 @@ const phone = "18099770166";
       const label = filterLabels[filter] || filter;
 
       if (filter === "combos") {
-        filteredShopGrid.classList.add("sparse-results");
+        filteredShopGrid.classList.add("sparse-results", "combo-results");
         filteredShopGrid.innerHTML = comboBuilderMarkup();
         shopFilterCount.textContent = "Arma tu combo con las piezas que quieras y mandalo por WhatsApp.";
+        shopSearch.disabled = true;
+        shopSort.disabled = true;
+        shopLoadMoreWrap.hidden = true;
         filteredShopGrid.setAttribute("aria-busy", "false");
         return;
       }
 
-      filteredShopGrid.classList.toggle("sparse-results", filter !== "todos" && visibleProducts.length <= 3);
+      shopSearch.disabled = false;
+      shopSort.disabled = false;
+      filteredShopGrid.classList.remove("combo-results");
+      const query = normalizeShopText(shopSearch.value.trim());
+      let matchingProducts = shopProductsFor(filter).filter(product => {
+        if (!query) return true;
+        const searchable = [product.name, product.color, product.category, product.tag, product.note]
+          .map(normalizeShopText)
+          .join(" ");
+        return searchable.includes(query);
+      });
+
+      if (shopSort.value === "price-asc") {
+        matchingProducts = matchingProducts.map((product, index) => ({ product, index }))
+          .sort((a, b) => a.product.price - b.product.price || a.index - b.index)
+          .map(item => item.product);
+      } else if (shopSort.value === "price-desc") {
+        matchingProducts = matchingProducts.map((product, index) => ({ product, index }))
+          .sort((a, b) => b.product.price - a.product.price || a.index - b.index)
+          .map(item => item.product);
+      }
+
+      const visibleProducts = matchingProducts.slice(0, visibleShopLimit);
+      filteredShopGrid.classList.toggle("sparse-results", matchingProducts.length > 0 && matchingProducts.length <= 3);
+      if (!visibleProducts.length) {
+        filteredShopGrid.innerHTML = `
+          <div class="shop-empty">
+            <strong>No encontramos esa pieza.</strong>
+            <span>Prueba otro color, nombre o categoria.</span>
+          </div>
+        `;
+        shopFilterCount.textContent = `0 resultados en ${label}`;
+        shopLoadMoreWrap.hidden = true;
+        filteredShopGrid.setAttribute("aria-busy", "false");
+        return;
+      }
+
       filteredShopGrid.innerHTML = visibleProducts.map(product => {
         const isCombo = product.category === "combos";
         return productCard(product, {
           badge: isCombo ? "Ahorro" : "En stock",
           tag: isCombo ? product.tag : product.tag,
           sellLine: isCombo ? `Oferta combo: ahorras ${moneyText(product.normalPrice - product.price)}` : "Disponible por DM",
-          compact: filter === "todos"
+          compact: true
         });
       }).join("");
       prepareProductImages(filteredShopGrid);
       filteredShopGrid.setAttribute("aria-busy", "false");
-
-      shopFilterCount.textContent = filter === "shorts"
-        ? `Mostrando ${products.length} colores de shorts disponibles.`
-        : filter === "todos"
-          ? "6 piezas destacadas. Elige una categoria para ver el inventario completo."
-          : `Mostrando ${visibleProducts.length} pieza${visibleProducts.length === 1 ? "" : "s"} para ${label}`;
+      shopFilterCount.textContent = `Mostrando ${visibleProducts.length} de ${matchingProducts.length} pieza${matchingProducts.length === 1 ? "" : "s"} en ${label}`;
+      shopLoadMoreWrap.hidden = visibleProducts.length >= matchingProducts.length;
     }
 
     function setShopFilter(filter = "todos") {
@@ -1316,6 +1370,7 @@ const phone = "18099770166";
       shopFilters.querySelectorAll(".filter-btn").forEach(button => {
         button.classList.toggle("active", button === filterButton);
       });
+      visibleShopLimit = shopPageSize;
       renderFilteredShop(filterButton.dataset.filter);
     }
 
@@ -1599,6 +1654,28 @@ Referencia de entrega:`;
       setShopFilter(button.dataset.filter);
     });
 
+    let shopSearchTimer;
+    shopSearch.addEventListener("input", () => {
+      window.clearTimeout(shopSearchTimer);
+      shopSearchTimer = window.setTimeout(() => {
+        visibleShopLimit = shopPageSize;
+        renderFilteredShop();
+        trackEvent("shop_search", { query: shopSearch.value.trim() });
+      }, 120);
+    });
+
+    shopSort.addEventListener("change", () => {
+      visibleShopLimit = shopPageSize;
+      renderFilteredShop();
+      trackEvent("shop_sort", { order: shopSort.value });
+    });
+
+    shopLoadMore.addEventListener("click", () => {
+      visibleShopLimit += shopPageSize;
+      renderFilteredShop();
+      trackEvent("shop_load_more", { visible: visibleShopLimit, category: activeShopFilter });
+    });
+
     document.addEventListener("click", event => {
       const discoverTarget = event.target.closest("[data-discover-shop]");
       if (discoverTarget) {
@@ -1615,6 +1692,24 @@ Referencia de entrega:`;
           return;
         }
         setShopFilter(shopFilterLink.dataset.shopFilter);
+        return;
+      }
+
+      const detailsToggle = event.target.closest(".details-toggle");
+      if (detailsToggle) {
+        const card = detailsToggle.closest("[data-product-card]");
+        const willOpen = !card.classList.contains("details-open");
+        filteredShopGrid.querySelectorAll(".compact-card.details-open").forEach(openCard => {
+          if (openCard === card) return;
+          openCard.classList.remove("details-open");
+          const openButton = openCard.querySelector(".details-toggle");
+          openButton.setAttribute("aria-expanded", "false");
+          openButton.textContent = "Ver opciones";
+        });
+        card.classList.toggle("details-open", willOpen);
+        detailsToggle.setAttribute("aria-expanded", String(willOpen));
+        detailsToggle.textContent = willOpen ? "Cerrar opciones" : "Ver opciones";
+        trackEvent("product_details", { product: card.querySelector("h3").textContent, open: willOpen });
         return;
       }
 

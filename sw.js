@@ -1,4 +1,4 @@
-const CACHE_VERSION = "ghostwear-v3";
+const CACHE_VERSION = "ghostwear-v4";
 const CORE_CACHE = [
   "./",
   "./index.html",
