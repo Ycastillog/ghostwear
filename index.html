@@ -369,55 +369,6 @@
       display: none;
     }
 
-    body.intro-active {
-      overflow: hidden;
-    }
-
-    body.intro-active .welcome.intro-gate {
-      position: fixed;
-      inset: 0;
-      z-index: 80;
-      display: grid;
-      align-items: center;
-      padding: 18px 0;
-      background:
-        radial-gradient(circle at 50% 20%, rgba(244, 241, 220, 0.12), transparent 22rem),
-        linear-gradient(180deg, rgba(0, 0, 0, 0.88), rgba(0, 0, 0, 0.96)),
-        var(--bg);
-      opacity: 1;
-      transform: translateY(0);
-      transition: opacity 300ms ease, transform 300ms ease;
-    }
-
-    body.intro-active .welcome.intro-gate::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      background:
-        linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
-      background-size: 56px 56px;
-      mask-image: radial-gradient(circle at center, #000, transparent 72%);
-      pointer-events: none;
-    }
-
-    body.intro-leaving .welcome.intro-gate {
-      opacity: 0;
-      transform: translateY(-18px);
-      pointer-events: none;
-    }
-
-    body.intro-dismissed .welcome.intro-gate {
-      display: none;
-    }
-
-    body.intro-active .site-header {
-      transform: translateY(-100%);
-      visibility: hidden;
-      pointer-events: none;
-    }
-
     .welcome-card {
       position: relative;
       overflow: hidden;
@@ -440,12 +391,6 @@
       box-shadow: 0 34px 120px rgba(0, 0, 0, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.06);
     }
 
-    body.intro-active .welcome-card {
-      width: min(var(--max), calc(100% - 32px));
-      margin-inline: auto;
-      min-height: min(640px, calc(100vh - 84px));
-    }
-
     .welcome-card::after {
       content: "";
       position: absolute;
@@ -466,11 +411,6 @@
       border: 1px solid rgba(244, 241, 220, 0.08);
       border-radius: 8px;
       pointer-events: none;
-    }
-
-    body.intro-active .welcome-card::before {
-      border-color: rgba(244, 241, 220, 0.14);
-      box-shadow: inset 0 0 80px rgba(244, 241, 220, 0.035);
     }
 
     .welcome-content {
@@ -672,6 +612,7 @@
       position: relative;
       z-index: 2;
       width: min(100%, 560px);
+      height: clamp(430px, 46vw, 560px);
       min-height: 430px;
       overflow: hidden;
       border: 1px solid rgba(244, 241, 220, 0.16);
@@ -683,9 +624,9 @@
     .welcome-hero-shot img {
       width: 100%;
       height: 100%;
-      min-height: 430px;
+      min-height: 0;
       object-fit: cover;
-      object-position: center;
+      object-position: center 62%;
       filter: saturate(1.02) contrast(1.05) brightness(0.92);
       transform: scale(1.015);
     }
@@ -3469,34 +3410,19 @@
     @media (max-width: 620px) {
       .wrap { width: min(100% - 20px, var(--max)); }
       .brand span { display: none; }
-      .brand img { width: 104px; }
-      .nav { min-height: 60px; }
+      .brand img { width: 96px; }
+      .nav { min-height: 60px; gap: 10px; }
       .nav-actions .shop-link,
       .nav-actions .ig-link { display: none; }
+      #cartBtn { padding-inline: 12px; }
       h1 { font-size: clamp(2.75rem, 13vw, 3.3rem); }
       section { padding: 42px 0; }
       #shop { padding-top: 14px; }
-      body.intro-active .welcome.intro-gate {
-        align-items: start;
-        overflow-y: auto;
-        overflow-x: hidden;
-        padding: 10px 0;
-      }
-      body.intro-active .welcome-card {
-        width: calc(100vw - 20px);
-        max-width: calc(100vw - 20px);
-        min-height: auto;
-      }
-      body.intro-active .welcome .wrap {
-        width: 100%;
-        max-width: 100vw;
-        overflow: hidden;
-      }
       .welcome { padding: 6px 0 4px; }
       .welcome-card {
         padding: 12px;
         gap: 10px;
-        border-radius: 14px;
+        border-radius: 8px;
         background:
           linear-gradient(180deg, rgba(244, 241, 220, 0.06), transparent 32%),
           rgba(255, 255, 255, 0.045);
@@ -3525,6 +3451,9 @@
       .welcome-proof-line span {
         padding: 6px 8px;
         font-size: 0.58rem;
+      }
+      .welcome-proof-line span:not(:first-child) {
+        display: none;
       }
       .welcome-signals {
         display: none;
@@ -3627,16 +3556,7 @@
         display: none;
       }
       .welcome-color-rack {
-        gap: 7px;
-        max-width: 100%;
-      }
-      .welcome-color-rack span {
-        width: 16px;
-        height: 16px;
-      }
-      .welcome-color-rack strong {
-        flex-basis: 100%;
-        margin-left: 0;
+        display: none;
       }
       .welcome-card,
       .welcome-content,
@@ -3650,11 +3570,13 @@
       }
       .welcome-hero-shot {
         width: 100%;
+        height: 300px;
         min-height: 286px;
-        border-radius: 12px;
+        border-radius: 8px;
       }
       .welcome-hero-shot img {
-        min-height: 286px;
+        min-height: 0;
+        object-position: center 62%;
       }
       .welcome-hero-label {
         left: 12px;
@@ -3967,20 +3889,12 @@
       .hero-copy { max-width: none; }
       .size-row { grid-template-columns: 1fr; gap: 6px; }
       .size-row.header { display: none; }
-      .announce-track { justify-content: flex-start; padding-left: 12px; }
-      .announce-track span:nth-child(n+3) { display: none; }
+      .announce-track { justify-content: center; padding-left: 0; }
+      .announce-track span:nth-child(n+2) { display: none; }
     }
 </style>
 </head>
 <body>
-  <script>
-    try {
-      const forceIntro = new URLSearchParams(location.search).has("intro");
-      document.body.classList.add(!forceIntro && sessionStorage.getItem("ghostIntroSeen") ? "intro-dismissed" : "intro-active");
-    } catch (error) {
-      document.body.classList.add("intro-active");
-    }
-  </script>
   <div class="announce" aria-label="GhostWear novedades">
     <div class="announce-track" id="announceTrack">
     </div>
@@ -4010,7 +3924,7 @@
   </header>
 
   <main id="top">
-    <section class="welcome intro-gate" aria-label="Entrada GhostWear">
+    <section class="welcome" aria-label="Coleccion destacada GhostWear">
       <div class="wrap">
         <div class="welcome-card">
           <div class="welcome-content">
@@ -4020,13 +3934,13 @@
               <span class="welcome-subline">Shorts, gorras y medias listos por WhatsApp.</span>
             </div>
             <div class="welcome-proof-line" aria-label="Detalles rapidos del drop">
-              <span>Drop activo</span>
-              <span>Arma tu fit</span>
-              <span>Pedido por WhatsApp</span>
+              <span>Stock limitado</span>
+              <span>Entrega nacional</span>
+              <span>Confirmacion por WhatsApp</span>
             </div>
             <div class="welcome-actions">
               <a class="btn primary" href="#shop" data-discover-shop>Ver coleccion</a>
-              <button class="btn" id="welcomeFitBtn" type="button">Pedir por WhatsApp</button>
+              <button class="btn" id="welcomeFitBtn" type="button">Ver combos</button>
             </div>
             <div class="welcome-color-rack" aria-label="Colores de shorts disponibles">
               <span style="--dot:#d71925"></span>
@@ -4044,6 +3958,7 @@
               <span style="--dot:#c8afe6"></span>
               <span style="--dot:#111111"></span>
               <span style="--dot:#f4f1e8"></span>
+              <strong>15 colores disponibles</strong>
             </div>
           </div>
           <div class="welcome-visual" aria-hidden="true">
@@ -5863,16 +5778,7 @@
       shop.classList.remove("shop-discovered");
       void shop.offsetWidth;
       shop.classList.add("shop-discovered");
-      try {
-        sessionStorage.setItem("ghostIntroSeen", "1");
-      } catch (error) {
-      }
-      document.body.classList.add("intro-leaving");
-      window.setTimeout(() => {
-        document.body.classList.remove("intro-active", "intro-leaving");
-        document.body.classList.add("intro-dismissed");
-        shop.scrollIntoView({ behavior: "smooth", block: "start" });
-      }, document.body.classList.contains("intro-active") ? 260 : 0);
+      shop.scrollIntoView({ behavior: "smooth", block: "start" });
       window.setTimeout(() => shop.classList.remove("shop-discovered"), 1050);
     }
 
