@@ -369,6 +369,55 @@
       display: none;
     }
 
+    body.intro-active {
+      overflow: hidden;
+    }
+
+    body.intro-active .welcome.intro-gate {
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      display: grid;
+      align-items: center;
+      padding: 18px 0;
+      background:
+        radial-gradient(circle at 50% 20%, rgba(244, 241, 220, 0.12), transparent 22rem),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.88), rgba(0, 0, 0, 0.96)),
+        var(--bg);
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 300ms ease, transform 300ms ease;
+    }
+
+    body.intro-active .welcome.intro-gate::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: radial-gradient(circle at center, #000, transparent 72%);
+      pointer-events: none;
+    }
+
+    body.intro-leaving .welcome.intro-gate {
+      opacity: 0;
+      transform: translateY(-18px);
+      pointer-events: none;
+    }
+
+    body.intro-dismissed .welcome.intro-gate {
+      display: none;
+    }
+
+    body.intro-active .site-header {
+      transform: translateY(-100%);
+      visibility: hidden;
+      pointer-events: none;
+    }
+
     .welcome-card {
       position: relative;
       overflow: hidden;
@@ -391,6 +440,12 @@
       box-shadow: 0 34px 120px rgba(0, 0, 0, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.06);
     }
 
+    body.intro-active .welcome-card {
+      width: min(var(--max), calc(100% - 32px));
+      margin-inline: auto;
+      min-height: min(640px, calc(100vh - 84px));
+    }
+
     .welcome-card::after {
       content: "";
       position: absolute;
@@ -411,6 +466,11 @@
       border: 1px solid rgba(244, 241, 220, 0.08);
       border-radius: 8px;
       pointer-events: none;
+    }
+
+    body.intro-active .welcome-card::before {
+      border-color: rgba(244, 241, 220, 0.14);
+      box-shadow: inset 0 0 80px rgba(244, 241, 220, 0.035);
     }
 
     .welcome-content {
@@ -3418,6 +3478,22 @@
       h1 { font-size: clamp(2.75rem, 13vw, 3.3rem); }
       section { padding: 42px 0; }
       #shop { padding-top: 14px; }
+      body.intro-active .welcome.intro-gate {
+        align-items: start;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding: 10px 0;
+      }
+      body.intro-active .welcome-card {
+        width: calc(100vw - 20px);
+        max-width: calc(100vw - 20px);
+        min-height: auto;
+      }
+      body.intro-active .welcome .wrap {
+        width: 100%;
+        max-width: 100vw;
+        overflow: hidden;
+      }
       .welcome { padding: 6px 0 4px; }
       .welcome-card {
         padding: 12px;
@@ -3895,6 +3971,14 @@
 </style>
 </head>
 <body>
+  <script>
+    try {
+      const forceIntro = new URLSearchParams(location.search).has("intro");
+      document.body.classList.add(!forceIntro && sessionStorage.getItem("ghostIntroSeen") ? "intro-dismissed" : "intro-active");
+    } catch (error) {
+      document.body.classList.add("intro-active");
+    }
+  </script>
   <div class="announce" aria-label="GhostWear novedades">
     <div class="announce-track" id="announceTrack">
     </div>
@@ -3924,11 +4008,11 @@
   </header>
 
   <main id="top">
-    <section class="welcome" aria-label="Coleccion destacada GhostWear">
+    <section class="welcome intro-gate" aria-label="Entrada GhostWear">
       <div class="wrap">
         <div class="welcome-card">
           <div class="welcome-content">
-            <span class="welcome-kicker">Drop activo RD / entregas nacionales</span>
+            <span class="welcome-kicker">GhostWear / Drop activo RD</span>
             <div class="welcome-copy">
               <strong>Viste diferente.</strong>
               <span class="welcome-subline">Shorts, gorras y medias listos por WhatsApp.</span>
@@ -3939,7 +4023,7 @@
               <span>Confirmacion por WhatsApp</span>
             </div>
             <div class="welcome-actions">
-              <a class="btn primary" href="#shop" data-discover-shop>Ver coleccion</a>
+              <a class="btn primary" href="#shop" data-discover-shop>Entrar a la coleccion</a>
               <button class="btn" id="welcomeFitBtn" type="button">Ver combos</button>
             </div>
             <div class="welcome-color-rack" aria-label="Colores de shorts disponibles">
@@ -5778,7 +5862,16 @@
       shop.classList.remove("shop-discovered");
       void shop.offsetWidth;
       shop.classList.add("shop-discovered");
-      shop.scrollIntoView({ behavior: "smooth", block: "start" });
+      try {
+        sessionStorage.setItem("ghostIntroSeen", "1");
+      } catch (error) {
+      }
+      document.body.classList.add("intro-leaving");
+      window.setTimeout(() => {
+        document.body.classList.remove("intro-active", "intro-leaving");
+        document.body.classList.add("intro-dismissed");
+        shop.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, document.body.classList.contains("intro-active") ? 260 : 0);
       window.setTimeout(() => shop.classList.remove("shop-discovered"), 1050);
     }
 
