@@ -51,8 +51,6 @@ const phone = "18099770166";
         feature: "Short + medias"
       },
       metrics: {
-        posts: 17,
-        followers: 2151,
         piecesLabel: "shorts + gear"
       }
     };
