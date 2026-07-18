@@ -717,10 +717,6 @@ const phone = "18099770166";
       "Black": "./images/designed/ghostwear-short-black-studio.webp",
       "White": "./images/designed/ghostwear-short-white-logo-black.webp"
     };
-    const ghostModelImages = {
-      court: "./images/model/ghostwear-juanco-model-court.jpg",
-      hoodie: "./images/model/ghostwear-juanco-model-hoodie.jpg"
-    };
     products.forEach(product => {
       const cleanImage = cleanShortImages[product.color] || product.image;
       product.photos = [
@@ -735,14 +731,6 @@ const phone = "18099770166";
     gearProducts.forEach(product => {
       if (product.photos) return;
       const realImage = product.realImage || product.image;
-      const productModelImage = product.modelImage || realImage;
-      const modelImageByCategory = {
-        medias: productModelImage,
-        gorras: realImage,
-        hoodie: ghostModelImages.hoodie,
-        tees: realImage
-      };
-      const modelImage = modelImageByCategory[product.category] || realImage;
       product.photos = [
         { label: "Limpia", src: product.image, view: product.category === "medias" ? "real" : "clean" },
         { label: "Real", src: realImage, view: "real" }
